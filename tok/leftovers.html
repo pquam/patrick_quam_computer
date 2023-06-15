@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Patrick Quam</title>
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anek+Devanagari">
+
+    <link rel="stylesheet" href="../css/lefties.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    
+</head>
+
+<body class="grey-section">
+  
+    <!-- top section -->
+    <section class="top-section" id="title">
+      <div class="fixed h-12 w-full z-50 top-0">
+        <div class="h-12 w-full bg-black flex items-center justify-center px-4">
+          <p class="text-center text-grey-lightest font-semibold">
+            Support
+            <a href="https://kramden.org/donate/" target="_blank" rel="noindex nofollow noopener" class="text-blue-lighter:"> The Kramden Institute</a>
+          </p>
+        </div>
+      </div>
+      
+
+        <div class="container-fluid">
+
+          
+
+            <!-- Nav bar -->
+
+          <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand h1" href="../home.html">Patrick Quam</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">sub-section</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Projects
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Resume</a></li>
+                      <li><a class="dropdown-item" href="linux-hardening.html">Linux Hardening</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+          <div class="row">
+
+            <div class="col-lg-6">
+              <h1 class="big-heading">Leftovers</h1>
+              <h2 class="section-heading">Everything that hasn't been sorted into its own page</h1>
+              
+            </div>
+        
+            <div class="col-lg-6">
+              <img class="title-image" src="../images/sandvich.png" alt="r93090">
+            </div>
+        
+          </div>
+
+        </div>
+
+    </section>
+
+    <section class="colored-section" id="projects">
+        <div class="col-lg-1"></div>
+        <div class="sub-section-box col-lg-12">
+          <ul>
+            <li> <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-16-04">Setting up a website in nginx</a></li>
+          </ul>
+
+          <h2>Setting Up User Accounts and Running NGINX</h2>
+
+<h3>User Account Setup</h3>
+
+<ol>
+  <li>Create a root user that is set to <code>nologin</code> and cannot be accessed via SSH. This is the default behavior for the root user on many systems.</li>
+  <li>Create a personal user account with <code>sudo</code> permissions. This account can be accessed via SSH, and you can use <code>sudo</code> to perform administrative tasks.</li>
+  <li>Create a <code>nginx</code> user account with minimal permissions. This account should also be set to <code>nologin</code> and should not be accessible via SSH.</li>
+</ol>
+
+<h3>Running NGINX</h3>
+
+<ol>
+  <li>Install NGINX using your personal account with <code>sudo</code> permissions.</li>
+  <li>In the NGINX configuration file, specify that NGINX should run as the <code>nginx</code> user. This is typically done with the <code>user</code> directive in the main context of the configuration file. For example, you might have a line like this in your <code>nginx.conf</code>:</li>
+</ol>
+
+<pre>
+<code>
+user nginx;
+</code>
+</pre>
+
+<ol start="3">
+  <li>Start the NGINX service (usually with a command like <code>sudo systemctl start nginx</code>). NGINX will start with root privileges, but then drop its privileges and run as the <code>nginx</code> user.</li>
+</ol>
+
+<p>In this setup, there's no need to use <code>setuid</code> or <code>sudo -u</code>. NGINX handles the privilege dropping itself.</p>
+
+<p>Information provided by OpenAI's ChatGPT.</p>
+
+
+        </div>
+    <div class="col-lg-1"></div>
+
+    </section>
+
+
+
+
+
+    <!-- sub-section1, general security -->
+    <section class="grey-section" id="sub-section">
+
+        <div class="container-fluid">
+    
+            <div class="column">
+
+                <div class="col-lg-12">
+                    <h1 class="sub-section-header"></h1>
+                </div>
+
+                <div class="col-lg-1"></div>
+                    <div class="sub-section-box col-lg-12">
+                        <ul>
+
+                      </ul>
+
+
+                    </div>
+                <div class="col-lg-1"></div>
+          
+            </div>
+
+            
+        </div>
+    
+      </div>
+    </section>
+
+
+
+
+
+    <!-- sub-section2, physcial security -->
+    <section class="colored-section" id="projects">
+
+      <div class="col-lg-12">
+        <h1 class="sub-section-header">Physcial Security</h1>
+      </div>
+
+      <div class="col-lg-1"></div>
+                    <div class="sub-section-box col-lg-12">
+                      <ul>
+                        <li>Ensure that single user mode is either disabled or password protected. Single user mode can be accessed by restarting the system, and provides root access to the system.</li>
+                        <li>Require a boot menu password. Without a boot menu password, attacks can force the bootloader to boot a root shell instead of another aprt of the operating system, providing them with root access. This can be configured in </li>
+                        <li>Ensure device encryption is enabled. Requiring a boot password can be circumvented by an attack installing their own boot media and mounting the system. LUKS is a common encryption tool.</li>
+                          <ul>
+                            <li>For example, if you are hosting a web server in a cloud instance, usure the cloud instance is encrypted. additionally, you can run the server in a VM, and make sure the virtual drive for the VM is encrypted.</li>
+                          </ul>
+                        <li><a href="https://www.ibm.com/docs/en/order-management-sw/10.0?topic=considerations-encrypting-data-partitions-using-luks">LUKS</a> is a common encryption tool. It can be used to encrypt any block device.</li>
+                        <li>Disable CTRL+ALT+DEL. CTRL+ALT+DEL initiates a system reboot. if an attacker is able to gain access to the system they may use the restarat to gain access to the bootloader.</li>
+                        <ul>
+                          <li>CTRL+ALT+DEL can be disabled by running 
+                            <code>sudo systemctl mask ctrl-alt-del.target <br>
+                               sudo systemctl stop ctrl-alt-del.target</code></li>
+                        </ul>
+                      </ul>
+
+                    </div>
+                <div class="col-lg-1"></div>
+
+
+    </section>
+
+
+    <!-- sub-section3, account security -->
+    <section class="grey-section" id="sub-section">
+
+        <div class="container-fluid">
+    
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <h1 class="sub-section-header">Account Security</h1>
+                </div>
+
+                <div class="sub-section-box col-lg-12">
+                  <ul>
+
+                    <li>Root user always has a user ID of 0.</li>
+                    <li>Assigning a User an ID of 0 will grant them user privlages.</li>
+                    <li>Accounts for system services should have UID's of less than 1,000.</li>
+                    <li>New users in the standard user range can be created using <code>useradd</code></li>
+                    <li>New users can be created in the system services account range using <code>useradd -r</code></li>
+
+                    <li class="sub-list-padding">authentication logs can be viewed by running the <code>last</code> command. <code>lastb</code> will show failed login attempts.</li>
+                    <ul>
+                      <li>The <code>last</code> command logs are found in <code>/var/log/wtemp</code></li>
+                      <li>logs for <code>lastb</code> are stored in <code>/var/log/btemp</code></li>
+                      <li>Other authentication logs can be found in the messages, syslog, secure, and auth.log files in the <code>/var/log/</code> directory.</li>
+                    </ul>
+
+                    <li class="sub-list-padding">Sometimes you may want to lock a user account. Maybe the account is comprimised, a user no longer needs access, or it is a dedicated account for a service or application. Here are a few ways you can disable logins:</li>
+                    <ul>
+                      <li>Changing the final entry in a users line of the <code>/etc/passwd</code> file to nologin (default is /bin/bash)</li>
+                      <ul>
+                        <li>This can also be done by using the change shell command like this: <code>chsh -s shell account</code></li>
+                        <li>For example, <code>chsh -s /sbin/nologin foo</code> would disable logins for the user foo</li>
+                        <li>to re-enable logins, you would run <code>chsh -s /bin/bash foo</code></li>
+                      </ul>
+
+                      <li>Another way to lock an account is with the passwd command, although this only prevents the user from logging in using a password. For example, a user would still be able to log in using an SSH key.</li>
+                      <ul>
+                        <li>To lock an account: <code>passwd -l foo</code></li>
+                        <li>To un-lock that account: <code>passwd -u foo</code></li>
+                      </ul>
+                    </ul>
+
+                    <li class="sub-list-padding">PAM, or pluggable Authentication Module</li>
+                    <ul>
+                      <li>PAM allows applications to use any authentication method (ie, fingerprint, yubikey, etc).</li>
+                      <li>PAM modules exist for <a href="https://github.com/google/google-authenticator-libpam#google-authenticator-pam-module">google authenticator</a> and other Multi-Factor Authentication services.</li>
+                      <li>PAM can be used for authentication for any application that supports it.</li>
+                      <li>PAM files are stored in /etc/pam.d</li>
+                      <li>Account password requirements can be set in <code>/etc/pam.d/common-password</code> on Ubuntu/Debian systems or <code>/etc/pam.d/system-auth</code> on Red Hat systems.</li>
+                      <li>PAM can also be used to prevent non-root users from logging in. </li>
+                      <ul>
+                        <li>By adding <code>auth required pam_nologin.so</code> to the top of <code>/etc/pam.d/login</code> or <code>/etc/pam.d/SSHd</code> file you can easily prevent system wide logins via those mothods.</li>
+                        <li>After adding <code>auth required pam_nologin</code> to either file, a file named <code>nologin</code> must be created in the <code>/etc/</code> directory. If a user attempts to log in, the contents of that file will be displayed to them.</li>
+                        <li>To re-enable logins, simply delete the <code>/etc/nologin</code> file.</li>
+                        <li>Users will still be able to SSH into accounts by using SSH keys if the UsePAM setting in the SSH server's configuration file (<code>/etc/ssh/sshd_config</code>) is set to 'no'.</li>
+                      </ul>
+                    </ul>
+
+                    <li class="sub-list-padding">Account & pasasword expiration dates can be configured in <code>/etc/login.defs</code></li>
+                    <ul>
+                      <li><code>pass_MIN_LEN</code> sets minimum password length</li>
+                      <li><code>pass_WARN_AGE</code> number of days warning before a password expires</li>
+                    </ul>
+
+                    <li class="sub-list-padding">Use Shadow passwords.</li>
+                      <ul>
+                        <li>Encrypted Passwords are typically stored in <code>/etc/passwd</code>, but can be viewed by all users. This means that attackers can simply copy the encrypted passwords and take their time cracking them.</li>
+                        <li>With shadow passwords, <code>/etc/passwd</code> only shows an 'x' as the users password. Instead, encrypted user passwords are stored in <code>/etc/shadow</code>, which can only be accessed by root.</li>
+                        <li>shadow passwords can be enabled using <code>pwconv</code> as root.</li>
+                        <li>Shadow password format:</li>
+                          <ul>
+                            <li><code>username:hashed password: days since epoch of last password change: days until user is allowed to change password: days before a password change is required: days warning before password expiry: days before account becomes inactive: days since epoch when account expires: reserved</code></li>
+                            <li>Screenshot of the /etc/shadow file from a debian VM:<br><img class="sub-section-image" src="images/etc shadow.jpg" alt="Screenshot of the /etc/shadow file from a debian VM"/></li>
+                          </ul>
+                      </ul>
+                    <li class="sub-list-padding"><code>chage</code>: change user password expiry information.</li>
+                    <ul>
+                      <li><code>chage -l account</code>:list account aging information.</li>
+                      <li><code>chage -M Max_Days</code>: Set the max number of days during which a password is valid.</li>
+                      <li><code>chage -E Epire_Date</code>: date on which the account will no longer be accesssable in yyy/mm/dd format. Use -1 to 'un-expire' an account.</li>
+                      <li><code>chage -d 0</code>: will force a user to change their password the next time they try to sign in.</li>
+                    </ul>
+                    
+                    <li class="sub-list-padding">Centralized Authentication</li>
+                      <ul>
+                        <li>Centralized authentication systems allow administrators to prevent accounts from performing any actions, including logging in if they become comprimised.</li>
+                        <li>If an attack gains control of your centralized authentication system, they conrtol the device.</li>
+                        <li>Common centralized authentication systems are freeIPA and LDAP.</li>
+                      </ul>
+
+                    <li class="sub-list-padding">Intrusion prevention</li>  
+                      <ul>
+                        <li>Intrusion prevention systems, such as <a href="https://www.fail2ban.org/wiki/index.php/Main_Page">fail2ban</a>, monitor system log files. If too many failed login attmpts are detected, their IP will be blocked.</li>
+                        <li>fail2ban can be configured to unblock IP adresses after a set period of time, so if the "attacker" turns out to be a normal user that forgot their password, they will be able to regain access to the system.</li>
+                        <li>fail2ban can be used for any application that writes login attempts to a log file. This </li>
+                      </ul>
+
+                      <li class="sub-list-padding">Disabling root logins</li>
+                      <ul>
+                        <li>To display all accounts with UID of 0 (root access run) <code>awk -F: '$3 == 0 {print $1}' /etc/passwd</code></li>
+                        <ul>
+                          <li>This command works by using awk, which is a text processing command. The -F: option tells awk to use a colon as the field separator, as fields in the /etc/passwd file are separated by colons. The $3 == 0 part is a condition that checks if the third field (which is the UID) is 0. If this condition is true, awk executes the action in the curly braces, which is to print the first field (the username).</li>
+                          <li>Any accounts with a UID of 0 should either be assigned a different UID or be removed.</li>
+                        </ul>
+                        <li><code>/etc/securetty</code></li>
+                        <ul>
+                          <li>This is a config file that contains a list of TTY devices where root is allowed to login. Leaving it blank will prevent root logins.</li>
+                          <li>TTY devices are 'local' terminal/console devices. Leaving a blank securetty file will not prevent remote console sessions, such as SSH.</li>
+                        </ul>
+                        <li>Set the root account shell to nologin. This can be done by modifying the /etc/passwd file, or ideally with the chsh command.</li>
+                        <li>Use <code>passwd /l root</code> to lock the root account password.</li>
+                        <li>To prevent root logins via ssh, add <code>PermitRootLogin no</code> to the <code>/etc/ssh/shhd_config</code> file.</li>
+                        <ul>
+                          <li>you can prevent other users from accessing the system via SSH by adding <code>DenyUsers account_names</code> to the same file.</li>
+                          <li>Run <code>systemcl reload sshd</code></li>
+                        </ul>
+
+                        <li class="sub-list-padding">Securing System / Application Accounts</li>
+                        <ul>
+                          <li>Use 1 account per service. For example, if you are running an nginx web server, run that server as its own nginx user.</li>
+                          <li>Do not allow direct logins to system or application accounts.</li>
+                          <li>Use <code>sudo -u</code> to run commands as an application account.</li>
+                        </ul>
+
+                        <li class="sub-list-padding">Deleting Accounts</li>
+                        <ul>
+                          <li>When an account is no longer needed, use <code>userdel -r UID</code> to delete the account. -r specifies to delete that users home directory.</li>
+                          <li>Use <code>id account_name</code> to find an accounts UID.</li>
+                          <li>After deleting a user account, you can find leftover files that belonged to that user by running <code>find / -UID</code> and <code>find / -nouser</code></li>
+                        </ul>
+                      </ul>
+                  </ul>
+
+                </div>
+            <div class="col-lg-1"></div>
+          
+            </div>
+
+            
+        </div>
+    
+        </div>
+    </section>
+
+
+    <!-- sub-section4, network security -->
+    <section class="colored-section" id="projects">
+
+        <div class="col-lg-12">
+          <h1 class="sub-section-header">Network Security</h1>
+          </div>
+  
+          <div class="col-lg-1"></div>
+          <div class="sub-section-box col-lg-12">
+            <ul>
+              <li></li>
+            </ul>
+
+          </div>
+      <div class="col-lg-1"></div>
+  
+      </section>
+
+          <!-- sub-section5, file system security -->
+    <section class="grey-section" id="sub-section">
+
+        <div class="container-fluid">
+    
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <h1 class="sub-section-header">File System Security</h1>
+                </div>
+
+                <div class="sub-section-box col-lg-12">
+                  <ul>
+                    <li></li>
+                  </ul>
+
+                </div>
+          
+            </div>
+
+            
+        </div>
+    
+        </div>
+    </section>
+
+        <!-- sub-section4, Security Resources -->
+        <section class="colored-section" id="projects">
+
+            <div class="col-lg-12">
+              <h1 class="sub-section-header">Security Resources</h1>
+              </div>
+      
+            <div id="project-carousel" class="carousel  carousel-dark slide" data-bs-ride="carousel">
+      
+              <div class="carousel-inner">
+      
+                <div class="carousel-item active">
+                  <h2 class="project-text">This website!</h2>
+                  <img class="project-image" src="images/011D.png">
+                  <em>Under construction</em>
+                </div>
+      
+                <div class="carousel-item">
+                  <h2 class="project-text">Forbidden router</h2>
+                  <img class="project-image" src="images/011D.png">
+                  <em>pfSense running on my home lab server</em>
+                </div>
+      
+                <div class="carousel-item">
+                  <h2 class="project-text">tic-tac tic-tac toe</h2>
+                  <img class="project-image" src="images/011D.png">
+                  <em>A basic game I came up with in highschool</em>
+                </div>
+      
+              </div>
+      
+              <button class="carousel-control-prev" type="button" data-bs-target="#project-carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#project-carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+      
+            </div>
+      
+          </section>
+</body>
+
+</html>
