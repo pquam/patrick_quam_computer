@@ -8,12 +8,23 @@
     color: #fff;
   }
 
+  li {
+    color: #fff;
+  }
+
   em {
     color: #fff;
   }
 
   a {
     color: #fff;
+  }
+
+  code {
+    display: inline-block;
+    padding: 4px;
+    background-color: #000000;
+    font-family: monospace;
   }
   
   /* Headings */
@@ -79,6 +90,7 @@
     font-family: "";
     color: #fff;
   }
+
   
   /* Buttons */
   
@@ -90,7 +102,7 @@
   
   #title {
     color: #fff;
-    text-align: center;
+    text-align: left;
   }
   
   #title .container-fluid {
@@ -101,7 +113,7 @@
   
   .title-image {
     /*transform: rotate(25deg);*/
-    padding-center: 25%;
+    padding-left: 25%;
     padding-bottom: 25%;
     max-width: 100%;
     max-height: 100%;
@@ -112,12 +124,12 @@
   
   #experience {
     position: relative;
-    text-align: center;
+    text-align: left;
     font-size: 150%;
   }
   
   .sub-section-header {
-    text-align: center;
+    text-align: left;
     font-size: 250%;
   }
 
@@ -137,6 +149,10 @@
     position:sticky;
   }
 
+  .sub-list-padding {
+    margin-top: 7%;
+  }
+
   .icon {
     color: #2057b7;
     margin-bottom: 1rem;
@@ -151,7 +167,7 @@
   #projects {
     background-color: #2057b7;
     padding: 7% 15%;
-    text-align: center;
+    text-align: left;
   }
   
   .project-text {
@@ -204,11 +220,11 @@
   @media (max-width: 1110px) {
   
     #title {
-      text-align: center;
+      text-align: left;
     }
 
     #experience {
-        text-align: center;
+        text-align: left;
     }
   
     .title-image {
@@ -217,7 +233,7 @@
     }
 
     .experience-image {
-        align-content: center;
+        align-content: left;
         max-width: 50%;
         min-width: 30%;
         max-height: 50%;
