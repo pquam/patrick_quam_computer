@@ -22,9 +22,37 @@
 
   code {
     display: inline-block;
-    padding: 4px;
+    padding: 1px 4px;
     background-color: #000000;
     font-family: monospace;
+    border-radius: 4px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.8);
+  }
+
+  .grey-section mark {
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-weight: bold;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.8);
+    transition: background-color 0.3s ease;
+  }
+
+  .grey-section mark:hover {
+    color: #fff;
+    background-color: #2057b7;
+  }
+
+  .colored-section mark {
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-weight: bold;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.8);
+    transition: background-color 0.3s ease;
+  }
+
+  .colored-section mark:hover {
+    color: #fff;
+    background-color: #252526;
   }
 
   .alert {
