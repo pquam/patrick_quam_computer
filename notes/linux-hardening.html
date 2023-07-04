@@ -174,7 +174,7 @@
                           <ul>
                             <li>For example, if you are hosting a web server in a cloud instance, usure the cloud instance is encrypted. additionally, you can run the server in a VM, and make sure the virtual drive for the VM is encrypted.</li>
                           </ul>
-                        <li><a href="https://www.ibm.com/docs/en/order-management-sw/10.0?topic=considerations-encrypting-data-partitions-using-luks">LUKS</a> is a common encryption tool. It can be used to encrypt any block device.</li>
+                        <li><a class="link" href="https://www.ibm.com/docs/en/order-management-sw/10.0?topic=considerations-encrypting-data-partitions-using-luks">LUKS</a> is a common encryption tool. It can be used to encrypt any block device.</li>
                         <li>Disable CTRL+ALT+DEL. CTRL+ALT+DEL initiates a system reboot. if an attacker is able to gain access to the system they may use the restarat to gain access to the bootloader.</li>
                         <ul>
                           <li>CTRL+ALT+DEL can be disabled by running 
@@ -236,7 +236,7 @@
                     <li class="sub-list-padding">PAM, or pluggable Authentication Module</li>
                     <ul>
                       <li>PAM allows applications to use any authentication method (ie, fingerprint, yubikey, etc).</li>
-                      <li>PAM modules exist for <a href="https://github.com/google/google-authenticator-libpam#google-authenticator-pam-module">google authenticator</a> and other Multi-Factor Authentication services.</li>
+                      <li>PAM modules exist for <a class="link" href="https://github.com/google/google-authenticator-libpam#google-authenticator-pam-module">google authenticator</a> and other Multi-Factor Authentication services.</li>
                       <li>PAM can be used for authentication for any application that supports it.</li>
                       <li>PAM files are stored in /etc/pam.d</li>
                       <li>Account password requirements can be set in <code>/etc/pam.d/common-password</code> on Ubuntu/Debian systems or <code>/etc/pam.d/system-auth</code> on Red Hat systems.</li>
@@ -283,7 +283,7 @@
 
                     <li class="sub-list-padding">Intrusion prevention</li>  
                       <ul>
-                        <li>Intrusion prevention systems, such as <a href="https://www.fail2ban.org/wiki/index.php/Main_Page">fail2ban</a>, monitor system log files. If too many failed login attmpts are detected, their IP will be blocked.</li>
+                        <li>Intrusion prevention systems, such as <a class="link" href="https://www.fail2ban.org/wiki/index.php/Main_Page">fail2ban</a>, monitor system log files. If too many failed login attmpts are detected, their IP will be blocked.</li>
                         <li>fail2ban can be configured to unblock IP adresses after a set period of time, so if the "attacker" turns out to be a normal user that forgot their password, they will be able to regain access to the system.</li>
                         <li>fail2ban can be used for any application that writes login attempts to a log file. This </li>
                       </ul>
