@@ -187,6 +187,16 @@
   .sub-section-box {
     padding: 4.5%;
   }
+
+  #sub-section1 {
+    padding: 7% 15%;
+    text-align: left;
+  }
+
+  #sub-section2 {
+    padding: 7% 15%;
+    text-align: left;
+  }
   
   .sub-section-image {
     /*transform: rotate(25deg);*/
@@ -213,7 +223,7 @@
   /* project Section */
   
   #projects {
-    background-color: #2057b7;
+
     padding: 7% 15%;
     text-align: left;
   }
@@ -240,20 +250,6 @@
     margin: 20px 20px 50px;
   }
   
-  /* Pricing Section */
-  
-  #pricing {
-    padding: 100px;
-  }
-  
-  .price-text {
-    font-size: 3rem;
-    line-height: 1.5;
-  }
-  
-  .pricing-column {
-    padding: 3% 2%;
-  }
   
   /* CTA Section */
   
