@@ -167,6 +167,16 @@
     position:sticky;
   }
 
+  #sub-section1 {
+    padding: 7% 15%;
+    text-align: left;
+  }
+
+  #sub-section2 {
+    padding: 7% 15%;
+    text-align: left;
+  }
+
   .sub-list-padding {
     margin-top: 7%;
   }

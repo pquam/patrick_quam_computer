@@ -64,6 +64,9 @@
                     </ul>
                   </li>
                   <li class="nav-item">
+                    <a href="https://patrick.quam.computer/tools.html" class="nav-link">Tools</a>
+                  </li>
+                  <li class="nav-item">
                     <a href="https://patrick.quam.computer/resume.html" class="nav-link">Resume</a>
                   </li>
                   <li class="nav-item">
@@ -369,31 +372,42 @@
     <!-- sub-section5, Securing SSH -->
     <section class="grey-section" id="sub-section1">
 
-        <div class="container-fluid">
-    
-            <div class="row">
-
                 <div class="col-lg-12">
                     <h1 class="sub-section-header"><marK> Securing SSH </marK></h1>
                 </div>
 
                 <div class="sub-section-box col-lg-12">
                   <ul>
-                    <li></li>
-                  </ul>
+                    <li>Key based authentication is generally the safest way to use SSH</li>
+                    <li>Key based authentication can be enabled by adding <code>PubKeyAuthentication yes</code> to the <code>/etc/ssh/shhd_config</code> file.</li>
+                    <li>To generate an SSH key, run <code>ssh-keygen</code></li>
+                    <ul>
+                      <li>When generating a key, it is common to use <code>ssh-keygen -t</code> to specify what algorithm to use when generating the key.</li>
+                      <ul>
+                        <li>Common algorithm options are rsa and ed25519</li>
+                      </ul>
+                      <li>Another common option when generating a key is <code>ssh-keygen -b</code> which is used to specify the number of bits in the key.</li>
+                      <ul>
+                        <li>A longer key means it is better protected against brute force attacks, but it also means it is more compute heavy to generate and validate.</li>
+                        <li>The typical length is 4096</li>
+                      </ul>
+                      <li>When you generate an ssh key, it will ask you to input a password that will be required when that key is used.</li>
+                      <ul>
+                        <li>In some usecases, you may not want to have a password protected key. For example, if you need to automate an SSH connection, it may be unecissarily complicated to automate password entry.</li>
+                      </ul>
+                      <li></li>
+                    </ul>
+                  <ul>
 
                 </div>
           
             </div>
-
-            
-        </div>
-    
-        </div>
     </section>
 
     <section class="colored-section" id="sub-section2">
-      <div class="col-lg-1"><mark> Filesystem Security </mark></div>
+      <div class="col-lg-1">
+        <h1><mark> Filesystem Security </mark></h1>
+      </div>
       <div class="sub-section-box col-lg-12">
       </div>
   <div class="col-lg-1"></div>
