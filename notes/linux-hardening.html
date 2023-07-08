@@ -395,12 +395,45 @@
                       <ul>
                         <li>In some usecases, you may not want to have a password protected key. For example, if you need to automate an SSH connection, it may be unecissarily complicated to automate password entry.</li>
                       </ul>
-                      <li></li>
+                      <li>When you run ssh_keygen, two files are created in that users home directory (~/.ssh/). Those files are id_rsa & id_rsa.pub</li>
+                      <ul>
+                        <li>id_rsa is your private SSH key. Its permissions should be set so that only the user that generated it can access it.</li>
+                        <li>id_rsa.pub is your public SSH key. This will be placed in the remote hosts ~/.ssh/authorized-keys file to grant SSH access to that user.</li>
+                        <li>you can add a key to a remote host by running <code>ssh-copy-id user@host</code></li>
+                        <li>For example <code>ssh-copy-id root@1.1.1.1</code> or <code>ssh-copy-id root@mydomain.com</code></li>
+                      </ul>
                     </ul>
+                    <li>SSH key authentication can be enforeced by disabling password authentication by adding <code>PasswordAuthentication no</code> to the <code>/etc/shh/sshd_config</code> file.</li>
+                      <ul>
+                        <li>Disabling password authentication to SSH is generally good practice as SSH keys are effectively impossible to brute force.</li>
+                      </ul>
+                    <li><mark>You should never log in directly to the root user.</mark></li>
+                      <ul>
+                        <li>When setting up a remote host initially it is OK to log in as the root user to get other accounts set up, but then SSH access should quickly be disabled.</li>
+                        <li>To prevent root logins via ssh, add <code>PermitRootLogin no</code> to the <code>/etc/shh/sshd_config</code> file.</li>
+                        <li>If you need acccess the root user, you should do so by SSHing into your personal user, and then swithcing to the root user using <code>sudo su -</code></li>
+                      </ul>
+                      <li>sshd_config</li>
+                      <ul>
+                        <li>Specefic users can be granted SSH access by adding <code>AllowUsers username0 username1 username 2</code></li>
+                        <li>The same can be done for groups <code>AllowGroups group0 group1 group2</code></li>
+                        <li>Groups & users can be denied SSH access by adding <code>DenyUsers</code> or <coce>DenyGroups</coce></li>
+                        <li><mark>The SSH banner should be disabled</mark> by adding <code>Banner none</code> as the information it provides may be used by attackers.</li>
+                        <li><mark>Changes to sshd_config will not appy until the application has been reloaded.</mark></li>
+                        <ul>
+                          <li>This can generally be done by running <code>systemctl reload sshd</code></li>
+                        </ul>
+                      </ul>
                   <ul>
+                </div>
+                
+                <!---- Commented out while me learning 
+                <br>
+                <h1 class="sub-section-header"><mark>Port Forwarding via SSH</mark></h1>
+                <div class="sub-section-box col-lg-12">
 
                 </div>
-          
+              -->
             </div>
     </section>
 
