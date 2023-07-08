@@ -118,6 +118,7 @@
           <h3>Running NGINX</h3>
 
           <ol>
+            <li>Disconnect from the server. At this point you may want to generate an ssh key on your local machine and use <code>ssh-copy-id personal_account_username@host-ip-or-domain</code> to copy your public ssh key to the server so that you no longer need a password to access it.</li>
             <li>Install NGINX using your personal account with <code>sudo</code> permissions. For example, <code>sudo apt-get install nginx</code></li>
             <li>Specify the user that nginx should run under (this should be the nginx account created preiously) by adding <code>user nginx;</code> to the <code>/etc/nginx/nginx.conf</code> file.</li>
             <li>Start the NGINX service (usually with a command like <code>sudo systemctl start nginx</code>). NGINX will start with root privileges automatically, but then drop its privileges and run as the user specified.</li>
