@@ -101,40 +101,6 @@
     <section class="colored-section" id="sub-section2">
         <div class="col-lg-1"></div>
         <div class="sub-section-box col-lg-12">
-          <ul>
-            <li> <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-16-04">Setting up a website in nginx</a></li>
-          </ul>
-
-          <h2>Setting Up User Accounts and Running NGINX</h2>
-
-          <h3>User Account Setup</h3>
-
-<ol>
-  <li>Create a root user that is set to <code>nologin</code> and cannot be accessed via SSH. This is the default behavior for the root user on many systems.</li>
-  <li>Create a personal user account with <code>sudo</code> permissions. This account can be accessed via SSH, and you can use <code>sudo</code> to perform administrative tasks.</li>
-  <li>Create a <code>nginx</code> user account with minimal permissions. This account should also be set to <code>nologin</code> and should not be accessible via SSH.</li>
-</ol>
-
-<h3>Running NGINX</h3>
-
-<ol>
-  <li>Install NGINX using your personal account with <code>sudo</code> permissions.</li>
-  <li>In the NGINX configuration file, specify that NGINX should run as the <code>nginx</code> user. This is typically done with the <code>user</code> directive in the main context of the configuration file. For example, you might have a line like this in your <code>nginx.conf</code>:</li>
-</ol>
-
-<pre>
-<code>
-user nginx;
-</code>
-</pre>
-
-<ol start="3">
-  <li>Start the NGINX service (usually with a command like <code>sudo systemctl start nginx</code>). NGINX will start with root privileges, but then drop its privileges and run as the <code>nginx</code> user.</li>
-</ol>
-
-<p>In this setup, there's no need to use <code>setuid</code> or <code>sudo -u</code>. NGINX handles the privilege dropping itself.</p>
-
-
 
         </div>
     <div class="col-lg-1"></div>
