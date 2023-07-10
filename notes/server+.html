@@ -104,9 +104,58 @@
           <h1 class="sub-section-header"><mark>Server Hardware Installation and Management</mark></h1>
         </div>
     <div class="col-lg-1"></div>
-    
-    <div class="sub-section-box col-lg-12">
 
+    <div class="sub-section-box col-lg-12">
+      <li>Racks, enclosures, & unit sizes</li>
+      <ul>
+        <li>Servers deployed in enterprise are generally stored in racks. These are monolithic cases designed to store several physical devices.</li>
+        <li>Servers are often mounted to the rack using rails. Server rails allow the hardware to be slid in out of the rack without having to remove it fully. This makes harwdare maintanence much more convienient for technicians. Alternativly, some devices arer mounted to the rack using more permanent solutions, such as rack studs, or bolts.</li>
+        <li>Generally a rack will contain servers, switches, battery backups, and potentially a KVM (keyboard, Video, Mouse) unit.</li>
+        <li>Some racks, will have or require a special cooling system. Some times this can be as simple as a rack mountable fan, or could be as complex as a full water cooling distribution system.</li>
+        <li>Many racks will have a dedicated mounting point for antistatic bracelets so that work can be done on the hardware installed in the rack without worrying about causing damage to compenents.</li>
+        <li>While the depth of a rack can vary, the width and spacing between mount points on the rack are standardized.</li>
+        <ul>
+          <li>The unit of space between mounting points on a rack is reffered to as a 'U'. 1 U is equivalent to 1.75 inches or 4.45cm. For example, a 24u rack would have 24 mounting points. A 2u server would take up 2 of those 24 mounting points.</li>
+        </ul>
+        <li>not all servers are enclosed in racks. Many servers are stored in standalone enclosures. These enclosures are effectivley just normal computer cases.</li>
+      </ul>
+      <li>Powering Servers</li>
+      <ul>
+        <li>Its is generally good practice to have all computing equipment powered by a surge supressor at the very leaast. Servers, however, have much higher requirements for uptime.</li>
+        <li>Small scale servers for personal use should at the very least be connected to an Uninteruptable Power Supply (UPS). This way, if power to the system is lost, there will at least be time for data to finish writing to the disk if necessary, or provide enough time for the system to safley shut down.</li>
+        <li>Many servers wil have redundant power supplies. this means that one power supply could fail outright and the system would still be able to operate as if nothing happened. This also provides time for system administrators to identify what may have caused the failure or replace the broken hardware as needed.</li>
+        <li>Ideally, servers of any importance should have their redundant power supplies connected to seperate UPS's, which would then be connected to outlets on seperate breakers. This way, even if a breaker gets tripped somewhere, the system will still be recieving power.</li>
+        <li>At a large scale, such as an enterprise or data center scale, it may be worth having 2 seperate utility providers provide power to the building. This will help spread the massive electrical load of a huge server farm, as well as provide redundancy, so even if one major power source goes down, your servers will still be able to operate as expected.</li>
+        <li>The standard power cable for modern desktop computers is the C13 power cable (C13 for male C14 for female). This standard is the same for server equipment.</li>
+      </ul>
+      <li>Network Cabling & Fiber</li>
+      <ul>
+        <li>The standard cabling used to connect devices to a network is Ethenet. Ethernet is a copper based - twisted pair cable, generally designed to handle short to medium distance runs between devices.</li>
+        <li><img src="../images/network-cabling.png"></li>
+        <li>For applications that require higher bandwidth than ethernet is capable of, fiber optic cabling should be used instead.</li>
+        <li>Fiber optic cables are immune to electromagnetic interference (EMI), which can be a problem with copper cables. This makes fiber optic cables a good choice for environments where EMI could be an issue.</li>
+        <li>There are several types of fiber optic cable, which are intended for different applications. There are two common connectors, Subscriber Connector (SC) and Lucent Connector (LC). There are also two different kinds of cables, multimode and single mode.</li>
+        <ul>
+          <li>SC vs LC</li>
+          <ul>
+            <li>SC cables are an older standard, which is slowly being replaced by LC. There is no difference between the cables bandwidth, just the way the cabling connects to devices.</li>
+            <li>The SC connector is a push-pull type connector that is larger in size, while the LC connector is a smaller form-factor connector that uses a latch as opposed to a push-pull system.</li>
+            <li>LC connectors are half the size of SC connectors. This smaller size allows LC connectors to fit into denser port configurations, making them a popular choice for modern high-density applications.</li>
+            <li> SC connectors are generally easier to insert and remove thanks to their push-pull design. LC connectors, on the other hand, use a latch mechanism which can be a bit more difficult to handle, especially in high-density applications.</li>
+            <li>SC connectors have a square shape and are often used for mulitmode fiber, while LC connectors have a compact, modular design and can be used for single or mulitmode fiber.</li>
+            <li>LC connectors are more expensive than SC connectors due to their smaller, more complex design.</li>
+            <li>Both SC and LC connectors use a physical contact (PC) interface. This means that the two fiber ends in the connector physically touch each other. </li>
+            <li>Both SC and LC connectors can be used with single-mode and multi-mode fiber cables.</li>
+          </ul>
+          <li>Single-mode vs Multi-mode</li>
+          <ul>
+            <li>Both single-mode and multi-mode fiber optic cables are generally terminated in pairs. This is because most fiber optic communication is full-duplex, meaning that data can be transmitted in both directions simultaneously. One fiber in the pair is used to transmit data signals, and the other is used to receive them. This is why you'll often see fiber optic cables and connectors referred to as "duplex" (e.g., duplex LC or duplex SC), and why patch cables often have two connectors at each end.</li>
+            <li>There are also "simplex" fiber optic cables and connectors, which consist of a single fiber and are used for applications that only require one-way data transmission, but are less common than duplex configurations in most networking environments.</li>
+            <li>Single-mode fiber cables are typically used for long-distance transmissions. Single-mode fiber optic cables can support distances of up to 100 kilometers without requiring a signal repeater. Multi-mode cables, on the other hand, are typically used for shorter distances, usually less than 2 kilometers.</li>
+            <li></li>
+          </ul>
+        </ul>
+      </ul>
     </div>
 
     </section>
