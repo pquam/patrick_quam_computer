@@ -163,7 +163,17 @@
                     <div class="sub-section-box col-lg-12">
                       <ul>
                         <li>Ensure that single user mode is either disabled or password protected. Single user mode can be accessed by restarting the system, and provides root access to the system.</li>
-                        <li>Require a boot menu password. Without a boot menu password, attacks can force the bootloader to boot a root shell instead of another aprt of the operating system, providing them with root access. This can be configured in </li>
+                        <li>Require a boot menu password. Without a boot menu password, attacks can force the bootloader to boot a root shell instead of another aprt of the operating system, providing them with root access. To do so, follow these steps:</li>
+                        <ol>
+                          <li>Open a terminal.</li>
+                          <li>Run the command <code>grub-mkpasswd-pbkdf2</code>. You'll be asked to enter the password and then to confirm it. This will create an encrypted password for the bootloader.</li>
+                          <li>The command will output a hashed version of the provided password. Copy this.</li>
+                          <li>Open the GRUB configuration file with root permissions using a text editor. For example, if you're using vim, you would enter: <code>sudo vim /etc/default/grub</code></li>
+                          <li>Find the line that starts with <code>GRUB_PASSWORD</code>. If it doesn't exist, you'll need to add it. You can edit the file by entering insert mode in vim simply by inputting <code>i</code>. To exit vim without making changes, hit escape, then enter <code>:q!</code> and press enter. Set GRUB_PASSWORD to the hashed password you copied. It should look like this: <code>GRUB_PASSWORD=grub.pbkdf2.sha512.10000.long_string_of_characters</code></li>
+                          <li>Save the file and exit the text editor. If you're using vim, you can do this by pressing <code>escape</code>, then entering <code>:wq</code> to confirm that you want to save the changes, and then <code>Enter</code> to confirm the file name.</li>
+                          <li>Update GRUB with the new configuration by running: <code>sudo update-grub</code></li>
+                        </ol>
+                      
                         <li>Ensure device encryption is enabled. Requiring a boot password can be circumvented by an attack installing their own boot media and mounting the system. LUKS is a common encryption tool.</li>
                           <ul>
                             <li>For example, if you are hosting a web server in a cloud instance, ensure the cloud instance is encrypted. additionally, you can run the server in a VM, and make sure the virtual drive for the VM is encrypted.</li>
