@@ -159,6 +159,41 @@
     
       </div>
     </section>
+
+    <section class="colored-section" id="sub-section2">
+
+      <div class="col-lg-12">
+        <h1 class="sub-section-header"><mark>Removing .html extension from NGINX webpages</mark></h1>
+      </div>
+
+      <div class="col-lg-1"></div>
+                    <div class="sub-section-box col-lg-12">
+                      <ul>
+                        <li>When building a website, ideally you dont want to have every page show .html at the end. Here are a few options to stop that from happening.</li>
+                        <ul>
+                          <li>First, you will want to open <code>/etc/nginx/nginx.conf</code> in your editor or choice. In nginx.conf, you are looking for your <code>location /</code> block. If you do not see it, check to see if nginx.conf included other files by default, as it may be in another included file such as <code>/etc/nginx/sites-available/default</code></li>
+                          <li>In the location / block, by default there will be the line: <code>try_files $uri $uri/ =404;</code> and if there is not you should add it to be the first line in the block.</li>
+                          <li>If it is not there already, add to that line <code>$uri.html</code> so the whole line will be <code>try_files $uri $uri/ $uri.html =404;</code></li>
+                          <li>Create a new location block below the location \ block with the name <code>~ \.html$</code></li>
+                          <li>In the new block, add <code>rewrite ^(.*)\.html$ $1 permanent;</code></li>
+                          <li>The two location blocks should now look something like this:<br>
+<code><pre>
+  location / {
+    try_files $uri $uri/ $uri.html =404;
+  }
+
+  location ~ \.html$ {
+    rewrite ^(.*)\.html$ $1 permanent;
+  }</pre></code>
+                          </li>
+                          <li>After reloading nginx via <code>sudo systemctl reload nginx</code> the webpage should no longer show .html extensions.</li>
+                        </ul>
+                      </ul>
+
+
+                    </div>
+                <div class="col-lg-1"></div>
+    </section>
 </body>
 
 </html>
