@@ -83,6 +83,7 @@
             <div class="col-lg-6">
               <h1 class="big-heading">Leftovers</h1>
               <h2 class="section-heading">Whenever I have to look something up, or find a good learning resource, I will put it here.</h2>
+              <h4>Its my poor-mans obsidian</h4>
               
             </div>
         
@@ -115,8 +116,10 @@
                 
                 However, it's worth noting that there are also "simplex" fiber optic cables and connectors, which consist of a single fiber and are used for applications that only require one-way data transmission. But these are less common than duplex configurations in most networking environments.</li>
             </ul>
-            <li>What is an FQDN (Fully Qualified Domain Name), and how is it different from a URL?</li>
-            <ul>
+
+
+            <li id="fqdn">What is an FQDN (Fully Qualified Domain Name), and how is it different from a URL?</li>
+            <ul class="spaced-list">
               <li><mark>Internet Explination:</mark> FQDN stands for Fully Qualified Domain Name. It's a complete and unambiguous domain name that specifies an exact location in the Domain Name System (DNS) hierarchy. This means it includes all higher levels of the DNS structure, not just the host and domain name.
 
                 An FQDN consists of several parts:
@@ -142,6 +145,32 @@
                 "/homepage.html" is the specific file or page on that server.</li>
                 <li><mark>My Explination:</mark> FQDN is the full term for what is commonly reffered too simply as a domain name. FQDN is specefically a domain name that includes a hostname (or subdomain), the domain itself, and its top level domain (or TLD). It is designed to point to a specific machine on the network, or more commonly, the internet. For example, <a href="https://patrick.quam.computer" class="link">patrick.quam.computer</a> would be a FQDN. A URL is a link to a specific resource on a device, and as such the FQDN is part of a url. <a href="#" class="link">https://patrick.quam.computer.notes/other.html</a> is a url, which inludes, but is not, a FQDN.</li>
             </ul>
+
+
+            <li id="single-multi-mode-fiber">How do single mode and multi mode fiber connect to fiber transcievers? Do the transievers have sc or lc connectors and you just need to make sure you buy the transiever for the kind and length of cable you have?</li>
+            <ul class="spaced-list">
+              <li><mark>Internet answer:</mark> Most modern transcievers will use LC connectors because they are smaller size. When choosing a transiever there are 4 main things to consider:</li>
+              <ul>
+                <lo>The type of fiber optic cable (single-mode or multi-mode) you're using.</lo>
+                <lo>The data rate that you need to support.</lo>
+                <lo>The distance the signal needs to travel.</lo>
+                <lo>The type of connector on your fiber optic cable.</lo>
+              </ul>
+              <li>Other technical considerations when choosing cabling and transcievers:</li>
+              <ul>
+                <li>Different transceivers operate at different wavelengths, typically 850nm for multi-mode fibers and 1310nm or 1550nm for single-mode fibers. The wavelength is important because it determines the type of light source (LED or laser) and the type of photodetector used in the transceiver.</li>
+                <li>The power budget of a fiber optic link is the maximum amount of power loss that a signal can tolerate while still maintaining acceptable signal quality. It's determined by the difference between the minimum transmitter power and the minimum receiver sensitivity. When designing a fiber optic link, you need to ensure that the total power loss (caused by factors such as cable length, connectors, and splices) doesn't exceed the power budget.</li>
+                <li>Dispersion is a phenomenon that causes the signal to spread out over time, which can degrade signal quality. Single-mode fibers can suffer from chromatic dispersion, while multi-mode fibers can suffer from modal dispersion. Some types of transceivers use techniques such as dispersion compensation to mitigate the effects of dispersion.</li>
+              </ul>
+            </ul>
+
+            <li>What are chromatic and modal dispersion?</li>
+            <ul>
+              <li>Chromatic Dispersion: This type of dispersion occurs in single-mode fibers and is caused by the different speeds at which different wavelengths (colors) of light travel through the fiber. In an optical fiber, light doesn't travel at exactly the same speed for all wavelengths. This slight variation can cause different wavelengths to arrive at the receiver at slightly different times, which can cause the signal to spread out or disperse. This is particularly relevant for systems that use multiple wavelengths of light (DWDM systems, for example).</li>
+              <li>Modal Dispersion: This type of dispersion occurs in multi-mode fibers. In a multi-mode fiber, light can take multiple paths (or modes) down the fiber, and these different paths can have different lengths. This means that light taking one path might arrive at the receiver before light taking a different path, which can cause the signal to spread out or disperse. This is one of the reasons why multi-mode fibers are typically used for shorter distances.</li>
+              <li><a href="https://en.wikipedia.org/wiki/Modal_dispersion" class="link">Modal Dispersion wikipedia</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Dispersion_(optics)" class="link">Dispersion (optics) wikipedia</a></li>
+            </ul>
           </ul>
         </div>
     <div class="col-lg-1"></div>
@@ -162,7 +191,26 @@
                 <div class="col-lg-1"></div>
                     <div class="sub-section-box col-lg-12">
                         <ul>
-
+                          <li id="removing-html-extension">Removing .html extension from NGINX webpages</li>
+                          <ul>
+                            <li>First, you will want to open <code>/etc/nginx/nginx.conf</code> in your editor or choice. In nginx.conf, you are looking for your <code>location /</code> block. If you do not see it, check to see if nginx.conf included other files by default, as it may be in another included file such as <code>/etc/nginx/sites-available/default</code></li>
+                            <li>In the location / block, by default there will be the line: <code>try_files $uri $uri/ =404;</code> and if there is not you should add it to be the first line in the block.</li>
+                            <li>If it is not there already, add to that line <code>$uri.html</code> so the whole line will be <code>try_files $uri $uri/ $uri.html =404;</code></li>
+                            <li>Create a new location block below the location \ block with the name <code>~ \.html$</code></li>
+                            <li>In the new block, add <code>rewrite ^(.*)\.html$ $1 permanent;</code></li>
+                            <li>The two location blocks should now look something like this:<br>
+  <code><pre>
+    location / {
+      try_files $uri $uri/ $uri.html =404;
+    }
+  
+    location ~ \.html$ {
+      rewrite ^(.*)\.html$ $1 permanent;
+    }</pre></code>
+                            </li>
+                            <li>After reloading nginx via <code>sudo systemctl reload nginx</code> the webpage should no longer show .html extensions.</li>
+                            <li>More information on nginx https://patrick.quam.computer/notes/nginx</li>
+                          </ul>
                       </ul>
 
 

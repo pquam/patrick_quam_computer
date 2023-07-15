@@ -136,6 +136,7 @@
         <li>Fiber optic cables are immune to electromagnetic interference (EMI), which can be a problem with copper cables. This makes fiber optic cables a good choice for environments where EMI could be an issue.</li>
         <li>There are several types of fiber optic cable, which are intended for different applications. There are two common connectors, Subscriber Connector (SC) and Lucent Connector (LC). There are also two different kinds of cables, multimode and single mode.</li>
         <ul>
+
           <li>SC vs LC</li>
           <ul>
             <li>SC cables are an older standard, which is slowly being replaced by LC. There is no difference between the cables bandwidth, just the way the cabling connects to devices.</li>
@@ -147,12 +148,29 @@
             <li>Both SC and LC connectors use a physical contact (PC) interface. This means that the two fiber ends in the connector physically touch each other. </li>
             <li>Both SC and LC connectors can be used with single-mode and multi-mode fiber cables.</li>
           </ul>
+
           <li>Single-mode vs Multi-mode</li>
           <ul>
+            <li><a href="https://patrick.quam.computer/notes/other#single-multi-mode-fiber" class="link">More information on Single and Multimode fiber</a></li>
+            <li>The main difference between single-mode and multi-mode fiber cables is the size of the core, which is the part of the fiber that carries light. Single-mode fiber has a small core (about 9 micrometers in diameter) that allows light to travel in a single path, or mode. Multi-mode fiber, on the other hand, has a larger core (usually 50 or 62.5 micrometers) that allows light to travel in multiple paths, or modes.</li>
             <li>Both single-mode and multi-mode fiber optic cables are generally terminated in pairs. This is because most fiber optic communication is full-duplex, meaning that data can be transmitted in both directions simultaneously. One fiber in the pair is used to transmit data signals, and the other is used to receive them. This is why you'll often see fiber optic cables and connectors referred to as "duplex" (e.g., duplex LC or duplex SC), and why patch cables often have two connectors at each end.</li>
             <li>There are also "simplex" fiber optic cables and connectors, which consist of a single fiber and are used for applications that only require one-way data transmission, but are less common than duplex configurations in most networking environments.</li>
             <li>Single-mode fiber cables are typically used for long-distance transmissions. Single-mode fiber optic cables can support distances of up to 100 kilometers without requiring a signal repeater. Multi-mode cables, on the other hand, are typically used for shorter distances, usually less than 2 kilometers.</li>
-            <li></li>
+            <li>Single-mode fiber can support higher data rates than multi-mode fiber. This is because the single light path eliminates the signal dispersion that can occur with multi-mode fiber, allowing the signal to travel faster and further.</li>
+            <li>Single-mode fiber is generally more expensive than multi-mode fiber. The equipment needed for single-mode fiber, such as lasers, is also more expensive than the equipment needed for multi-mode fiber, which can use less expensive light sources like LEDs.</li>
+            <li>Single-mode fiber is typically used for long-distance applications, including telecommunications and cable TV networks. Multi-mode fiber is typically used for shorter distances, such as within a building or campus, and is commonly used for data and audio/visual applications in local-area networks (LANs).</li>
+            <li>Single-mode and multi-mode fibers are often color-coded to help distinguish between them. Single-mode fiber is typically color-coded yellow, while multi-mode fiber is typically color-coded orange (for 62.5/125 µm) or aqua (for 50/125 µm).</li>
+          </ul>
+
+          <li>Fiber optic cables connect to devices using an interface called a transceiver. There are several Options when it comes to picking a transceiver:</li>
+          <ul>
+            <li><a href="https://patrick.quam.computer/notes/other#transceiver-info" class="link">More information on Transceivers</a></li>
+            <li>SFP (Small Form-factor Pluggable): The original SFP, also known as mini-GBIC, is a compact, hot-pluggable transceiver used for both telecommunication and data communications applications. It can support speeds up to 1 Gbps (Gigabit per second) and can be used with both fiber optic and copper cables.</li>
+            <li>SFP+ (Small Form-factor Pluggable Plus): SFP+ is an enhanced version of the SFP that supports data rates up to 10 Gbps. SFP+ has the same physical form factor as SFP but can handle much higher data rates. SFP+ supports 8 Gbit/s Fibre Channel, 10 Gigabit Ethernet, and Optical Transport Network standard OTU2.</li>
+            <li>QSFP (Quad Small Form-factor Pluggable): QSFP transceivers are designed to carry Serial Attached SCSI, 40G Ethernet, QDR (40G) and FDR (56G) Infiniband, and other communications standards. QSFP transceivers increase the port-density by placing 4 transceivers in the space that was once used for a single SFP transceiver.</li>
+            <li>QSFP+ (Quad Small Form-factor Pluggable Plus): QSFP+ is an evolution of QSFP to support higher data rates, typically 40 Gbps. It is used extensively in data centers due to its high data density and lower costs compared to using individual SFP+ transceivers.</li>
+            <li>QSFP28: QSFP28 is a hot-pluggable transceiver module designed for 100G data rate. QSFP28 integrates 4 transmit and 4 receiver channels. "28" means each lane carries up to 28G data rate. QSFP28 can do 4x25G breakout connection, 2x50G breakout, or 1x100G depending on the transceiver type.</li>
+            <li>CFP (C Form-factor Pluggable): The CFP (C form-factor pluggable) transceiver is a multi-source agreement to produce a common form-factor for the transmission of high-speed digital signals. The c stands for the Latin letter C used to express the number 100 (centum), since the standard was primarily developed for 100 Gigabit Ethernet systems.</li>
           </ul>
         </ul>
       </ul>
