@@ -207,7 +207,7 @@
                   <ul>
 
                     <li>Root user always has a user ID of 0.</li>
-                    <li>Assigning a User an ID of 0 will grant them user privileges.</li>
+                    <li>Assigning a User an ID of 0 will grant them root privileges.</li>
                     <li>Accounts for system services should have UID's of less than 1,000.</li>
                     <li>New users in the standard user range can be created using <code>useradd</code></li>
                     <li>New users can be created in the system services account range using <code>useradd -r</code></li>
@@ -287,7 +287,7 @@
                       <ul>
                         <li>Intrusion prevention systems, such as <a class="link" href="https://www.fail2ban.org/wiki/index.php/Main_Page">fail2ban</a>, monitor system log files. If too many failed login attempts are detected, their IP will be blocked.</li>
                         <li>fail2ban can be configured to unblock IP addresses after a set period of time, so if the "attacker" turns out to be a normal user that forgot their password, they will be able to regain access to the system.</li>
-                        <li>fail2ban can be used for any application that writes login attempts to a log file. This </li>
+                        <li>fail2ban can be used for any application that writes login attempts to a log file. This includes SSH and many other common applications.</li>
                       </ul>
 
                       <li class="sub-list-padding">Disabling root logins</li>
@@ -361,11 +361,11 @@
                 <li>if a server is running on a low port, check the application configuration to see if you can specify a non-root user to perform the work.</li>
               </ul>
               <li>Stop & uninstall all unused services.</li>
-              <li>Insure all applications are up to date with the latest security patches.</li>
-              <li>Configure each service to only listen to required interfaces nad addresses.</li>
+              <li>Ensure all applications are up to date with the latest security patches.</li>
+              <li>Configure each service to only listen to required interfaces and addresses.</li>
               <ul>
                 <li>For example, configure SSH to only listen to private IP addresses on the local network so that SSH is not accessable via the internet.</li>
-                <li>some services, such as databasess, may not need any access by network devices. In this case, configure the service to listen to the "loopback" adress: 127.0.0.1</li>
+                <li>some services, such as databases, may not need any access by network devices. In this case, configure the service to listen to the "loopback" adress: 127.0.0.1</li>
               </ul>
             </ul>
 
@@ -424,7 +424,7 @@
                       <ul>
                         <li>Specific users can be granted SSH access by adding <code>AllowUsers username0 username1 username 2</code></li>
                         <li>The same can be done for groups <code>AllowGroups group0 group1 group2</code></li>
-                        <li>Groups & users can be denied SSH access by adding <code>DenyUsers</code> or <coce>DenyGroups</coce></li>
+                        <li>Groups & users can be denied SSH access by adding <code>DenyUsers</code> or <code>DenyGroups</code></li>
                         <li><mark>The SSH banner should be disabled</mark> by adding <code>Banner none</code> as the information it provides may be used by attackers.</li>
                         <li><mark>Changes to sshd_config will not apply until the application has been reloaded.</mark></li>
                         <ul>
