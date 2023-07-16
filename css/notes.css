@@ -16,15 +16,48 @@
     color: #fff;
   }
 
-  a {
-    color: #fff;
+  .link {
+    display: inline-block;
+    padding: 2px;
+    background-color: #FFF;
+    border-radius: 5px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.8);
   }
 
   code {
     display: inline-block;
-    padding: 4px;
+    padding: 1px 4px;
     background-color: #000000;
     font-family: monospace;
+    border-radius: 4px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.8);
+  }
+
+  .grey-section mark {
+    padding: 2px 4px;
+    border-radius: 4px;
+    background-color: #FFF;
+    font-weight: bold;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.8);
+    transition: background-color 0.3s ease;
+  }
+
+  .grey-section mark:hover {
+    color: #fff;
+    background-color: #2057b7;
+  }
+
+  .colored-section mark {
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-weight: bold;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.8);
+    transition: background-color 0.3s ease;
+  }
+
+  .colored-section mark:hover {
+    color: #fff;
+    background-color: #252526;
   }
 
   .alert {
@@ -154,6 +187,16 @@
   .sub-section-box {
     padding: 4.5%;
   }
+
+  #sub-section1 {
+    padding: 7% 15%;
+    text-align: left;
+  }
+
+  #sub-section2 {
+    padding: 7% 15%;
+    text-align: left;
+  }
   
   .sub-section-image {
     /*transform: rotate(25deg);*/
@@ -161,6 +204,7 @@
     max-height: 70%;
     padding: 3rem;
     position:sticky;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.8);
   }
 
   .sub-list-padding {
@@ -179,7 +223,6 @@
   /* project Section */
   
   #projects {
-    background-color: #2057b7;
     padding: 7% 15%;
     text-align: left;
   }
@@ -205,21 +248,11 @@
     width: 15%;
     margin: 20px 20px 50px;
   }
-  
-  /* Pricing Section */
-  
-  #pricing {
-    padding: 100px;
+
+  .spaced-list {
+    padding-bottom: 10%;
   }
   
-  .price-text {
-    font-size: 3rem;
-    line-height: 1.5;
-  }
-  
-  .pricing-column {
-    padding: 3% 2%;
-  }
   
   /* CTA Section */
   

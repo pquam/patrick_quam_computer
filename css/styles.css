@@ -16,8 +16,12 @@
     color: #fff;
   }
 
-  a {
-    color: #fff;
+  .link {
+    display: inline-block;
+    padding: 2px;
+    background-color: #FFF;
+    border-radius: 5px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.8);
   }
 
   code {
@@ -161,6 +165,16 @@
     max-height: 70%;
     padding: 3rem;
     position:sticky;
+  }
+
+  #sub-section1 {
+    padding: 7% 15%;
+    text-align: left;
+  }
+
+  #sub-section2 {
+    padding: 7% 15%;
+    text-align: left;
   }
 
   .sub-list-padding {
