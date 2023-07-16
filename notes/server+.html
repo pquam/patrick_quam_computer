@@ -364,8 +364,13 @@
         <li>Operating System Installation</li>
           <ul class="spaced-list">
             <li>There are many situations where it may be necessary to install or re-install the operating system on a device. For example, a new device with blank drives, or an existing system that needs to have a different OS for whatever reason.</li>
-            <li>To install the operating system, there are some common tools that you will need. The main tool is "installation media". Installation media is generally a USB flash drive or a CD with the software required to install the operating system loaded on to it.</li>
+            <li>To install the operating system, there are some common tools that you will need. The main tool is "installation media". Installation media is generally a USB flash drive or a CD with the software required to install the operating system loaded on to it. In an enterprise setting, the installation media may also be a place on the network.</li>
             <li>For windows systems, you can purchase installation media through many retailers, or it may be provided to you by the manufacturer of your device. I have links to the windows media creation tools for windows 10 & 11 <a href="https://patrick.quam.computer/tools#links">here</a></li>
+            <li>For unix or linux systems, you may need to use a tool like Rufus to create your own installation media. Generally the only other thing needed is an ISO file for the operating system you want to install.</li>
+            <li>In an enterprise environment, it is more common to use a system image rather than an a blank version of an operating system on the installation media. A system image will include all the required software, security, and settings preconfigured so that it does not need to be re-done every time the operating system needs to be installed.</li>
+            <li>An alternative to an image is a clone. Cloning a drive means copying all of its contents, including partitions and its Master Boot Record identically to another disk. This means that if a disk with an operating system installed on it gets cloned, it will be possible to boot to the new drive, with all of the applications and data in tact from the old drive. However <mark>cloning is natorious for failing or causing data corruption unless you are cloning to an identical drive</mark></li>
+            <li>When installing an operating system, the installation may not be directly onto the system disk directly.</li>
+
           </ul>
       </div>
     </section>
