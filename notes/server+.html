@@ -389,6 +389,29 @@
               <li>LVM (Logical Volume Management): LVM is a feature of Linux that provides a more flexible way of managing disk space. Instead of being divided into partitions, a disk is divided into physical volumes (PVs). These PVs can be combined into volume groups (VGs), and logical volumes (LVs) can be created from the space in a VG. This allows for easy resizing of disk space and the ability to span a filesystem across multiple disks. LVM also supports snapshots, which are a point-in-time copy of a logical volume, and can be used for backups or testing.</li>
             </ul>
           </ul>
+
+        <li>Basic Networking</li>
+        <ul>
+          <li>IP (Internet Protocol) configuration</li>
+          <ul>
+            <li>IPV4</li>
+            <ul>
+              <li>IPV4 addresses are 32 bits long, Expressed in 4, 8 bit groups (called octets) seperated by a period. ex: <code>192.168.1.1</code></li>
+              <li>Data is transmitted in packets, each with its own IP header containing source and destination IP addresses, among other information.</li>
+            </ul>
+            <li>Sub Net Mask</li>
+            <ul>
+              <li>Determines the network on which the host resides</li>
+              <li>Subnet mask can be indicated by two notations. Both notations serve the same purpose but are used in different contexts. Dotted decimal notation is often used in network configurations, while CIDR notation is commonly used in routing and when specifying IP address ranges.</li>
+              <ol>
+                <li>Dotted Decimal Notation: This is the traditional way of representing a subnet mask. It consists of four octets (just like an IP address) and is expressed in decimal format. For example: <code>255.255.255.0</code></li>
+                <li>CIDR (Classless Inter-Domain Routing) Notation: This is a more concise way of representing a subnet mask. It uses a forward slash (/) followed by a number, which indicates the number of consecutive '1' bits in the subnet mask. For example: <code>/24</code></li>
+                <li>A subnet mask of 255.255.255.0 in dotted decimal notation is equivalent to /24 in CIDR notation. This is because the first 24 bits (three octets) are set to '1', and the remaining bits are '0'.</li>
+                <li>It was easier for me to this about this as 24bit subnet divided by 8 bits = 3 octets would be required to display the same subnet mask.</li>
+              </ol>
+            </ul>
+          </ul>
+        </ul>
       </div>
     </section>
     
