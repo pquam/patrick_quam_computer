@@ -334,13 +334,12 @@
 
     <section class="grey-section" id="sub-section1">
       <div class="col-lg-12">
-        <h1 class="sub-section-header"><mark>Server Administration</mark></h1>
+        <h1 class="sub-section-header"><mark>Server Administration Basics</mark></h1>
       </div>
       <div class="sub-section-box col-lg-12">
         
-        <h3>Server Administration Basics</h3>
         <ul class="spaced-list">
-          <li>Out of Band Management</li>
+          <li><mark>Out of Band Management</mark></li>
           <ul>
             <li>In an enterprise or datacenter environment, being able to maintain and operate servers remotely is very important. As such, there are several common tools that can be used to control remote servers.</li>
             <ul>
@@ -361,11 +360,11 @@
           </ul>
         </ul>
 
-        <li>Operating System Installation</li>
+        <li><mark>Operating System Installation</mark></li>
           <ul class="spaced-list">
             <li>There are many situations where it may be necessary to install or re-install the operating system on a device. For example, a new device with blank drives, or an existing system that needs to have a different OS for whatever reason.</li>
             <li>To install the operating system, there are some common tools that you will need. The main tool is "installation media". Installation media is generally a USB flash drive or a CD with the software required to install the operating system loaded on to it. In an enterprise setting, the installation media may also be a place on the network.</li>
-            <li>For windows systems, you can purchase installation media through many retailers, or it may be provided to you by the manufacturer of your device. I have links to the windows media creation tools for windows 10 & 11 <a href="https://patrick.quam.computer/tools#links">here</a></li>
+            <li>For windows systems, you can purchase installation media through many retailers, or it may be provided to you by the manufacturer of your device. I have links to the windows media creation tools for windows 10 & 11 <a href="https://patrick.quam.computer/tools#links" class="link">here</a></li>
             <li>For unix or linux systems, you may need to use a tool like Rufus to create your own installation media. Generally the only other thing needed is an ISO file for the operating system you want to install.</li>
             <li>In an enterprise environment, it is more common to use a system image rather than an a blank version of an operating system on the installation media. A system image will include all the required software, security, and settings preconfigured so that it does not need to be re-done every time the operating system needs to be installed.</li>
             <li>An alternative to an image is a clone. Cloning a drive means copying all of its contents, including partitions and its Master Boot Record identically to another disk. This means that if a disk with an operating system installed on it gets cloned, it will be possible to boot to the new drive, with all of the applications and data in tact from the old drive. However <mark>cloning is natorious for failing or causing data corruption unless you are cloning to an identical drive</mark></li>
@@ -390,7 +389,7 @@
             </ul>
           </ul>
 
-        <li>Basic Networking</li>
+        <li><mark>Basic Networking</mark></li>
         <ul>
           <li>IP (Internet Protocol) configuration</li>
           <ul>
@@ -428,7 +427,7 @@
                   <li>When connecting to ISPs or other external networks, organizations often receive a limited block of IP addresses. Subnetting allows the organization to divide this block internally to meet their needs.</li>
                   <li>If a particular department or segment of the network grows, it can be moved to a larger subnet without affecting the rest of the network.</li>
                   <li>If two companies merge, their networks might overlap in IP address space. Subnetting can help reorganize and integrate the networks.</li>
-                  <li>I was confused on how subnets and vlans are different so <a href="https://patrick.quam.computer/notes/other#subnetting-vs-vlans">here</a> is more information on the difference.</li>
+                  <li>I was confused on how subnets and vlans are different so <a href="https://patrick.quam.computer/notes/other#subnetting-vs-vlans" class="link">here</a> is more information on the difference.</li>
                 </ul>
                 <li>If you need more granular control of the number of hosts on your network, you can use subnet masks that are not multiples of 8. <mark>For example: </mark> <code>/20</code> would be <code>11111111.11111111.11110000.00000000</code> in binary, or <code>255.255.240.0</code> in decimal notation. You can use this to leave more or less space for hosts (devices) on the network as needed.</li>
                 <li>The IPV4 subnet mask can be assigned in a range from 1 to 32.</li>
