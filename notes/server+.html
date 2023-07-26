@@ -398,17 +398,61 @@
             <ul>
               <li>IPV4 addresses are 32 bits long, Expressed in 4, 8 bit groups (called octets) seperated by a period. ex: <code>192.168.1.1</code></li>
               <li>Data is transmitted in packets, each with its own IP header containing source and destination IP addresses, among other information.</li>
+              <li>Due to the length of IPV4 addresses, devices generally are not assigned their own public IPV4 adress, and are instead assigned a private IP apdress, and then the devices router will use NAT (Network Adress Translation) to ensure data from outside of the LAN (Local Area Network) goes to and from the correct device.</li>
             </ul>
+
             <li>Sub Net Mask</li>
             <ul>
-              <li>Determines the network on which the host resides</li>
+              <li>"The subnet mask determines the network on which the host resides". Basically, it is an indicator of how many bits in an IP adress are used to specify the network the device resides on.</li>
               <li>Subnet mask can be indicated by two notations. Both notations serve the same purpose but are used in different contexts. Dotted decimal notation is often used in network configurations, while CIDR notation is commonly used in routing and when specifying IP address ranges.</li>
               <ol>
                 <li>Dotted Decimal Notation: This is the traditional way of representing a subnet mask. It consists of four octets (just like an IP address) and is expressed in decimal format. For example: <code>255.255.255.0</code></li>
-                <li>CIDR (Classless Inter-Domain Routing) Notation: This is a more concise way of representing a subnet mask. It uses a forward slash (/) followed by a number, which indicates the number of consecutive '1' bits in the subnet mask. For example: <code>/24</code></li>
+                <li>CIDR (Classless Inter-Domain Routing) Notation: This is a more concise way of representing a subnet mask. It uses a forward slash (/) followed by a number, which indicates the number of consecutive '1' bits in the subnet mask's binary form. <mark>For example: </mark> <code>/24</code> would be <code>11111111.11111111.11111111.00000000</code> in binary, or <code>255.255.255.0</code> in decimal notation.</li>
+              </ol>
+              <ul>
                 <li>A subnet mask of 255.255.255.0 in dotted decimal notation is equivalent to /24 in CIDR notation. This is because the first 24 bits (three octets) are set to '1', and the remaining bits are '0'.</li>
                 <li>It was easier for me to this about this as 24bit subnet divided by 8 bits = 3 octets would be required to display the same subnet mask.</li>
-              </ol>
+                <li>For many applications it can be helpful to 'subnet' a network, or split into many parts. Network Chuck has a great <a href="https://www.youtube.com/playlist?list=PLIhvC56v63IKrRHh3gvZZBAGvsvOhwrRF" class="link">playlist on Subnetting.</a></li>
+                <li id="#subnetting">Here are some of the benefits of subnetting:</li>
+                <ul>
+                  <li>By breaking a large network into smaller subnets, local traffic remains local. This means that not all traffic is broadcasted to all parts of the network, reducing unnecessary traffic and congestion.</li>
+                  <li>Fewer devices per subnet can lead to faster performance and reduced latency.</li>
+                  <li>Different departments or groups can be isolated into different subnets. If one subnet is compromised, it doesn't necessarily mean that attackers have access to other subnets.</li>
+                  <li>Network policies, access controls, and firewall rules can be applied at the subnet level, allowing for more granular control over network resources.</li>
+                  <li>Subnetting can reflect the organizational structure or the physical layout of a company. For instance, different departments or floors in a building can have their own subnets.</li>
+                  <li>With fewer hosts in each subnet, identifying and resolving network issues can be more straightforward.</li>
+                  <li>Subnetting allows for the efficient allocation of IP addresses based on the actual number of hosts needed in each subnet, minimizing wasted IP addresses.</li>
+                  <li>As an organization grows, new subnets can be created without the need to redesign the entire network.</li>
+                  <li>Routers can summarize routes to multiple subnets as a single routing table entry, reducing the size of routing tables and improving routing efficiency.</li>
+                  <li>With smaller routing tables, routers can make routing decisions more quickly.</li>
+                  <li>When connecting to ISPs or other external networks, organizations often receive a limited block of IP addresses. Subnetting allows the organization to divide this block internally to meet their needs.</li>
+                  <li>If a particular department or segment of the network grows, it can be moved to a larger subnet without affecting the rest of the network.</li>
+                  <li>If two companies merge, their networks might overlap in IP address space. Subnetting can help reorganize and integrate the networks.</li>
+                  <li>I was confused on how subnets and vlans are different so <a href="https://patrick.quam.computer/notes/other#subnetting-vs-vlans">here</a> is more information on the difference.</li>
+                </ul>
+                <li>If you need more granular control of the number of hosts on your network, you can use subnet masks that are not multiples of 8. <mark>For example: </mark> <code>/20</code> would be <code>11111111.11111111.11110000.00000000</code> in binary, or <code>255.255.240.0</code> in decimal notation. You can use this to leave more or less space for hosts (devices) on the network as needed.</li>
+                <li>The IPV4 subnet mask can be assigned in a range from 1 to 32.</li>
+                <li>A subnet mask of /32 specifies that all 32 bits of the IP address are dedicated to the network portion, leaving no bits for host addresses within that subnet.</li>
+                <ul>
+                  <li>A /32 mask denotes a single, specific IPv4 address. For example, 192.168.1.10/32 refers precisely to the IP address 192.168.1.10 and no other addresses.</li>
+                  <li>Since all bits are used for the network portion, there are no bits left for hosts. This means there are no available addresses for devices within that subnet, as the "subnet" itself is just a single IP address.</li>
+                  <li>In routing tables, a /32 can be used to specify a specific route to a single IP address.</li>
+                  <li>Firewalls might use /32 to denote rules that apply to a specific IP address.</li>
+                  <li>While a /32 doesn't allow for additional hosts in the subnet, the specific /32 IP address itself can be assigned to a device.</li>
+                </ul>
+                <li>While you could technically assign a subnet mask of /1, thats just goofy and you probably shouldn't. You probably don't have 2 billion devices on your network, no matter how dedicated you are to pimping out your room with phillips hue lights.</li>
+              </ul>
+              <li><mark>For Example: </mark></li>
+              <ul>
+                <li>192.168.1.1/24 would indicate the first 3 sections of the ip address indicate the network the device resides on, and this devices address on that network is 1.</li>
+                <li>192.168.1.100/16 would indicate the first 2 sections of the ip address indicate the network the device resides on, and this devices address on that network is 1.100</li>
+              </ul>
+            </ul>
+
+            <li>IPV6</li>
+            <ul>
+              <li>IPV6 uses 128 bit addresses. Because the pool of IPV6 addresses is so much larger, using NAT is not required, so devices can have their own public IPV6 adress.</li>
+              <li>Rather than Subnet Mask, IPV6 uses a "Subnet Prefix Length", which is indicated in the same CIDR notation, and operates in the same way as an IPV4 subnet mask would.</li>
             </ul>
           </ul>
         </ul>

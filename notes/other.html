@@ -174,7 +174,7 @@
 
 
             <li id="ssd-physical-storage">How is data physically stored on SSDs?</li>
-            <ul>
+            <ul class="spaced-list">
               <li>Data in a Solid State Drive (SSD) is stored in NAND flash memory chips. These chips are made up of many memory cells, which are the smallest units that can store data. The physical storage of data in these cells is based on the principles of electrical engineering and quantum mechanics.</li>
               <li>Each memory cell in a NAND flash memory chip is essentially a field-effect transistor. It has a control gate and a floating gate, separated by an oxide layer.</li>
               <li><mark>Data is stored in these cells by trapping or removing electrons from the floating gate.</mark> When a high voltage is applied to the control gate, electrons in the substrate (the semiconductor material) are given enough energy to cross the oxide layer and get trapped in the floating gate. This process is called "programming" or "writing" data.</li>
@@ -182,6 +182,35 @@
               <li>To erase data, a high voltage is applied to the substrate, causing the electrons in the floating gate to gain enough energy to cross the oxide layer and return to the substrate. This process is called "erasing" data.</li>
               <li>Modern SSDs often use multi-level cells (MLCs) or triple-level cells (TLCs) to store more than one bit of data per cell. They do this by trapping different amounts of charge in the floating gate to represent different states. For example, an MLC can store 2 bits of data by using 4 states: no charge, low charge, medium charge, and high charge.</li>
               <li><a href="https://www.youtube.com/watch?v=5Mh3o886qpg" class="link" target="_blank">Branch Education: How do SSDs Work?</a></li>
+            </ul>
+
+            <li id="#subnetting-vs-vlans">What is the difference between a subnet and a vlan?</li>
+            <ul>
+              <li>More info on subnets and subnet mask <a href="https://patrick.quam.computer/notes/server+#subnetting">here</a></li>
+              <li>Both subnets and VLANs are used to segment and organize networks, but they operate at different layers of the OSI model and serve different purposes.</li>
+              <li>Subnets:</li>
+              <ul>
+                <li>Operate at Layer 3 (Network Layer) of the OSI model.</li>
+                <li>Used to segment an IP network into smaller, more manageable IP address ranges. This segmentation is based on IP addresses.</li>
+                <li>A subnet is defined by its IP address range and subnet mask (e.g., 192.168.1.0/24).</li>
+                <li>Devices within the same subnet can communicate directly with each other.</li>
+                <li>Communication between devices in different subnets requires a router or Layer 3 switch.</li>
+                <li>Designed to make efficient use of IP address space.</li>
+                <li>Creates logical separation of different parts of a network based on IP addressing.</li>
+              </ul>
+              <li>VLANs:</li>
+              <ul>
+                <li>Operate at Layer 2 (Data Link Layer) of the OSI model.</li>
+                <li>Used to segment a physical network into multiple logical networks, regardless of the IP addresses of the devices. This segmentation is based on switch port membership.</li>
+                <li>A VLAN is identified by a VLAN ID (a number between 1 and 4095).</li>
+                <li>Devices within the same VLAN can communicate directly with each other at Layer 2.</li>
+                <li>Communication between devices in different VLANs requires a Layer 3 device (router or Layer 3 switch) and is known as inter-VLAN routing.</li>
+                <li>Designed to enhance security by isolating sensitive devices or departments.</li>
+                <li>One of the primary reasons for using VLANs is to limit the scope of broadcast traffic. If a VLAN spans a large area or many devices, it can lead to increased broadcast traffic, potentially affecting network performance.</li>
+                <li>Creates logical separation of devices based on function, department, or project, regardless of their physical location or IP address.</li>
+                <li>VLANs offer flexibility in grouping devices regardless of their physical location or IP address.</li>
+              </ul>
+              <li>VLANs can span across multiple subnets, and conversely, multiple VLANs can exist within a single subnet. However, while VLANs spanning multiple subnets can be useful in specific scenarios, they can also introduce management complexity. It's generally easier to manage and troubleshoot networks when there's a clear one-to-one relationship between VLANs and subnets.</li>
             </ul>
           </ul>
         </div>
@@ -197,7 +226,7 @@
             <div class="column">
 
                 <div class="col-lg-12">
-                    <h1 class="sub-section-header"><mark>Learned by doing:</mark></h1>
+                    <h1 class="sub-section-header"><mark>Other:</mark></h1>
                 </div>
 
                 <div class="col-lg-1"></div>
