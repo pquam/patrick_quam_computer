@@ -180,10 +180,10 @@
         </ul>
       </ul>
 
-      <h3>Server Hardware (computer basics)</h3>
+      <h3>Server Hardware Components:</h3>
       <ul class="spaced-list">
 
-        <li>Motherboard</li>
+        <h4>Motherboard</h4>
         <ul class="spaced-list">
           <li>The motherboard is the backbone that connects all of the components of a computer together.</li>
           <li>When a computer is turned on, the first thing that happens is the motherbaord runs POST (Power On Self Test) to validate that all the hardware is installed correctly. Many motherboards will have onboard displays or speakers that indicate the progress of the POST test using specific codes.</li>
@@ -195,7 +195,7 @@
           </ul>
         </ul>
 
-        <li>CPU (Central Proccessing Unit)</li>
+        <h4>CPU (Central Proccessing Unit)</h4>
         <ul class="spaced-list">
           <li>CPU clock speed: indicates how fast the cpu runs in cycles per second, or Hertz (Hz). Most modern CPU's are measured in GHz (Billions of cycles per second). Higher clock speed means more instructions completed per second.</li>
           <li>CPU cores: indicates how many tasks the CPU is designed to be able to handle simultaneously.</li>
@@ -208,7 +208,7 @@
           </ol>
         </ul>
 
-        <li>GPU (Graphics Proccessing Unit)</li>
+        <h4>GPU (Graphics Proccessing Unit)</h4>
         <ul class="spaced-list">
           <li>GPU's are proccessors dedicated to handling parrallel computing tasks, such as completing repeated calculations. </li>
           <li>A common usecase is 3d matrix math, which is used to calculate positions of objects in 3d space in applications such as modeling software. These tasks are not handled well by the CPU.</li>
@@ -217,7 +217,7 @@
           <li><a href="https://www.youtube.com/watch?v=8sDg-lD1fZQ" class="link" target="_blank">Writing Code That Runs FAST on a GPU</a></li>
         </ul>
 
-        <li>RAM (Random Access Memory)</li>
+        <h4>RAM (Random Access Memory)</h4>
         <ul class="spaced-list">
           <li>RAM is non-persistant memory, meaning as soon as it looses power, all of the data stored in RAM is lost.</li>
           <li>RAM is high speed memory designed to store data for an application while it is in use.</li>
@@ -225,14 +225,14 @@
           <li>There are also 2 common versions of RAM, ECC (Error Correcting Code) and non-ECC. ECC RAM was formerly reserved for servers and enterprise systems but is becoming more common on consumer hardware. ECC allows the memory stick to check for errors in the data it is storing.</li>
         </ul>
 
-        <li>Expansion Cards</li>
+        <h4>Expansion Cards</h4>
         <ul class="spaced-list">
           <li>Modern computers generally come equipped with PCIe (Peripheral Component Interconnect express) expansion slots which can be used to connect various kinds of expansion cards.</li>
           <li>Common expansion cards include NICs (Network Interface Cards), USB expansion cards, capture cards, or storage expansion cards such as HBAs (Host Bus Adapter) or PCIe "splitters" that turn one PCIe slot into several NVMe ssd slots (this may require a motherboard that supports PCIe Bifurcation).</li>
           <li>GPU's generally connect via the PCIe bus and can also be considered expansion cards.</li>
         </ul>
 
-        <li>Storage</li>
+        <h4>Storage</h4>
         <ul class="spaced-list">
           <li>There are 2 common types of storage, HDDs (Hard Disk Drive) and SSDs (Solid State Drive).</li>
 
@@ -291,7 +291,7 @@
             </ul>
           </ul>
 
-          <li>Interface Types (common connectors for storage devices)</li>
+          <h4>Interface Types (common connectors for storage devices)</h4>
           <ul class="spaced-list">
             <li>SCSI (Small Computer System Interface): SCSI is an older standard that uses parallel communication. It has been largely replaced by SAS and SATA in most applications. The maximum bandwidth depends on the specific version of SCSI, but the latest version (Ultra640 SCSI) can reach up to 640 MB/s. SCSI connectors are typically rectangular with a lot of pins (50, 68, or 80 depending on the version).</li>
             <li>SAS (Serial Attached SCSI): SAS is a point-to-point serial protocol that replaced parallel SCSI in many settings. SAS-3, the latest version as of my knowledge cutoff in September 2021, supports data rates of up to 12 Gbit/s. SAS connectors are similar to SATA connectors but have a larger "L" shape.</li>
@@ -303,7 +303,7 @@
             <li>SD (Secure Digital): SD is a type of flash memory card. The maximum bandwidth depends on the version: SD High Capacity (SDHC) supports up to 25 MB/s, and SD Extended Capacity (SDXC) supports up to 312 MB/s. SD cards are flat and rectangular with a row of contacts on one side.</li>
           </ul>
 
-          <li>Shared Storage</li>
+          <h4>Shared Storage</h4>
           <ul>
             <li>In many applications, it's important for multiple devices to be able to access the same storage pool. Sometimes, it is just not reasonable to fit enough storage into a single device, and a dedicated storage device is necessary. In these cases, a shared storage solution is required.</li>
             <li>NAS (Network Attached Storage): This is a dedicated device that provides shared storage to a network. A NAS device is essentially a self-contained computer connected to a network, with the sole purpose of providing a large amount of storage space that can be accessed by other devices on the network. NAS devices are often used in home networks and small businesses to provide a simple way to share files among multiple computers.</li>
@@ -316,12 +316,15 @@
           </ul>
         </ul>
 
-        <li>Hot Swappable Hardware refers to components that can be replaced while maintaining minimum downtime.</li>
+        <h4>Hot Swappable Hardware</h4>
         <ul>
-          <li>Drives</li>
-          <li>Expansion Cards</li>
-          <li>Power Supplies</li>
-          <li>Fans</li>
+          <li>Hot Swappable refers to components that can be replaced while maintaining minimum downtime. This generally includes:</li>
+          <ul>
+            <li>Drives</li>
+            <li>Expansion Cards</li>
+            <li>Power Supplies</li>
+            <li>Fans</li>
+        </ul>
         </ul>
       </ul>
       
@@ -336,17 +339,16 @@
       </div>
       <div class="sub-section-box col-lg-12">
         
+        <h3>Out of Band Management</h3>
         <ul class="spaced-list">
-          <h3>Out of Band Management</h3>
+
+          <li>In an enterprise or datacenter environment, being able to maintain and operate servers remotely is very important. As such, there are several common tools that can be used to control remote servers.</li>
           <ul>
-            <li>In an enterprise or datacenter environment, being able to maintain and operate servers remotely is very important. As such, there are several common tools that can be used to control remote servers.</li>
-            <ul>
-              <li>iLO (Integrated Lights-Out): This is a proprietary technology from Hewlett-Packard Enterprise (HPE) that allows for remote management of servers. iLO is embedded or integrated in all HPE ProLiant servers. It allows administrators to manage servers remotely, perform configuration, update firmware, and monitor performance. These management tasks can be performed regardless of the state of the operating system or even if no operating system is installed. Administrators can access iLO through a web-based interface by connecting to the iLO IP address assigned during the configuration process. This interface provides access to a wide range of management tasks. Additionally, iLO can be accessed via a command-line interface for scripting and automation purposes. HPE also provides the iLO Mobile app, which allows server management from a smartphone or tablet.</li>
-              <li>iDRAC (Integrated Dell Remote Access Controller): This is Dell's equivalent to iLO. This is a proprietary technology that is integrated into all Dell PowerEdge servers. Like iLO, iDRAC allows for remote management of servers, including configuration, firmware updates, performance monitoring, and more. Similar to iLO, iDRAC can be accessed through a web-based interface by connecting to the iDRAC IP address. It can also be accessed via command-line interface, and Dell provides the OpenManage Mobile app for managing servers from a mobile device. iDRAC is also integrated with Dell's OpenManage suite of systems management tools.</li>
-              <li>WBEM (Web-Based Enterprise Management) represents a set of management and Internet standard technologies. They are developed to unify the management of enterprise computing environments. WBEM provides a well-defined method for systems, applications, networks, devices, and services to describe themselves, their functionality, their configuration, and their status. </li>
-              <li>IP KVM (IP Keyboard, Video, Mouse) is a technology. It allows remote access to a computer or server over a network connection. It provides the same functionality as a local keyboard, video display, and mouse, allowing a remote user to perform any operation that could be done with direct physical access. IP KVM switches are often used in data centers to allow remote access to servers.  IP KVM devices typically have a web-based interface that allows administrators to view the screen of the remote server and interact with it as if they were physically present. Some IP KVM devices also have client software that provides additional features.</li>
-              <li>IPMI (Intelligent Platform Management Interface) consists of computer interface specifications for an autonomous computer subsystem. It provides management and monitoring capabilities independently of the host system's CPU, firmware (BIOS or UEFI), and operating system. IPMI allows an administrator to manage multiple servers from a single location. This can include powering the system on and off, rebooting it, and alerting when there are issues.</li>
-            </ul>
+            <li>iLO (Integrated Lights-Out): This is a proprietary technology from Hewlett-Packard Enterprise (HPE) that allows for remote management of servers. iLO is embedded or integrated in all HPE ProLiant servers. It allows administrators to manage servers remotely, perform configuration, update firmware, and monitor performance. These management tasks can be performed regardless of the state of the operating system or even if no operating system is installed. Administrators can access iLO through a web-based interface by connecting to the iLO IP address assigned during the configuration process. This interface provides access to a wide range of management tasks. Additionally, iLO can be accessed via a command-line interface for scripting and automation purposes. HPE also provides the iLO Mobile app, which allows server management from a smartphone or tablet.</li>
+            <li>iDRAC (Integrated Dell Remote Access Controller): This is Dell's equivalent to iLO. This is a proprietary technology that is integrated into all Dell PowerEdge servers. Like iLO, iDRAC allows for remote management of servers, including configuration, firmware updates, performance monitoring, and more. Similar to iLO, iDRAC can be accessed through a web-based interface by connecting to the iDRAC IP address. It can also be accessed via command-line interface, and Dell provides the OpenManage Mobile app for managing servers from a mobile device. iDRAC is also integrated with Dell's OpenManage suite of systems management tools.</li>
+            <li>WBEM (Web-Based Enterprise Management) represents a set of management and Internet standard technologies. They are developed to unify the management of enterprise computing environments. WBEM provides a well-defined method for systems, applications, networks, devices, and services to describe themselves, their functionality, their configuration, and their status. </li>
+            <li>IP KVM (IP Keyboard, Video, Mouse) is a technology. It allows remote access to a computer or server over a network connection. It provides the same functionality as a local keyboard, video display, and mouse, allowing a remote user to perform any operation that could be done with direct physical access. IP KVM switches are often used in data centers to allow remote access to servers.  IP KVM devices typically have a web-based interface that allows administrators to view the screen of the remote server and interact with it as if they were physically present. Some IP KVM devices also have client software that provides additional features.</li>
+            <li>IPMI (Intelligent Platform Management Interface) consists of computer interface specifications for an autonomous computer subsystem. It provides management and monitoring capabilities independently of the host system's CPU, firmware (BIOS or UEFI), and operating system. IPMI allows an administrator to manage multiple servers from a single location. This can include powering the system on and off, rebooting it, and alerting when there are issues.</li>
           </ul>
 
           <li>Local Hardware Administration (common tools when working with on-hand servers)</li>
@@ -362,7 +364,7 @@
           <ul class="spaced-list">
             <li>There are many situations where it may be necessary to install or re-install the operating system on a device. For example, a new device with blank drives, or an existing system that needs to have a different OS for whatever reason.</li>
             <li>To install the operating system, there are some common tools that you will need. The main tool is "installation media". Installation media is generally a USB flash drive or a CD with the software required to install the operating system loaded on to it. In an enterprise setting, the installation media may also be a place on the network.</li>
-            <li>For windows systems, you can purchase installation media through many retailers, or it may be provided to you by the manufacturer of your device. I have links to the windows media creation tools for windows 10 & 11 <a href="https://patrick.quam.computer/tools#links" class="link" target="_blank">here</a></li>
+            <li>For windows systems, you can purchase installation media through many retailers, or it may be provided to you by the manufacturer of your device. I have links to the windows media creation tools for windows 10 & 11 <a href="https://patrick.quam.computer/tools#links" class="link" target="_blank">here</a> if you want to create your own. After installing windows, you can use <li><a href="https://github.com/massgravel/Microsoft-Activation-Scripts" class="link" target="_blank">Microsoft Activation Scripts</a></li> to activate your copy of windows, or purchase a key online.</li>
             <li>For unix or linux systems, you may need to use a tool like Rufus to create your own installation media. Generally the only other thing needed is an ISO file for the operating system you want to install.</li>
             <li>In an enterprise environment, it is more common to use a system image rather than an a blank version of an operating system on the installation media. A system image will include all the required software, security, and settings preconfigured so that it does not need to be re-done every time the operating system needs to be installed.</li>
             <li>An alternative to an image is a clone. Cloning a drive means copying all of its contents, including partitions and its Master Boot Record identically to another disk. This means that if a disk with an operating system installed on it gets cloned, it will be possible to boot to the new drive, with all of the applications and data in tact from the old drive. However <mark>cloning is natorious for failing or causing data corruption unless you are cloning to an identical drive</mark></li>
@@ -387,9 +389,7 @@
             </ul>
           </ul>
 
-        <h3>Basic Networking</h3>
-        <ul>
-          <li>IP (Internet Protocol) configuration</li>
+        <h3>Basic Networking: IP (Internet Protocol) Configuration</h3>
           <ul>
             <li>IPV4</li>
             <ul>
@@ -404,13 +404,13 @@
               <li>Subnet mask can be indicated by two notations. Both notations serve the same purpose but are used in different contexts. Dotted decimal notation is often used in network configurations, while CIDR notation is commonly used in routing and when specifying IP address ranges.</li>
               <ol>
                 <li>Dotted Decimal Notation: This is the traditional way of representing a subnet mask. It consists of four octets (just like an IP address) and is expressed in decimal format. For example: <code>255.255.255.0</code></li>
-                <li>CIDR (Classless Inter-Domain Routing) Notation: This is a more concise way of representing a subnet mask. It uses a forward slash (/) followed by a number, which indicates the number of consecutive '1' bits in the subnet mask's binary form. <mark>For example: </mark> <code>/24</code> would be <code>11111111.11111111.11111111.00000000</code> in binary, or <code>255.255.255.0</code> in decimal notation.</li>
+                <li>CIDR (Classless Inter-Domain Routing) Notation: This is a more concise way of representing a subnet mask. It uses a forward slash (/) followed by a number, which indicates the number of consecutive '1' bits in the subnet mask's binary form. <mark>For example: </mark> <code>/24</code> would be <code>11111111.11111111.11111111.00000000</code> (24 of the 32 bits are 1s) in binary, or <code>255.255.255.0</code> when converted to decimal notation.</li>
               </ol>
               <ul>
                 <li>A subnet mask of 255.255.255.0 in dotted decimal notation is equivalent to /24 in CIDR notation. This is because the first 24 bits (three octets) are set to '1', and the remaining bits are '0'.</li>
                 <li>It was easier for me to this about this as 24bit subnet divided by 8 bits = 3 octets would be required to display the same subnet mask.</li>
                 <li>For many applications it can be helpful to 'subnet' a network, or split into many parts. Network Chuck has a great <a href="https://www.youtube.com/playlist?list=PLIhvC56v63IKrRHh3gvZZBAGvsvOhwrRF" class="link" target="_blank">playlist on Subnetting.</a></li>
-                <li id="#subnetting">Here are some of the benefits of subnetting:</li>
+                <li id="#subnetting">Here are some of the <mark>benefits of subnetting:</mark></li>
                 <ul>
                   <li>By breaking a large network into smaller subnets, local traffic remains local. This means that not all traffic is broadcasted to all parts of the network, reducing unnecessary traffic and congestion.</li>
                   <li>Fewer devices per subnet can lead to faster performance and reduced latency.</li>
@@ -452,7 +452,6 @@
               <li>Rather than Subnet Mask, IPV6 uses a "Subnet Prefix Length", which is indicated in the same CIDR notation, and operates in the same way as an IPV4 subnet mask would.</li>
             </ul>
           </ul>
-        </ul>
       </div>
     </section>
     
