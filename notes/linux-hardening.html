@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="../css/notes.css">
     <link rel="stylesheet" href="../css/navbar.css">
+    <script defer src="javascript/slide.js"></script>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
@@ -77,8 +78,8 @@
                 </div>
 
                 <div class="col-lg-1"></div>
-                    <div class="sub-section-box col-lg-12">
-                        <ul>
+                    <div class="sub-section-box col-lg-12 hidden">
+                      <ul>
                         <li><mark> Root user is all powerful. </mark></li>
                         <li>Follow a process for removing user accounts.</li>
                         <li>root has full control over all system processes.</li>
@@ -117,7 +118,7 @@
       </div>
 
       <div class="col-lg-1"></div>
-                    <div class="sub-section-box col-lg-12">
+                    <div class="sub-section-box col-lg-12 hidden">
                       <ul>
                         <li>Ensure that single user mode is either disabled or password protected. Single user mode can be accessed by restarting the system, and provides root access to the system.</li>
                         <li>Require a boot menu password. Without a boot menu password, attacks can force the bootloader to boot a root shell instead of another aprt of the operating system, providing them with root access. To do so, follow these steps:</li>
@@ -162,7 +163,7 @@
                     <h1 class="sub-section-header"><mark> Account Security </mark></h1>
                 </div>
 
-                <div class="sub-section-box col-lg-12">
+                <div class="sub-section-box col-lg-12 hidden">
                   <ul>
 
                     <li>Root user always has a user ID of 0.</li>
@@ -305,7 +306,7 @@
           </div>
   
           <div class="col-lg-1"></div>
-          <div class="sub-section-box col-lg-12">
+          <div class="sub-section-box col-lg-12 hidden">
             <ul>
               <li>Network Services (typically referred to as servers, or daemons)</li>
               <ul>
@@ -342,7 +343,7 @@
                 <div class="col-lg-12">
                     <h1 class="sub-section-header"><marK> Securing SSH </marK></h1>
                 </div>
-                <div class="sub-section-box col-lg-12">
+                <div class="sub-section-box col-lg-12 hidden">
                   <ul>
                     <li>Key based authentication is generally the safest way to use SSH</li>
                     <li>Key based authentication can be enabled by adding <code>PubKeyAuthentication yes</code> to the <code>/etc/ssh/sshd_config</code> file.</li>
@@ -407,7 +408,7 @@
       <div class="col-lg-1">
         <h1><mark> Filesystem Security </mark></h1>
       </div>
-      <div class="sub-section-box col-lg-12">
+      <div class="sub-section-box col-lg-12 hidden">
         <ul></ul>
       </div>
   <div class="col-lg-1"></div>
@@ -422,7 +423,7 @@
     </div>
 
     <div class="col-lg-1"></div>
-        <div class="sub-section-box col-lg-12">
+        <div class="sub-section-box col-lg-12 hidden">
             <ul>
               <li><a href="https://www.linode.com/docs/guides/security/basics/" class="link" target="_blank">Linode Security Basics</a></li>
               <li><a href="https://www.cyberciti.biz/tips/linux-security.html" class="link" target="_blank">cyberciti linux hardening 2023</a></li>

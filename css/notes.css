@@ -16,6 +16,15 @@
     color: #fff;
   }
 
+.hidden {
+  opacity: 0;
+  transition: all 1s;
+}
+
+.show {
+ opacity: 1;
+}
+
   .link {
     display: inline-block;
     padding: 2px;
