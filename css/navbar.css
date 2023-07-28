@@ -17,11 +17,21 @@
     font-size: xx-large;
     font-weight: bold;
     color: #fff !important;
+    width: fit-content;
+    display: inline-block;
+  }
+
+  .collapse {
+    width: fit-content;
   }
   
   .nav-item {
     padding: 0 18px;
     color: #fff !important;
+  }
+
+  .navbar-nav {
+    justify-content: right !important;
   }
   
   .nav-link {
