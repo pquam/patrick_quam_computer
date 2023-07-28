@@ -83,38 +83,6 @@
     background-color: #2a78cb;
   }
   
-  
-  /* Navigation Bar */
-
-  .navbar {
-    font-size: 30px !important;
-  }
-
-  .container-fluid {
-    font-size: large;
-    font-weight: bold;
-  }
-  
-  .dropdown-toggle{
-    color: #fff !important;
-  }
-
-  .navbar-brand {
-    font-size: xx-large;
-    font-weight: bold;
-    color: #fff !important;
-  }
-  
-  .nav-item {
-    padding: 0 18px;
-    color: #fff !important;
-  }
-  
-  .nav-link {
-    font-size: 2rem !important;
-    font-family: "";
-    color: #fff !important;
-  }
 
   
   /* Title Section */
