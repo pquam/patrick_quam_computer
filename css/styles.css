@@ -77,6 +77,33 @@
     background-color: #fff;
   }
 
+
+  .grey-section mark {
+    padding: 2px 4px;
+    border-radius: 4px;
+    background-color: #FFF;
+    font-weight: bold;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.8);
+    transition: background-color 0.3s ease;
+  }
+
+  .grey-section mark:hover {
+    color: #fff;
+    background-color: #2057b7;
+  }
+
+  .colored-section mark {
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-weight: bold;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.8);
+    transition: background-color 0.3s ease;
+  }
+
+  .colored-section mark:hover {
+    color: #fff;
+    background-color: #252526;
+  }
   
   /* Buttons */
   
