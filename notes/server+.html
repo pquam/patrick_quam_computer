@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="../css/notes.css">
     <link rel="stylesheet" href="../css/navbar.css">
+    <script defer src="../javascript/slide.js"></script>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
@@ -68,21 +69,21 @@
     <div class="sub-section-box col-lg-12">
 
       <h3>Racks, enclosures, & unit sizes</h3>
-      <ul class="spaced-list">
+      <ul class="spaced-list hidden">
         <li>Servers deployed in enterprise are generally stored in racks. These are monolithic cases designed to store several physical devices.</li>
         <li>Servers are often mounted to the rack using rails. Server rails allow the hardware to be slid in out of the rack without having to remove it fully. This makes harwdare maintanence much more convienient for technicians. Alternativly, some devices arer mounted to the rack using more permanent solutions, such as rack studs, or bolts.</li>
         <li>Generally a rack will contain servers, switches, battery backups, and potentially a KVM (keyboard, Video, Mouse) unit.</li>
         <li>Some racks, will have or require a special cooling system. Some times this can be as simple as a rack mountable fan, or could be as complex as a full water cooling distribution system.</li>
         <li>Many racks will have a dedicated mounting point for antistatic bracelets so that work can be done on the hardware installed in the rack without worrying about causing damage to compenents.</li>
         <li>While the depth of a rack can vary, the width and spacing between mount points on the rack are standardized.</li>
-        <ul>
+        <ul class="hidden">
           <li>The unit of space between mounting points on a rack is reffered to as a 'U'. 1 U is equivalent to 1.75 inches or 4.45cm. For example, a 24u rack would have 24 mounting points. A 2u server would take up 2 of those 24 mounting points.</li>
         </ul>
         <li>not all servers are enclosed in racks. Many servers are stored in standalone enclosures. These enclosures are effectivley just normal computer cases.</li>
       </ul>
 
       <h3>Powering Servers</h3>
-      <ul class="spaced-list">
+      <ul class="spaced-list hidden">
         <li>Its is generally good practice to have all computing equipment powered by a surge supressor at the very leaast. Servers, however, have much higher requirements for uptime.</li>
         <li>Small scale servers for personal use should at the very least be connected to an Uninteruptable Power Supply (UPS). This way, if power to the system is lost, there will at least be time for data to finish writing to the disk if necessary, or provide enough time for the system to safley shut down.</li>
         <li>Many servers wil have redundant power supplies. this means that one power supply could fail outright and the system would still be able to operate as if nothing happened. This also provides time for system administrators to identify what may have caused the failure or replace the broken hardware as needed.</li>
@@ -92,16 +93,16 @@
       </ul>
 
       <h3>Network Cabling & Fiber</h3>
-      <ul class="spaced-list">
+      <ul class="spaced-list hidden">
         <li>The standard cabling used to connect devices to a network is Ethenet. Ethernet is a copper based - twisted pair cable, generally designed to handle short to medium distance runs between devices.</li>
         <li><img src="../images/network-cabling.png"></li>
         <li>For applications that require higher bandwidth than ethernet is capable of, fiber optic cabling should be used instead.</li>
         <li>Fiber optic cables are immune to electromagnetic interference (EMI), which can be a problem with copper cables. This makes fiber optic cables a good choice for environments where EMI could be an issue.</li>
         <li>There are several types of fiber optic cable, which are intended for different applications. There are two common connectors, Subscriber Connector (SC) and Lucent Connector (LC). There are also two different kinds of cables, multimode and single mode.</li>
-        <ul>
+        <ul class="hidden">
 
           <li>SC vs LC</li>
-          <ul>
+          <ul class="hidden">
             <li>SC cables are an older standard, which is slowly being replaced by LC. There is no difference between the cables bandwidth, just the way the cabling connects to devices.</li>
             <li>The SC connector is a push-pull type connector that is larger in size, while the LC connector is a smaller form-factor connector that uses a latch as opposed to a push-pull system.</li>
             <li>LC connectors are half the size of SC connectors. This smaller size allows LC connectors to fit into denser port configurations, making them a popular choice for modern high-density applications.</li>
@@ -113,7 +114,7 @@
           </ul>
 
           <li>Single-mode vs Multi-mode</li>
-          <ul>
+          <ul class="hidden">
             <li><a href="https://patrick.quam.computer/notes/other#single-multi-mode-fiber" class="link" target="_blank">More information on Single and Multimode fiber</a></li>
             <li>The main difference between single-mode and multi-mode fiber cables is the size of the core, which is the part of the fiber that carries light. Single-mode fiber has a small core (about 9 micrometers in diameter) that allows light to travel in a single path, or mode. Multi-mode fiber, on the other hand, has a larger core (usually 50 or 62.5 micrometers) that allows light to travel in multiple paths, or modes.</li>
             <li>Both single-mode and multi-mode fiber optic cables are generally terminated in pairs. This is because most fiber optic communication is full-duplex, meaning that data can be transmitted in both directions simultaneously. One fiber in the pair is used to transmit data signals, and the other is used to receive them. This is why you'll often see fiber optic cables and connectors referred to as "duplex" (e.g., duplex LC or duplex SC), and why patch cables often have two connectors at each end.</li>
@@ -127,7 +128,7 @@
         </ul>
 
         <li>Fiber optic cables connect to devices using an interface called a transceiver. There are several Options when it comes to picking a transceiver:</li>
-          <ul>
+          <ul class="hidden">
             <li><a href="https://patrick.quam.computer/notes/other#transceiver-info" class="link" target="_blank">More information on Transceivers</a></li>
             <li>SFP (Small Form-factor Pluggable): The original SFP, also known as mini-GBIC, is a compact, hot-pluggable transceiver used for both telecommunication and data communications applications. It can support speeds up to 1 Gbps (Gigabit per second) and can be used with both fiber optic and copper cables.</li>
             <li>SFP+ (Small Form-factor Pluggable Plus): SFP+ is an enhanced version of the SFP that supports data rates up to 10 Gbps. SFP+ has the same physical form factor as SFP but can handle much higher data rates. SFP+ supports 8 Gbit/s Fibre Channel, 10 Gigabit Ethernet, and Optical Transport Network standard OTU2.</li>
@@ -140,14 +141,14 @@
       </ul>
 
       <h3>Server Hardware Components:</h3>
-      <ul class="spaced-list">
+      <ul class="spaced-list hidden">
 
         <h4>Motherboard</h4>
-        <ul class="spaced-list">
+        <ul class="spaced-list hidden">
           <li>The motherboard is the backbone that connects all of the components of a computer together.</li>
           <li>When a computer is turned on, the first thing that happens is the motherbaord runs POST (Power On Self Test) to validate that all the hardware is installed correctly. Many motherboards will have onboard displays or speakers that indicate the progress of the POST test using specific codes.</li>
           <li>After POSt, the motherboard will hand over control of the system to either BIOS (Basic input/output System) or EUFI (Unified Extensible Firmware Interface)</li>
-          <ul>
+          <ul class="hidden">
             <li>BIOS is the original firmware used in PCs. When you turn on your computer, the BIOS first performs a self-test to make sure all the hardware components are working correctly. It then locates and reads the boot loader program from the boot device (such as a hard drive or a USB stick). The boot loader then loads the operating system into memory, and the operating system takes over from there. BIOS is an older technology with limitations, such as a maximum bootable storage size of 2.1 TB and slower boot times.</li>
             <li> UEFI is a newer type of firmware that was developed to overcome the limitations of BIOS. It can handle larger storage sizes (up to 9.4 ZB), and it supports features like secure boot, which can protect the boot process from malicious code. UEFI also has a more user-friendly interface (with mouse and keyboard support), and it can support remote diagnostics and repair, even without an operating system. UEFI firmware can also boot from large GPT (GUID Partition Table) disks, whereas BIOS can only boot from MBR (Master Boot Record) disks.</li>
             <li>In general, UEFI is more modern and has more features than BIOS, but both essentially serve the same purpose: they initialize the hardware and start the process of loading the operating system when you turn on your computer. Most modern PCs use UEFI, but they often include a "legacy" or "compatibility" mode that allows them to emulate BIOS for older operating systems.</li>
@@ -155,7 +156,7 @@
         </ul>
 
         <h4>CPU (Central Proccessing Unit)</h4>
-        <ul class="spaced-list">
+        <ul class="spaced-list hidden">
           <li>CPU clock speed: indicates how fast the cpu runs in cycles per second, or Hertz (Hz). Most modern CPU's are measured in GHz (Billions of cycles per second). Higher clock speed means more instructions completed per second.</li>
           <li>CPU cores: indicates how many tasks the CPU is designed to be able to handle simultaneously.</li>
           <li>As clock speed and core count increase, CPU's will require more power and generate more heat (within the same generation of CPU. Newer CPU's may be able to have better specifications with the same power and thermal requirements).</li>
@@ -168,7 +169,7 @@
         </ul>
 
         <h4>GPU (Graphics Proccessing Unit)</h4>
-        <ul class="spaced-list">
+        <ul class="spaced-list hidden">
           <li>GPU's are proccessors dedicated to handling parrallel computing tasks, such as completing repeated calculations. </li>
           <li>A common usecase is 3d matrix math, which is used to calculate positions of objects in 3d space in applications such as modeling software. These tasks are not handled well by the CPU.</li>
           <li>GPU's will generally have their own RAM, however some systems will have their GPU built into the CPU (commonly reffered to as an APU or Accelerated Proccessing Unit), which will share some amount of the system ram between the CPU and GPU.</li>
@@ -177,7 +178,7 @@
         </ul>
 
         <h4>RAM (Random Access Memory)</h4>
-        <ul class="spaced-list">
+        <ul class="spaced-list hidden">
           <li>RAM is non-persistant memory, meaning as soon as it looses power, all of the data stored in RAM is lost.</li>
           <li>RAM is high speed memory designed to store data for an application while it is in use.</li>
           <li>RAM is generally connected to the motherboard directly. There are several generations of ram, which are reffered to as DDR (Double Data Rate). The newest version at the time of writing is DDR5. It is important to know what version of RAM your system uses because they are physically and electrically different; a ddr4 dimm will not work in a dd5 motherboard.</li>
@@ -185,18 +186,18 @@
         </ul>
 
         <h4>Expansion Cards</h4>
-        <ul class="spaced-list">
+        <ul class="spaced-list hidden">
           <li>Modern computers generally come equipped with PCIe (Peripheral Component Interconnect express) expansion slots which can be used to connect various kinds of expansion cards.</li>
           <li>Common expansion cards include NICs (Network Interface Cards), USB expansion cards, capture cards, or storage expansion cards such as HBAs (Host Bus Adapter) or PCIe "splitters" that turn one PCIe slot into several NVMe ssd slots (this may require a motherboard that supports PCIe Bifurcation).</li>
           <li>GPU's generally connect via the PCIe bus and can also be considered expansion cards.</li>
         </ul>
 
         <h4>Storage</h4>
-        <ul class="spaced-list">
+        <ul class="spaced-list hidden">
           <li>There are 2 common types of storage, HDDs (Hard Disk Drive) and SSDs (Solid State Drive).</li>
 
           <li>HDDs are an older standard, but are still very common.</li>
-          <ul>
+          <ul class="hidden">
             <li>Hard Drives use spinning metal platters to record data. Data is written to the disk using a "write head", which is a magnetically actuated arm that moves over the disk to read and write data.</li>
             <li>Modern hard drives will have several layers of platters with write heads in between them to increase the capacity of the drive.</li>
             <li>Hard drives are cheaper per gigabyte of storage compared to SSDs so they are used in applications where mass storage in important.</li>
@@ -204,7 +205,7 @@
             <li>Hard drives have 2 common form factors: 2.5" and 3.5".</li>
           </ul>
           <li>SSDs are a newer technology that is becoming more and more common due it its superior reliability and speed.</li>
-          <ul>
+          <ul class="hidden">
             <li>SSDs store data on NAND-flash chips, which have no moving parts. <a href="https://patrick.quam.computer/notes/other#ssd-physical-storage" class="link" target="_blank">More on how SSDs store data</a></li>
             <li>Because there are no moving parts, they don't have a chance to break physically, and as such, generally have a longer life than HDDs.</li>
             <li>An additional aspect of having no moving parts is that SSDs do not have to wait for the disk to spin to the correct position to read data. Data on SSDs is always accessible instantly, which means that the response time when requesting data is much quicker.</li>
@@ -215,9 +216,9 @@
           </ul>
 
           <li>RAID (Redundant Array of Independent Disks)</li>
-          <ul class="spaced-list">
+          <ul class="spaced-list hidden">
             <li>RAID is a technology used to combine disks to improve either speed or reliability. There are several ways to combine disks to get different effects.</li>
-            <ul>
+            <ul class="hidden">
               <li>RAID 0 (Striping): This level splits data evenly across two or more disks with no parity information for redundancy. It's intended to increase the system's performance, as multiple disks are reading and writing data, which can significantly improve speed. However, it offers no fault tolerance. If one drive fails, all data in the array is lost. </li>
               <li>RAID 1 (Mirroring): This level writes the same data to two drives, creating a mirrored pair. It provides high data protection by duplicating all data from one drive on another drive. The performance is good when reading but poor when writing compared to a single drive. If one drive fails, data does not get lost because it's duplicated on the other drive.</li>
               <li>RAID 5 (Striping with Parity): This level requires at least three disks and uses block-level striping with parity data distributed across all member disks. RAID 5 has good performance and fault tolerance. It can withstand a single drive failure without losing data or access to data.</li>
@@ -227,9 +228,9 @@
               <li>RAID 60 (6+0): This level combines the straight block-level striping of RAID 0 with the distributed double parity of RAID 6. It's a RAID 0 array striped across RAID 6 elements. It requires at least eight drives.</li>
             </ul>
             <li>There are a few ways to implement RAID.</li>
-            <ul>
+            <ul class="hidden">
               <li>Software raid (drives are configured in raid by the operating system or an application)</li>
-              <ul>
+              <ul class="hidden">
                 <li>Software RAID is generally less expensive than hardware RAID because it doesn't require any additional hardware beyond the drives themselves.</li>
                 <li>Software RAID can be more flexible than hardware RAID. It's typically easier to modify or reconfigure, and it can support a wider variety of RAID levels.</li>
                 <li>Software RAID is updated along with the operating system, ensuring that it benefits from the latest improvements and bug fixes.</li>
@@ -237,7 +238,7 @@
                 <li>Depending on the RAID level and the operating system, booting from a software RAID array can be complicated or even impossible.</li>
               </ul>
               <li>Hardware raid (drives are configured by a physical raid controller, which may be built into the systems motherboard or be its own expansion card)</li>
-              <ul>
+              <ul class="hidden">
                 <li>Hardware RAID controllers have their own processors and memory to manage the RAID array, which can result in better performance and less impact on the host system's resources.</li>
                 <li>Hardware RAID controllers often support advanced features like hot swapping (replacing drives without powering down the system), RAID level migration (changing RAID levels without losing data), and battery-backed cache (which can protect data in the event of a power loss).</li>
                 <li>Hardware RAID arrays are typically easier to boot from than software RAID arrays.</li>
@@ -251,7 +252,7 @@
           </ul>
 
           <h4>Interface Types (common connectors for storage devices)</h4>
-          <ul class="spaced-list">
+          <ul class="spaced-list hidden">
             <li>SCSI (Small Computer System Interface): SCSI is an older standard that uses parallel communication. It has been largely replaced by SAS and SATA in most applications. The maximum bandwidth depends on the specific version of SCSI, but the latest version (Ultra640 SCSI) can reach up to 640 MB/s. SCSI connectors are typically rectangular with a lot of pins (50, 68, or 80 depending on the version).</li>
             <li>SAS (Serial Attached SCSI): SAS is a point-to-point serial protocol that replaced parallel SCSI in many settings. SAS-3, the latest version as of my knowledge cutoff in September 2021, supports data rates of up to 12 Gbit/s. SAS connectors are similar to SATA connectors but have a larger "L" shape.</li>
             <li>SATA (Serial ATA): SATA is a common interface for consumer hard drives and SSDs. The latest version, SATA 3, supports data rates of up to 6 Gbit/s. SATA connectors are flat and have an "L" shape.</li>
@@ -263,7 +264,7 @@
           </ul>
 
           <h4>Shared Storage</h4>
-          <ul>
+          <ul class="hidden">
             <li>In many applications, it's important for multiple devices to be able to access the same storage pool. Sometimes, it is just not reasonable to fit enough storage into a single device, and a dedicated storage device is necessary. In these cases, a shared storage solution is required.</li>
             <li>NAS (Network Attached Storage): This is a dedicated device that provides shared storage to a network. A NAS device is essentially a self-contained computer connected to a network, with the sole purpose of providing a large amount of storage space that can be accessed by other devices on the network. NAS devices are often used in home networks and small businesses to provide a simple way to share files among multiple computers.</li>
             <li>NFS (Network File System): This is a protocol that allows a computer to access files over a network as if they were on its local hard drive. NFS is typically used in Unix and Linux environments. It's a part of the application layer in the OSI model, which means it allows applications on a computer to read and write data to a server over a network as if the data was on the local machine.</li>
@@ -276,9 +277,9 @@
         </ul>
 
         <h4>Hot Swappable Hardware</h4>
-        <ul>
+        <ul class="hidden">
           <li>Hot Swappable refers to components that can be replaced while maintaining minimum downtime. This generally includes:</li>
-          <ul>
+          <ul class="hidden">
             <li>Drives</li>
             <li>Expansion Cards</li>
             <li>Power Supplies</li>
@@ -299,10 +300,10 @@
       <div class="sub-section-box col-lg-12">
         
         <h3>Out of Band Management</h3>
-        <ul class="spaced-list">
+        <ul class="spaced-list hidden">
 
           <li>In an enterprise or datacenter environment, being able to maintain and operate servers remotely is very important. As such, there are several common tools that can be used to control remote servers.</li>
-          <ul>
+          <ul class="hidden">
             <li>iLO (Integrated Lights-Out): This is a proprietary technology from Hewlett-Packard Enterprise (HPE) that allows for remote management of servers. iLO is embedded or integrated in all HPE ProLiant servers. It allows administrators to manage servers remotely, perform configuration, update firmware, and monitor performance. These management tasks can be performed regardless of the state of the operating system or even if no operating system is installed. Administrators can access iLO through a web-based interface by connecting to the iLO IP address assigned during the configuration process. This interface provides access to a wide range of management tasks. Additionally, iLO can be accessed via a command-line interface for scripting and automation purposes. HPE also provides the iLO Mobile app, which allows server management from a smartphone or tablet.</li>
             <li>iDRAC (Integrated Dell Remote Access Controller): This is Dell's equivalent to iLO. This is a proprietary technology that is integrated into all Dell PowerEdge servers. Like iLO, iDRAC allows for remote management of servers, including configuration, firmware updates, performance monitoring, and more. Similar to iLO, iDRAC can be accessed through a web-based interface by connecting to the iDRAC IP address. It can also be accessed via command-line interface, and Dell provides the OpenManage Mobile app for managing servers from a mobile device. iDRAC is also integrated with Dell's OpenManage suite of systems management tools.</li>
             <li>WBEM (Web-Based Enterprise Management) represents a set of management and Internet standard technologies. They are developed to unify the management of enterprise computing environments. WBEM provides a well-defined method for systems, applications, networks, devices, and services to describe themselves, their functionality, their configuration, and their status. </li>
@@ -311,7 +312,7 @@
           </ul>
 
           <li>Local Hardware Administration (common tools when working with on-hand servers)</li>
-          <ul>
+          <ul class="hidden">
             <li>KVM (Keyboad, Video, Mouse)</li>
             <li>"Crash Cart": Multimeter or other hardware diagnostic tools, replacement hardware components, anti-static strap.</li>
             <li>Serial connectivity</li>
@@ -320,7 +321,7 @@
         </ul>
 
         <h3>Operating System Installation</h3>
-          <ul class="spaced-list">
+          <ul class="spaced-list hidden">
             <li>There are many situations where it may be necessary to install or re-install the operating system on a device. For example, a new device with blank drives, or an existing system that needs to have a different OS for whatever reason.</li>
             <li>To install the operating system, there are some common tools that you will need. The main tool is "installation media". Installation media is generally a USB flash drive or a CD with the software required to install the operating system loaded on to it. In an enterprise setting, the installation media may also be a place on the network.</li>
             <li>For windows systems, you can purchase installation media through many retailers, or it may be provided to you by the manufacturer of your device. I have links to the windows media creation tools for windows 10 & 11 <a href="https://patrick.quam.computer/tools#links" class="link" target="_blank">here</a> if you want to create your own. After installing windows, you can use <li><a href="https://github.com/massgravel/Microsoft-Activation-Scripts" class="link" target="_blank">Microsoft Activation Scripts</a></li> to activate your copy of windows, or purchase a key online.</li>
@@ -330,15 +331,15 @@
             <li>when you install an operating system, it can be installed either on hardware (reffered to as a bare metal install) or on a virtual machine.</li>
             <li>Before installing an operating system, the installation media will generally prompt to initialize and format the disk to support the file system for that operating system. Once the installtion process begins, the installation media will create the required partitions for the OS.</li>
             <li>When partitioning a drive, there are different methods of organizing the partiton tables on a hard drive or ssd. Typically, this will be decided by the operating system you are installing.</li>
-            <ul>
+            <ul class="hidden">
               <li>MBR (Master Boot Record): MBR is an older method that's used by BIOS-based systems. The MBR itself is a 512-byte sector at the beginning of the drive that contains a bootloader and the partition table. MBR has some limitations due to its age:</li>
-              <ul>
+              <ul class="hidden">
                 <li>It can only handle drives up to 2 TB in size.</li>
                 <li>It can only handle up to four primary partitions. If you want more, you have to make one of them an "extended partition" and create "logical partitions" within it.</li>
                 <li>It doesn't have any built-in error checking to protect the data in the partition table.</li>
               </ul>
               <li>GPT (GUID Partition Table): GPT is a newer method that's used by UEFI-based systems. GPT doesn't have the limitations that MBR does:</li>
-              <ul>
+              <ul class="hidden">
                 <li>In terms of disk size, GPT uses 64 bits for logical block addresses, allowing for a maximum disk size of 2^64 sectors. Given that the industry standard sector size is 512 bytes, this allows for a maximum disk size of 9.4 Zettabytes (1 Zettabyte = 1 billion Terabytes). However, some systems and disks use larger sector sizes, such as 4096 bytes, which would allow for even larger maximum disk sizes.</li>
                 <li>It can handle up to 128 primary partitions by default in Windows (and more in other operating systems).</li>
                 <li>It stores multiple copies of the partition table across the disk and includes cyclic redundancy check (CRC) values to check that its data is intact, so it's more robust and can recover from data corruption better than MBR can.</li>
@@ -349,28 +350,28 @@
           </ul>
 
         <h3>Basic Networking: IP (Internet Protocol) Configuration</h3>
-          <ul>
+          <ul class="hidden">
             <li>IPV4</li>
-            <ul>
+            <ul class="hidden">
               <li>IPV4 addresses are 32 bits long, Expressed in 4, 8 bit groups (called octets) seperated by a period. ex: <code>192.168.1.1</code></li>
               <li>Data is transmitted in packets, each with its own IP header containing source and destination IP addresses, among other information.</li>
               <li>Due to the length of IPV4 addresses, there are not enough addresses to support the number of devices that are being connected. Because of this, devices generally are not assigned their own public IPV4 adress, and are instead assigned a private IP apdress, and then the devices router will use NAT (Network Adress Translation) to ensure data from outside of the LAN (Local Area Network) goes to and from the correct device.</li>
             </ul>
 
             <li>Sub Net Mask</li>
-            <ul>
+            <ul class="hidden">
               <li>"The subnet mask determines the network on which the host resides". Basically, it is an indicator of how many bits in an IP adress are used to specify the network the device resides on.</li>
               <li>Subnet mask can be indicated by two notations. Both notations serve the same purpose but are used in different contexts. Dotted decimal notation is often used in network configurations, while CIDR notation is commonly used in routing and when specifying IP address ranges.</li>
               <ol>
                 <li>Dotted Decimal Notation: This is the traditional way of representing a subnet mask. It consists of four octets (just like an IP address) and is expressed in decimal format. For example: <code>255.255.255.0</code></li>
                 <li>CIDR (Classless Inter-Domain Routing) Notation: This is a more concise way of representing a subnet mask. It uses a forward slash (/) followed by a number, which indicates the number of consecutive '1' bits in the subnet mask's binary form. <mark>For example: </mark> <code>/24</code> would be <code>11111111.11111111.11111111.00000000</code> (24 of the 32 bits are 1s) in binary, or <code>255.255.255.0</code> when converted to decimal notation.</li>
               </ol>
-              <ul>
+              <ul class="hidden">
                 <li>A subnet mask of 255.255.255.0 in dotted decimal notation is equivalent to /24 in CIDR notation. This is because the first 24 bits (three octets) are set to '1', and the remaining bits are '0'.</li>
                 <li>It was easier for me to this about this as 24bit subnet divided by 8 bits = 3 octets would be required to display the same subnet mask.</li>
                 <li>For many applications it can be helpful to 'subnet' a network, or split into many parts. Network Chuck has a great <a href="https://www.youtube.com/playlist?list=PLIhvC56v63IKrRHh3gvZZBAGvsvOhwrRF" class="link" target="_blank">playlist on Subnetting.</a></li>
                 <li id="#subnetting">Here are some of the <mark>benefits of subnetting:</mark></li>
-                <ul>
+                <ul class="hidden">
                   <li>By breaking a large network into smaller subnets, local traffic remains local. This means that not all traffic is broadcasted to all parts of the network, reducing unnecessary traffic and congestion.</li>
                   <li>Fewer devices per subnet can lead to faster performance and reduced latency.</li>
                   <li>Different departments or groups can be isolated into different subnets. If one subnet is compromised, it doesn't necessarily mean that attackers have access to other subnets.</li>
@@ -389,7 +390,7 @@
                 <li>If you need more granular control of the number of hosts on your network, you can use subnet masks that are not multiples of 8. <mark>For example: </mark> <code>/20</code> would be <code>11111111.11111111.11110000.00000000</code> in binary, or <code>255.255.240.0</code> in decimal notation. You can use this to leave more or less space for hosts (devices) on the network as needed.</li>
                 <li>The IPV4 subnet mask can be assigned in a range from 1 to 32.</li>
                 <li>A subnet mask of /32 specifies that all 32 bits of the IP address are dedicated to the network portion, leaving no bits for host addresses within that subnet.</li>
-                <ul>
+                <ul class="hidden">
                   <li>A /32 mask denotes a single, specific IPv4 address. For example, 192.168.1.10/32 refers precisely to the IP address 192.168.1.10 and no other addresses.</li>
                   <li>Since all bits are used for the network portion, there are no bits left for hosts. This means there are no available addresses for devices within that subnet, as the "subnet" itself is just a single IP address.</li>
                   <li>In routing tables, a /32 can be used to specify a specific route to a single IP address.</li>
@@ -399,14 +400,14 @@
                 <li>While you could technically assign a subnet mask of /1, thats just goofy and you probably shouldn't. You probably don't have 2 billion devices on your network, no matter how dedicated you are to pimping out your room with phillips hue lights.</li>
               </ul>
               <li><mark>For Example: </mark></li>
-              <ul>
+              <ul class="hidden">
                 <li>192.168.1.1/24 would indicate the first 3 sections of the ip address indicate the network the device resides on, and this devices address on that network is 1.</li>
                 <li>192.168.1.100/16 would indicate the first 2 sections of the ip address indicate the network the device resides on, and this devices address on that network is 1.100</li>
               </ul>
             </ul>
 
             <li>IPV6</li>
-            <ul>
+            <ul class="hidden">
               <li>IPV6 uses 128 bit addresses. Because the pool of IPV6 addresses is so much larger, using NAT is not required, so devices can have their own public IPV6 adress.</li>
               <li>Rather than Subnet Mask, IPV6 uses a "Subnet Prefix Length", which is indicated in the same CIDR notation, and operates in the same way as an IPV4 subnet mask would.</li>
             </ul>
@@ -424,7 +425,7 @@
 
       <div class="col-lg-1"></div>
                     <div class="sub-section-box col-lg-12">
-                      <ul>
+                      <ul class="hidden">
                         
                       </ul>
 
@@ -446,7 +447,7 @@
                 </div>
 
                 <div class="sub-section-box col-lg-12">
-                  <ul></ul>
+                  <ul class="hidden"></ul>
 
                 </div>
             <div class="col-lg-1"></div>
