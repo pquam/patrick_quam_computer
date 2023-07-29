@@ -97,6 +97,10 @@
     width: 100%;
     justify-content: center;
   }
+
+  .card-image {
+    max-height: 225px;
+  }
 }
 
 
