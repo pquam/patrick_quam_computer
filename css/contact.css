@@ -77,13 +77,23 @@
   justify-content: center;
 }
 
-@media only screen and (max-width: 768px) and (orientation: portrait) {
+@media only screen and (orientation: portrait) {
   /* Insert your CSS styles for mobile devices in portrait mode here */
+
+  .flip-card {
+    background-color: transparent;
+    perspective: 1000px; /* Provides a 3D-space for the card */
+    width: 500px !important; /* Adjust as needed */
+    height: 500px !important; /* Adjust as needed */
+    float: left;
+    padding: 8px;
+  }
+
   #cards {
     flex-wrap: wrap;
     gap: 8px;
     display: flex;
-    max-width: 768px !important;
+    max-width: 599px !important;
     width: 100%;
     justify-content: center;
   }
