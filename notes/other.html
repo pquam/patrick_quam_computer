@@ -172,6 +172,56 @@
               </ul>
               <li>VLANs can span across multiple subnets, and conversely, multiple VLANs can exist within a single subnet. However, while VLANs spanning multiple subnets can be useful in specific scenarios, they can also introduce management complexity. It's generally easier to manage and troubleshoot networks when there's a clear one-to-one relationship between VLANs and subnets.</li>
             </ul>
+
+            <li>What actually happens after your device recieves an IP from DNS?</li>
+            <ol class="hidden">
+              <li>TCP Connection Establishment (Three-Way Handshake):</li>
+              <ul>
+                <li>The client initiates a connection to the server using the Transmission Control Protocol (TCP), the primary transport protocol of the internet.</li>
+                <li>A three-way handshake occurs to establish this connection:</li>
+                <ol>
+                  <li>SYN: The client sends a SYN (synchronize) packet to the server at the obtained IP address, indicating it wants to establish a connection.</li>
+                  <li>SYN-ACK: The server responds with a SYN-ACK (synchronize-acknowledge) packet, acknowledging the client's request.</li>
+                  <li>ACK: The client sends an ACK (acknowledge) packet back to the server, completing the handshake and establishing the connection.</li>
+                </ol>
+              </ul>
+              <li>HTTP/HTTPS Request:</li>
+              <ul>
+                <li>Once the TCP connection is established, the client sends an HTTP (Hypertext Transfer Protocol) or HTTPS (HTTP Secure) request to the server. This request includes details like the desired webpage, the browser being used, supported data formats, and more.</li>
+                <li>If the website uses HTTPS, there's an additional layer of security through SSL/TLS encryption. Before exchanging the main content, an SSL/TLS handshake occurs to agree on encryption methods and exchange cryptographic keys.</li>
+              </ul>
+              <li>Server Processing:</li>
+              <ul>
+                <li>The server processes the client's request. For static websites, this might simply involve fetching the requested webpage. For dynamic websites, the server might need to run scripts, query databases, or perform other operations to generate the requested content.</li>
+              </ul>
+              <li>HTTP/HTTPS Response:</li>
+              <ul>
+                <li>The server sends an HTTP/HTTPS response back to the client. This response includes the requested content (like HTML, CSS, JavaScript, images) and status codes indicating the result of the request (e.g., 200 for "OK", 404 for "Not Found").</li>
+              </ul>
+              <li>Rendering the Webpage:</li>
+              <ul>
+                <li>The client's browser processes the received data, rendering the webpage for the user to view. This involves:</li>
+                <ul>
+                  <li>Parsing the HTML, CSS, and JavaScript.</li>
+                  <li>Displaying images, videos, and other media.</li>
+                  <li>Executing any client-side scripts for interactivity.</li>
+                </ul>
+              </ul>
+              <li>TCP Connection Termination:</li>
+              <ul>
+                <li>After the data exchange is complete, the TCP connection is terminated to free up resources. This involves a four-step process:</li>
+                <ol>
+                  <li>FIN: One side (usually the client) sends a FIN (finish) packet, indicating it's done sending data.</li>
+                  <li>ACK: The other side acknowledges with an ACK packet.</li>
+                  <li>FIN: The other side then sends its own FIN packet.</li>
+                  <li>ACK: The first side acknowledges with an ACK packet, completing the termination.</li>
+                </ol>
+              </ul>
+              <li>Persistent Connections:</li>
+              <ul>
+                <li>Modern web protocols, like HTTP/2, support persistent connections. Instead of closing the connection after a single request-response cycle, the connection remains open for a set period, allowing multiple requests and responses without the overhead of establishing a new connection each time.</li>
+              </ul>
+            </ol>
           </ul>
         </div>
     <div class="col-lg-1"></div>

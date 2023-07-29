@@ -71,20 +71,20 @@
       <h3>Racks, enclosures, & unit sizes</h3>
       <ul class="spaced-list hidden">
         <li>Servers deployed in enterprise are generally stored in racks. These are monolithic cases designed to store several physical devices.</li>
-        <li>Servers are often mounted to the rack using rails. Server rails allow the hardware to be slid in out of the rack without having to remove it fully. This makes harwdare maintanence much more convienient for technicians. Alternativly, some devices arer mounted to the rack using more permanent solutions, such as rack studs, or bolts.</li>
+        <li>Servers are often mounted to the rack using rails. Server rails allow the hardware to be slid in out of the rack without having to remove it fully. This makes hardware maintenance much more convenient for technicians. Alternatively, some devices are mounted to the rack using more permanent solutions, such as rack studs, or bolts.</li>
         <li>Generally a rack will contain servers, switches, battery backups, and potentially a KVM (keyboard, Video, Mouse) unit.</li>
         <li>Some racks, will have or require a special cooling system. Some times this can be as simple as a rack mountable fan, or could be as complex as a full water cooling distribution system.</li>
-        <li>Many racks will have a dedicated mounting point for antistatic bracelets so that work can be done on the hardware installed in the rack without worrying about causing damage to compenents.</li>
+        <li>Many racks will have a dedicated mounting point for antistatic bracelets so that work can be done on the hardware installed in the rack without worrying about causing damage to components.</li>
         <li>While the depth of a rack can vary, the width and spacing between mount points on the rack are standardized.</li>
         <ul class="hidden">
-          <li>The unit of space between mounting points on a rack is reffered to as a 'U'. 1 U is equivalent to 1.75 inches or 4.45cm. For example, a 24u rack would have 24 mounting points. A 2u server would take up 2 of those 24 mounting points.</li>
+          <li>The unit of space between mounting points on a rack is referred to as a 'U'. 1 U is equivalent to 1.75 inches or 4.45cm. For example, a 24u rack would have 24 mounting points. A 2u server would take up 2 of those 24 mounting points.</li>
         </ul>
-        <li>not all servers are enclosed in racks. Many servers are stored in standalone enclosures. These enclosures are effectivley just normal computer cases.</li>
+        <li>not all servers are enclosed in racks. Many servers are stored in standalone enclosures. These enclosures are effectively just normal computer cases.</li>
       </ul>
 
       <h3>Powering Servers</h3>
       <ul class="spaced-list hidden">
-        <li>Its is generally good practice to have all computing equipment powered by a surge supressor at the very leaast. Servers, however, have much higher requirements for uptime.</li>
+        <li>It's is generally good practice to have all computing equipment powered by a surge suppressor at the very least. Servers, however, have much higher requirements for uptime.</li>
         <li>Small scale servers for personal use should at the very least be connected to an Uninteruptable Power Supply (UPS). This way, if power to the system is lost, there will at least be time for data to finish writing to the disk if necessary, or provide enough time for the system to safley shut down.</li>
         <li>Many servers wil have redundant power supplies. this means that one power supply could fail outright and the system would still be able to operate as if nothing happened. This also provides time for system administrators to identify what may have caused the failure or replace the broken hardware as needed.</li>
         <li>Ideally, servers of any importance should have their redundant power supplies connected to seperate UPS's, which would then be connected to outlets on seperate breakers. This way, even if a breaker gets tripped somewhere, the system will still be recieving power.</li>
@@ -172,7 +172,7 @@
         <ul class="spaced-list hidden">
           <li>GPU's are proccessors dedicated to handling parrallel computing tasks, such as completing repeated calculations. </li>
           <li>A common usecase is 3d matrix math, which is used to calculate positions of objects in 3d space in applications such as modeling software. These tasks are not handled well by the CPU.</li>
-          <li>GPU's will generally have their own RAM, however some systems will have their GPU built into the CPU (commonly reffered to as an APU or Accelerated Proccessing Unit), which will share some amount of the system ram between the CPU and GPU.</li>
+          <li>GPU's will generally have their own RAM, however some systems will have their GPU built into the CPU (commonly referred to as an APU or Accelerated Proccessing Unit), which will share some amount of the system ram between the CPU and GPU.</li>
           <li><a href="https://www.youtube.com/watch?v=_cyVDoyI6NE" class="link" target="_blank">Computerfile on CPU vs GPU</a></li>
           <li><a href="https://www.youtube.com/watch?v=8sDg-lD1fZQ" class="link" target="_blank">Writing Code That Runs FAST on a GPU</a></li>
         </ul>
@@ -181,7 +181,7 @@
         <ul class="spaced-list hidden">
           <li>RAM is non-persistant memory, meaning as soon as it looses power, all of the data stored in RAM is lost.</li>
           <li>RAM is high speed memory designed to store data for an application while it is in use.</li>
-          <li>RAM is generally connected to the motherboard directly. There are several generations of ram, which are reffered to as DDR (Double Data Rate). The newest version at the time of writing is DDR5. It is important to know what version of RAM your system uses because they are physically and electrically different; a ddr4 dimm will not work in a dd5 motherboard.</li>
+          <li>RAM is generally connected to the motherboard directly. There are several generations of ram, which are referred to as DDR (Double Data Rate). The newest version at the time of writing is DDR5. It is important to know what version of RAM your system uses because they are physically and electrically different; a ddr4 dimm will not work in a dd5 motherboard.</li>
           <li>There are also 2 common versions of RAM, ECC (Error Correcting Code) and non-ECC. ECC RAM was formerly reserved for servers and enterprise systems but is becoming more common on consumer hardware. ECC allows the memory stick to check for errors in the data it is storing.</li>
         </ul>
 
@@ -328,7 +328,7 @@
             <li>For unix or linux systems, you may need to use a tool like Rufus to create your own installation media. Generally the only other thing needed is an ISO file for the operating system you want to install.</li>
             <li>In an enterprise environment, it is more common to use a system image rather than an a blank version of an operating system on the installation media. A system image will include all the required software, security, and settings preconfigured so that it does not need to be re-done every time the operating system needs to be installed.</li>
             <li>An alternative to an image is a clone. Cloning a drive means copying all of its contents, including partitions and its Master Boot Record identically to another disk. This means that if a disk with an operating system installed on it gets cloned, it will be possible to boot to the new drive, with all of the applications and data in tact from the old drive. However <mark>cloning is natorious for failing or causing data corruption unless you are cloning to an identical drive</mark></li>
-            <li>when you install an operating system, it can be installed either on hardware (reffered to as a bare metal install) or on a virtual machine.</li>
+            <li>when you install an operating system, it can be installed either on hardware (referred to as a bare metal install) or on a virtual machine.</li>
             <li>Before installing an operating system, the installation media will generally prompt to initialize and format the disk to support the file system for that operating system. Once the installtion process begins, the installation media will create the required partitions for the OS.</li>
             <li>When partitioning a drive, there are different methods of organizing the partiton tables on a hard drive or ssd. Typically, this will be decided by the operating system you are installing.</li>
             <ul class="hidden">
@@ -411,6 +411,31 @@
               <li>IPV6 uses 128 bit addresses. Because the pool of IPV6 addresses is so much larger, using NAT is not required, so devices can have their own public IPV6 adress.</li>
               <li>Rather than Subnet Mask, IPV6 uses a "Subnet Prefix Length", which is indicated in the same CIDR notation, and operates in the same way as an IPV4 subnet mask would.</li>
             </ul>
+          </ul>
+
+          <li>VLAN (Virtual Local Area Network)</li>
+          <ul class="hidden">
+            <li>VLAN's are a logical subdivision of a switch.</li>
+            <li>VLANs can be used to segment a larger network into smaller, more manageable pieces. This can improve performance by reducing the size of the broadcast domain and limiting the extent of broadcasts.</li>
+            <li>By segregating devices into different VLANs based on their function or department, sensitive data can be restricted to specific VLANs, reducing the risk of unauthorized access.</li>
+            <li>VLANs can be used to group devices by department or function, regardless of their physical location in a building or campus. This can simplify network management and troubleshooting.</li>
+            <li>VLANs allow for flexibility in how devices are grouped together, and they can be easily modified or expanded as organizational needs change.</li>
+            <li>Communication between different VLANs requires a router or a layer 3 switch, which can introduce additional latency and complexity.</li>
+            <li>ACL's (Access Control List) can be used to control the traffic between VLAN's.</li>
+          </ul>
+
+          <li>DNS (Domain Name System)</li>
+          <ul class="hidden">
+            <li>Converts FQDN's to IP addresses.</li>
+            <li>DNS "Resolution" Process:</li>
+            <ol class="hidden">
+              <li>Local Cache Check: The client device (e.g., your computer) first checks its local cache to see if it already knows the IP address for the domain. If found, the process ends here.</li>
+              <li>Query Recursive DNS Server: If the IP address isn't in the local cache, the client queries a recursive DNS server (usually provided by your ISP). This server checks its cache. If found, it returns the IP to the client.</li>
+              <li>Query Root DNS Server: If the recursive server doesn't have the IP cached, it queries a root DNS server. The root server doesn't know the IP for individual domains but directs the recursive server to the appropriate TLD server.</li>
+              <li>Query TLD Server: The recursive server then queries the TLD server for the domain's TLD (e.g., .com). The TLD server directs the recursive server to the domain's authoritative name server.</li>
+              <li>Query Authoritative Name Server: The recursive server queries the authoritative name server for the domain. The authoritative server returns the IP address for the domain to the recursive server.</li>
+              <li>Return IP Address to Client: The recursive server caches the IP address (for the duration specified by the TTL) and returns it to the client. The client's browser can now request the website using the IP address.</li>
+            </ol>
           </ul>
       </div>
     </section>
