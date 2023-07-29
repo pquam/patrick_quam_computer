@@ -57,7 +57,7 @@
     <section class="colored-section" id="sub-section2">
         <div class="col-lg-1"></div>
         <div class="sub-section-box col-lg-12">
-          <ul>
+          <ul class="hidden">
             <h3>Please note this is by no means an exhaustive list. Security principles and processes are different for various distributions & environments. Be sure the check the <a href="#other-security-resources" class="link" target="_blank">additional resources</a> linked at the bottom of this page.</h3>
           </ul>
 
@@ -79,24 +79,24 @@
 
                 <div class="col-lg-1"></div>
                     <div class="sub-section-box col-lg-12">
-                      <ul>
-                        <li class="hidden"><mark> Root user is all powerful. </mark></li>
-                        <li class="hidden">Follow a process for removing user accounts.</li>
-                        <li class="hidden">root has full control over all system processes.</li>
-                        <li class="hidden">Use a firewall (ufw, iptables, dedicated firewall).</li>
-                        <li class="hidden">Use Multi-Factor Authentication wherever possible.</li>
-                        <li class="hidden">NEVER give root access to a user that does not absolutely require it.</li>
-                        <li class="hidden">File permissions make it easy to manage what each user has access too.</li>
-                        <li class="hidden">Linux is less popular than windows 🙂, and it is open source, so less malware is developed for it.</li>
-                        <li class="hidden">Root is required to install system-wide software, configure networking, & manage users, along with other administrative tasks.</li>
-                        <li class="hidden">Only allow network connections from required sources (for example, only allow incoming traffic from SSH if no other applications require network connectivity).</li>
-                        <li class="hidden">Centralized package managers can certify applications are malware free before they are installed.Package managers also allow users to update all of their software at once.</li>
-                        <li class="hidden">Encrypt all data transmissions over a network. Ensure you are are using the latest versions of protocols to make sure data is encrypted properly. for example, sftp instead of ftp.</li>
-                        <li class="hidden">linux allows you to create dedicated accounts for services & applications.This way, if a service or process becomes compromised, it is less likely to affect the rest of the system.</li>
-                        <li class="hidden">Individuals should always have their own system accounts. Users sharing accounts can make it difficult to find the source of a breach. Users have a bad habit of being less responsible with shared user accounts.</li>
-                        <li class="hidden">Monitor system activity. This means regularly reviewing system logs. Sending logs to a dedicated server can help managing the review process easier, and also means you have a duplicate of logs in case an attacker changes logs on a system.</li>
-                        <li class="hidden">Avoid direct logins to root and service accounts unless absolutely neccessary. Users should log in to their personal accounts then use 'sudo -u' to run commands as other users. This creates a log trail that does not exist if users sign in the application, service, or root accounts.</li>
-                        <li class="hidden">Wherever possible, run applications and services in their own system (container, VM, dedicated physcial hardware).Otherwise, ensure applications and services have their own dedicated user.This way, if an application or service becomes compromised, it is less likely that it will be able to effect the rest of the system.</li>
+                      <ul class="hidden">
+                        <li><mark> Root user is all powerful. </mark></li>
+                        <li>Follow a process for removing user accounts.</li>
+                        <li>root has full control over all system processes.</li>
+                        <li>Use a firewall (ufw, iptables, dedicated firewall).</li>
+                        <li>Use Multi-Factor Authentication wherever possible.</li>
+                        <li>NEVER give root access to a user that does not absolutely require it.</li>
+                        <li>File permissions make it easy to manage what each user has access too.</li>
+                        <li>Linux is less popular than windows 🙂, and it is open source, so less malware is developed for it.</li>
+                        <li>Root is required to install system-wide software, configure networking, & manage users, along with other administrative tasks.</li>
+                        <li>Only allow network connections from required sources (for example, only allow incoming traffic from SSH if no other applications require network connectivity).</li>
+                        <li>Centralized package managers can certify applications are malware free before they are installed.Package managers also allow users to update all of their software at once.</li>
+                        <li>Encrypt all data transmissions over a network. Ensure you are are using the latest versions of protocols to make sure data is encrypted properly. for example, sftp instead of ftp.</li>
+                        <li>linux allows you to create dedicated accounts for services & applications.This way, if a service or process becomes compromised, it is less likely to affect the rest of the system.</li>
+                        <li>Individuals should always have their own system accounts. Users sharing accounts can make it difficult to find the source of a breach. Users have a bad habit of being less responsible with shared user accounts.</li>
+                        <li>Monitor system activity. This means regularly reviewing system logs. Sending logs to a dedicated server can help managing the review process easier, and also means you have a duplicate of logs in case an attacker changes logs on a system.</li>
+                        <li>Avoid direct logins to root and service accounts unless absolutely neccessary. Users should log in to their personal accounts then use 'sudo -u' to run commands as other users. This creates a log trail that does not exist if users sign in the application, service, or root accounts.</li>
+                        <li>Wherever possible, run applications and services in their own system (container, VM, dedicated physcial hardware).Otherwise, ensure applications and services have their own dedicated user.This way, if an application or service becomes compromised, it is less likely that it will be able to effect the rest of the system.</li>
                       </ul>
 
 
@@ -119,27 +119,27 @@
 
       <div class="col-lg-1"></div>
                     <div class="sub-section-box col-lg-12">
-                      <ul>
-                        <li class="hidden">Ensure that single user mode is either disabled or password protected. Single user mode can be accessed by restarting the system, and provides root access to the system.</li>
-                        <li class="hidden">Require a boot menu password. Without a boot menu password, attacks can force the bootloader to boot a root shell instead of another aprt of the operating system, providing them with root access. To do so, follow these steps:</li>
+                      <ul class="hidden">
+                        <li>Ensure that single user mode is either disabled or password protected. Single user mode can be accessed by restarting the system, and provides root access to the system.</li>
+                        <li>Require a boot menu password. Without a boot menu password, attacks can force the bootloader to boot a root shell instead of another aprt of the operating system, providing them with root access. To do so, follow these steps:</li>
                         <ol>
-                          <li class="hidden">Open a terminal.</li>
-                          <li class="hidden">Run the command <code>grub-mkpasswd-pbkdf2</code>. You'll be asked to enter the password and then to confirm it. This will create an encrypted password for the bootloader.</li>
-                          <li class="hidden">The command will output a hashed version of the provided password. Copy this.</li>
-                          <li class="hidden">Open the GRUB configuration file with root permissions using a text editor. For example, if you're using vim, you would enter: <code>sudo vim /etc/default/grub</code></li>
-                          <li class="hidden">Find the line that starts with <code>GRUB_PASSWORD</code>. If it doesn't exist, you'll need to add it. You can edit the file by entering insert mode in vim simply by inputting <code>i</code>. To exit vim without making changes, hit escape, then enter <code>:q!</code> and press enter. Set GRUB_PASSWORD to the hashed password you copied. It should look like this: <code>GRUB_PASSWORD=grub.pbkdf2.sha512.10000.long_string_of_characters</code></li>
-                          <li class="hidden">Save the file and exit the text editor. If you're using vim, you can do this by pressing <code>escape</code>, then entering <code>:wq</code> to confirm that you want to save the changes, and then <code>Enter</code> to confirm the file name.</li>
-                          <li class="hidden">Update GRUB with the new configuration by running: <code>sudo update-grub</code></li>
+                          <li>Open a terminal.</li>
+                          <li>Run the command <code>grub-mkpasswd-pbkdf2</code>. You'll be asked to enter the password and then to confirm it. This will create an encrypted password for the bootloader.</li>
+                          <li>The command will output a hashed version of the provided password. Copy this.</li>
+                          <li>Open the GRUB configuration file with root permissions using a text editor. For example, if you're using vim, you would enter: <code>sudo vim /etc/default/grub</code></li>
+                          <li>Find the line that starts with <code>GRUB_PASSWORD</code>. If it doesn't exist, you'll need to add it. You can edit the file by entering insert mode in vim simply by inputting <code>i</code>. To exit vim without making changes, hit escape, then enter <code>:q!</code> and press enter. Set GRUB_PASSWORD to the hashed password you copied. It should look like this: <code>GRUB_PASSWORD=grub.pbkdf2.sha512.10000.long_string_of_characters</code></li>
+                          <li>Save the file and exit the text editor. If you're using vim, you can do this by pressing <code>escape</code>, then entering <code>:wq</code> to confirm that you want to save the changes, and then <code>Enter</code> to confirm the file name.</li>
+                          <li>Update GRUB with the new configuration by running: <code>sudo update-grub</code></li>
                         </ol>
                       
-                        <li class="hidden">Ensure device encryption is enabled. Requiring a boot password can be circumvented by an attack installing their own boot media and mounting the system. LUKS is a common encryption tool.</li>
-                          <ul>
-                            <li class="hidden">For example, if you are hosting a web server in a cloud instance, ensure the cloud instance is encrypted. additionally, you can run the server in a VM, and make sure the virtual drive for the VM is encrypted.</li>
+                        <li>Ensure device encryption is enabled. Requiring a boot password can be circumvented by an attack installing their own boot media and mounting the system. LUKS is a common encryption tool.</li>
+                          <ul class="hidden">
+                            <li>For example, if you are hosting a web server in a cloud instance, ensure the cloud instance is encrypted. additionally, you can run the server in a VM, and make sure the virtual drive for the VM is encrypted.</li>
                           </ul>
-                        <li class="hidden"><a class="link" target="_blank" href="https://www.ibm.com/docs/en/order-management-sw/10.0?topic=considerations-encrypting-data-partitions-using-luks">LUKS</a> is a common encryption tool. It can be used to encrypt any block device.</li>
-                        <li class="hidden">Disable CTRL+ALT+DEL. CTRL+ALT+DEL initiates a system reboot. if an attacker is able to gain access to the system they may use the restart to gain access to the bootloader.</li>
-                        <ul>
-                          <li class="hidden">CTRL+ALT+DEL can be disabled by running 
+                        <li><a class="link" target="_blank" href="https://www.ibm.com/docs/en/order-management-sw/10.0?topic=considerations-encrypting-data-partitions-using-luks">LUKS</a> is a common encryption tool. It can be used to encrypt any block device.</li>
+                        <li>Disable CTRL+ALT+DEL. CTRL+ALT+DEL initiates a system reboot. if an attacker is able to gain access to the system they may use the restart to gain access to the bootloader.</li>
+                        <ul class="hidden">
+                          <li>CTRL+ALT+DEL can be disabled by running 
                             <code>sudo systemctl mask ctrl-alt-del.target <br>
                                sudo systemctl stop ctrl-alt-del.target</code></li>
                         </ul>
@@ -164,124 +164,124 @@
                 </div>
 
                 <div class="sub-section-box col-lg-12">
-                  <ul>
+                  <ul class="hidden">
 
-                    <li class="hidden">Root user always has a user ID of 0.</li>
-                    <li class="hidden">Assigning a User an ID of 0 will grant them root privileges.</li>
-                    <li class="hidden">Accounts for system services should have UID's of less than 1,000.</li>
-                    <li class="hidden">New users in the standard user range can be created using <code>useradd</code></li>
-                    <li class="hidden">New users can be created in the system services account range using <code>useradd -r</code></li>
+                    <li>Root user always has a user ID of 0.</li>
+                    <li>Assigning a User an ID of 0 will grant them root privileges.</li>
+                    <li>Accounts for system services should have UID's of less than 1,000.</li>
+                    <li>New users in the standard user range can be created using <code>useradd</code></li>
+                    <li>New users can be created in the system services account range using <code>useradd -r</code></li>
 
                     <li class="sub-list-padding">authentication logs can be viewed by running the <code>last</code> command. <code>lastb</code> will show failed login attempts.</li>
-                    <ul>
-                      <li class="hidden">The <code>last</code> command logs are found in <code>/var/log/wtemp</code></li>
-                      <li class="hidden">logs for <code>lastb</code> are stored in <code>/var/log/btemp</code></li>
-                      <li class="hidden">Other authentication logs can be found in the messages, syslog, secure, and auth.log files in the <code>/var/log/</code> directory.</li>
+                    <ul class="hidden">
+                      <li>The <code>last</code> command logs are found in <code>/var/log/wtemp</code></li>
+                      <li>logs for <code>lastb</code> are stored in <code>/var/log/btemp</code></li>
+                      <li>Other authentication logs can be found in the messages, syslog, secure, and auth.log files in the <code>/var/log/</code> directory.</li>
                     </ul>
 
                     <li class="sub-list-padding">Sometimes you may want to lock a user account. Maybe the account is compromised, a user no longer needs access, or it is a dedicated account for a service or application. Here are a few ways you can disable logins:</li>
-                    <ul>
-                      <li class="hidden">Changing the final entry in a users line of the <code>/etc/passwd</code> file to nologin (default is /bin/bash)</li>
-                      <ul>
-                        <li class="hidden">This can also be done by using the change shell command like this: <code>chsh -s shell account</code></li>
-                        <li class="hidden">For example, <code>chsh -s /sbin/nologin foo</code> would disable logins for the user foo.</li>
-                        <li class="hidden">to re-enable logins, you would run <code>chsh -s /bin/bash foo</code></li>
+                    <ul class="hidden">
+                      <li>Changing the final entry in a users line of the <code>/etc/passwd</code> file to nologin (default is /bin/bash)</li>
+                      <ul class="hidden">
+                        <li>This can also be done by using the change shell command like this: <code>chsh -s shell account</code></li>
+                        <li>For example, <code>chsh -s /sbin/nologin foo</code> would disable logins for the user foo.</li>
+                        <li>to re-enable logins, you would run <code>chsh -s /bin/bash foo</code></li>
                       </ul>
 
-                      <li class="hidden">Another way to lock an account is with the passwd command, although this only prevents the user from logging in using a password. For example, a user would still be able to log in using an SSH key.</li>
-                      <ul>
-                        <li class="hidden">To lock an account: <code>passwd -l foo</code></li>
-                        <li class="hidden">To un-lock that account: <code>passwd -u foo</code></li>
+                      <li>Another way to lock an account is with the passwd command, although this only prevents the user from logging in using a password. For example, a user would still be able to log in using an SSH key.</li>
+                      <ul class="hidden">
+                        <li>To lock an account: <code>passwd -l foo</code></li>
+                        <li>To un-lock that account: <code>passwd -u foo</code></li>
                       </ul>
                     </ul>
 
                     <li class="sub-list-padding">PAM, or pluggable Authentication Module</li>
-                    <ul>
-                      <li class="hidden">PAM allows applications to use any authentication method (ie, fingerprint, yubikey, etc).</li>
-                      <li class="hidden">PAM modules exist for <a class="link" target="_blank" href="https://github.com/google/google-authenticator-libpam#google-authenticator-pam-module">google authenticator</a> and other Multi-Factor Authentication services.</li>
-                      <li class="hidden">PAM can be used for authentication for any application that supports it.</li>
-                      <li class="hidden">PAM files are stored in /etc/pam.d</li>
-                      <li class="hidden">Account password requirements can be set in <code>/etc/pam.d/common-password</code> on Ubuntu/Debian systems or <code>/etc/pam.d/system-auth</code> on Red Hat systems.</li>
-                      <li class="hidden">PAM can also be used to prevent non-root users from logging in. </li>
-                      <ul>
-                        <li class="hidden">By adding <code>auth required pam_nologin.so</code> to the top of <code>/etc/pam.d/login</code> or <code>/etc/pam.d/SSHd</code> file you can easily prevent system wide logins via those methods.</li>
-                        <li class="hidden">After adding <code>auth required pam_nologin</code> to either file, a file named <code>nologin</code> must be created in the <code>/etc/</code> directory. If a user attempts to log in, the contents of that file will be displayed to them.</li>
-                        <li class="hidden">To re-enable logins, simply delete the <code>/etc/nologin</code> file.</li>
-                        <li class="hidden">Users will still be able to SSH into accounts by using SSH keys if the UsePAM setting in the SSH server's configuration file (<code>/etc/ssh/sshd_config</code>) is set to 'no'.</li>
+                    <ul class="hidden">
+                      <li>PAM allows applications to use any authentication method (ie, fingerprint, yubikey, etc).</li>
+                      <li>PAM modules exist for <a class="link" target="_blank" href="https://github.com/google/google-authenticator-libpam#google-authenticator-pam-module">google authenticator</a> and other Multi-Factor Authentication services.</li>
+                      <li>PAM can be used for authentication for any application that supports it.</li>
+                      <li>PAM files are stored in /etc/pam.d</li>
+                      <li>Account password requirements can be set in <code>/etc/pam.d/common-password</code> on Ubuntu/Debian systems or <code>/etc/pam.d/system-auth</code> on Red Hat systems.</li>
+                      <li>PAM can also be used to prevent non-root users from logging in. </li>
+                      <ul class="hidden">
+                        <li>By adding <code>auth required pam_nologin.so</code> to the top of <code>/etc/pam.d/login</code> or <code>/etc/pam.d/SSHd</code> file you can easily prevent system wide logins via those methods.</li>
+                        <li>After adding <code>auth required pam_nologin</code> to either file, a file named <code>nologin</code> must be created in the <code>/etc/</code> directory. If a user attempts to log in, the contents of that file will be displayed to them.</li>
+                        <li>To re-enable logins, simply delete the <code>/etc/nologin</code> file.</li>
+                        <li>Users will still be able to SSH into accounts by using SSH keys if the UsePAM setting in the SSH server's configuration file (<code>/etc/ssh/sshd_config</code>) is set to 'no'.</li>
                       </ul>
                     </ul>
 
                     <li class="sub-list-padding">Account & password expiration dates can be configured in <code>/etc/login.defs</code></li>
-                    <ul>
-                      <li class="hidden"><code>pass_MIN_LEN</code> sets minimum password length</li>
-                      <li class="hidden"><code>pass_WARN_AGE</code> number of days warning before a password expires</li>
+                    <ul class="hidden">
+                      <li><code>pass_MIN_LEN</code> sets minimum password length</li>
+                      <li><code>pass_WARN_AGE</code> number of days warning before a password expires</li>
                     </ul>
 
                     <li class="sub-list-padding">Use Shadow passwords.</li>
-                      <ul>
-                        <li class="hidden">Encrypted Passwords are typically stored in <code>/etc/passwd</code>, but can be viewed by all users. This means that attackers can simply copy the encrypted passwords and take their time cracking them.</li>
-                        <li class="hidden">With shadow passwords, <code>/etc/passwd</code> only shows an 'x' as the users password. Instead, encrypted user passwords are stored in <code>/etc/shadow</code>, which can only be accessed by root.</li>
-                        <li class="hidden">shadow passwords can be enabled using <code>pwconv</code> as root.</li>
-                        <li class="hidden">Shadow password format:</li>
-                          <ul>
-                            <li class="hidden"><code>username:hashed password: days since epoch of last password change: days until user is allowed to change password: days before a password change is required: days warning before password expiry: days before account becomes inactive: days since epoch when account expires: reserved</code></li>
-                            <li class="hidden">Screenshot of the /etc/shadow file from a debian VM:<br><img class="sub-section-image" src="../images/etc shadow.jpg" alt="Screenshot of the /etc/shadow file from a debian VM"/></li>
+                      <ul class="hidden">
+                        <li>Encrypted Passwords are typically stored in <code>/etc/passwd</code>, but can be viewed by all users. This means that attackers can simply copy the encrypted passwords and take their time cracking them.</li>
+                        <li>With shadow passwords, <code>/etc/passwd</code> only shows an 'x' as the users password. Instead, encrypted user passwords are stored in <code>/etc/shadow</code>, which can only be accessed by root.</li>
+                        <li>shadow passwords can be enabled using <code>pwconv</code> as root.</li>
+                        <li>Shadow password format:</li>
+                          <ul class="hidden">
+                            <li><code>username:hashed password: days since epoch of last password change: days until user is allowed to change password: days before a password change is required: days warning before password expiry: days before account becomes inactive: days since epoch when account expires: reserved</code></li>
+                            <li>Screenshot of the /etc/shadow file from a debian VM:<br><img class="sub-section-image" src="../images/etc shadow.jpg" alt="Screenshot of the /etc/shadow file from a debian VM"/></li>
                           </ul>
                       </ul>
                     <li class="sub-list-padding"><code>chage</code>: change user password expiry information.</li>
-                    <ul>
-                      <li class="hidden"><code>chage -l account</code>:list account aging information.</li>
-                      <li class="hidden"><code>chage -M Max_Days</code>: Set the max number of days during which a password is valid.</li>
-                      <li class="hidden"><code>chage -E Epire_Date</code>: date on which the account will no longer be accessible in yyy/mm/dd format. Use -1 to 'un-expire' an account.</li>
-                      <li class="hidden"><code>chage -d 0</code>: will force a user to change their password the next time they try to sign in.</li>
+                    <ul class="hidden">
+                      <li><code>chage -l account</code>:list account aging information.</li>
+                      <li><code>chage -M Max_Days</code>: Set the max number of days during which a password is valid.</li>
+                      <li><code>chage -E Epire_Date</code>: date on which the account will no longer be accessible in yyy/mm/dd format. Use -1 to 'un-expire' an account.</li>
+                      <li><code>chage -d 0</code>: will force a user to change their password the next time they try to sign in.</li>
                     </ul>
                     
                     <li class="sub-list-padding">Centralized Authentication</li>
-                      <ul>
-                        <li class="hidden">Centralized authentication systems allow administrators to prevent accounts from performing any actions, including logging in if they become compromised.</li>
-                        <li class="hidden">If an attack gains control of your centralized authentication system, they control the device.</li>
-                        <li class="hidden">Common centralized authentication systems are freeIPA and LDAP.</li>
+                      <ul class="hidden">
+                        <li>Centralized authentication systems allow administrators to prevent accounts from performing any actions, including logging in if they become compromised.</li>
+                        <li>If an attack gains control of your centralized authentication system, they control the device.</li>
+                        <li>Common centralized authentication systems are freeIPA and LDAP.</li>
                       </ul>
 
                     <li class="sub-list-padding">Intrusion prevention</li>  
-                      <ul>
-                        <li class="hidden">Intrusion prevention systems, such as <a class="link" target="_blank" href="https://www.fail2ban.org/wiki/index.php/Main_Page">fail2ban</a>, monitor system log files. If too many failed login attempts are detected, their IP will be blocked.</li>
-                        <li class="hidden">fail2ban can be configured to unblock IP addresses after a set period of time, so if the "attacker" turns out to be a normal user that forgot their password, they will be able to regain access to the system.</li>
-                        <li class="hidden">fail2ban can be used for any application that writes login attempts to a log file. This includes SSH and many other common applications.</li>
+                      <ul class="hidden">
+                        <li>Intrusion prevention systems, such as <a class="link" target="_blank" href="https://www.fail2ban.org/wiki/index.php/Main_Page">fail2ban</a>, monitor system log files. If too many failed login attempts are detected, their IP will be blocked.</li>
+                        <li>fail2ban can be configured to unblock IP addresses after a set period of time, so if the "attacker" turns out to be a normal user that forgot their password, they will be able to regain access to the system.</li>
+                        <li>fail2ban can be used for any application that writes login attempts to a log file. This includes SSH and many other common applications.</li>
                       </ul>
 
                       <li class="sub-list-padding">Disabling root logins</li>
-                      <ul>
-                        <li class="hidden">To display all accounts with UID of 0 (root access), run <code>awk -F: '$3 == 0 {print $1}' /etc/passwd</code></li>
-                        <ul>
-                          <li class="hidden">This command works by using awk, which is a text processing command. The -F: option tells awk to use a colon as the field separator, as fields in the /etc/passwd file are separated by colons. The $3 == 0 part is a condition that checks if the third field (which is the UID) is 0. If this condition is true, awk executes the action in the curly braces, which is to print the first field (the username).</li>
-                          <li class="hidden">Any accounts with a UID of 0 should either be assigned a different UID or be removed.</li>
+                      <ul class="hidden">
+                        <li>To display all accounts with UID of 0 (root access), run <code>awk -F: '$3 == 0 {print $1}' /etc/passwd</code></li>
+                        <ul class="hidden">
+                          <li>This command works by using awk, which is a text processing command. The -F: option tells awk to use a colon as the field separator, as fields in the /etc/passwd file are separated by colons. The $3 == 0 part is a condition that checks if the third field (which is the UID) is 0. If this condition is true, awk executes the action in the curly braces, which is to print the first field (the username).</li>
+                          <li>Any accounts with a UID of 0 should either be assigned a different UID or be removed.</li>
                         </ul>
-                        <li class="hidden"><code>/etc/securetty</code></li>
-                        <ul>
-                          <li class="hidden">This is a config file that contains a list of TTY devices where root is allowed to login. Leaving it blank will prevent root logins.</li>
-                          <li class="hidden">TTY devices are 'local' terminal/console devices. Leaving a blank securetty file will not prevent remote console sessions, such as SSH.</li>
+                        <li><code>/etc/securetty</code></li>
+                        <ul class="hidden">
+                          <li>This is a config file that contains a list of TTY devices where root is allowed to login. Leaving it blank will prevent root logins.</li>
+                          <li>TTY devices are 'local' terminal/console devices. Leaving a blank securetty file will not prevent remote console sessions, such as SSH.</li>
                         </ul>
-                        <li class="hidden">Set the root account shell to nologin. This can be done by modifying the /etc/passwd file, or ideally with the chsh command.</li>
-                        <li class="hidden">Use <code>passwd /l root</code> to lock the root account password.</li>
-                        <li class="hidden">To prevent root logins via ssh, add <code>PermitRootLogin no</code> to the <code>/etc/ssh/sshd_config</code> file.</li>
-                        <ul>
-                          <li class="hidden">you can prevent other users from accessing the system via SSH by adding <code>DenyUsers account_names</code> to the same file.</li>
-                          <li class="hidden">Run <code>systemctl reload sshd</code></li>
+                        <li>Set the root account shell to nologin. This can be done by modifying the /etc/passwd file, or ideally with the chsh command.</li>
+                        <li>Use <code>passwd /l root</code> to lock the root account password.</li>
+                        <li>To prevent root logins via ssh, add <code>PermitRootLogin no</code> to the <code>/etc/ssh/sshd_config</code> file.</li>
+                        <ul class="hidden">
+                          <li>you can prevent other users from accessing the system via SSH by adding <code>DenyUsers account_names</code> to the same file.</li>
+                          <li>Run <code>systemctl reload sshd</code></li>
                         </ul>
 
                         <li class="sub-list-padding">Securing System / Application Accounts</li>
-                        <ul>
-                          <li class="hidden">Use 1 account per service. For example, if you are running an nginx web server, run that server as its own nginx user.</li>
-                          <li class="hidden">Do not allow direct logins to system or application accounts.</li>
-                          <li class="hidden">Use <code>sudo -u</code> to run commands as an application account.</li>
+                        <ul class="hidden">
+                          <li>Use 1 account per service. For example, if you are running an nginx web server, run that server as its own nginx user.</li>
+                          <li>Do not allow direct logins to system or application accounts.</li>
+                          <li>Use <code>sudo -u</code> to run commands as an application account.</li>
                         </ul>
 
                         <li class="sub-list-padding">Deleting Accounts</li>
-                        <ul>
-                          <li class="hidden">When an account is no longer needed, use <code>userdel -r UID</code> to delete the account. -r specifies to delete that users home directory.</li>
-                          <li class="hidden">Use <code>id account_name</code> to find an accounts UID.</li>
-                          <li class="hidden">After deleting a user account, you can find leftover files that belonged to that user by running <code>find / -UID</code> and <code>find / -nouser</code></li>
+                        <ul class="hidden">
+                          <li>When an account is no longer needed, use <code>userdel -r UID</code> to delete the account. -r specifies to delete that users home directory.</li>
+                          <li>Use <code>id account_name</code> to find an accounts UID.</li>
+                          <li>After deleting a user account, you can find leftover files that belonged to that user by running <code>find / -UID</code> and <code>find / -nouser</code></li>
                         </ul>
                       </ul>
                   </ul>
@@ -307,25 +307,25 @@
   
           <div class="col-lg-1"></div>
           <div class="sub-section-box col-lg-12">
-            <ul>
-              <li class="hidden">Network Services (typically referred to as servers, or daemons)</li>
-              <ul>
-                <li class="hidden">Servers & daemons constantly run and the background & listen on network ports.</li>
-                <li class="hidden">Because their output is continuous, it is typically stored in log files. Most applications will store their logs in the /var/logs directory.</li>
-                <li class="hidden">Daemons and servers are typically designed with a single task in mind (hosting a website, handling SSH, etc)</li>
+            <ul class="hidden">
+              <li>Network Services (typically referred to as servers, or daemons)</li>
+              <ul class="hidden">
+                <li>Servers & daemons constantly run and the background & listen on network ports.</li>
+                <li>Because their output is continuous, it is typically stored in log files. Most applications will store their logs in the /var/logs directory.</li>
+                <li>Daemons and servers are typically designed with a single task in mind (hosting a website, handling SSH, etc)</li>
               </ul>
-              <li class="hidden">Use a dedicated user for each application.</li>
-              <ul>
-                <li class="hidden">This way, if an attacker gains control over a system, they should not be able to access the rest of the system.</li>
-                <li class="hidden">ports below 1024 require root privileges to open. If an application must use one of these ports, use root privileges to open the port, then drop the privileges.</li>
-                <li class="hidden">if a server is running on a low port, check the application configuration to see if you can specify a non-root user to perform the work.</li>
+              <li>Use a dedicated user for each application.</li>
+              <ul class="hidden">
+                <li>This way, if an attacker gains control over a system, they should not be able to access the rest of the system.</li>
+                <li>ports below 1024 require root privileges to open. If an application must use one of these ports, use root privileges to open the port, then drop the privileges.</li>
+                <li>if a server is running on a low port, check the application configuration to see if you can specify a non-root user to perform the work.</li>
               </ul>
-              <li class="hidden">Stop & uninstall all unused services.</li>
-              <li class="hidden">Ensure all applications are up to date with the latest security patches.</li>
-              <li class="hidden">Configure each service to only listen to required interfaces and addresses.</li>
-              <ul>
-                <li class="hidden">For example, configure SSH to only listen to private IP addresses on the local network so that SSH is not accessable via the internet.</li>
-                <li class="hidden">some services, such as databases, may not need any access by network devices. In this case, configure the service to listen to the "loopback" adress: 127.0.0.1</li>
+              <li>Stop & uninstall all unused services.</li>
+              <li>Ensure all applications are up to date with the latest security patches.</li>
+              <li>Configure each service to only listen to required interfaces and addresses.</li>
+              <ul class="hidden">
+                <li>For example, configure SSH to only listen to private IP addresses on the local network so that SSH is not accessable via the internet.</li>
+                <li>some services, such as databases, may not need any access by network devices. In this case, configure the service to listen to the "loopback" adress: 127.0.0.1</li>
               </ul>
             </ul>
 
@@ -344,54 +344,54 @@
                     <h1 class="sub-section-header"><marK> Securing SSH </marK></h1>
                 </div>
                 <div class="sub-section-box col-lg-12">
-                  <ul>
-                    <li class="hidden">Key based authentication is generally the safest way to use SSH</li>
-                    <li class="hidden">Key based authentication can be enabled by adding <code>PubKeyAuthentication yes</code> to the <code>/etc/ssh/sshd_config</code> file.</li>
-                    <li class="hidden">To generate an SSH key, run <code>ssh-keygen</code></li>
-                    <ul>
-                      <li class="hidden">When generating a key, it is common to use <code>ssh-keygen -t</code> to specify what algorithm to use when generating the key.</li>
-                      <ul>
-                        <li class="hidden">Common algorithm options are rsa and ed25519</li>
+                  <ul class="hidden">
+                    <li>Key based authentication is generally the safest way to use SSH</li>
+                    <li>Key based authentication can be enabled by adding <code>PubKeyAuthentication yes</code> to the <code>/etc/ssh/sshd_config</code> file.</li>
+                    <li>To generate an SSH key, run <code>ssh-keygen</code></li>
+                    <ul class="hidden">
+                      <li>When generating a key, it is common to use <code>ssh-keygen -t</code> to specify what algorithm to use when generating the key.</li>
+                      <ul class="hidden">
+                        <li>Common algorithm options are rsa and ed25519</li>
                       </ul>
-                      <li class="hidden">Another common option when generating a key is <code>ssh-keygen -b</code> which is used to specify the number of bits in the key.</li>
-                      <ul>
-                        <li class="hidden">A longer key means it is better protected against brute force attacks, but it also means it is more compute heavy to generate and validate.</li>
-                        <li class="hidden">The typical length is 4096</li>
+                      <li>Another common option when generating a key is <code>ssh-keygen -b</code> which is used to specify the number of bits in the key.</li>
+                      <ul class="hidden">
+                        <li>A longer key means it is better protected against brute force attacks, but it also means it is more compute heavy to generate and validate.</li>
+                        <li>The typical length is 4096</li>
                       </ul>
-                      <li class="hidden">When you generate an ssh key, it will ask you to input a password that will be required when that key is used.</li>
-                      <ul>
-                        <li class="hidden">In some usecases, you may not want to have a password protected key. For example, if you need to automate an SSH connection, it may be unnecessarily complicated to automate password entry.</li>
+                      <li>When you generate an ssh key, it will ask you to input a password that will be required when that key is used.</li>
+                      <ul class="hidden">
+                        <li>In some usecases, you may not want to have a password protected key. For example, if you need to automate an SSH connection, it may be unnecessarily complicated to automate password entry.</li>
                       </ul>
-                      <li class="hidden">When you run ssh-keygen, two files are created in that users home directory (~/.ssh/). Those files are id_rsa & id_rsa.pub</li>
-                      <ul>
-                        <li class="hidden">id_rsa is your private SSH key. Its permissions should be set so that only the user that generated it can access it.</li>
-                        <li class="hidden">id_rsa.pub is your public SSH key. This will be placed in the remote hosts ~/.ssh/authorized-keys file to grant SSH access to that user.</li>
-                        <li class="hidden">you can add a key to a remote host by running <code>ssh-copy-id user@host</code></li>
-                        <li class="hidden">For example <code>ssh-copy-id root@1.1.1.1</code> or <code>ssh-copy-id root@mydomain.com</code></li>
+                      <li>When you run ssh-keygen, two files are created in that users home directory (~/.ssh/). Those files are id_rsa & id_rsa.pub</li>
+                      <ul class="hidden">
+                        <li>id_rsa is your private SSH key. Its permissions should be set so that only the user that generated it can access it.</li>
+                        <li>id_rsa.pub is your public SSH key. This will be placed in the remote hosts ~/.ssh/authorized-keys file to grant SSH access to that user.</li>
+                        <li>you can add a key to a remote host by running <code>ssh-copy-id user@host</code></li>
+                        <li>For example <code>ssh-copy-id root@1.1.1.1</code> or <code>ssh-copy-id root@mydomain.com</code></li>
                       </ul>
                     </ul>
-                    <li class="hidden">SSH key authentication can be enforeced by disabling password authentication by adding <code>PasswordAuthentication no</code> to the <code>/etc/ssh/sshd_config</code> file.</li>
-                      <ul>
-                        <li class="hidden">Disabling password authentication to SSH is generally good practice as SSH keys are effectively impossible to brute force.</li>
+                    <li>SSH key authentication can be enforeced by disabling password authentication by adding <code>PasswordAuthentication no</code> to the <code>/etc/ssh/sshd_config</code> file.</li>
+                      <ul class="hidden">
+                        <li>Disabling password authentication to SSH is generally good practice as SSH keys are effectively impossible to brute force.</li>
                       </ul>
-                    <li class="hidden"><mark>You should never log in directly to the root user.</mark></li>
-                      <ul>
-                        <li class="hidden">When setting up a remote host initially it is OK to log in as the root user to get other accounts set up, but then SSH access should quickly be disabled.</li>
-                        <li class="hidden">To prevent root logins via ssh, add <code>PermitRootLogin no</code> to the <code>/etc/ssh/sshd_config</code> file.</li>
-                        <li class="hidden">If you need acccess the root user, you should do so by SSHing into your personal user, and then switching to the root user using <code>sudo su -</code></li>
+                    <li><mark>You should never log in directly to the root user.</mark></li>
+                      <ul class="hidden">
+                        <li>When setting up a remote host initially it is OK to log in as the root user to get other accounts set up, but then SSH access should quickly be disabled.</li>
+                        <li>To prevent root logins via ssh, add <code>PermitRootLogin no</code> to the <code>/etc/ssh/sshd_config</code> file.</li>
+                        <li>If you need acccess the root user, you should do so by SSHing into your personal user, and then switching to the root user using <code>sudo su -</code></li>
                       </ul>
-                      <li class="hidden">sshd_config</li>
-                      <ul>
-                        <li class="hidden">Specific users can be granted SSH access by adding <code>AllowUsers username0 username1 username 2</code></li>
-                        <li class="hidden">The same can be done for groups <code>AllowGroups group0 group1 group2</code></li>
-                        <li class="hidden">Groups & users can be denied SSH access by adding <code>DenyUsers</code> or <code>DenyGroups</code></li>
-                        <li class="hidden"><mark>The SSH banner should be disabled</mark> by adding <code>Banner none</code> as the information it provides may be used by attackers.</li>
-                        <li class="hidden"><mark>Changes to sshd_config will not apply until the application has been reloaded.</mark></li>
-                        <ul>
-                          <li class="hidden">This can generally be done by running <code>systemctl reload sshd</code></li>
+                      <li>sshd_config</li>
+                      <ul class="hidden">
+                        <li>Specific users can be granted SSH access by adding <code>AllowUsers username0 username1 username 2</code></li>
+                        <li>The same can be done for groups <code>AllowGroups group0 group1 group2</code></li>
+                        <li>Groups & users can be denied SSH access by adding <code>DenyUsers</code> or <code>DenyGroups</code></li>
+                        <li><mark>The SSH banner should be disabled</mark> by adding <code>Banner none</code> as the information it provides may be used by attackers.</li>
+                        <li><mark>Changes to sshd_config will not apply until the application has been reloaded.</mark></li>
+                        <ul class="hidden">
+                          <li>This can generally be done by running <code>systemctl reload sshd</code></li>
                         </ul>
                       </ul>
-                  <ul>
+                  <ul class="hidden">
                 </div>
                 
                 <!---- Commented out while me learning 
@@ -409,7 +409,7 @@
         <h1><mark> Filesystem Security </mark></h1>
       </div>
       <div class="sub-section-box col-lg-12">
-        <ul></ul>
+        <ul class="hidden"></ul>
       </div>
   <div class="col-lg-1"></div>
 
@@ -424,10 +424,10 @@
 
     <div class="col-lg-1"></div>
         <div class="sub-section-box col-lg-12">
-            <ul>
-              <li class="hidden"><a href="https://www.linode.com/docs/guides/security/basics/" class="link" target="_blank">Linode Security Basics</a></li>
-              <li class="hidden"><a href="https://www.cyberciti.biz/tips/linux-security.html" class="link" target="_blank">cyberciti linux hardening 2023</a></li>
-              <li class="hidden"><a href="https://portswigger.net/web-security/all-materials" class="link" target="_blank">PortSwigger Security Materials</a></li>
+            <ul class="hidden">
+              <li><a href="https://www.linode.com/docs/guides/security/basics/" class="link" target="_blank">Linode Security Basics</a></li>
+              <li><a href="https://www.cyberciti.biz/tips/linux-security.html" class="link" target="_blank">cyberciti linux hardening 2023</a></li>
+              <li><a href="https://portswigger.net/web-security/all-materials" class="link" target="_blank">PortSwigger Security Materials</a></li>
           </ul>
 
 
