@@ -69,7 +69,7 @@
     <div class="sub-section-box col-lg-12">
 
       <h3>Racks, enclosures, & unit sizes</h3>
-      <ul class="spaced-list">
+      <ul class="spaced-list hidden">
         <li>Servers deployed in enterprise are generally stored in racks. These are monolithic cases designed to store several physical devices.</li>
         <li>Servers are often mounted to the rack using rails. Server rails allow the hardware to be slid in out of the rack without having to remove it fully. This makes harwdare maintanence much more convienient for technicians. Alternativly, some devices arer mounted to the rack using more permanent solutions, such as rack studs, or bolts.</li>
         <li>Generally a rack will contain servers, switches, battery backups, and potentially a KVM (keyboard, Video, Mouse) unit.</li>
@@ -83,7 +83,7 @@
       </ul>
 
       <h3>Powering Servers</h3>
-      <ul class="spaced-list">
+      <ul class="spaced-list hidden">
         <li>Its is generally good practice to have all computing equipment powered by a surge supressor at the very leaast. Servers, however, have much higher requirements for uptime.</li>
         <li>Small scale servers for personal use should at the very least be connected to an Uninteruptable Power Supply (UPS). This way, if power to the system is lost, there will at least be time for data to finish writing to the disk if necessary, or provide enough time for the system to safley shut down.</li>
         <li>Many servers wil have redundant power supplies. this means that one power supply could fail outright and the system would still be able to operate as if nothing happened. This also provides time for system administrators to identify what may have caused the failure or replace the broken hardware as needed.</li>
@@ -93,7 +93,7 @@
       </ul>
 
       <h3>Network Cabling & Fiber</h3>
-      <ul class="spaced-list">
+      <ul class="spaced-list hidden">
         <li>The standard cabling used to connect devices to a network is Ethenet. Ethernet is a copper based - twisted pair cable, generally designed to handle short to medium distance runs between devices.</li>
         <li><img src="../images/network-cabling.png"></li>
         <li>For applications that require higher bandwidth than ethernet is capable of, fiber optic cabling should be used instead.</li>
@@ -141,10 +141,10 @@
       </ul>
 
       <h3>Server Hardware Components:</h3>
-      <ul class="spaced-list">
+      <ul class="spaced-list hidden">
 
         <h4>Motherboard</h4>
-        <ul class="spaced-list">
+        <ul class="spaced-list hidden">
           <li>The motherboard is the backbone that connects all of the components of a computer together.</li>
           <li>When a computer is turned on, the first thing that happens is the motherbaord runs POST (Power On Self Test) to validate that all the hardware is installed correctly. Many motherboards will have onboard displays or speakers that indicate the progress of the POST test using specific codes.</li>
           <li>After POSt, the motherboard will hand over control of the system to either BIOS (Basic input/output System) or EUFI (Unified Extensible Firmware Interface)</li>
@@ -156,7 +156,7 @@
         </ul>
 
         <h4>CPU (Central Proccessing Unit)</h4>
-        <ul class="spaced-list">
+        <ul class="spaced-list hidden">
           <li>CPU clock speed: indicates how fast the cpu runs in cycles per second, or Hertz (Hz). Most modern CPU's are measured in GHz (Billions of cycles per second). Higher clock speed means more instructions completed per second.</li>
           <li>CPU cores: indicates how many tasks the CPU is designed to be able to handle simultaneously.</li>
           <li>As clock speed and core count increase, CPU's will require more power and generate more heat (within the same generation of CPU. Newer CPU's may be able to have better specifications with the same power and thermal requirements).</li>
@@ -169,7 +169,7 @@
         </ul>
 
         <h4>GPU (Graphics Proccessing Unit)</h4>
-        <ul class="spaced-list">
+        <ul class="spaced-list hidden">
           <li>GPU's are proccessors dedicated to handling parrallel computing tasks, such as completing repeated calculations. </li>
           <li>A common usecase is 3d matrix math, which is used to calculate positions of objects in 3d space in applications such as modeling software. These tasks are not handled well by the CPU.</li>
           <li>GPU's will generally have their own RAM, however some systems will have their GPU built into the CPU (commonly reffered to as an APU or Accelerated Proccessing Unit), which will share some amount of the system ram between the CPU and GPU.</li>
@@ -178,7 +178,7 @@
         </ul>
 
         <h4>RAM (Random Access Memory)</h4>
-        <ul class="spaced-list">
+        <ul class="spaced-list hidden">
           <li>RAM is non-persistant memory, meaning as soon as it looses power, all of the data stored in RAM is lost.</li>
           <li>RAM is high speed memory designed to store data for an application while it is in use.</li>
           <li>RAM is generally connected to the motherboard directly. There are several generations of ram, which are reffered to as DDR (Double Data Rate). The newest version at the time of writing is DDR5. It is important to know what version of RAM your system uses because they are physically and electrically different; a ddr4 dimm will not work in a dd5 motherboard.</li>
@@ -186,14 +186,14 @@
         </ul>
 
         <h4>Expansion Cards</h4>
-        <ul class="spaced-list">
+        <ul class="spaced-list hidden">
           <li>Modern computers generally come equipped with PCIe (Peripheral Component Interconnect express) expansion slots which can be used to connect various kinds of expansion cards.</li>
           <li>Common expansion cards include NICs (Network Interface Cards), USB expansion cards, capture cards, or storage expansion cards such as HBAs (Host Bus Adapter) or PCIe "splitters" that turn one PCIe slot into several NVMe ssd slots (this may require a motherboard that supports PCIe Bifurcation).</li>
           <li>GPU's generally connect via the PCIe bus and can also be considered expansion cards.</li>
         </ul>
 
         <h4>Storage</h4>
-        <ul class="spaced-list">
+        <ul class="spaced-list hidden">
           <li>There are 2 common types of storage, HDDs (Hard Disk Drive) and SSDs (Solid State Drive).</li>
 
           <li>HDDs are an older standard, but are still very common.</li>
@@ -216,7 +216,7 @@
           </ul>
 
           <li>RAID (Redundant Array of Independent Disks)</li>
-          <ul class="spaced-list">
+          <ul class="spaced-list hidden">
             <li>RAID is a technology used to combine disks to improve either speed or reliability. There are several ways to combine disks to get different effects.</li>
             <ul class="hidden">
               <li>RAID 0 (Striping): This level splits data evenly across two or more disks with no parity information for redundancy. It's intended to increase the system's performance, as multiple disks are reading and writing data, which can significantly improve speed. However, it offers no fault tolerance. If one drive fails, all data in the array is lost. </li>
@@ -252,7 +252,7 @@
           </ul>
 
           <h4>Interface Types (common connectors for storage devices)</h4>
-          <ul class="spaced-list">
+          <ul class="spaced-list hidden">
             <li>SCSI (Small Computer System Interface): SCSI is an older standard that uses parallel communication. It has been largely replaced by SAS and SATA in most applications. The maximum bandwidth depends on the specific version of SCSI, but the latest version (Ultra640 SCSI) can reach up to 640 MB/s. SCSI connectors are typically rectangular with a lot of pins (50, 68, or 80 depending on the version).</li>
             <li>SAS (Serial Attached SCSI): SAS is a point-to-point serial protocol that replaced parallel SCSI in many settings. SAS-3, the latest version as of my knowledge cutoff in September 2021, supports data rates of up to 12 Gbit/s. SAS connectors are similar to SATA connectors but have a larger "L" shape.</li>
             <li>SATA (Serial ATA): SATA is a common interface for consumer hard drives and SSDs. The latest version, SATA 3, supports data rates of up to 6 Gbit/s. SATA connectors are flat and have an "L" shape.</li>
@@ -300,7 +300,7 @@
       <div class="sub-section-box col-lg-12">
         
         <h3>Out of Band Management</h3>
-        <ul class="spaced-list">
+        <ul class="spaced-list hidden">
 
           <li>In an enterprise or datacenter environment, being able to maintain and operate servers remotely is very important. As such, there are several common tools that can be used to control remote servers.</li>
           <ul class="hidden">
@@ -321,7 +321,7 @@
         </ul>
 
         <h3>Operating System Installation</h3>
-          <ul class="spaced-list">
+          <ul class="spaced-list hidden">
             <li>There are many situations where it may be necessary to install or re-install the operating system on a device. For example, a new device with blank drives, or an existing system that needs to have a different OS for whatever reason.</li>
             <li>To install the operating system, there are some common tools that you will need. The main tool is "installation media". Installation media is generally a USB flash drive or a CD with the software required to install the operating system loaded on to it. In an enterprise setting, the installation media may also be a place on the network.</li>
             <li>For windows systems, you can purchase installation media through many retailers, or it may be provided to you by the manufacturer of your device. I have links to the windows media creation tools for windows 10 & 11 <a href="https://patrick.quam.computer/tools#links" class="link" target="_blank">here</a> if you want to create your own. After installing windows, you can use <li><a href="https://github.com/massgravel/Microsoft-Activation-Scripts" class="link" target="_blank">Microsoft Activation Scripts</a></li> to activate your copy of windows, or purchase a key online.</li>
