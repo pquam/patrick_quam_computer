@@ -64,9 +64,7 @@
           <h1 class="sub-section-header"><mark>I had to google this:</mark></h1>
         </div>
         <div class="sub-section-box col-lg-12">
-
-          <ul class="hidden">
-            <li>Are both single mode and multi mode cables generally terminated in pairs?</li>
+            <h3>Are both single mode and multi mode cables generally terminated in pairs?</h3>
       
             <ul class="spaced-list">
               
@@ -78,7 +76,7 @@
             </ul>
 
 
-            <li id="fqdn">What is an FQDN (Fully Qualified Domain Name), and how is it different from a URL?</li>
+            <h3 id="fqdn">What is an FQDN (Fully Qualified Domain Name), and how is it different from a URL?</h3>
             <ul class="spaced-list">
               <li><mark>Internet Explanation:</mark> FQDN stands for Fully Qualified Domain Name. It's a complete and unambiguous domain name that specifies an exact location in the Domain Name System (DNS) hierarchy. This means it includes all higher levels of the DNS structure, not just the host and domain name.
 
@@ -107,7 +105,7 @@
             </ul>
 
 
-            <li id="single-multi-mode-fiber">How do single mode and multi mode fiber connect to fiber transceivers? Do the transceivers have sc or lc connectors and you just need to make sure you buy the transceiver for the kind and length of cable you have?</li>
+            <h3 id="single-multi-mode-fiber">How do single mode and multi mode fiber connect to fiber transceivers? Do the transceivers have sc or lc connectors and you just need to make sure you buy the transceiver for the kind and length of cable you have?</h3>
             <ul class="spaced-list">
               <li><mark>Internet answer:</mark> Most modern transceivers will use LC connectors because they are smaller size. When choosing a transceiver there are 4 main things to consider:</li>
               <ol>
@@ -124,7 +122,7 @@
               </ul>
             </ul>
 
-            <li>What are chromatic and modal dispersion?</li>
+            <h3>What are chromatic and modal dispersion?</h3>
             <ul class="spaced-list">
               <li>Chromatic Dispersion: This type of dispersion occurs in single-mode fibers and is caused by the different speeds at which different wavelengths (colors) of light travel through the fiber. In an optical fiber, light doesn't travel at exactly the same speed for all wavelengths. This slight variation can cause different wavelengths to arrive at the receiver at slightly different times, which can cause the signal to spread out or disperse. This is particularly relevant for systems that use multiple wavelengths of light (DWDM systems, for example).</li>
               <li>Modal Dispersion: This type of dispersion occurs in multi-mode fibers. In a multi-mode fiber, light can take multiple paths (or modes) down the fiber, and these different paths can have different lengths. This means that light taking one path might arrive at the receiver before light taking a different path, which can cause the signal to spread out or disperse. This is one of the reasons why multi-mode fibers are typically used for shorter distances.</li>
@@ -133,7 +131,7 @@
             </ul>
 
 
-            <li id="ssd-physical-storage">How is data physically stored on SSDs?</li>
+            <h3 id="ssd-physical-storage">How is data physically stored on SSDs?</h3>
             <ul class="spaced-list">
               <li>Data in a Solid State Drive (SSD) is stored in NAND flash memory chips. These chips are made up of many memory cells, which are the smallest units that can store data. The physical storage of data in these cells is based on the principles of electrical engineering and quantum mechanics.</li>
               <li>Each memory cell in a NAND flash memory chip is essentially a field-effect transistor. It has a control gate and a floating gate, separated by an oxide layer.</li>
@@ -144,7 +142,7 @@
               <li><a href="https://www.youtube.com/watch?v=5Mh3o886qpg" class="link" target="_blank">Branch Education: How do SSDs Work?</a></li>
             </ul>
 
-            <li id="#subnetting-vs-vlans">What is the difference between a subnet and a vlan?</li>
+            <h3 id="#subnetting-vs-vlans">What is the difference between a subnet and a vlan?</h3>
             <ul class="hidden spaced-list">
               <li>More info on subnets and subnet mask <a href="https://patrick.quam.computer/notes/server+#subnetting" class="link">here</a></li>
               <li>Both subnets and VLANs are used to segment and organize networks, but they operate at different layers of the OSI model and serve different purposes.</li>
@@ -173,8 +171,8 @@
               <li>VLANs can span across multiple subnets, and conversely, multiple VLANs can exist within a single subnet. However, while VLANs spanning multiple subnets can be useful in specific scenarios, they can also introduce management complexity. It's generally easier to manage and troubleshoot networks when there's a clear one-to-one relationship between VLANs and subnets.</li>
             </ul>
 
-            <li>What actually happens after your device recieves an IP from DNS?</li>
-            <ol class="hidden">
+            <h3>What actually happens after your device recieves an IP from DNS?</h3>
+            <ol class="hidden spaced-list">
               <li>TCP Connection Establishment (Three-Way Handshake):</li>
               <ul>
                 <li>The client initiates a connection to the server using the Transmission Control Protocol (TCP), the primary transport protocol of the internet.</li>
@@ -222,7 +220,49 @@
                 <li>Modern web protocols, like HTTP/2, support persistent connections. Instead of closing the connection after a single request-response cycle, the connection remains open for a set period, allowing multiple requests and responses without the overhead of establishing a new connection each time.</li>
               </ul>
             </ol>
-          </ul>
+
+            <h3>What is IGMP?</h3>
+            <ul class="hidden spaced-list">
+              <li>The Internet Group Management Protocol (IGMP) is a communications protocol used by hosts and adjacent routers on an IPv4 network to establish multicast group memberships.</li>
+              <li>IGMP is used by IP hosts to report their multicast group memberships to any neighboring multicast routers.</li>
+              <li>Instead of broadcasting data to all devices or sending multiple unicast streams, multicasting sends data only to the group of devices that are interested in that data.</li>
+              <li>IGMP is primarily concerned with managing multicast group memberships at the IP layer (Layer 3 of the OSI model). Its main function is to allow hosts to communicate their interest in joining or leaving a multicast group. The multicast group is identified by a multicast IP address (in the range of 224.0.0.0 to 239.255.255.255 for IPv4).</li>
+              <li>While IGMP operates at the IP layer, the actual data frames on a wired Ethernet network (like most LANs) are transmitted using MAC addresses at the Data Link layer (Layer 2). For multicast data to be efficiently delivered on a local network, there's a mapping between multicast IP addresses and multicast MAC addresses.</li>
+              <li>Multicasting is more bandwidth-efficient than broadcasting or unicasting for scenarios where the same data needs to be sent to multiple recipients. IGMP ensures that multicast data is only sent to hosts that have explicitly shown interest.</li>
+              <li><mark>Common Uses:</mark></li>
+              <ul>
+                <li>Multicast and IGMP are often used in IPTV and other streaming media applications where the same content is delivered to multiple recipients.</li>
+                <li>Some online multiplayer games use multicasting to synchronize game state among players.</li>
+                <li>Multicast can be used in large-scale video conferencing where the same video feed is viewed by multiple participants.</li>
+              </ul>
+              <li>How does IGMP work?</li>
+              <ul>
+                <li>Hosts send IGMP messages to their local multicast router, indicating their interest in joining a specific multicast group.</li>
+                <li>If a host no longer wishes to receive messages for a specific multicast group, it sends a leave group message.</li>
+                <li>Multicast routers send query messages to determine which hosts belong to a multicast group.</li>
+                <li>When a device wants to send or listen to multicast data for a specific multicast IP address, that IP address is mapped to a corresponding multicast MAC address. This mapping is deterministic, meaning the same multicast IP will always map to the same multicast MAC. For IPv4, the MAC address range 01:00:5E:00:00:00 to 01:00:5E:7F:FF:FF is reserved for multicast.</li>
+                <li>When multicast data is transmitted on the local network, it uses the derived multicast MAC address. Devices on the network that have expressed interest in that multicast group (via IGMP) will listen for frames with that multicast MAC address and process them.</li>
+              </ul>
+              <li><mark>For example:</mark> imagine a scenario in a corporate LAN where a video conference is being multicast to multiple participants.</li>
+              <ol>
+                <li>The video conferencing server streams the video to a multicast IP address, say 239.1.2.3.</li>
+                <li>This multicast IP address maps to a specific multicast MAC address based on the aforementioned deterministic mapping.</li>
+                <li>Devices (computers of the participants) that want to join this video conference will use IGMP to express their interest in the multicast group 239.1.2.3.</li>
+                <li>The network switch, aware of the IGMP memberships, will efficiently forward the video stream (using the multicast MAC address) only to the ports where the interested devices are connected.</li>
+                <li>The devices receive the video stream frames, identify them by the multicast MAC address, and then process the data, displaying the video to the participants.</li>
+              </ol>
+            </ul>
+
+            <h3>What is a "frame"?</h3>
+            <ul class="hidden">
+              <li>In the context of computer networking, data is transmitted across networks in chunks or packets. When we talk about the Data Link layer (Layer 2) of the OSI model, which is where MAC addresses operate, these packets are often referred to as "frames." A frame is essentially a package of information that includes not just the data being sent, but also source and destination MAC addresses, error-checking information, and other control data.</li>
+              <li>Any device on the network can send a broadcast frame, depending on its needs:</li>
+              <ul>
+                <li>A new device that just connected to the network might send a broadcast to discover services like DHCP.</li>
+                <li>If a computer wants to communicate with another device on its local network but doesn't know its MAC address, it might send a broadcast ARP request to find out.</li>
+                <li>Some network diagnostic tools might send broadcasts to discover devices or services on the local network.</li>
+              </ul>
+            </ul>
         </div>
     <div class="col-lg-1"></div>
 
