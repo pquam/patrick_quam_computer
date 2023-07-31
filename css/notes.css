@@ -357,3 +357,34 @@
         display: none;
     }
 }
+
+/* Mobile-specific styles for the on-page navigation */
+@media only screen and (max-width: 768px) {
+    .side-navigation {
+        position: fixed;
+        top: 0;
+        right: -80%; /* Initially hidden, only 20% visible as a tab */
+        width: 80%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        overflow-y: scroll;
+        transition: right 0.3s;
+    }
+
+    .side-navigation.open {
+        right: 0; /* Fully visible when open */
+    }
+
+    .toggle-sidebar-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000; /* Ensure it's on top */
+    }
+
+    .close-sidebar-button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+}
