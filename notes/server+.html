@@ -1,829 +1,830 @@
 <!DOCTYPE html>
+
 <html>
- <head>
-  <meta charset="utf-8"/>
-  <title>
+<head>
+<meta charset="utf-8"/>
+<title>
    Patrick Quam
   </title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Anek+Devanagari" rel="stylesheet"/>
-  <link href="../css/notes.css" rel="stylesheet"/>
-  <link href="../css/navbar.css" rel="stylesheet"/>
-  <script defer="" src="../javascript/slide.js">
-  </script>
-  <!-- CSS only -->
-  <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" rel="stylesheet"/>
-  <!-- Bootstrap Scripts -->
-  <script crossorigin="anonymous" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js">
-  </script>
- </head>
- <body class="grey-section">
-  <nav class="side-navigation">
-   <ul>
-    <li>
-     <a href="#server-hardware-installation-and-management">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Anek+Devanagari" rel="stylesheet"/>
+<link href="../css/notes.css" rel="stylesheet"/>
+<link href="../css/navbar.css" rel="stylesheet"/>
+<script defer="" src="../javascript/slide.js">
+</script>
+<!-- CSS only -->
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" rel="stylesheet"/>
+<!-- Bootstrap Scripts -->
+<script crossorigin="anonymous" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js">
+</script>
+</head>
+<body class="grey-section"><button class="nav-toggle-btn" onclick="toggleNav()">☰ Navigation</button>
+<nav class="side-navigation">
+<ul>
+<li>
+<a href="#server-hardware-installation-and-management">
       Server Hardware Installation and Management
      </a>
-     <ul>
-      <li>
-       <a href="#racks,-enclosures,-and-unit-sizes">
+<ul>
+<li>
+<a href="#racks,-enclosures,-and-unit-sizes">
         Racks, enclosures, &amp; unit sizes
        </a>
-      </li>
-      <li>
-       <a href="#powering-servers">
+</li>
+<li>
+<a href="#powering-servers">
         Powering Servers
        </a>
-      </li>
-      <li>
-       <a href="#network-cabling-and-fiber">
+</li>
+<li>
+<a href="#network-cabling-and-fiber">
         Network Cabling &amp; Fiber
        </a>
-      </li>
-      <li>
-       <a href="#server-hardware-components">
+</li>
+<li>
+<a href="#server-hardware-components">
         Server Hardware Components:
        </a>
-      </li>
-     </ul>
-    </li>
-    <li>
-     <a href="#server-administration-basics">
+</li>
+</ul>
+</li>
+<li>
+<a href="#server-administration-basics">
       Server Administration Basics
      </a>
-     <ul>
-      <li>
-       <a href="#out-of-band-management">
+<ul>
+<li>
+<a href="#out-of-band-management">
         Out of Band Management
        </a>
-      </li>
-      <li>
-       <a href="#operating-system-installation">
+</li>
+<li>
+<a href="#operating-system-installation">
         Operating System Installation
        </a>
-      </li>
-      <li>
-       <a href="#basic-networking-ip-(internet-protocol)-configuration">
+</li>
+<li>
+<a href="#basic-networking-ip-(internet-protocol)-configuration">
         Basic Networking: IP (Internet Protocol) Configuration
        </a>
-      </li>
-      <li>
-       <a href="#server-roles">
+</li>
+<li>
+<a href="#server-roles">
         Server Roles
        </a>
-      </li>
-      <li>
-       <a href="#server-functions-and-features">
+</li>
+<li>
+<a href="#server-functions-and-features">
         Server Functions &amp; Features
        </a>
-      </li>
-     </ul>
-    </li>
-    <li>
-     <a href="#security-and-disaster-recovery">
+</li>
+</ul>
+</li>
+<li>
+<a href="#security-and-disaster-recovery">
       Security &amp; Disaster Recovery
      </a>
-    </li>
-    <li>
-     <a href="#server-troubleshooting">
+</li>
+<li>
+<a href="#server-troubleshooting">
       Server Troubleshooting
      </a>
-    </li>
-   </ul>
-  </nav>
-  <!-- top section -->
-  <section class="top-section" id="title">
-   <div class="alert alert-primary" role="alert">
+</li>
+</ul>
+</nav>
+<!-- top section -->
+<section class="top-section" id="title">
+<div class="alert alert-primary" role="alert">
     Donate to
     <a class="alert-link" href="https://kramden.org/donate/">
      The Kramden Institute
     </a>
-   </div>
-   <!-- Nav bar -->
-   <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-    <div class="container-fluid">
-     <div id="navbar-placeholder">
-     </div>
-    </div>
-   </nav>
-   <div class="container-fluid">
-    <div class="row">
-     <div class="col-lg-6">
-      <h1 class="big-heading" id="server+">
+</div>
+<!-- Nav bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+<div class="container-fluid">
+<div id="navbar-placeholder">
+</div>
+</div>
+</nav>
+<div class="container-fluid">
+<div class="row">
+<div class="col-lg-6">
+<h1 class="big-heading" id="server+">
        Server+
       </h1>
-      <h2 class="section-heading">
+<h2 class="section-heading">
        Certification for server support and administration skills 💻
       </h2>
-      <h3 id="exam-objectives">
-       <a class="link" href="https://partners.comptia.org/docs/default-source/resources/comptia-server-sk0-005-exam-objectives" target="_blank">
+<h3 id="exam-objectives">
+<a class="link" href="https://partners.comptia.org/docs/default-source/resources/comptia-server-sk0-005-exam-objectives" target="_blank">
         Exam Objectives
        </a>
-      </h3>
-     </div>
-     <div class="col-lg-6">
-      <img class="title-image" src="../images/server+.png"/>
-     </div>
-    </div>
-   </div>
-  </section>
-  <section class="colored-section" id="sub-section2">
-   <div class="col-lg-1">
-   </div>
-   <div class="sub-section-box col-lg-12">
-    <h1 class="sub-section-header" id="server-hardware-installation-and-management">
-     <mark>
+</h3>
+</div>
+<div class="col-lg-6">
+<img class="title-image" src="../images/server+.png"/>
+</div>
+</div>
+</div>
+</section>
+<section class="colored-section" id="sub-section2">
+<div class="col-lg-1">
+</div>
+<div class="sub-section-box col-lg-12">
+<h1 class="sub-section-header" id="server-hardware-installation-and-management">
+<mark>
       Server Hardware Installation and Management
      </mark>
-    </h1>
-   </div>
-   <div class="col-lg-1">
-   </div>
-   <div class="sub-section-box col-lg-12">
-    <h3 id="racks,-enclosures,-and-unit-sizes">
+</h1>
+</div>
+<div class="col-lg-1">
+</div>
+<div class="sub-section-box col-lg-12">
+<h3 id="racks,-enclosures,-and-unit-sizes">
      Racks, enclosures, &amp; unit sizes
     </h3>
-    <ul class="spaced-list hidden">
-     <li>
+<ul class="spaced-list hidden">
+<li>
       Servers deployed in enterprise are generally stored in racks. These are monolithic cases designed to store several physical devices.
      </li>
-     <li>
+<li>
       Servers are often mounted to the rack using rails. Server rails allow the hardware to be slid in out of the rack without having to remove it fully. This makes hardware maintenance much more convenient for technicians. Alternatively, some devices are mounted to the rack using more permanent solutions, such as rack studs, or bolts.
      </li>
-     <li>
+<li>
       Generally a rack will contain servers, switches, battery backups, and potentially a KVM (keyboard, Video, Mouse) unit.
      </li>
-     <li>
+<li>
       Some racks, will have or require a special cooling system. Some times this can be as simple as a rack mountable fan, or could be as complex as a full water cooling distribution system.
      </li>
-     <li>
+<li>
       Many racks will have a dedicated mounting point for antistatic bracelets so that work can be done on the hardware installed in the rack without worrying about causing damage to components.
      </li>
-     <li>
+<li>
       While the depth of a rack can vary, the width and spacing between mount points on the rack are standardized.
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        The unit of space between mounting points on a rack is referred to as a 'U'. 1 U is equivalent to 1.75 inches or 4.45cm. For example, a 24u rack would have 24 mounting points. A 2u server would take up 2 of those 24 mounting points.
       </li>
-     </ul>
-     <li>
+</ul>
+<li>
       not all servers are enclosed in racks. Many servers are stored in standalone enclosures. These enclosures are effectively just normal computer cases.
      </li>
-    </ul>
-    <h3 id="powering-servers">
+</ul>
+<h3 id="powering-servers">
      Powering Servers
     </h3>
-    <ul class="spaced-list hidden">
-     <li>
+<ul class="spaced-list hidden">
+<li>
       It's is generally good practice to have all computing equipment powered by a surge suppressor at the very least. Servers, however, have much higher requirements for uptime.
      </li>
-     <li>
+<li>
       Small scale servers for personal use should at the very least be connected to an Uninteruptable Power Supply (UPS). This way, if power to the system is lost, there will at least be time for data to finish writing to the disk if necessary, or provide enough time for the system to safley shut down.
      </li>
-     <li>
+<li>
       Many servers wil have redundant power supplies. this means that one power supply could fail outright and the system would still be able to operate as if nothing happened. This also provides time for system administrators to identify what may have caused the failure or replace the broken hardware as needed.
      </li>
-     <li>
+<li>
       Ideally, servers of any importance should have their redundant power supplies connected to seperate UPS's, which would then be connected to outlets on seperate breakers. This way, even if a breaker gets tripped somewhere, the system will still be recieving power.
      </li>
-     <li>
+<li>
       At a large scale, such as an enterprise or data center scale, it may be worth having 2 seperate utility providers provide power to the building. This will help spread the massive electrical load of a huge server farm, as well as provide redundancy, so even if one major power source goes down, your servers will still be able to operate as expected.
      </li>
-     <li>
+<li>
       The standard power cable for modern desktop computers is the C13 power cable (C13 for male C14 for female). This standard is the same for server equipment.
      </li>
-    </ul>
-    <h3 id="network-cabling-and-fiber">
+</ul>
+<h3 id="network-cabling-and-fiber">
      Network Cabling &amp; Fiber
     </h3>
-    <ul class="spaced-list hidden">
-     <li>
+<ul class="spaced-list hidden">
+<li>
       The standard cabling used to connect devices to a network is Ethenet. Ethernet is a copper based - twisted pair cable, generally designed to handle short to medium distance runs between devices.
      </li>
-     <li>
-      <img src="../images/network-cabling.png"/>
-     </li>
-     <li>
+<li>
+<img src="../images/network-cabling.png"/>
+</li>
+<li>
       For applications that require higher bandwidth than ethernet is capable of, fiber optic cabling should be used instead.
      </li>
-     <li>
+<li>
       Fiber optic cables are immune to electromagnetic interference (EMI), which can be a problem with copper cables. This makes fiber optic cables a good choice for environments where EMI could be an issue.
      </li>
-     <li>
+<li>
       There are several types of fiber optic cable, which are intended for different applications. There are two common connectors, Subscriber Connector (SC) and Lucent Connector (LC). There are also two different kinds of cables, multimode and single mode.
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        SC vs LC
       </li>
-      <ul class="hidden">
-       <li>
+<ul class="hidden">
+<li>
         SC cables are an older standard, which is slowly being replaced by LC. There is no difference between the cables bandwidth, just the way the cabling connects to devices.
        </li>
-       <li>
+<li>
         The SC connector is a push-pull type connector that is larger in size, while the LC connector is a smaller form-factor connector that uses a latch as opposed to a push-pull system.
        </li>
-       <li>
+<li>
         LC connectors are half the size of SC connectors. This smaller size allows LC connectors to fit into denser port configurations, making them a popular choice for modern high-density applications.
        </li>
-       <li>
+<li>
         SC connectors are generally easier to insert and remove thanks to their push-pull design. LC connectors, on the other hand, use a latch mechanism which can be a bit more difficult to handle, especially in high-density applications.
        </li>
-       <li>
+<li>
         SC connectors have a square shape and are often used for mulitmode fiber, while LC connectors have a compact, modular design and can be used for single or mulitmode fiber.
        </li>
-       <li>
+<li>
         LC connectors are more expensive than SC connectors due to their smaller, more complex design.
        </li>
-       <li>
+<li>
         Both SC and LC connectors use a physical contact (PC) interface. This means that the two fiber ends in the connector physically touch each other.
        </li>
-       <li>
+<li>
         Both SC and LC connectors can be used with single-mode and multi-mode fiber cables.
        </li>
-      </ul>
-      <li>
+</ul>
+<li>
        Single-mode vs Multi-mode
       </li>
-      <ul class="hidden">
-       <li>
-        <a class="link" href="https://patrick.quam.computer/notes/other#single-multi-mode-fiber" target="_blank">
+<ul class="hidden">
+<li>
+<a class="link" href="https://patrick.quam.computer/notes/other#single-multi-mode-fiber" target="_blank">
          More information on Single and Multimode fiber
         </a>
-       </li>
-       <li>
+</li>
+<li>
         The main difference between single-mode and multi-mode fiber cables is the size of the core, which is the part of the fiber that carries light. Single-mode fiber has a small core (about 9 micrometers in diameter) that allows light to travel in a single path, or mode. Multi-mode fiber, on the other hand, has a larger core (usually 50 or 62.5 micrometers) that allows light to travel in multiple paths, or modes.
        </li>
-       <li>
+<li>
         Both single-mode and multi-mode fiber optic cables are generally terminated in pairs. This is because most fiber optic communication is full-duplex, meaning that data can be transmitted in both directions simultaneously. One fiber in the pair is used to transmit data signals, and the other is used to receive them. This is why you'll often see fiber optic cables and connectors referred to as "duplex" (e.g., duplex LC or duplex SC), and why patch cables often have two connectors at each end.
        </li>
-       <li>
+<li>
         There are also "simplex" fiber optic cables and connectors, which consist of a single fiber and are used for applications that only require one-way data transmission, but are less common than duplex configurations in most networking environments.
        </li>
-       <li>
+<li>
         Single-mode fiber cables are typically used for long-distance transmissions. Single-mode fiber optic cables can support distances of up to 100 kilometers without requiring a signal repeater. Multi-mode cables, on the other hand, are typically used for shorter distances, usually less than 2 kilometers.
        </li>
-       <li>
+<li>
         Single-mode fiber can support higher data rates than multi-mode fiber. This is because the single light path eliminates the signal dispersion that can occur with multi-mode fiber, allowing the signal to travel faster and further.
        </li>
-       <li>
+<li>
         Single-mode fiber is generally more expensive than multi-mode fiber. The equipment needed for single-mode fiber, such as lasers, is also more expensive than the equipment needed for multi-mode fiber, which can use less expensive light sources like LEDs.
        </li>
-       <li>
+<li>
         Single-mode fiber is typically used for long-distance applications, including telecommunications and cable TV networks. Multi-mode fiber is typically used for shorter distances, such as within a building or campus, and is commonly used for data and audio/visual applications in local-area networks (LANs).
        </li>
-       <li>
+<li>
         Single-mode and multi-mode fibers are often color-coded to help distinguish between them. Single-mode fiber is typically color-coded yellow, while multi-mode fiber is typically color-coded orange (for 62.5/125 µm) or aqua (for 50/125 µm).
        </li>
-      </ul>
-     </ul>
-     <li>
+</ul>
+</ul>
+<li>
       Fiber optic cables connect to devices using an interface called a transceiver. There are several Options when it comes to picking a transceiver:
      </li>
-     <ul class="hidden">
-      <li>
-       <a class="link" href="https://patrick.quam.computer/notes/other#transceiver-info" target="_blank">
+<ul class="hidden">
+<li>
+<a class="link" href="https://patrick.quam.computer/notes/other#transceiver-info" target="_blank">
         More information on Transceivers
        </a>
-      </li>
-      <li>
+</li>
+<li>
        SFP (Small Form-factor Pluggable): The original SFP, also known as mini-GBIC, is a compact, hot-pluggable transceiver used for both telecommunication and data communications applications. It can support speeds up to 1 Gbps (Gigabit per second) and can be used with both fiber optic and copper cables.
       </li>
-      <li>
+<li>
        SFP+ (Small Form-factor Pluggable Plus): SFP+ is an enhanced version of the SFP that supports data rates up to 10 Gbps. SFP+ has the same physical form factor as SFP but can handle much higher data rates. SFP+ supports 8 Gbit/s Fibre Channel, 10 Gigabit Ethernet, and Optical Transport Network standard OTU2.
       </li>
-      <li>
+<li>
        QSFP (Quad Small Form-factor Pluggable): QSFP transceivers are designed to carry Serial Attached SCSI, 40G Ethernet, QDR (40G) and FDR (56G) Infiniband, and other communications standards. QSFP transceivers increase the port-density by placing 4 transceivers in the space that was once used for a single SFP transceiver.
       </li>
-      <li>
+<li>
        QSFP+ (Quad Small Form-factor Pluggable Plus): QSFP+ is an evolution of QSFP to support higher data rates, typically 40 Gbps. It is used extensively in data centers due to its high data density and lower costs compared to using individual SFP+ transceivers.
       </li>
-      <li>
+<li>
        QSFP28: QSFP28 is a hot-pluggable transceiver module designed for 100G data rate. QSFP28 integrates 4 transmit and 4 receiver channels. "28" means each lane carries up to 28G data rate. QSFP28 can do 4x25G breakout connection, 2x50G breakout, or 1x100G depending on the transceiver type.
       </li>
-      <li>
+<li>
        CFP (C Form-factor Pluggable): The CFP (C form-factor pluggable) transceiver is a multi-source agreement to produce a common form-factor for the transmission of high-speed digital signals. The c stands for the Latin letter C used to express the number 100 (centum), since the standard was primarily developed for 100 Gigabit Ethernet systems.
       </li>
-     </ul>
-    </ul>
-    <h3 id="server-hardware-components">
+</ul>
+</ul>
+<h3 id="server-hardware-components">
      Server Hardware Components:
     </h3>
-    <ul class="spaced-list hidden">
-     <h4>
+<ul class="spaced-list hidden">
+<h4>
       Motherboard
      </h4>
-     <ul class="spaced-list hidden">
-      <li>
+<ul class="spaced-list hidden">
+<li>
        The motherboard is the backbone that connects all of the components of a computer together.
       </li>
-      <li>
+<li>
        When a computer is turned on, the first thing that happens is the motherbaord runs POST (Power On Self Test) to validate that all the hardware is installed correctly. Many motherboards will have onboard displays or speakers that indicate the progress of the POST test using specific codes.
       </li>
-      <li>
+<li>
        After POSt, the motherboard will hand over control of the system to either BIOS (Basic input/output System) or EUFI (Unified Extensible Firmware Interface)
       </li>
-      <ul class="hidden">
-       <li>
+<ul class="hidden">
+<li>
         BIOS is the original firmware used in PCs. When you turn on your computer, the BIOS first performs a self-test to make sure all the hardware components are working correctly. It then locates and reads the boot loader program from the boot device (such as a hard drive or a USB stick). The boot loader then loads the operating system into memory, and the operating system takes over from there. BIOS is an older technology with limitations, such as a maximum bootable storage size of 2.1 TB and slower boot times.
        </li>
-       <li>
+<li>
         UEFI is a newer type of firmware that was developed to overcome the limitations of BIOS. It can handle larger storage sizes (up to 9.4 ZB), and it supports features like secure boot, which can protect the boot process from malicious code. UEFI also has a more user-friendly interface (with mouse and keyboard support), and it can support remote diagnostics and repair, even without an operating system. UEFI firmware can also boot from large GPT (GUID Partition Table) disks, whereas BIOS can only boot from MBR (Master Boot Record) disks.
        </li>
-       <li>
+<li>
         In general, UEFI is more modern and has more features than BIOS, but both essentially serve the same purpose: they initialize the hardware and start the process of loading the operating system when you turn on your computer. Most modern PCs use UEFI, but they often include a "legacy" or "compatibility" mode that allows them to emulate BIOS for older operating systems.
        </li>
-      </ul>
-     </ul>
-     <h4>
+</ul>
+</ul>
+<h4>
       CPU (Central Proccessing Unit)
      </h4>
-     <ul class="spaced-list hidden">
-      <li>
+<ul class="spaced-list hidden">
+<li>
        CPU clock speed: indicates how fast the cpu runs in cycles per second, or Hertz (Hz). Most modern CPU's are measured in GHz (Billions of cycles per second). Higher clock speed means more instructions completed per second.
       </li>
-      <li>
+<li>
        CPU cores: indicates how many tasks the CPU is designed to be able to handle simultaneously.
       </li>
-      <li>
+<li>
        As clock speed and core count increase, CPU's will require more power and generate more heat (within the same generation of CPU. Newer CPU's may be able to have better specifications with the same power and thermal requirements).
       </li>
-      <li>
+<li>
        CPU cache is very high speed memory built directly onto the CPU. It is designed to be "cheaper" to access than RAM or long term storage, as in it requires less time or energy to access. Modern CPUs will typically have 3 "layers" of cache:
       </li>
-      <ol>
-       <li>
+<ol>
+<li>
         This is the smallest cache (typically 32-64KB per core) but the fastest to access. It's located on the CPU chip itself and is the first place the CPU looks for data and instructions.
        </li>
-       <li>
+<li>
         This is larger than the L1 cache (typically 256KB - 2MB per core), but slower to access. If data is not found in the L1 cache, the CPU next looks in the L2 cache.
        </li>
-       <li>
+<li>
         This is larger still (typically 2-8MB shared across all cores), but slower to access. If data is not found in the L2 cache, the CPU next looks in the L3 cache. If the data is not found in the L3 cache, the CPU finally looks in the main system memory (RAM).
        </li>
-      </ol>
-     </ul>
-     <h4>
+</ol>
+</ul>
+<h4>
       GPU (Graphics Proccessing Unit)
      </h4>
-     <ul class="spaced-list hidden">
-      <li>
+<ul class="spaced-list hidden">
+<li>
        GPU's are proccessors dedicated to handling parrallel computing tasks, such as completing repeated calculations.
       </li>
-      <li>
+<li>
        A common usecase is 3d matrix math, which is used to calculate positions of objects in 3d space in applications such as modeling software. These tasks are not handled well by the CPU.
       </li>
-      <li>
+<li>
        GPU's will generally have their own RAM, however some systems will have their GPU built into the CPU (commonly referred to as an APU or Accelerated Proccessing Unit), which will share some amount of the system ram between the CPU and GPU.
       </li>
-      <li>
-       <a class="link" href="https://www.youtube.com/watch?v=_cyVDoyI6NE" target="_blank">
+<li>
+<a class="link" href="https://www.youtube.com/watch?v=_cyVDoyI6NE" target="_blank">
         Computerfile on CPU vs GPU
        </a>
-      </li>
-      <li>
-       <a class="link" href="https://www.youtube.com/watch?v=8sDg-lD1fZQ" target="_blank">
+</li>
+<li>
+<a class="link" href="https://www.youtube.com/watch?v=8sDg-lD1fZQ" target="_blank">
         Writing Code That Runs FAST on a GPU
        </a>
-      </li>
-     </ul>
-     <h4>
+</li>
+</ul>
+<h4>
       RAM (Random Access Memory)
      </h4>
-     <ul class="spaced-list hidden">
-      <li>
+<ul class="spaced-list hidden">
+<li>
        RAM is non-persistant memory, meaning as soon as it looses power, all of the data stored in RAM is lost.
       </li>
-      <li>
+<li>
        RAM is high speed memory designed to store data for an application while it is in use.
       </li>
-      <li>
+<li>
        RAM is generally connected to the motherboard directly. There are several generations of ram, which are referred to as DDR (Double Data Rate). The newest version at the time of writing is DDR5. It is important to know what version of RAM your system uses because they are physically and electrically different; a ddr4 dimm will not work in a dd5 motherboard.
       </li>
-      <li>
+<li>
        There are also 2 common versions of RAM, ECC (Error Correcting Code) and non-ECC. ECC RAM was formerly reserved for servers and enterprise systems but is becoming more common on consumer hardware. ECC allows the memory stick to check for errors in the data it is storing.
       </li>
-     </ul>
-     <h4>
+</ul>
+<h4>
       Expansion Cards
      </h4>
-     <ul class="spaced-list hidden">
-      <li>
+<ul class="spaced-list hidden">
+<li>
        Modern computers generally come equipped with PCIe (Peripheral Component Interconnect express) expansion slots which can be used to connect various kinds of expansion cards.
       </li>
-      <li>
+<li>
        Common expansion cards include NICs (Network Interface Cards), USB expansion cards, capture cards, or storage expansion cards such as HBAs (Host Bus Adapter) or PCIe "splitters" that turn one PCIe slot into several NVMe ssd slots (this may require a motherboard that supports PCIe Bifurcation).
       </li>
-      <li>
+<li>
        GPU's generally connect via the PCIe bus and can also be considered expansion cards.
       </li>
-     </ul>
-     <h4>
+</ul>
+<h4>
       Storage
      </h4>
-     <ul class="spaced-list hidden">
-      <li>
+<ul class="spaced-list hidden">
+<li>
        There are 2 common types of storage, HDDs (Hard Disk Drive) and SSDs (Solid State Drive).
       </li>
-      <li>
+<li>
        HDDs are an older standard, but are still very common.
       </li>
-      <ul class="hidden">
-       <li>
+<ul class="hidden">
+<li>
         Hard Drives use spinning metal platters to record data. Data is written to the disk using a "write head", which is a magnetically actuated arm that moves over the disk to read and write data.
        </li>
-       <li>
+<li>
         Modern hard drives will have several layers of platters with write heads in between them to increase the capacity of the drive.
        </li>
-       <li>
+<li>
         Hard drives are cheaper per gigabyte of storage compared to SSDs so they are used in applications where mass storage in important.
        </li>
-       <li>
+<li>
         Hard drives' read and write speeds are effected by how fast the platters in the drive spins. Consumer drives will often be 5400rpm or 7200rpm, but enterprise drives come in 10k to 15k rpm.
        </li>
-       <li>
+<li>
         Hard drives have 2 common form factors: 2.5" and 3.5".
        </li>
-      </ul>
-      <li>
+</ul>
+<li>
        SSDs are a newer technology that is becoming more and more common due it its superior reliability and speed.
       </li>
-      <ul class="hidden">
-       <li>
+<ul class="hidden">
+<li>
         SSDs store data on NAND-flash chips, which have no moving parts.
         <a class="link" href="https://patrick.quam.computer/notes/other#ssd-physical-storage" target="_blank">
          More on how SSDs store data
         </a>
-       </li>
-       <li>
+</li>
+<li>
         Because there are no moving parts, they don't have a chance to break physically, and as such, generally have a longer life than HDDs.
        </li>
-       <li>
+<li>
         An additional aspect of having no moving parts is that SSDs do not have to wait for the disk to spin to the correct position to read data. Data on SSDs is always accessible instantly, which means that the response time when requesting data is much quicker.
        </li>
-       <li>
+<li>
         Due to the way SSDs store data, they have a set lifespan. This makes it easier to know when a drive needs to be replaced before data is lost.
        </li>
-       <li>
+<li>
         SSDs have memory controllers that keep track of where all the data is stored on the disk, and can read if off of the disk nearly instantly. This makes modern SSDs extremely fast.
        </li>
-       <li>
+<li>
         Because of their superior speed and reliability, SSDs are better than HDDs in almost every application. The only disadvantage is cost, it is much cheaper to buy HDDs than SSDs.
        </li>
-       <li>
+<li>
         Solid State Drives come in several form factors, the most common of which are 2.5" and M.2
        </li>
-      </ul>
-      <li>
+</ul>
+<li>
        RAID (Redundant Array of Independent Disks)
       </li>
-      <ul class="spaced-list hidden">
-       <li>
+<ul class="spaced-list hidden">
+<li>
         RAID is a technology used to combine disks to improve either speed or reliability. There are several ways to combine disks to get different effects.
        </li>
-       <ul class="hidden">
-        <li>
+<ul class="hidden">
+<li>
          RAID 0 (Striping): This level splits data evenly across two or more disks with no parity information for redundancy. It's intended to increase the system's performance, as multiple disks are reading and writing data, which can significantly improve speed. However, it offers no fault tolerance. If one drive fails, all data in the array is lost.
         </li>
-        <li>
+<li>
          RAID 1 (Mirroring): This level writes the same data to two drives, creating a mirrored pair. It provides high data protection by duplicating all data from one drive on another drive. The performance is good when reading but poor when writing compared to a single drive. If one drive fails, data does not get lost because it's duplicated on the other drive.
         </li>
-        <li>
+<li>
          RAID 5 (Striping with Parity): This level requires at least three disks and uses block-level striping with parity data distributed across all member disks. RAID 5 has good performance and fault tolerance. It can withstand a single drive failure without losing data or access to data.
         </li>
-        <li>
+<li>
          RAID 6 (Striping with Double Parity): Similar to RAID 5, but includes a second parity block distributed across drives, offering extra fault tolerance. It can withstand the failure of two drives.
         </li>
-        <li>
+<li>
          RAID 10 (1+0): This level is a combination of RAID 1 and RAID 0, and requires a minimum of four drives. It provides the redundancy of RAID 1 along with the increased performance of RAID 0. It's often used in the server environment where both performance and security are required.
         </li>
-        <li>
+<li>
          RAID 50 (5+0): This level combines the straight block-level striping of RAID 0 with the distributed parity of RAID 5. It's a RAID 0 array striped across RAID 5 elements. It requires at least 6 drives.
         </li>
-        <li>
+<li>
          RAID 60 (6+0): This level combines the straight block-level striping of RAID 0 with the distributed double parity of RAID 6. It's a RAID 0 array striped across RAID 6 elements. It requires at least eight drives.
         </li>
-       </ul>
-       <li>
+</ul>
+<li>
         There are a few ways to implement RAID.
        </li>
-       <ul class="hidden">
-        <li>
+<ul class="hidden">
+<li>
          Software raid (drives are configured in raid by the operating system or an application)
         </li>
-        <ul class="hidden">
-         <li>
+<ul class="hidden">
+<li>
           Software RAID is generally less expensive than hardware RAID because it doesn't require any additional hardware beyond the drives themselves.
          </li>
-         <li>
+<li>
           Software RAID can be more flexible than hardware RAID. It's typically easier to modify or reconfigure, and it can support a wider variety of RAID levels.
          </li>
-         <li>
+<li>
           Software RAID is updated along with the operating system, ensuring that it benefits from the latest improvements and bug fixes.
          </li>
-         <li>
+<li>
           Software RAID uses the CPU of the host computer to manage the RAID array, which can reduce the overall performance of the system, especially under heavy load.
          </li>
-         <li>
+<li>
           Depending on the RAID level and the operating system, booting from a software RAID array can be complicated or even impossible.
          </li>
-        </ul>
-        <li>
+</ul>
+<li>
          Hardware raid (drives are configured by a physical raid controller, which may be built into the systems motherboard or be its own expansion card)
         </li>
-        <ul class="hidden">
-         <li>
+<ul class="hidden">
+<li>
           Hardware RAID controllers have their own processors and memory to manage the RAID array, which can result in better performance and less impact on the host system's resources.
          </li>
-         <li>
+<li>
           Hardware RAID controllers often support advanced features like hot swapping (replacing drives without powering down the system), RAID level migration (changing RAID levels without losing data), and battery-backed cache (which can protect data in the event of a power loss).
          </li>
-         <li>
+<li>
           Hardware RAID arrays are typically easier to boot from than software RAID arrays.
          </li>
-         <li>
+<li>
           Hardware RAID controllers can be expensive, especially high-end models with advanced features.
          </li>
-         <li>
+<li>
           Hardware RAID controllers are typically specific to the manufacturer and model. If the controller fails, it usually needs to be replaced with the same model, which can be difficult if it's an older or discontinued model.
          </li>
-         <li>
+<li>
           Hardware RAID controllers may not receive updates as frequently as software RAID, which could leave them vulnerable to bugs or compatibility issues with new drives or operating systems.
          </li>
-        </ul>
-        <li>
-         <a class="link" href="https://www.youtube.com/watch?v=l55GfAwa8RI" target="_blank">
+</ul>
+<li>
+<a class="link" href="https://www.youtube.com/watch?v=l55GfAwa8RI" target="_blank">
           Level1Techs on hardware raid
          </a>
-        </li>
-        <li>
-         <a class="link" href="https://www.youtube.com/watch?v=uBfXdJGmWoM" target="_blank">
+</li>
+<li>
+<a class="link" href="https://www.youtube.com/watch?v=uBfXdJGmWoM" target="_blank">
           Level1Techs on hardware Vs Software raid Vs ZFS
          </a>
-        </li>
-       </ul>
-      </ul>
-      <h4>
+</li>
+</ul>
+</ul>
+<h4>
        Interface Types (common connectors for storage devices)
       </h4>
-      <ul class="spaced-list hidden">
-       <li>
+<ul class="spaced-list hidden">
+<li>
         SCSI (Small Computer System Interface): SCSI is an older standard that uses parallel communication. It has been largely replaced by SAS and SATA in most applications. The maximum bandwidth depends on the specific version of SCSI, but the latest version (Ultra640 SCSI) can reach up to 640 MB/s. SCSI connectors are typically rectangular with a lot of pins (50, 68, or 80 depending on the version).
        </li>
-       <li>
+<li>
         SAS (Serial Attached SCSI): SAS is a point-to-point serial protocol that replaced parallel SCSI in many settings. SAS-3, the latest version as of my knowledge cutoff in September 2021, supports data rates of up to 12 Gbit/s. SAS connectors are similar to SATA connectors but have a larger "L" shape.
        </li>
-       <li>
+<li>
         SATA (Serial ATA): SATA is a common interface for consumer hard drives and SSDs. The latest version, SATA 3, supports data rates of up to 6 Gbit/s. SATA connectors are flat and have an "L" shape.
        </li>
-       <li>
+<li>
         eSATA (External SATA): eSATA is a version of SATA for external devices and supports the same data rate of up to 6 Gbit/s. eSATA connectors are similar to SATA connectors but have a slightly different shape to prevent confusion with internal SATA connectors.
        </li>
-       <li>
+<li>
         PCI (Peripheral Component Interconnect): PCI is an older standard for connecting expansion cards to a motherboard. It has a maximum bandwidth of 133 MB/s. PCI slots are characterized by their parallel connection, which consists of one data path for the outgoing data and another for the incoming data.
        </li>
-       <li>
+<li>
         PCIe (Peripheral Component Interconnect Express): PCIe is a newer, faster version of PCI that uses serial communication. The bandwidth depends on the number of "lanes" (data transmission paths) the slot has. A PCIe 5 slot can reach a maximum unidirectional bandwidth of 64 GB/s (gigabytes per second), and a maximum bidirectional bandwidth of 128 GB/s. PCIe slots vary in size, from x1 (the smallest) to x16 (the largest).
        </li>
-       <li>
+<li>
         USB (Universal Serial Bus): USB is a common interface for many types of devices. The maximum bandwidth depends on the version: USB 2.0 supports up to 480 Mbit/s, USB 3.0 up to 5 Gbit/s, USB 3.1 up to 10 Gbit/s, and USB 3.2 up to 20 Gbit/s. USB connectors come in many shapes and sizes, including Type-A (flat and rectangular), Type-B (square), Mini and Micro USB (smaller versions for portable devices), and Type-C (small, reversible).
        </li>
-       <li>
+<li>
         SD (Secure Digital): SD is a type of flash memory card. The maximum bandwidth depends on the version: SD High Capacity (SDHC) supports up to 25 MB/s, and SD Extended Capacity (SDXC) supports up to 312 MB/s. SD cards are flat and rectangular with a row of contacts on one side.
        </li>
-      </ul>
-      <h4>
+</ul>
+<h4>
        Shared Storage
       </h4>
-      <ul class="hidden">
-       <li>
+<ul class="hidden">
+<li>
         In many applications, it's important for multiple devices to be able to access the same storage pool. Sometimes, it is just not reasonable to fit enough storage into a single device, and a dedicated storage device is necessary. In these cases, a shared storage solution is required.
        </li>
-       <li>
+<li>
         NAS (Network Attached Storage): This is a dedicated device that provides shared storage to a network. A NAS device is essentially a self-contained computer connected to a network, with the sole purpose of providing a large amount of storage space that can be accessed by other devices on the network. NAS devices are often used in home networks and small businesses to provide a simple way to share files among multiple computers.
        </li>
-       <li>
+<li>
         NFS (Network File System): This is a protocol that allows a computer to access files over a network as if they were on its local hard drive. NFS is typically used in Unix and Linux environments. It's a part of the application layer in the OSI model, which means it allows applications on a computer to read and write data to a server over a network as if the data was on the local machine.
        </li>
-       <li>
+<li>
         CIFS (Common Internet File System): Also known as SMB (Server Message Block), this is a protocol that provides shared access to files, printers, and serial ports over a network. It's primarily used in Windows environments, but it's also supported on Unix and Linux systems. Like NFS, CIFS operates at the application layer of the OSI model and allows applications to read and write data over a network.
        </li>
-       <li>
+<li>
         SAN (Storage Area Network): This is a dedicated network that provides access to consolidated, block-level data storage. SANs are primarily used to make storage devices, such as disk arrays and tape libraries, accessible to servers so that the devices appear as locally attached devices to the operating system. SANs are often used in data centers and large businesses for high-performance storage and recovery.
        </li>
-       <li>
+<li>
         iSCSI (Internet Small Computer System Interface): iSCSI is a protocol that allows SCSI commands to be sent over IP networks. This allows for data transfers over long distances and for the building of SANs over existing infrastructure (i.e., without the need for dedicated cabling). iSCSI can be used to transmit data over local area networks (LANs), wide area networks (WANs), or the internet and can enable location-independent data storage and retrieval.
        </li>
-       <li>
+<li>
         Fibre Channel (FC): Fibre Channel is a high-speed network technology primarily used for SANs. It's most commonly used in enterprise settings where performance and reliability are critical. Fibre Channel networks can be built using optical fiber cables for long-distance communication, but they can also use copper cables for shorter distances. Fibre Channel supports multiple topologies, including point-to-point, switched, and loop configurations.
        </li>
-       <li>
+<li>
         FCoE (Fibre Channel over Ethernet): FCoE is a protocol that allows Fibre Channel communications to run directly over Ethernet. This allows Fibre Channel to take advantage of 10 Gigabit Ethernet networks or higher, while preserving the Fibre Channel protocol. The main advantage of FCoE is the ability to consolidate storage and IP protocols onto a single cable, reducing complexity in the data center.
        </li>
-      </ul>
-     </ul>
-     <h4>
+</ul>
+</ul>
+<h4>
       Hot Swappable Hardware
      </h4>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        Hot Swappable refers to components that can be replaced while maintaining minimum downtime. This generally includes:
       </li>
-      <ul class="hidden">
-       <li>
+<ul class="hidden">
+<li>
         Drives
        </li>
-       <li>
+<li>
         Expansion Cards
        </li>
-       <li>
+<li>
         Power Supplies
        </li>
-       <li>
+<li>
         Fans
        </li>
-      </ul>
-     </ul>
-    </ul>
-   </div>
-  </section>
-  <section class="grey-section" id="sub-section1">
-   <div class="col-lg-12">
-    <h1 class="sub-section-header" id="server-administration-basics">
-     <mark>
+</ul>
+</ul>
+</ul>
+</div>
+</section>
+<section class="grey-section" id="sub-section1">
+<div class="col-lg-12">
+<h1 class="sub-section-header" id="server-administration-basics">
+<mark>
       Server Administration Basics
      </mark>
-    </h1>
-   </div>
-   <div class="sub-section-box col-lg-12">
-    <h3 id="out-of-band-management">
+</h1>
+</div>
+<div class="sub-section-box col-lg-12">
+<h3 id="out-of-band-management">
      Out of Band Management
     </h3>
-    <ul class="spaced-list hidden">
-     <li>
+<ul class="spaced-list hidden">
+<li>
       In an enterprise or datacenter environment, being able to maintain and operate servers remotely is very important. As such, there are several common tools that can be used to control remote servers.
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        iLO (Integrated Lights-Out): This is a proprietary technology from Hewlett-Packard Enterprise (HPE) that allows for remote management of servers. iLO is embedded or integrated in all HPE ProLiant servers. It allows administrators to manage servers remotely, perform configuration, update firmware, and monitor performance. These management tasks can be performed regardless of the state of the operating system or even if no operating system is installed. Administrators can access iLO through a web-based interface by connecting to the iLO IP address assigned during the configuration process. This interface provides access to a wide range of management tasks. Additionally, iLO can be accessed via a command-line interface for scripting and automation purposes. HPE also provides the iLO Mobile app, which allows server management from a smartphone or tablet.
       </li>
-      <li>
+<li>
        iDRAC (Integrated Dell Remote Access Controller): This is Dell's equivalent to iLO. This is a proprietary technology that is integrated into all Dell PowerEdge servers. Like iLO, iDRAC allows for remote management of servers, including configuration, firmware updates, performance monitoring, and more. Similar to iLO, iDRAC can be accessed through a web-based interface by connecting to the iDRAC IP address. It can also be accessed via command-line interface, and Dell provides the OpenManage Mobile app for managing servers from a mobile device. iDRAC is also integrated with Dell's OpenManage suite of systems management tools.
       </li>
-      <li>
+<li>
        WBEM (Web-Based Enterprise Management) represents a set of management and Internet standard technologies. They are developed to unify the management of enterprise computing environments. WBEM provides a well-defined method for systems, applications, networks, devices, and services to describe themselves, their functionality, their configuration, and their status.
       </li>
-      <li>
+<li>
        IP KVM (IP Keyboard, Video, Mouse) is a technology. It allows remote access to a computer or server over a network connection. It provides the same functionality as a local keyboard, video display, and mouse, allowing a remote user to perform any operation that could be done with direct physical access. IP KVM switches are often used in data centers to allow remote access to servers.  IP KVM devices typically have a web-based interface that allows administrators to view the screen of the remote server and interact with it as if they were physically present. Some IP KVM devices also have client software that provides additional features.
       </li>
-      <li>
+<li>
        IPMI (Intelligent Platform Management Interface) consists of computer interface specifications for an autonomous computer subsystem. It provides management and monitoring capabilities independently of the host system's CPU, firmware (BIOS or UEFI), and operating system. IPMI allows an administrator to manage multiple servers from a single location. This can include powering the system on and off, rebooting it, and alerting when there are issues.
       </li>
-     </ul>
-     <li>
+</ul>
+<li>
       Local Hardware Administration (common tools when working with on-hand servers)
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        KVM (Keyboad, Video, Mouse)
       </li>
-      <li>
+<li>
        "Crash Cart": Multimeter or other hardware diagnostic tools, replacement hardware components, anti-static strap.
       </li>
-      <li>
+<li>
        Serial connectivity
       </li>
-      <li>
+<li>
        Console connections
       </li>
-     </ul>
-    </ul>
-    <h3 id="operating-system-installation">
+</ul>
+</ul>
+<h3 id="operating-system-installation">
      Operating System Installation
     </h3>
-    <ul class="spaced-list hidden">
-     <li>
+<ul class="spaced-list hidden">
+<li>
       There are many situations where it may be necessary to install or re-install the operating system on a device. For example, a new device with blank drives, or an existing system that needs to have a different OS for whatever reason.
      </li>
-     <li>
+<li>
       To install the operating system, there are some common tools that you will need. The main tool is "installation media". Installation media is generally a USB flash drive or a CD with the software required to install the operating system loaded on to it. In an enterprise setting, the installation media may also be a place on the network.
      </li>
-     <li>
+<li>
       For windows systems, you can purchase installation media through many retailers, or it may be provided to you by the manufacturer of your device. I have links to the windows media creation tools for windows 10 &amp; 11
       <a class="link" href="https://patrick.quam.computer/tools#links" target="_blank">
        here
       </a>
       if you want to create your own. After installing windows, you can use
       <li>
-       <a class="link" href="https://github.com/massgravel/Microsoft-Activation-Scripts" target="_blank">
+<a class="link" href="https://github.com/massgravel/Microsoft-Activation-Scripts" target="_blank">
         Microsoft Activation Scripts
        </a>
-      </li>
+</li>
       to activate your copy of windows, or purchase a key online.
      </li>
-     <li>
+<li>
       For unix or linux systems, you may need to use a tool like Rufus to create your own installation media. Generally the only other thing needed is an ISO file for the operating system you want to install.
      </li>
-     <li>
+<li>
       In an enterprise environment, it is more common to use a system image rather than an a blank version of an operating system on the installation media. A system image will include all the required software, security, and settings preconfigured so that it does not need to be re-done every time the operating system needs to be installed.
      </li>
-     <li>
+<li>
       An alternative to an image is a clone. Cloning a drive means copying all of its contents, including partitions and its Master Boot Record identically to another disk. This means that if a disk with an operating system installed on it gets cloned, it will be possible to boot to the new drive, with all of the applications and data in tact from the old drive. However
       <mark>
        cloning is natorious for failing or causing data corruption unless you are cloning to an identical drive
       </mark>
-     </li>
-     <li>
+</li>
+<li>
       when you install an operating system, it can be installed either on hardware (referred to as a bare metal install) or on a virtual machine.
      </li>
-     <li>
+<li>
       Before installing an operating system, the installation media will generally prompt to initialize and format the disk to support the file system for that operating system. Once the installtion process begins, the installation media will create the required partitions for the OS.
      </li>
-     <li>
+<li>
       When partitioning a drive, there are different methods of organizing the partiton tables on a hard drive or ssd. Typically, this will be decided by the operating system you are installing.
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        MBR (Master Boot Record): MBR is an older method that's used by BIOS-based systems. The MBR itself is a 512-byte sector at the beginning of the drive that contains a bootloader and the partition table. MBR has some limitations due to its age:
       </li>
-      <ul class="hidden">
-       <li>
+<ul class="hidden">
+<li>
         It can only handle drives up to 2 TB in size.
        </li>
-       <li>
+<li>
         It can only handle up to four primary partitions. If you want more, you have to make one of them an "extended partition" and create "logical partitions" within it.
        </li>
-       <li>
+<li>
         It doesn't have any built-in error checking to protect the data in the partition table.
        </li>
-      </ul>
-      <li>
+</ul>
+<li>
        GPT (GUID Partition Table): GPT is a newer method that's used by UEFI-based systems. GPT doesn't have the limitations that MBR does:
       </li>
-      <ul class="hidden">
-       <li>
+<ul class="hidden">
+<li>
         In terms of disk size, GPT uses 64 bits for logical block addresses, allowing for a maximum disk size of 2^64 sectors. Given that the industry standard sector size is 512 bytes, this allows for a maximum disk size of 9.4 Zettabytes (1 Zettabyte = 1 billion Terabytes). However, some systems and disks use larger sector sizes, such as 4096 bytes, which would allow for even larger maximum disk sizes.
        </li>
-       <li>
+<li>
         It can handle up to 128 primary partitions by default in Windows (and more in other operating systems).
        </li>
-       <li>
+<li>
         It stores multiple copies of the partition table across the disk and includes cyclic redundancy check (CRC) values to check that its data is intact, so it's more robust and can recover from data corruption better than MBR can.
        </li>
-      </ul>
-      <li>
+</ul>
+<li>
        Dynamic Disks: This is a feature of Microsoft Windows that allows for more flexible management of disk space. Unlike basic disks, which are limited to four primary partitions, dynamic disks can contain a large number of dynamic volumes (the equivalent of partitions). These volumes can be resized without having to restart Windows. Dynamic disks also support features that aren't available with basic disks, such as the ability to create spanned, striped (RAID-0), mirrored (RAID-1), and RAID-5 volumes for improved performance and data protection.
       </li>
-      <li>
+<li>
        LVM (Logical Volume Management): LVM is a feature of Linux that provides a more flexible way of managing disk space. Instead of being divided into partitions, a disk is divided into physical volumes (PVs). These PVs can be combined into volume groups (VGs), and logical volumes (LVs) can be created from the space in a VG. This allows for easy resizing of disk space and the ability to span a filesystem across multiple disks. LVM also supports snapshots, which are a point-in-time copy of a logical volume, and can be used for backups or testing.
       </li>
-     </ul>
-    </ul>
-    <h3 id="basic-networking-ip-(internet-protocol)-configuration">
+</ul>
+</ul>
+<h3 id="basic-networking-ip-(internet-protocol)-configuration">
      Basic Networking: IP (Internet Protocol) Configuration
     </h3>
-    <ul class="hidden">
-     <li>
+<ul class="hidden">
+<li>
       IPV4
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        IPV4 addresses are 32 bits long, Expressed in 4, 8 bit groups (called octets) seperated by a period. ex:
        <code>
         192.168.1.1
        </code>
-      </li>
-      <li>
+</li>
+<li>
        Data is transmitted in packets, each with its own IP header containing source and destination IP addresses, among other information.
       </li>
-      <li>
+<li>
        Due to the length of IPV4 addresses, there are not enough addresses to support the number of devices that are being connected. Because of this, devices generally are not assigned their own public IPV4 adress, and are instead assigned a private IP apdress, and then the devices router will use NAT (Network Adress Translation) to ensure data from outside of the LAN (Local Area Network) goes to and from the correct device.
       </li>
-     </ul>
-     <li>
+</ul>
+<li>
       Sub Net Mask
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        "The subnet mask determines the network on which the host resides". Basically, it is an indicator of how many bits in an IP adress are used to specify the network the device resides on.
       </li>
-      <li>
+<li>
        Subnet mask can be indicated by two notations. Both notations serve the same purpose but are used in different contexts. Dotted decimal notation is often used in network configurations, while CIDR notation is commonly used in routing and when specifying IP address ranges.
       </li>
-      <ol>
-       <li>
+<ol>
+<li>
         Dotted Decimal Notation: This is the traditional way of representing a subnet mask. It consists of four octets (just like an IP address) and is expressed in decimal format. For example:
         <code>
          255.255.255.0
         </code>
-       </li>
-       <li>
+</li>
+<li>
         CIDR (Classless Inter-Domain Routing) Notation: This is a more concise way of representing a subnet mask. It uses a forward slash (/) followed by a number, which indicates the number of consecutive '1' bits in the subnet mask's binary form.
         <mark>
          For example:
         </mark>
-        <code>
+<code>
          /24
         </code>
         would be
@@ -836,80 +837,80 @@
         </code>
         when converted to decimal notation.
        </li>
-      </ol>
-      <ul class="hidden">
-       <li>
+</ol>
+<ul class="hidden">
+<li>
         A subnet mask of 255.255.255.0 in dotted decimal notation is equivalent to /24 in CIDR notation. This is because the first 24 bits (three octets) are set to '1', and the remaining bits are '0'.
        </li>
-       <li>
+<li>
         It was easier for me to this about this as 24bit subnet divided by 8 bits = 3 octets would be required to display the same subnet mask.
        </li>
-       <li>
+<li>
         For many applications it can be helpful to 'subnet' a network, or split into many parts. Network Chuck has a great
         <a class="link" href="https://www.youtube.com/playlist?list=PLIhvC56v63IKrRHh3gvZZBAGvsvOhwrRF" target="_blank">
          playlist on Subnetting.
         </a>
-       </li>
-       <li id="#subnetting">
+</li>
+<li id="#subnetting">
         Here are some of the
         <mark>
          benefits of subnetting:
         </mark>
-       </li>
-       <ul class="hidden">
-        <li>
+</li>
+<ul class="hidden">
+<li>
          By breaking a large network into smaller subnets, local traffic remains local. This means that not all traffic is broadcasted to all parts of the network, reducing unnecessary traffic and congestion.
         </li>
-        <li>
+<li>
          Fewer devices per subnet can lead to faster performance and reduced latency.
         </li>
-        <li>
+<li>
          Different departments or groups can be isolated into different subnets. If one subnet is compromised, it doesn't necessarily mean that attackers have access to other subnets.
         </li>
-        <li>
+<li>
          Network policies, access controls, and firewall rules can be applied at the subnet level, allowing for more granular control over network resources.
         </li>
-        <li>
+<li>
          Subnetting can reflect the organizational structure or the physical layout of a company. For instance, different departments or floors in a building can have their own subnets.
         </li>
-        <li>
+<li>
          With fewer hosts in each subnet, identifying and resolving network issues can be more straightforward.
         </li>
-        <li>
+<li>
          Subnetting allows for the efficient allocation of IP addresses based on the actual number of hosts needed in each subnet, minimizing wasted IP addresses.
         </li>
-        <li>
+<li>
          As an organization grows, new subnets can be created without the need to redesign the entire network.
         </li>
-        <li>
+<li>
          Routers can summarize routes to multiple subnets as a single routing table entry, reducing the size of routing tables and improving routing efficiency.
         </li>
-        <li>
+<li>
          With smaller routing tables, routers can make routing decisions more quickly.
         </li>
-        <li>
+<li>
          When connecting to ISPs or other external networks, organizations often receive a limited block of IP addresses. Subnetting allows the organization to divide this block internally to meet their needs.
         </li>
-        <li>
+<li>
          If a particular department or segment of the network grows, it can be moved to a larger subnet without affecting the rest of the network.
         </li>
-        <li>
+<li>
          If two companies merge, their networks might overlap in IP address space. Subnetting can help reorganize and integrate the networks.
         </li>
-        <li>
+<li>
          I was confused on how subnets and vlans are different so
          <a class="link" href="https://patrick.quam.computer/notes/other#subnetting-vs-vlans" target="_blank">
           here
          </a>
          is more information on the difference.
         </li>
-       </ul>
-       <li>
+</ul>
+<li>
         If you need more granular control of the number of hosts on your network, you can use subnet masks that are not multiples of 8.
         <mark>
          For example:
         </mark>
-        <code>
+<code>
          /20
         </code>
         would be
@@ -922,554 +923,574 @@
         </code>
         in decimal notation. You can use this to leave more or less space for hosts (devices) on the network as needed.
        </li>
-       <li>
+<li>
         The IPV4 subnet mask can be assigned in a range from 1 to 32.
        </li>
-       <li>
+<li>
         A subnet mask of /32 specifies that all 32 bits of the IP address are dedicated to the network portion, leaving no bits for host addresses within that subnet.
        </li>
-       <ul class="hidden">
-        <li>
+<ul class="hidden">
+<li>
          A /32 mask denotes a single, specific IPv4 address. For example, 192.168.1.10/32 refers precisely to the IP address 192.168.1.10 and no other addresses.
         </li>
-        <li>
+<li>
          Since all bits are used for the network portion, there are no bits left for hosts. This means there are no available addresses for devices within that subnet, as the "subnet" itself is just a single IP address.
         </li>
-        <li>
+<li>
          In routing tables, a /32 can be used to specify a specific route to a single IP address.
         </li>
-        <li>
+<li>
          Firewalls might use /32 to denote rules that apply to a specific IP address.
         </li>
-        <li>
+<li>
          While a /32 doesn't allow for additional hosts in the subnet, the specific /32 IP address itself can be assigned to a device.
         </li>
-       </ul>
-       <li>
+</ul>
+<li>
         While you could technically assign a subnet mask of /1, thats just goofy and you probably shouldn't. You probably don't have 2 billion devices on your network, no matter how dedicated you are to pimping out your room with phillips hue lights.
        </li>
-      </ul>
-      <li>
-       <mark>
+</ul>
+<li>
+<mark>
         For Example:
        </mark>
-      </li>
-      <ul class="hidden">
-       <li>
+</li>
+<ul class="hidden">
+<li>
         192.168.1.1/24 would indicate the first 3 sections of the ip address indicate the network the device resides on, and this devices address on that network is 1.
        </li>
-       <li>
+<li>
         192.168.1.100/16 would indicate the first 2 sections of the ip address indicate the network the device resides on, and this devices address on that network is 1.100
        </li>
-      </ul>
-     </ul>
-     <li>
+</ul>
+</ul>
+<li>
       IPV6
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        IPV6 uses 128 bit addresses. Because the pool of IPV6 addresses is so much larger, using NAT is not required, so devices can have their own public IPV6 adress.
       </li>
-      <li>
+<li>
        Rather than Subnet Mask, IPV6 uses a "Subnet Prefix Length", which is indicated in the same CIDR notation, and operates in the same way as an IPV4 subnet mask would.
       </li>
-     </ul>
-     <li>
+</ul>
+<li>
       VLAN (Virtual Local Area Network)
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        VLAN's are a logical subdivision of a switch.
       </li>
-      <li>
+<li>
        VLANs can be used to segment a larger network into smaller, more manageable pieces. This can improve performance by reducing the size of the broadcast domain and limiting the extent of broadcasts.
       </li>
-      <li>
+<li>
        By segregating devices into different VLANs based on their function or department, sensitive data can be restricted to specific VLANs, reducing the risk of unauthorized access.
       </li>
-      <li>
+<li>
        VLANs can be used to group devices by department or function, regardless of their physical location in a building or campus. This can simplify network management and troubleshooting.
       </li>
-      <li>
+<li>
        VLANs allow for flexibility in how devices are grouped together, and they can be easily modified or expanded as organizational needs change.
       </li>
-      <li>
+<li>
        Communication between different VLANs requires a router or a layer 3 switch, which can introduce additional latency and complexity.
       </li>
-      <li>
+<li>
        ACL's (Access Control List) can be used to control the traffic between VLAN's.
       </li>
-     </ul>
-     <li>
+</ul>
+<li>
       DNS (Domain Name System)
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        Converts FQDN's to IP addresses.
       </li>
-      <li>
+<li>
        DNS "Resolution" Process:
       </li>
-      <ol class="hidden">
-       <li>
+<ol class="hidden">
+<li>
         Local Cache Check: The client device (e.g., your computer) first checks its local cache to see if it already knows the IP address for the domain. If found, the process ends here.
        </li>
-       <li>
+<li>
         Query Recursive DNS Server: If the IP address isn't in the local cache, the client queries a recursive DNS server (usually provided by your ISP). This server checks its cache. If found, it returns the IP to the client.
        </li>
-       <li>
+<li>
         Query Root DNS Server: If the recursive server doesn't have the IP cached, it queries a root DNS server. The root server doesn't know the IP for individual domains but directs the recursive server to the appropriate TLD server.
        </li>
-       <li>
+<li>
         Query TLD Server: The recursive server then queries the TLD server for the domain's TLD (e.g., .com). The TLD server directs the recursive server to the domain's authoritative name server.
        </li>
-       <li>
+<li>
         Query Authoritative Name Server: The recursive server queries the authoritative name server for the domain. The authoritative server returns the IP address for the domain to the recursive server.
        </li>
-       <li>
+<li>
         Return IP Address to Client: The recursive server caches the IP address (for the duration specified by the TTL) and returns it to the client. The client's browser can now request the website using the IP address.
        </li>
-      </ol>
-     </ul>
-     <li>
+</ol>
+</ul>
+<li>
       Firewalls
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        For server+, only layer 4 firewalls are covered.
       </li>
-      <li>
+<li>
        Layer 4 implies host (device) level. These firewalls would be software such as windows firewall, iptables, or UFW (un-complicated firewall).
       </li>
-      <li>
+<li>
        layer 4 firewalls can control traffic up to layer 4, including:
       </li>
-      <ul class="hidden">
-       <li>
+<ul class="hidden">
+<li>
         Source IP adress
        </li>
-       <li>
+<li>
         Destination IP adress
        </li>
-       <li>
+<li>
         source port
        </li>
-       <li>
+<li>
         destination port
        </li>
-       <li>
+<li>
         protocol type
        </li>
-      </ul>
-     </ul>
-     <li>
+</ul>
+</ul>
+<li>
       Static vs Dynamic IP Adressing
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        DHCP (Dynamic Host Configuration Protocol)
       </li>
-      <ul class="hidden">
-       <li>
+<ul class="hidden">
+<li>
         Dynamic Host Configuration Protocol (DHCP) is a network protocol used to automatically assign IP addresses and other related configuration information to devices on a network.
        </li>
-       <li>
+<li>
         DHCP servers dynamically assign IP addresses to devices on a network. Administrators can define and manage pools (ranges) of IP addresses to be assigned. This eliminates the need for network administrators to manually configure IP addresses for each device.
        </li>
-       <li>
+<li>
         DHCP servers assign IP addresses for a specific duration, known as a lease. Once the lease expires, the device must request a new IP address or renew its current one.
        </li>
-       <li>
+<li>
         DHCP servers centralize the management of IP addresses and related configurations, making it easier to manage and troubleshoot network issues.
        </li>
-       <li>
+<li>
         If needed, a server administrator can create a DHCP reservation. A DHCP reservation is a specific IP address that is reserved for a particular device, based on its MAC address.
        </li>
-       <li>
+<li>
         Other configuration information provided by DHCP may include the default gateway, DNS servers, and more.
        </li>
-       <li>
+<li>
         The DHCP process typically involves four steps, often referred to as DORA:
        </li>
-       <ol class="hidden">
-        <li>
+<ol class="hidden">
+<li>
          Discover: The client sends a broadcast message searching for a DHCP server.
         </li>
-        <li>
+<li>
          Offer: The DHCP server responds with an offer that includes an available IP address.
         </li>
-        <li>
+<li>
          Request: The client requests the offered IP address.
         </li>
-        <li>
+<li>
          Acknowledge: The DHCP server acknowledges the request and assigns the IP address to the client.
         </li>
-       </ol>
-       <li>
+</ol>
+<li>
         Common DHCP servers:
        </li>
-       <ul class="hidden">
-        <li>
+<ul class="hidden">
+<li>
          Microsoft DHCP Server: Included with Windows Server operating systems.
         </li>
-        <li>
+<li>
          ISC DHCP: An open-source DHCP server commonly used in UNIX and Linux environments.
         </li>
-        <li>
+<li>
          Cisco IOS DHCP Server: Integrated into Cisco routers and switches.
         </li>
-        <li>
+<li>
          Kea: A modern open-source DHCP server developed by ISC as a successor to ISC DHCP.
         </li>
-        <li>
+<li>
          DHCP functionality in routers: Many home and enterprise routers have built-in DHCP servers.
         </li>
-       </ul>
-       <li>
+</ul>
+<li>
         DHCP Security Considerations
        </li>
-       <ul class="hidden">
-        <li>
+<ul class="hidden">
+<li>
          Rogue DHCP Servers: Unauthorized DHCP servers can provide incorrect configurations or act maliciously.
         </li>
-        <li>
+<li>
          DHCP Snooping: A security feature on switches that filters out untrusted DHCP messages.
         </li>
-        <li>
+<li>
          MAC Address Filtering: Some DHCP servers can be configured to only serve specific MAC addresses or exclude certain MAC addresses.
         </li>
-       </ul>
-      </ul>
-      <li>
+</ul>
+</ul>
+<li>
        APIPA (Automatic Private OP Adress)
       </li>
-      <ul class="hidden">
-       <li>
+<ul class="hidden">
+<li>
         Automatic Private IP Addressing (APIPA) is a feature primarily found in Microsoft Windows operating systems, though the concept exists in other systems under different names.
        </li>
-       <li>
+<li>
         APIPA acts as a safety net when a DHCP server is unavailable. Instead of leaving a device without an IP address, APIPA provides a temporary one.
        </li>
-       <li>
+<li>
         APIPA ensures that devices on the same network segment can communicate with each other even if there's no DHCP server available or if static IP addresses haven't been configured.
        </li>
-       <li>
+<li>
         APIPA assigns IP addresses from the range 169.254.0.1 to 169.254.255.254.
        </li>
-       <li>
+<li>
         The default subnet mask for APIPA is 255.255.0.0, meaning all APIPA addresses are on the same local subnet.
        </li>
-       <li>
+<li>
         Devices with APIPA addresses do not have a default gateway, restricting them to local communications only (they wont be able to access the internet, etc).
        </li>
-       <li>
+<li>
         APIPA is not meant to replace DHCP or static addressing. It's a temporary measure to allow basic network functionality.
        </li>
-       <li>
+<li>
         In environments where APIPA might pose a security risk, network administrators can segment networks or use VLANs to isolate traffic.
        </li>
-       <li>
+<li>
         How APIPA Works:
        </li>
-       <ul class="hidden">
-        <li>
+<ul class="hidden">
+<li>
          When a device configured to obtain an IP address automatically starts up, it first tries to find a DHCP server.
         </li>
-        <li>
+<li>
          If the device can't find a DHCP server after several attempts, it assigns itself an IP address from the APIPA range.
         </li>
-        <li>
+<li>
          The device periodically checks for the presence of a DHCP server. If it finds one, it obtains an IP address from the server and stops using the APIPA address.
         </li>
-       </ul>
-      </ul>
-      <li>
+</ul>
+</ul>
+<li>
        Static IP Addressing:
       </li>
-      <ul class="hidden">
-       <li>
+<ul class="hidden">
+<li>
         Static IP addressing refers to the manual assignment of IP addresses to devices on a network, as opposed to dynamic assignment where IP addresses are automatically allocated by a service like DHCP (Dynamic Host Configuration Protocol).
        </li>
-       <li>
+<li>
         Once a device is assigned a static IP address, that address does not change unless it's manually reconfigured.
        </li>
-       <li>
+<li>
         Network administrators or users must manually set the IP address, subnet mask, default gateway, and other network parameters on the device.
        </li>
-       <li>
+<li>
         Servers, especially those accessible from the internet like web servers, often have static IP addresses to ensure consistent accessibility.
        </li>
-       <li>
+<li>
         Devices like routers, switches, and firewalls typically have static IP addresses for predictable management and configuration.
        </li>
-       <li>
+<li>
         In office environments, printers might be assigned static IP addresses so they can be consistently accessed by users.
        </li>
-       <li>
+<li>
         Devices that need to be accessed remotely, like security cameras or certain workstations, might use static IP addresses to ensure consistent access.
        </li>
-       <li>
+<li>
         Advantages of Static IP Addressing:
        </li>
-       <ul class="hidden">
-        <li>
+<ul class="hidden">
+<li>
          Devices will always have the same IP address, making it easier to access and manage them.
         </li>
-        <li>
+<li>
          There's no need for a DHCP server, eliminating potential points of failure or misconfiguration.
         </li>
-        <li>
+<li>
          Since there's no need for DHCP discovery, offer, request, and acknowledgment processes, there's less network traffic related to IP address assignment.
         </li>
-       </ul>
-       <li>
+</ul>
+<li>
         Disadvantages of Static IP Addressing:
        </li>
-       <ul class="hidden">
-        <li>
+<ul class="hidden">
+<li>
          As the network grows, managing static IP addresses can become complex and time-consuming.
         </li>
-        <li>
+<li>
          If two devices are accidentally assigned the same IP address, it can lead to IP conflicts, causing network issues.
         </li>
-        <li>
+<li>
          Some IP addresses might remain unused if devices are not connected or if they're assigned inefficiently.
         </li>
-       </ul>
-       <li>
+</ul>
+<li>
         Other considerations:
        </li>
-       <ul class="hidden">
-        <li>
+<ul class="hidden">
+<li>
          It's crucial to maintain a record or documentation of all static IP assignments to prevent conflicts and aid in troubleshooting.
         </li>
-        <li>
+<li>
          Understanding subnetting is essential when manually assigning IP addresses to ensure devices can communicate efficiently and securely.
         </li>
-        <li>
+<li>
          Static IP addresses can be more predictable for potential attackers, so additional security measures might be needed for devices with static IPs, especially if they're accessible from the internet.
         </li>
-       </ul>
-      </ul>
-     </ul>
-     <li>
+</ul>
+</ul>
+</ul>
+<li>
       MAC (Media Access Control) Adress
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        The MAC address is a unique identifier assigned to network interfaces for communications at the Data Link layer (Layer 2) of the OSI model. They facilitate communication between devices within the same local network (LAN).
       </li>
-      <li>
+<li>
        Every network interface card (NIC) or network-capable device has a unique MAC address, ensuring distinct identification on a local network.
       </li>
-      <li>
+<li>
        A MAC address is typically represented as a sequence of 12 hexadecimal digits. It's often displayed in six groups of two hexadecimal digits, separated by colons (:) or hyphens. For example: AA-BB-CC-DD-EE-FF
       </li>
-      <li>
+<li>
        MAC adresses are split into 2 parts:
       </li>
-      <ol class="hidden">
-       <li>
+<ol class="hidden">
+<li>
         Organizationally Unique Identifier (OUI): The first three bytes (AA-BB-CC in the example from before) represent the manufacturer of the NIC. This part is assigned by the IEEE.
        </li>
-       <li>
+<li>
         Universal Administered address (UAA): The last three bytes (DD-EE-FF in the example from before) are assigned by the manufacturer and ensure the card's uniqueness.
        </li>
-      </ol>
-      <li>
+</ol>
+<li>
        MAC Address uses:
       </li>
-      <ul class="hidden">
-       <li>
+<ul class="hidden">
+<li>
         Address Resolution Protocol (ARP) translates IP addresses into MAC addresses, allowing for correct packet delivery within a local network.
        </li>
-       <li>
+<li>
         Network administrators can set up MAC address filtering to allow or deny network access to specific devices.
        </li>
-       <li>
+<li>
         Since MAC addresses are unique, they can be used to track devices across different networks, though this can raise privacy concerns.
        </li>
-      </ul>
-      <li>
+</ul>
+<li>
        There are 3 primary kinds of MAC addresses:
       </li>
-      <ol class="hidden">
-       <li>
+<ol class="hidden">
+<li>
         Unicast Addresses
        </li>
-       <ul class="hidden">
-        <li>
+<ul class="hidden">
+<li>
          A unicast MAC address is a unique identifier assigned to a single network interface card (NIC) or onboard network component. It ensures that the device has a distinct address on a local network.
         </li>
-        <li>
+<li>
          Unicast addresses are used for one-to-one communication between devices on a network. When a frame is sent to a unicast MAC address, only the specific device with that address processes the frame.
         </li>
-        <li>
+<li>
          Manufacturers assign unicast MAC addresses. The first half of the address (the Organizationally Unique Identifier or OUI) identifies the manufacturer, while the second half is a unique value assigned by the manufacturer to ensure the card's distinctiveness.
         </li>
-        <li>
+<li>
          While unicast MAC addresses are typically hardcoded into the device and remain constant, some software tools allow for MAC address spoofing or changing.
         </li>
-       </ul>
-       <li>
+</ul>
+<li>
         Multicast MAC Addresses:
        </li>
-       <ul class="hidden">
-        <li>
+<ul class="hidden">
+<li>
          A multicast MAC address represents a specific group of devices on a network. It doesn't point to a single device but rather a collection of devices that belong to a particular multicast group.
         </li>
-        <li>
+<li>
          Multicast addresses are used for one-to-many communication. When a frame is sent to a multicast MAC address, all devices that belong to the corresponding multicast group process the frame. It's more efficient than broadcasting a message to all devices, especially when only a subset of devices needs the information.
         </li>
-        <li>
+<li>
          A multicast MAC address can be identified by the value of its least significant bit of the first byte. If this bit is set to 1, it's a multicast address. For instance, a MAC address starting with 01 in hexadecimal is a multicast address.
         </li>
-        <li>
+<li>
          Multicast MAC addresses are commonly used in protocols like Internet Group Management Protocol (IGMP) for IP multicasting.
         </li>
-       </ul>
-       <li>
+</ul>
+<li>
         Broadcast MAC Address:
        </li>
-       <ul class="hidden">
-        <li>
+<ul class="hidden">
+<li>
          The broadcast MAC address is a special address that targets all devices on a local network segment.
         </li>
-        <li>
+<li>
          The broadcast MAC address is always FF:FF:FF:FF:FF:FF
         </li>
-        <li>
+<li>
          When a frame is sent to the broadcast MAC address, every device on the local network segment processes the frame. It's a one-to-all communication method.
         </li>
-        <li>
+<li>
          Examples:
         </li>
-        <ul class="hidden">
-         <li>
+<ul class="hidden">
+<li>
           When a computer joins a network and needs an IP address, it doesn't know the address of the DHCP server (a service that assigns IP addresses). So, it sends a broadcast frame asking, "Is there a DHCP server out there?" The DHCP server, upon receiving this broadcast, will respond directly to the requesting computer.
          </li>
-         <li>
+<li>
           Another common use is the Address Resolution Protocol (ARP). If a device knows the IP address of another device but not its MAC address (which is needed for direct communication on a local network), it sends a broadcast frame asking, "Who has this IP address?" The device with that IP address will then reply with its MAC address.
          </li>
-        </ul>
-        <li>
+</ul>
+<li>
          Excessive broadcasting can lead to "broadcast storms," which can congest the network. Modern network designs often use VLANs and other techniques to limit the scope of broadcasts.
         </li>
-       </ul>
-      </ol>
-     </ul>
-    </ul>
-    <h3 id="server-roles">
+</ul>
+</ol>
+</ul>
+</ul>
+<h3 id="server-roles">
      Server Roles
     </h3>
-    <ul class="hidden">
-     <li>
+<ul class="hidden">
+<li>
       Print Server
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        handles print que. Print servers are generally depricated and no longer used do to "advances" in printing technology.
       </li>
-     </ul>
-     <li>
+</ul>
+<li>
       Database server
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        Stores data using applications such as an SQL or Oracle database.
       </li>
-      <li>
+<li>
        Data is generally accessed directly by applications, but can also be viewed by a database GUI, usually via a web portal.
       </li>
-     </ul>
-     <li>
+</ul>
+<li>
       File Server
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        File servers are used to store files for network users.
       </li>
-      <li>
+<li>
        In enterprise situations, users are required to store data on a file server rather than their personal device or client. This way, their data is always backed up, and accessible from other devices when needed.
       </li>
-     </ul>
-     <li>
+</ul>
+<li>
       Web Server
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        Hosts web pages for users accessing the server using  web browser.
       </li>
-      <li>
+<li>
        Web servers can be set up to only be available to devices on the local network. This can be helpful for internal buisness applications, or for testing a website before it is made public.
       </li>
-      <li>
+<li>
        Can be configured to require connections via https (Hyper Text Transfer Protocal Secure) isntead of http. https encrypts the data to and rom the client to prevent spoofing and man-in-the-middle attacks.
       </li>
-     </ul>
-     <li>
+</ul>
+<li>
       Application Server
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        Users can connect to these servers and have their application run on them rather than their client device. This is a great in networks that take advantage of "thin clients", where cheaper client devices are used for cost savings, and heavy workloads are completed on a more powerful remote server.
       </li>
-     </ul>
-     <li>
+</ul>
+<li>
       Messaging server
      </li>
-     <ul class="hidden">
-      <li>
+<ul class="hidden">
+<li>
        Allows users to communicate through video or text over the network.
       </li>
-     </ul>
-    </ul>
-    <h3 id="server-functions-and-features">
+</ul>
+</ul>
+<h3 id="server-functions-and-features">
      Server Functions &amp; Features
     </h3>
-    <ul class="hidden">
-     <li>
-     </li>
-    </ul>
-   </div>
-  </section>
-  <section class="colored-section" id="sub-section2">
-   <div class="col-lg-12">
-    <h1 class="sub-section-header" id="security-and-disaster-recovery">
-     <mark>
+<ul class="hidden">
+<li>
+</li>
+</ul>
+</div>
+</section>
+<section class="colored-section" id="sub-section2">
+<div class="col-lg-12">
+<h1 class="sub-section-header" id="security-and-disaster-recovery">
+<mark>
       Security &amp; Disaster Recovery
      </mark>
-    </h1>
-   </div>
-   <div class="col-lg-1">
-   </div>
-   <div class="sub-section-box col-lg-12">
-    <ul class="hidden">
-    </ul>
-   </div>
-   <div class="col-lg-1">
-   </div>
-  </section>
-  <section class="grey-section" id="sub-section">
-   <div class="container-fluid">
-    <div class="row">
-     <div class="col-lg-12">
-      <h1 class="sub-section-header" id="server-troubleshooting">
-       <mark>
+</h1>
+</div>
+<div class="col-lg-1">
+</div>
+<div class="sub-section-box col-lg-12">
+<ul class="hidden">
+</ul>
+</div>
+<div class="col-lg-1">
+</div>
+</section>
+<section class="grey-section" id="sub-section">
+<div class="container-fluid">
+<div class="row">
+<div class="col-lg-12">
+<h1 class="sub-section-header" id="server-troubleshooting">
+<mark>
         Server Troubleshooting
        </mark>
-      </h1>
-     </div>
-     <div class="sub-section-box col-lg-12">
-      <ul class="hidden">
-      </ul>
-     </div>
-     <div class="col-lg-1">
-     </div>
-    </div>
-   </div>
-  </section>
-  <script src="../javascript/navbar.js">
-  </script>
- </body>
+</h1>
+</div>
+<div class="sub-section-box col-lg-12">
+<ul class="hidden">
+</ul>
+</div>
+<div class="col-lg-1">
+</div>
+</div>
+</div>
+</section>
+<script src="../javascript/navbar.js">
+</script>
+
+<script>
+  function toggleNav() {
+    const nav = document.querySelector('.side-navigation');
+    if (nav.style.right === '0px') {
+      nav.style.right = '-300px';
+    } else {
+      nav.style.right = '0px';
+    }
+  }
+
+  // Close the side navigation when a link is clicked
+  const navLinks = document.querySelectorAll('.side-navigation a');
+  for (const link of navLinks) {
+    link.addEventListener('click', () => {
+      const nav = document.querySelector('.side-navigation');
+      nav.style.right = '-300px';
+    });
+  }
+</script>
+</body>
 </html>
