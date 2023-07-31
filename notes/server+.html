@@ -439,11 +439,11 @@
             </ul>
 
             <li>Firewalls</li>
-            <ul>
+            <ul class="hidden">
               <li>For server+, only layer 4 firewalls are covered.</li>
               <li>Layer 4 implies host (device) level. These firewalls would be software such as windows firewall, iptables, or UFW (un-complicated firewall).</li>
               <li>layer 4 firewalls can control traffic up to layer 4, including:</li>
-              <ul>
+              <ul class="hidden">
                 <li>Source IP adress</li>
                 <li>Destination IP adress</li>
                 <li>source port</li>
@@ -453,9 +453,9 @@
             </ul>
 
             <li>Static vs Dynamic IP Adressing</li>
-            <ul>
+            <ul class="hidden">
               <li>DHCP (Dynamic Host Configuration Protocol)</li>
-              <ul>
+              <ul class="hidden">
                 <li>Dynamic Host Configuration Protocol (DHCP) is a network protocol used to automatically assign IP addresses and other related configuration information to devices on a network.</li>
                 <li>DHCP servers dynamically assign IP addresses to devices on a network. Administrators can define and manage pools (ranges) of IP addresses to be assigned. This eliminates the need for network administrators to manually configure IP addresses for each device.</li>
                 <li>DHCP servers assign IP addresses for a specific duration, known as a lease. Once the lease expires, the device must request a new IP address or renew its current one.</li>
@@ -463,14 +463,14 @@
                 <li> If needed, a server administrator can create a DHCP reservation. A DHCP reservation is a specific IP address that is reserved for a particular device, based on its MAC address.</li>
                 <li>Other configuration information provided by DHCP may include the default gateway, DNS servers, and more.</li>
                 <li>The DHCP process typically involves four steps, often referred to as DORA:</li>
-                <ol>
+                <ol class="hidden">
                   <li>Discover: The client sends a broadcast message searching for a DHCP server.</li>
                   <li>Offer: The DHCP server responds with an offer that includes an available IP address.</li>
                   <li>Request: The client requests the offered IP address.</li>
                   <li>Acknowledge: The DHCP server acknowledges the request and assigns the IP address to the client.</li>
                 </ol>
                 <li>Common DHCP servers:</li>
-                <ul>
+                <ul class="hidden">
                   <li>Microsoft DHCP Server: Included with Windows Server operating systems.</li>
                   <li>ISC DHCP: An open-source DHCP server commonly used in UNIX and Linux environments.</li>
                   <li>Cisco IOS DHCP Server: Integrated into Cisco routers and switches.</li>
@@ -478,14 +478,14 @@
                   <li>DHCP functionality in routers: Many home and enterprise routers have built-in DHCP servers.</li>
                 </ul>
                 <li>DHCP Security Considerations</li>
-                <ul>
+                <ul class="hidden">
                   <li>Rogue DHCP Servers: Unauthorized DHCP servers can provide incorrect configurations or act maliciously.</li>
                   <li>DHCP Snooping: A security feature on switches that filters out untrusted DHCP messages.</li>
                   <li>MAC Address Filtering: Some DHCP servers can be configured to only serve specific MAC addresses or exclude certain MAC addresses.</li>
                 </ul>
               </ul>
               <li>APIPA (Automatic Private OP Adress)</li>
-              <ul>
+              <ul class="hidden">
                 <li>Automatic Private IP Addressing (APIPA) is a feature primarily found in Microsoft Windows operating systems, though the concept exists in other systems under different names.</li>
                 <li>APIPA acts as a safety net when a DHCP server is unavailable. Instead of leaving a device without an IP address, APIPA provides a temporary one.</li>
                 <li>APIPA ensures that devices on the same network segment can communicate with each other even if there's no DHCP server available or if static IP addresses haven't been configured.</li>
@@ -495,14 +495,14 @@
                 <li>APIPA is not meant to replace DHCP or static addressing. It's a temporary measure to allow basic network functionality.</li>
                 <li>In environments where APIPA might pose a security risk, network administrators can segment networks or use VLANs to isolate traffic.</li>
                 <li>How APIPA Works:</li>
-                <ul>
+                <ul class="hidden">
                   <li>When a device configured to obtain an IP address automatically starts up, it first tries to find a DHCP server.</li>
                   <li>If the device can't find a DHCP server after several attempts, it assigns itself an IP address from the APIPA range.</li>
                   <li>The device periodically checks for the presence of a DHCP server. If it finds one, it obtains an IP address from the server and stops using the APIPA address.</li>
                 </ul>
               </ul>
               <li>Static IP Addressing:</li>
-              <ul>
+              <ul class="hidden">
                 <li>Static IP addressing refers to the manual assignment of IP addresses to devices on a network, as opposed to dynamic assignment where IP addresses are automatically allocated by a service like DHCP (Dynamic Host Configuration Protocol).</li>
                 <li>Once a device is assigned a static IP address, that address does not change unless it's manually reconfigured.</li>
                 <li>Network administrators or users must manually set the IP address, subnet mask, default gateway, and other network parameters on the device.</li>
@@ -511,19 +511,19 @@
                 <li>In office environments, printers might be assigned static IP addresses so they can be consistently accessed by users.</li>
                 <li>Devices that need to be accessed remotely, like security cameras or certain workstations, might use static IP addresses to ensure consistent access.</li>
                 <li>Advantages of Static IP Addressing:</li>
-                <ul>
+                <ul class="hidden">
                   <li>Devices will always have the same IP address, making it easier to access and manage them.</li>
                   <li>There's no need for a DHCP server, eliminating potential points of failure or misconfiguration.</li>
                   <li>Since there's no need for DHCP discovery, offer, request, and acknowledgment processes, there's less network traffic related to IP address assignment.</li>
                 </ul>
                 <li>Disadvantages of Static IP Addressing:</li>
-                <ul>
+                <ul class="hidden">
                   <li>As the network grows, managing static IP addresses can become complex and time-consuming.</li>
                   <li>If two devices are accidentally assigned the same IP address, it can lead to IP conflicts, causing network issues.</li>
                   <li>Some IP addresses might remain unused if devices are not connected or if they're assigned inefficiently.</li>
                 </ul>
                 <li>Other considerations:</li>
-                <ul>
+                <ul class="hidden">
                   <li>It's crucial to maintain a record or documentation of all static IP assignments to prevent conflicts and aid in troubleshooting.</li>
                   <li>Understanding subnetting is essential when manually assigning IP addresses to ensure devices can communicate efficiently and securely.</li>
                   <li>Static IP addresses can be more predictable for potential attackers, so additional security measures might be needed for devices with static IPs, especially if they're accessible from the internet.</li>
@@ -532,45 +532,45 @@
             </ul>
 
             <li>MAC (Media Access Control) Adress</li>
-              <ul>
+              <ul class="hidden">
                 <li>The MAC address is a unique identifier assigned to network interfaces for communications at the Data Link layer (Layer 2) of the OSI model. They facilitate communication between devices within the same local network (LAN).</li>
                 <li>Every network interface card (NIC) or network-capable device has a unique MAC address, ensuring distinct identification on a local network.</li>
                 <li>A MAC address is typically represented as a sequence of 12 hexadecimal digits. It's often displayed in six groups of two hexadecimal digits, separated by colons (:) or hyphens. For example: AA-BB-CC-DD-EE-FF</li>
                 <li>MAC adresses are split into 2 parts:</li>
-                <ol>
+                <ol class="hidden">
                   <li>Organizationally Unique Identifier (OUI): The first three bytes (AA-BB-CC in the example from before) represent the manufacturer of the NIC. This part is assigned by the IEEE.</li>
                   <li>Universal Administered address (UAA): The last three bytes (DD-EE-FF in the example from before) are assigned by the manufacturer and ensure the card's uniqueness.</li>
                 </ol>
                 <li>MAC Address uses:</li>
-                <ul>
+                <ul class="hidden">
                   <li>Address Resolution Protocol (ARP) translates IP addresses into MAC addresses, allowing for correct packet delivery within a local network.</li>
                   <li>Network administrators can set up MAC address filtering to allow or deny network access to specific devices.</li>
                   <li>Since MAC addresses are unique, they can be used to track devices across different networks, though this can raise privacy concerns.</li>
                 </ul>
                 <li>There are 3 primary kinds of MAC addresses:</li>
-                <ol>
+                <ol class="hidden">
                   <li>Unicast Addresses</li>
-                  <ul>
+                  <ul class="hidden">
                     <li>A unicast MAC address is a unique identifier assigned to a single network interface card (NIC) or onboard network component. It ensures that the device has a distinct address on a local network.</li>
                     <li> Unicast addresses are used for one-to-one communication between devices on a network. When a frame is sent to a unicast MAC address, only the specific device with that address processes the frame.</li>
                     <li>Manufacturers assign unicast MAC addresses. The first half of the address (the Organizationally Unique Identifier or OUI) identifies the manufacturer, while the second half is a unique value assigned by the manufacturer to ensure the card's distinctiveness.</li>
                     <li>While unicast MAC addresses are typically hardcoded into the device and remain constant, some software tools allow for MAC address spoofing or changing.</li>
                   </ul>
                   <li>Multicast MAC Addresses:</li>
-                  <ul>
+                  <ul class="hidden">
                     <li>A multicast MAC address represents a specific group of devices on a network. It doesn't point to a single device but rather a collection of devices that belong to a particular multicast group.</li>
                     <li>Multicast addresses are used for one-to-many communication. When a frame is sent to a multicast MAC address, all devices that belong to the corresponding multicast group process the frame. It's more efficient than broadcasting a message to all devices, especially when only a subset of devices needs the information.</li>
                     <li>A multicast MAC address can be identified by the value of its least significant bit of the first byte. If this bit is set to 1, it's a multicast address. For instance, a MAC address starting with 01 in hexadecimal is a multicast address.</li>
                     <li>Multicast MAC addresses are commonly used in protocols like Internet Group Management Protocol (IGMP) for IP multicasting.</li>
                   </ul>
                   <li>Broadcast MAC Address:</li>
-                  <ul>
+                  <ul class="hidden">
                     <li>The broadcast MAC address is a special address that targets all devices on a local network segment.</li>
                     <li>The broadcast MAC address is always FF:FF:FF:FF:FF:FF</li>
                     <li>When a frame is sent to the broadcast MAC address, every device on the local network segment processes the frame. It's a one-to-all communication method.</li>
                     
                     <li>Examples:</li>
-                    <ul>
+                    <ul class="hidden">
                       <li>When a computer joins a network and needs an IP address, it doesn't know the address of the DHCP server (a service that assigns IP addresses). So, it sends a broadcast frame asking, "Is there a DHCP server out there?" The DHCP server, upon receiving this broadcast, will respond directly to the requesting computer.</li>
                       <li>Another common use is the Address Resolution Protocol (ARP). If a device knows the IP address of another device but not its MAC address (which is needed for direct communication on a local network), it sends a broadcast frame asking, "Who has this IP address?" The device with that IP address will then reply with its MAC address.</li>
                     </ul>
@@ -578,6 +578,43 @@
                   </ul>
                 </ol>
               </ul>
+          </ul>
+
+          <h3>Server Roles</h3>
+          <ul class="hidden">
+            <li>Print Server</li>
+            <ul class="hidden">
+              <li>handles print que. Print servers are generally depricated and no longer used do to "advances" in printing technology.</li>
+            </ul>
+            <li>Database server</li>
+            <ul class="hidden">
+              <li>Stores data using applications such as an SQL or Oracle database.</li>
+              <li>Data is generally accessed directly by applications, but can also be viewed by a database GUI, usually via a web portal.</li>
+            </ul>
+            <li>File Server</li>
+            <ul class="hidden">
+              <li>File servers are used to store files for network users.</li>
+              <li>In enterprise situations, users are required to store data on a file server rather than their personal device or client. This way, their data is always backed up, and accessible from other devices when needed.</li>
+            </ul>
+            <li>Web Server</li>
+            <ul class="hidden">
+              <li>Hosts web pages for users accessing the server using  web browser.</li>
+              <li>Web servers can be set up to only be available to devices on the local network. This can be helpful for internal buisness applications, or for testing a website before it is made public.</li>
+              <li>Can be configured to require connections via https (Hyper Text Transfer Protocal Secure) isntead of http. https encrypts the data to and rom the client to prevent spoofing and man-in-the-middle attacks.</li>
+            </ul>
+            <li>Application Server</li>
+            <ul class="hidden">
+              <li>Users can connect to these servers and have their application run on them rather than their client device. This is a great in networks that take advantage of "thin clients", where cheaper client devices are used for cost savings, and heavy workloads are completed on a more powerful remote server.</li>
+            </ul>
+            <li>Messaging server</li>
+            <ul class="hidden">
+              <li>Allows users to communicate through video or text over the network.</li>
+            </ul>
+          </ul>
+
+          <h3>Server Functions & Features</h3>
+          <ul class="hidden">
+            <li></li>
           </ul>
       </div>
     </section>
