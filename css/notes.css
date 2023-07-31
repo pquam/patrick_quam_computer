@@ -269,3 +269,37 @@
     }
   }
   
+/* Side Navigation Menu */
+.side-navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Slight transparency */
+    overflow-y: auto;
+    z-index: 1000; /* Ensuring it's above other content */
+    padding: 20px;
+}
+
+.side-navigation ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.side-navigation li {
+    margin: 10px 0;
+}
+
+.side-navigation a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.side-navigation a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
