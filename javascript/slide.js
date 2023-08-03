@@ -1,3 +1,4 @@
+//slides text in from the side of the screen on notes pages
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         console.log(entry)

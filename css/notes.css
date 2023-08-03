@@ -241,7 +241,7 @@
     display: block;
     top: 0;
     left: 0;
-    width: 15%;
+    width: 12%;
     height: 100%;
     background-color: #333;
     overflow-y: auto;
@@ -284,7 +284,7 @@
   display: none;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1500px) {
   .side-navigation {
     display: none;
     top: 0;
@@ -293,6 +293,7 @@
     background-color: #333;
     transition: right 0.3s; /* Smooth transition for opening/closing */
     z-index: 1000; /* High z-index to ensure it's on top of other content */
+    transition: transform 0.6s;
   }
 
   .side-navigation ul {
@@ -329,5 +330,6 @@
     
     white-space: nowrap;
     transform: translateY(-50%) rotate(90deg);
+    transition: transform 0.6s;
   }
 }
