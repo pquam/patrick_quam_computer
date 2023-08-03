@@ -4,6 +4,9 @@ function toggleNav() {
     if (sidebar.style.display === 'none' || sidebar.style.display === '') {
         sidebar.style.display = 'block';
         tab.style.left = '350px';
+    } else if (window.innerWidth >= 1500) { 
+      sidebar.style.display = 'block'; 
+      tab.style.left = '-70px'; 
     } else {
        sidebar.style.display = 'none';
        tab.style.left = '-70px';
