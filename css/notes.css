@@ -235,48 +235,15 @@
   }
   
   
-  /* CTA Section */
-  
-  
-  /* Footer Section */
-  
-  
-  .social-icon {
-    margin: 20px 10px;
-  }
-  
-  @media (max-width: 1110px) {
-  
-    #title {
-      text-align: left;
-    }
-
-    #experience {
-        text-align: left;
-    }
-  
-    .title-image {
-        display: none;
-        visibility: hidden;
-    }
-
-    .experience-image {
-        align-content: left;
-        max-width: 50%;
-        min-width: 30%;
-        max-height: 50%;
-        min-height: 30%;
-    }
-  }
-  
 /* Side Navigation Menu */
 .side-navigation {
     position: fixed;
+    display: block;
     top: 0;
     left: 0;
-    width: 10%;
+    width: 15%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Slight transparency */
+    background-color: #333;
     overflow-y: auto;
     z-index: 1000; /* Ensuring it's above other content */
     padding: 20px;
@@ -309,17 +276,18 @@
 
 .side-navigation a:hover {
     background-color: rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    color: #FFF;
 }
 
 .nav-toggle-btn {
   display: none;
 }
 
-@media only screen and (max-width: 1110px) {
+@media only screen and (max-width: 1200px) {
   .side-navigation {
-    position: fixed;
+    display: none;
     top: 0;
-    left: -300px; /* Start off-screen to the left */
     width: 300px;
     height: 100%;
     background-color: #333;
@@ -346,10 +314,10 @@
   }
 
   .nav-toggle-btn {
-    position: absolute;
+    position: fixed;
     display: block;
     top: 50%;
-    left: 0;
+    left: -40px;
     background-color: #333;
     color: white;
     border: none;

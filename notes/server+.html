@@ -1471,30 +1471,7 @@
 </div>
 </div>
 </section>
-<script src="../javascript/navbar.js">
-</script>
-
-<script>
-  function toggleNav() {
-    const nav = document.querySelector('.side-navigation');
-    const bttn = document.querySelector('.nav-toggle-btn');
-    if (nav.style.left === '0px') {
-      nav.style.left = '-300px';
-      bttn.style.left = '-300px';
-    } else {
-      nav.style.left = '0px';
-      bttn.style.left = '0px';
-    }
-  }
-
-  // Close the side navigation when a link is clicked
-  const navLinks = document.querySelectorAll('.side-navigation a');
-  for (const link of navLinks) {
-    link.addEventListener('click', () => {
-      const nav = document.querySelector('.side-navigation');
-      nav.style.right = '-300px';
-    });
-  }
-</script>
+<script src="../javascript/navbar.js"></script>
+<script src="../javascript/sidebar.js"></script>
 </body>
 </html>
