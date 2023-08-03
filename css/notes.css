@@ -261,7 +261,7 @@
 
 .side-navigation li ul {
   padding-left: 20px;
-  font-size: medium;
+  font-size: small;
 }
 
 .side-navigation a {
@@ -288,7 +288,7 @@
   .side-navigation {
     display: none;
     top: 0;
-    width: 300px;
+    width: 425px;
     height: 100%;
     background-color: #333;
     transition: right 0.3s; /* Smooth transition for opening/closing */
@@ -307,6 +307,7 @@
     color: white;
     padding: 10px;
     text-decoration: none;
+    font-size: medium;
   }
 
   .side-navigation a:hover {
@@ -316,8 +317,10 @@
   .nav-toggle-btn {
     position: fixed;
     display: block;
+    font-size: larger;
+    padding: 3%;
     top: 50%;
-    left: -40px;
+    left: -70px;
     background-color: #333;
     color: white;
     border: none;
