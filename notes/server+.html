@@ -18,7 +18,8 @@
 <script crossorigin="anonymous" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js">
 </script>
 </head>
-<body class="grey-section"><button class="nav-toggle-btn" onclick="toggleNav()">☰ Navigation</button>
+<body class="grey-section">
+<button class="nav-toggle-btn" onclick="toggleNav()">☰ Navigation</button>
 <nav class="side-navigation">
 <ul>
 <li>
@@ -1476,10 +1477,13 @@
 <script>
   function toggleNav() {
     const nav = document.querySelector('.side-navigation');
-    if (nav.style.right === '0px') {
-      nav.style.right = '-300px';
+    const bttn = document.querySelector('.nav-toggle-btn');
+    if (nav.style.left === '0px') {
+      nav.style.left = '-300px';
+      bttn.style.left = '-300px';
     } else {
-      nav.style.right = '0px';
+      nav.style.left = '0px';
+      bttn.style.left = '0px';
     }
   }
 

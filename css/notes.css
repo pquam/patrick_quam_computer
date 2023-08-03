@@ -311,15 +311,18 @@
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-@media only screen and (max-width: 768px) {
+.nav-toggle-btn {
+  display: none;
+}
+
+@media only screen and (max-width: 1110px) {
   .side-navigation {
     position: fixed;
     top: 0;
-    right: -300px; /* Start off-screen to the right */
+    left: -300px; /* Start off-screen to the left */
     width: 300px;
     height: 100%;
     background-color: #333;
-    overflow-y: scroll; /* Allow scrolling if content exceeds viewport height */
     transition: right 0.3s; /* Smooth transition for opening/closing */
     z-index: 1000; /* High z-index to ensure it's on top of other content */
   }
@@ -343,14 +346,17 @@
   }
 
   .nav-toggle-btn {
-    position: fixed;
-    right: 10px;
-    top: 10px;
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 0;
     background-color: #333;
     color: white;
-    padding: 10px 20px;
     border: none;
     cursor: pointer;
-    z-index: 1001; /* Ensure it's above the side navigation */
+    z-index: 1001;
+    
+    white-space: nowrap;
+    transform: translateY(-50%) rotate(90deg);
   }
 }
