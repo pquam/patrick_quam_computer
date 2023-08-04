@@ -1,7 +1,10 @@
 function toggleNav() {
     const sidebar = document.querySelector('.side-navigation');
     const tab = document.querySelector('.nav-toggle-btn');
-    if (sidebar.style.display === 'none' || sidebar.style.display === '') {
+    if (window.innerWidth >= 1500) { 
+      sidebar.style.display = 'block'; 
+      tab.style.left = '-70px'; 
+    } else if (sidebar.style.display === 'none' || sidebar.style.display === '') {
         sidebar.style.display = 'block';
         tab.style.left = '350px';
     } else {
@@ -9,10 +12,7 @@ function toggleNav() {
        tab.style.left = '-70px';
     }
 
-    if (window.innerWidth >= 1500) { 
-      sidebar.style.display = 'block'; 
-      tab.style.left = '-70px'; 
-    }
+    
   }
 
 
