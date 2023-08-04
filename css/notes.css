@@ -267,7 +267,7 @@
   position: fixed;
   display: block;
   font-size: large;
-  padding: 3%;
+  padding: 1%;
   top: 50%;
   left: -70px;
   background-color: #333;
@@ -281,6 +281,28 @@
   transition: transform 0.6s;
 }
 
+.side-navigation {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  overflow-y: auto;
+  z-index: 1000; /* Ensuring it's above other content */
+  padding: 20px;
+}
+
+  .side-navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 1.5em;
+  }
+
+@media only screen and (max-width: 1500px) {
+
   .side-navigation {
     display: none;
     top: 0;
@@ -291,15 +313,6 @@
     z-index: 1000; /* High z-index to ensure it's on top of other content */
     transition: transform 0.6s;
   }
-
-  .side-navigation ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    font-size: 1.5em;
-  }
-
-@media only screen and (max-width: 1500px) {
 
   .side-navigation a {
     display: block;
