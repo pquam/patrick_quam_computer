@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anek+Devanagari">
 
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/navbar.css">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -54,102 +55,145 @@
 
         </div>
 
-    </section>
-
-    <!-- sub-section -->
-    <section class="grey-section" id="sub-section1">
-
         <div class="container-fluid">
-
-          <div class="col-lg-12"></div>
-    
-            <div class="row">
-
-                <div class="col-lg-12">
-                    <h1 class="sub-section-header">More About Me:</h1>
-                </div>
-
-                <div class="col-lg-1"></div>
-                <div class="sub-section-box col-lg-2">
-                  <img class="sub-section-image" src="images/n64.png">
-                  <h3 class="sub-section-title">Retro Computer Hardware and Games Collector</h3>
-                  <p>I have an ever-growing collection of retro games & computer hardware</p>
-                </div>
-                
-                <div class="col-lg-2"></div>
-
-                <div class="sub-section-box col-lg-2">
-                    <img class="sub-section-image" src="images/011D.png">
-                    <h3 class="sub-section-title">Home Lab</h3>
-                    <p>Self built and pre- built servers for hosting a variety of services, including the beta version of this website, gameservers, and my NAS</p>
-                </div>
-
-                <div class="col-lg-2"></div>
-
-                <div class="sub-section-box col-lg-2">
-                  <img class="sub-section-image" src="images/tf2-logo.png">
-                  <h3 class="sub-section-title">Other Hobbies:</h3>
-                  <p>Magic: the Gathering, Team Fortress 2 (the greatest game ever made), and working on my Subaru</p>
-                  </div>
-                <div class="col-lg-1"></div>
-          
-            </div>
-
+          <div class="col-lg-12">
+            <h1 id="title">Contact Me</h1>
             
-        </div>
-    
-        </div>
+          </div>
+      </div>
+
     </section>
 
-    <!-- projects -->
+    <section class="card-holder">
+      <div id="cards">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <a href="https://www.linkedin.com/in/patrick-quam/" target="_blank" style="text-decoration: none;">
+                <img class="card-image" src="images/linkedinlogo.png" alt="LinkedIn Icon">
+              </a>
+            </div>
+            <div class="flip-card-back">
+              <a href="https://www.linkedin.com/in/patrick-quam/" target="_blank" style="text-decoration: none;">
+                <img class="card-image" src="images/linkedinlogo.png" alt="LinkedIn Icon">
+              </a>
+              <p class="flip-p">linkedin.com/in/patrick-quam</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <a href="https://github.com/pquam" target="_blank" style="text-decoration: none;">
+                <img class="card-image" src="images/githublogo.png" alt="LinkedIn Icon">
+              </a>
+            </div>
+            <div class="flip-card-back">
+              <a href="https://github.com/pquam" target="_blank" style="text-decoration: none;">
+                <img class="card-image" src="images/githublogo.png" alt="LinkedIn Icon">
+              </a>
+              <p class="flip-p">github.com/pquam</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <a href="mailto:patrick@quam.computer" style="text-decoration: none;">
+                <img class="card-image" src="images/email.png" alt="LinkedIn Icon">
+              </a>
+            </div>
+            <div class="flip-card-back">
+              <a href="mailto:patrick@quam.computer" style="text-decoration: none;">
+                <img class="card-image" src="images/email.png" alt="LinkedIn Icon">
+              </a>
+              <p class="flip-p">patrick@quam.computer</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
     <section class="colored-section" id="projects">
 
-      <div class="col-lg-12">
-        <h1 class="sub-section-header">My current projects:</h1>
+      <h1>The stack</h1>
+      <div class="sub-section-box col-lg-12">
+        <p>
+          Welcome to my personal website, a testament to my interest in web development and server management, and a good excuse to build a really cool computer.
+          While I had the assistance of ChatGPT in some areas (like writing this description), the majority of the site was crafted by me using VSCode and VIM.
+           I am utilizing Bootstrap for design and responsiveness. 
+           The website you're viewing is hosted on a VPS, which I set up and manage from the ground up.
+           This involved hardening and configuring both the VPS and the server for enhanced security, as well as automating server updates, and ensuring timely SSL certificate renewals using Certbot using bash scripts and cron jobs.
+            Additionally, I maintain a local beta version of this site on a custom server I built myself.
+             Both the live and beta versions are managed seamlessly using Git and GitHub.
+       </p>
       </div>
+  <div class="col-lg-1"></div>
 
-      <div id="project-carousel" class="carousel  carousel-dark slide" data-bs-ride="carousel">
+  </section>
 
-        <div class="carousel-inner">
 
-          <div class="carousel-item active">
-            <h2 class="project-text">This website!</h2>
-            <img class="project-image" src="images/nginx.png">
-            <em>Eternally under construction 🛠️</em>
+  <section class="grey-section" id="sub-section1">
+
+      <div class="container-fluid">
+  
+          <div class="column">
+
+              <div class="col-lg-12">
+                  <h1 class="sub-section-header">What is it for?</h1>
+              </div>
+
+                  <div class="sub-section-box col-lg-12">
+                    <p>This website primarily serves as my digital notebook and a playground for exploring intriguing technologies.
+                       Through its creation, I've deepened my knowledge of Linux, automation, server operations, DNS intricacies, and honed my proficiency in HTML, CSS, and JavaScript.
+                        My journey with this site has also solidified my grasp on Git and GitHub.
+                         As I continually enhance and broaden the site's offerings, I'm eager to delve deeper into JavaScript and other web development tools.
+                          I also hope that the resources and notes on the website may be useful for other people trying to learn about technology. 🙂
+                    </p>
+                  </div>
+        
           </div>
 
-          <div class="carousel-item">
-            <h2 class="project-text">Home Lab</h2>
-            <img class="project-image" src="images/011D.png">
-            <em>I love computers!</em>
-          </div>
-
-          <div class="carousel-item">
-            <h2 class="project-text">Comptia linux+</h2>
-            <img class="project-image" src="images/server+.png">
-            <em>Certification for proficiency in Linux system administration tasks. 🐧</em>
-          </div>
-
-          <div class="carousel-item">
-            <h2 class="project-text">Comptia Server+</h2>
-            <img class="project-image" src="images/linux+.png">
-            <em>Certification for server support and administration skills validation. 💻</em>
-          </div>
-
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#project-carousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#project-carousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-
+          
       </div>
+  
+    </div>
+  </section>
 
-    </section>
+  <section class="colored-section" id="sub-section2">
+
+    <div class="col-lg-12">
+      <h1 class="sub-section-header"><mark>Patch Notes:</mark></h1>
+    </div>
+      <div class="sub-section-box col-lg-12">
+        <h3>More detail can be found on the <a href="https://github.com/pquam/patrick_quam_computer/commits" class="link" target="_blank">GitHub commits page</a></h3>
+        <ul>
+          <li>Jul 28, 2023: Added slide animations to notes pages using javascript, updated navbar to load using javascript.</li>
+          <li>Jul 27, 2023: Fix layout and links on several pages, added content to contact page, fixed various issues with other notes pages.</li>
+          <li>Jul 26, 2023: Add content to various pages.</li>
+          <li>Jul 25, 2023: Add content to various pages.</li>
+          <li>Jul 21, 2023: Add content to various pages.</li>
+          <li>Jul 16, 2023: Updated links on various pages.</li>
+          <li>Jul 15, 2023: Add content to various pages, fixed numerous typos.</li>
+          <li>Jul 14, 2023: Add content and removed bloat on several pages.</li>
+          <li>Jul 10, 2023: Add content and removed bloat on several pages.</li>
+          <li>Jul 9, 2023: Add content to various pages.</li>
+          <li>Jul 8, 2023: Add content to various pages, fixed numerous typos.</li>
+          <li>Jul 4, 2023: Add certifications and tools pages, added content to various pages, updated CSS to make inline links more readable.</li>
+          <li>Jul 2, 2023: Update CSS to make inline images and code tags look better.</li>
+          <li>Jul 1, 2023: Updated all pages and links to support https, added information to NGINX page.</li>
+          <li>Jun 30, 2023: Added content to various pages, finalized navbar design.</li>
+          <li>Jun 26, 2023: Updated nav bar links.</li>
+          <li>Jun 23, 2023: fixed various typos and grammar issues.</li>
+          <li>Jun 21, 2023: Several fixes for webpage layout.</li>
+          <li>Jun 20, 2023: Added notes pages, update donation alert.</li>
+          <li>Jun 15, 2023: Initial Commit. Built template page and home page.</li>
+        </ul>
+      </div>
+  </section>
     <script src="javascript/navbar.js"></script>
 </body>
 
