@@ -34,7 +34,9 @@
 
 .flip-card-front, .flip-card-back {
   position: absolute;
-  backface-visibility: hidden; /* Ensures that the back of the card isn't visible during the flip */
+  backface-visibility: hidden;
+  -moz-backface-visibility: hidden; /* Ensures that the back of the card isn't visible during the flip */
+  transform: rotateX(0deg); /*this fixes a specific bug with flip cards in firefox showing the back of the card*/
   display: flex;
   flex-direction: column;
   align-items: center; 
