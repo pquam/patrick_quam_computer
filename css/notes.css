@@ -172,8 +172,8 @@
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.8);
   }
 
-  .sub-list-padding {
-    margin-top: 7%;
+  .spaced-list {
+    padding-bottom: 10%;
   }
 
   
