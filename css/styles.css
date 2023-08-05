@@ -3,6 +3,12 @@
     font-family:'Courier New', Courier, monospace;
     color: #fff;
   }
+
+  h4 {
+    padding: 15px;
+
+    border-radius: 10px;
+  }
   
   p {
     color: #fff;
