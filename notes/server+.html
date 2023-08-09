@@ -1520,18 +1520,22 @@
       <li>Clustering:</li>
       <ul>
          <li>A server cluster is a group of independent servers that work together as a single system to ensure that applications and services remain available. The primary goal of clustering is to provide redundancy, which in turn provides high availability and fault tolerance.</li>
+
          <li>Benefits of clusters:</li>
          <ul>
             <li>If one node fails, another can take over, ensuring continuous service.</li>
             <li>Additional nodes can be added to the cluster to handle increased load.</li>
             <li>Load balancing can be implemented to distribute the workload evenly among nodes, preventing any single node from becoming a bottleneck.</li>
          </ul>
+
          <li>There are 3 common implementations of clustering; Failover clusters, load balancing clusters, and high perfomance clusters.</li>
+
          <li>Failover clusters:</li>
          <ul>
             <li>In this setup, if one server (or node) fails, its workload is transferred to another node in the cluster. This ensures continuous operation.</li>
             <li>Often used for databases, file servers, and virtual machines.</li>
          </ul>
+
          <li>Load Balancing Clusters:</li>
          <ul>
             <li>Incoming network traffic is distributed across multiple servers to balance the load and maximize throughput and response time.</li>
@@ -1542,6 +1546,52 @@
          <ul>
             <li>These clusters are designed to provide high computational power by parallelizing tasks. They're not necessarily focused on high availability but rather on performance.</li>
             <li>Often used for scientific simulations, data analysis, and other compute-intensive tasks.</li>
+         </ul>
+
+         <li>What Systems Benefit From Clustering?</li>
+         <ul>
+            <li>Some applications maintain a significant amount of state information in memory (ram). This could be session data, cached information, or real-time data that the application is processing. If such an application were to crash or be interrupted, restoring its state from disk or re-computing the data could be time-consuming or even impossible in some cases. In a clustered environment, another node can take over with minimal disruption, ensuring that the in-memory state is preserved and the application continues to function.</li>
+            <li>Applications that frequently write to or update a database or file system benefit from clustering. This is because clustering can provide data redundancy. In a clustered setup, data can be mirrored or replicated across nodes. If one node fails during a write operation, another node can take over, ensuring data integrity and availability. This is especially crucial for databases where data consistency and durability are paramount.</li>
+            <li>Databases often hold critical data and require high availability. Clustering ensures that if one node fails, another can take over, minimizing downtime.</li>
+            <li>Clustering can ensure that file services remain available, even if one server fails. This is crucial for businesses where access to files and documents is critical.</li>
+            <li>For websites and applications with high traffic, clustering provides load balancing, distributing incoming requests across multiple servers. This ensures that no single server becomes a bottleneck and provides redundancy in case of server failures.</li>
+            <li>Email systems like Microsoft Exchange can be set up in a clustered environment to ensure continuous email delivery and access.</li>
+            <li>Virtualization platforms like VMware or Hyper-V can cluster host servers. If one host fails, the virtual machines can be quickly migrated to another host in the cluster.</li>
+            <li>Clusters can be set up to provide massive computational power for tasks like scientific simulations, data analysis, and rendering.</li>
+         </ul>
+
+         <li>Cluster Configurations</li>
+         <ul>
+            <li>Active-Active</li>
+            <ul>
+               <li>All servers (or resources) in the setup are "active" and handle traffic or workload concurrently.</li>
+               <li>Traffic or workload is distributed among the active servers. This can be done using load balancers or other distribution mechanisms.</li>
+               <li>If one server fails, the remaining active servers continue to handle the traffic, ensuring there's no service interruption.</li>
+               <li>Active-Active configurations can be scaled more easily. As traffic grows, more servers can be added to the active pool to handle the increased load.</li>
+               <li>Active-Active setups are common in web server clusters, application server clusters, and other scenarios where load distribution is essential. It's especially useful for systems that need to handle large volumes of simultaneous requests.</li>
+            </ul>
+
+            <li>Active-Passive</li>
+            <ul>
+               <li>Some servers are "active" and handle all the traffic or workload.  The other servers in the cluster remain "passive" or in standby mode. They don't actively handle any traffic but are ready to take over if the active server fails.</li>
+               <li>If the active server encounters a problem, the passive server takes over its role, ensuring continuous service. This process is known as "failover."</li>
+               <li>Once the original active server is fixed or becomes operational again, it can be brought back online. Depending on the configuration, it might return as the active server, or it might assume the passive role until another failover event occurs.</li>
+               <li>Active-Passive setups are common in database systems, file servers, and other scenarios where data consistency is crucial. The passive server often mirrors the data of the active server to ensure a seamless transition during failover.</li>
+            </ul>
+
+            <li>Differences:</li>
+            <ul>
+               <li>In Active-Active, all resources are utilized concurrently, offering potentially higher performance and throughput. In Active-Passive, the passive resource remains on standby, so its capacity isn't utilized until a failover event.</li>
+               <li>Active-Active configurations can be more complex due to the need to synchronize data and state across all active nodes. Active-Passive setups, while simpler, require mechanisms to ensure a smooth failover process.</li>
+               <li>Active-Active configurations might have higher operational costs since all nodes are active and consuming resources. However, they can handle more traffic without additional scaling.</li>
+            </ul>
+
+            <!--
+            <li>Detecting Failures</li>
+            <ul>
+               <li></li>
+            </ul>
+            -->
          </ul>
       </ul>
 
