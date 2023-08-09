@@ -1424,21 +1424,26 @@
       </li>
      </ul>
     </ul>
+
     <h3 id="server-functions-and-features">
      Server Functions &amp; Features
     </h3>
+
     <ul class="hidden">
+
      <li>Formatting:</li>
      <ul>
         <li>After partitioning a drive, it hasa to be formatted before it can be used.</li>
         <li>The format will be largly decided by what operating system the storage device is going to be mounted to.</li>
         <li>For example, windows drives should be formatted NTFS. Modern linux systems use EXT4.</li>
      </ul>
+
      <li>Connectivity:</li>
      <ul>
         <li>Servers should have the ability to connect to networks. This could be either Local Area Networks, or a Wide Area Network such as the internet.</li>
         <li>Servers should be able to support netwrk connections for virtual hosts (such as VMs or containers)</li>
      </ul>
+
      <li>Provisioning:</li>
      <ul>
         <li>When allocating storage for virtual machines, files servers, etc, you will need to know how much storage to provide to those services.</li>
@@ -1455,6 +1460,7 @@
             <li>"Overcommitment" thin provisioning: More storage than what is physically available is provisioned across multiple systems (typically VMs) under the assumption that the total storage usage wil not exceed the physical storage limit.</li>
         </ul>
      </ul>
+
      <li>Swap</li>
      <ul>
       <li>Swap storage, also known as swap space or paging file, is a portion of a hard disk drive (HDD) or solid-state drive (SSD) that is used as virtual memory in an operating system (OS). It is a form of memory management where the OS can "swap out" data from the system's RAM onto the hard drive when the RAM is full, and "swap in" data back to the RAM when needed.</li>
@@ -1463,6 +1469,120 @@
       <li>Swap space takes up disk space. If your server is running low on disk space, one of the things to check is whether you've allocated too much space to swap.</li>
       <li>Modern Linux systems manage swap space with the "swappiness" parameter, which configures how aggressively the system uses swap space.</li>
       <li>Ideally swap storage should be on a seperate disk than the operating system.</li>
+      <li>Scratch space is the same idea as swap space, but is managed by an application rather than the operating system.</li>
+     </ul>
+
+     <li>Storage Management</li>
+     <ul>
+      <li>Disk quaotas can be used to manage the amount of physical storage a user or account can occupy. There are various tools that will automatically notify users that close to or at their disk quota.</li>
+      <li>Compression can be used to limit the amount physical storage a file or directoy takes up.</li>
+      <li>Deduplication is a process used to remove duplicate data blocks to reduce storage usage.</li>
+     </ul>
+
+     <li>Monitoring</li>
+     <ul>
+      <li>Various tools can be used to monitor system resources such as RAM, disk, CPU utilization, as well as other metrics such as tempratures. Most of those tools will allow administrators to set thresholds, so if a resource is utilized beyond a certain point, they will recieve a notification. This notification can be a good indicator that the application needs to be scaled to a more powerful server, or across multiple servers. It could also be an indication of something like a failing hardware or software component, or even an indicator that malware is running on the system.</li>
+      <li>Event logs can be tracked by monitoring tools, which can help narrow down problems while troubleshooting.</li>
+      <li>Monitoring tools can also be used to keep track of the uptime of various services. Uptime is the amount of time a server or service has been running. </li>
+      <li>Other things that can be monitorered include configuration files, system alerts, automated reports, disk quotas, and the page, scratch, and swap files.</li>
+     </ul>
+
+     <li>Data Migration / Data Transfers</li>
+     <ul>
+      <li>When copying data, it is important to be wary of data infiltration (malicious data being added) or exfiltration (data being "siphoned" from the transfer without permission).</li>
+      <li>Robocopy:</li>
+      <ul>
+         <li>Robocopy (Robust File Copy) is a command-line file replication tool included with Windows. It's designed for reliable copying or mirroring of directories.</li>
+         <li> Robocopy supports copying NTFS permissions, file attributes, and can resume interrupted file transfers. It also provides options for logging and can be set to only copy files that have changed.</li>
+      </ul>
+      <li>FTP (File Transfer Protocol):</li>
+      <ul>
+         <li>A standard network protocol used to transfer files from one host to another over TCP. It has a secure variant called FTPS which adds support for the Transport Layer Security (TLS).</li>
+      </ul>
+      <li>FastCopy:</li>
+      <ul>
+         <li>FastCopy is a free and open-source file copying utility for Windows. It claims to be the fastest copy/delete software on Windows. It supports different transfer modes, verification of copied files, and can handle long path names (this is a problem in windows file explaorer).</li>
+      </ul>
+      <li>SCP (Secure Copy Protocol):</li>
+      <ul>
+         <li>SCP is a means of securely transferring files between hosts using the SSH protocol.</li>
+         <li>SCP encrypts both the file and any passwords, ensuring that sensitive data is kept secure during transit.</li>
+      </ul>
+      <li>Rsync:</li>
+      <ul>
+         <li>Rsync is a utility for efficiently transferring and synchronizing files across computer systems. It's commonly used in Unix-based systems.</li>
+         <li>Rsync is known for its delta-transfer algorithm, which sends only the differences between the source and destination files, reducing the amount of data transferred. It can work locally or over a network and can be secured using SSH.</li>
+      </ul>
+     </ul>
+
+     <li>High Availability</li>
+     <ul>
+      <li>Clustering:</li>
+      <ul>
+         <li>A server cluster is a group of independent servers that work together as a single system to ensure that applications and services remain available. The primary goal of clustering is to provide redundancy, which in turn provides high availability and fault tolerance.</li>
+         <li>Benefits of clusters:</li>
+         <ul>
+            <li>If one node fails, another can take over, ensuring continuous service.</li>
+            <li>Additional nodes can be added to the cluster to handle increased load.</li>
+            <li>Load balancing can be implemented to distribute the workload evenly among nodes, preventing any single node from becoming a bottleneck.</li>
+         </ul>
+         <li>There are 3 common implementations of clustering; Failover clusters, load balancing clusters, and high perfomance clusters.</li>
+         <li>Failover clusters:</li>
+         <ul>
+            <li>In this setup, if one server (or node) fails, its workload is transferred to another node in the cluster. This ensures continuous operation.</li>
+            <li>Often used for databases, file servers, and virtual machines.</li>
+         </ul>
+         <li>Load Balancing Clusters:</li>
+         <ul>
+            <li>Incoming network traffic is distributed across multiple servers to balance the load and maximize throughput and response time.</li>
+            <li>Commonly used for web servers and application servers.</li>
+         </ul>
+
+         <li>High Performance Clusters (HPC):</li>
+         <ul>
+            <li>These clusters are designed to provide high computational power by parallelizing tasks. They're not necessarily focused on high availability but rather on performance.</li>
+            <li>Often used for scientific simulations, data analysis, and other compute-intensive tasks.</li>
+         </ul>
+      </ul>
+
+      <li>Clustering Alternatives:</li>
+      <ul>
+         <li>Replication:</li>
+         <ul>
+            <li>Data is duplicated across multiple servers. If one server fails, another with the replicated data can take over.</li>
+            <li>Common in database systems where you might have a primary database and one or more replicas.</li>
+         </ul>
+
+         <li>Backup and Restore:</li>
+         <ul>
+            <li>Regular backups are taken and stored securely. In the event of a failure, the system can be restored from the latest backup.</li>
+            <li>This method might not provide immediate failover like clustering but is essential for data recovery.</li>
+         </ul>
+
+         <li>Virtualization and Live Migration:</li>
+         <ul>
+            <li>Virtual machines (VMs) can be migrated from one physical host to another without downtime. If a host is about to fail or needs maintenance, VMs can be moved to another host.</li>
+            <li>Tools like VMware vMotion or Hyper-V Live Migration support this.</li>
+         </ul>
+
+         <li>Geographic Redundancy:</li>
+         <ul>
+            <li>Deploying infrastructure in multiple geographic locations. If one entire data center fails due to a catastrophic event, another data center in a different location can take over.</li>
+            <li>This is commonly implemented in cloud environments.</li>
+         </ul>
+
+         <li>DNS Failover:</li>
+         <ul>
+            <li>DNS is configured to point to multiple IP addresses. If one server is unreachable, DNS can redirect traffic to a secondary server.</li>
+            <li>This method is often used in conjunction with other HA strategies.</li>
+         </ul>
+
+         <li>Content Delivery Networks (CDN):</li>
+         <ul>
+            <li>CDNs distribute content across a network of servers. If one server fails, the CDN can serve content from another server.</li>
+            <li>Commonly used for web content, especially for global audiences.</li>
+         </ul>
+      </ul>
      </ul>
     </ul>
    </div>
