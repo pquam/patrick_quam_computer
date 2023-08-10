@@ -1586,12 +1586,18 @@
                <li>Active-Active configurations might have higher operational costs since all nodes are active and consuming resources. However, they can handle more traffic without additional scaling.</li>
             </ul>
 
-            <!--
-            <li>Detecting Failures</li>
+            
+            <li>Server "Heartbeats"</li>
             <ul>
-               <li></li>
+               <li>A heartbeat is a periodic signal sent between servers (or nodes) in a cluster to indicate that they are operational and "alive." It's a mechanism to detect the health and status of nodes within the cluster.</li>
+               <li>Nodes in a cluster send heartbeat signals to each other at regular intervals. This is usually done over a dedicated network connection to ensure reliability.</li>
+               <li>If a node fails to receive a heartbeat from a peer within a specified time frame, it assumes that the peer is unavailable or has failed.</li>
+               <li> Once a node is determined to be unavailable based on missed heartbeats, failover procedures can be initiated. In an Active-Passive configuration, for example, the passive node might take over the role of the active node if it detects that the active node is down.</li>
+               <li>The heartbeat mechanism helps prevent a "split-brain" scenario. Split-brain occurs when network communication between nodes breaks down, but both nodes are still operational. Without a heartbeat or other quorum mechanism, both nodes might assume they are the "active" node and start accepting work, leading to data inconsistency or conflicts.</li>
+               <li>Combining heartbeats with other metrics, such as CPU usage, memory usage, or disk activity, can provide a more comprehensive view of node health.</li>
+               <li>External network monitoring tools can be used to check the health and status of nodes in a cluster. These tools can send alerts or even trigger failover actions if a node becomes unreachable or exhibits other signs of failure.</li>
             </ul>
-            -->
+            
          </ul>
       </ul>
 
@@ -1631,6 +1637,80 @@
          <ul>
             <li>CDNs distribute content across a network of servers. If one server fails, the CDN can serve content from another server.</li>
             <li>Commonly used for web content, especially for global audiences.</li>
+         </ul>
+      </ul>
+
+      <li>High Availability Networking</li>
+      <ul>
+         <li>Load Balancing</li>
+         <ul>
+            <li>Load balancing is a technique used to distribute incoming network traffic across multiple servers or resources to ensure optimal resource utilization, maximize throughput, minimize response time, and prevent overload on any single server.</li>
+            <li>Load balancing provides fault tolerance. If one server fails, the load balancer redirects traffic to the remaining operational servers.</li>
+            <li>As traffic increases, more servers can be added to the load balancer.</li>
+            <li>Load balancing ensures that no single server is overwhelmed with too much traffic, leading to optimal resource utilization.</li>
+
+            <li>Round Robin:</li>
+            <ul>
+               <li>This method maintains a list of servers associated with the load balancer. Every time a request comes in, the load balancer forwards the request to the next server in the list. Once it reaches the end of the list, it starts over from the beginning.</li>
+               <li>For example, with three servers A, B, and C, the first request goes to A, the second to B, the third to C, the fourth back to A, and so on.</li>
+               <li>Doesn't account for server load or health. If one server is slower or overloaded, it can become a bottleneck.</li>
+            </ul>
+
+            <li>Least Connections:</li>
+            <ul>
+               <li>The load balancer keeps track of the number of active connections to each server. Incoming requests are directed to the server with the fewest active connections.</li>
+               <li>Useful when servers have varying levels of processing power, and some can handle more connections than others.</li>
+               <li>Doesn't account for the duration or complexity of tasks on each server.</li>
+            </ul>
+            
+            <li>Least Response Time:</li>
+            <ul>
+               <li>The load balancer periodically checks the response times of servers (usually by sending a simple request). Incoming traffic is directed to the server with the lowest response time.</li>
+               <li>Frequent health checks can add overhead.</li>
+            </ul>
+            
+            <li>IP Hash:</li>
+            <ul>
+               <li>A deterministic hash function processes the client's IP address to determine which server should handle the request. This ensures that a specific client will always be directed to the same server. This ensures session persistence for applications that store session data on the server.</li>
+               <li>If a server goes down, the hash might direct traffic to it until the load balancer is updated.</li>
+            </ul>
+            
+            <li>Weighted Load Balancing:</li>
+            <ul>
+               <li>Each server is assigned a weight, typically based on its capacity or performance. The load balancer uses these weights to distribute incoming requests proportionally.</li>
+               <li>Requires manual configuration and adjustment of weights.</li>
+            </ul>
+            
+            <li>Layer 7 Load Balancing:</li>
+            <ul>
+               <li>Distributes requests based on content type, URL, or other HTTP header information. This allows for more intelligent distribution, such as sending all requests for images to one server and all requests for database queries to another.</li>
+            </ul>
+            
+            <li>Sticky Sessions (Session Persistence):</li>
+            <ul>
+               <li>The load balancer uses a mechanism (like cookies or source IP hashing) to ensure that a client is consistently directed to the same server as long as its session is active.</li>
+               <li>Can lead to uneven distribution of traffic, especially if some sessions are longer or more resource-intensive than others.</li>
+            </ul>
+            
+            <li>Global Server Load Balancing (GSLB):</li>
+            <ul>
+               <li>Uses DNS resolution to direct clients to the nearest or best-performing data center. Health checks and performance metrics are used to determine the optimal data center for each request.</li>
+               <li>Provides geographic redundancy and directs users to the nearest data center for reduced latency.</li>
+               <li>Relies on DNS propagation, which might not be instantaneous.</li>
+            </ul>
+
+
+            <li>Hardware vs. Software Load Balancers:</li>
+            <ul>
+               <li>Hardware Load Balancers are dedicated appliances optimized for processing network traffic. They are typically faster and more reliable but can be more expensive.</li>
+               <li>Software Load Balancers run on general-purpose operating systems and hardware. They offer more flexibility and can be more cost-effective, especially for smaller setups or cloud environments. Examples include Nginx, HAProxy, and the AWS Elastic Load Balancer.</li>
+            </ul>
+
+            <li>Application vs. Network Load Balancers:</li>
+            <ul>
+               <li>Application Load Balancers (Layer 7) operate at the application layer and make routing decisions based on content type, URL, or other HTTP header information.</li>
+               <li>Network Load Balancers (Layer 4) operate at the transport layer and make routing decisions based on IP address and port. They are typically faster and less resource-intensive than application load balancers.</li>
+            </ul>
          </ul>
       </ul>
      </ul>
