@@ -42,7 +42,7 @@
 
             <div class="col-lg-6">
               <h1 class="big-heading">Using NGINX</h1>
-              <h2 class="section-heading"></h2>
+              <h2 class="section-heading">For Website Hosting</h2>
               
             </div>
         
@@ -60,7 +60,6 @@
 
     <section class="colored-section" >
       <h1 class="sub-section-header"><mark>Setting Up User Accounts and Running NGINX from a clean linux install</mark></h1>
-        <div class="col-lg-1"></div>
         <div class="sub-section-box col-lg-12">
 
             <h3> <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-16-04" class="link">Setting up a website in nginx</a></h3>
@@ -87,12 +86,11 @@
           <p>In this setup, there's no need to use <code>setuid</code> to specify a user to run as or <code>sudo -u</code> to switch to the nginx user. NGINX runs as the user specified, and handles the privilege dropping itself. Be sure to review the information on the <a href="https://patrick.quam.computer/notes/linux-hardening.html" class="link">Linux Hardening page</a></p>
           <p style="font-size: 120%;"><mark>You should now be able to see a placeholder webpage by navigating to the ip of your server in a web browser.</mark> If you don't know the IP of your system, you can find it by running <code>curl ifconfig.me</code>.</p>
         </div>
-    <div class="col-lg-1"></div>
 
     </section>
 
-
-    <section class="grey-section" id="sub-section">
+    <!--
+    <section class="grey-section">
 
         <div class="container-fluid">
     
@@ -102,7 +100,6 @@
                     <h1 class="sub-section-header"><mark>Adding Content</mark></h1>
                 </div>
 
-                <div class="col-lg-1"></div>
                     <div class="sub-section-box col-lg-12">
                         <ul>
 
@@ -110,7 +107,6 @@
 
 
                     </div>
-                <div class="col-lg-1"></div>
           
             </div>
 
@@ -119,14 +115,14 @@
     
       </div>
     </section>
+    -->
 
-    <section class="colored-section" >
+    <section class="grey-section">
 
       <div class="col-lg-12">
         <h1 class="sub-section-header"><mark>Removing .html extension from NGINX webpages</mark></h1>
       </div>
 
-      <div class="col-lg-1"></div>
                     <div class="sub-section-box col-lg-12">
                       <ul>
                         <li>When building a website, ideally you dont want to have every page show .html at the end. Here are a few steps to stop that from happening.</li>
@@ -152,10 +148,10 @@
 
 
                     </div>
-                <div class="col-lg-1"></div>
     </section>
 
-    <section class="grey-section" id="sub-section">
+    <!--
+    <section class="grey-section">
 
       <div class="container-fluid">
   
@@ -169,7 +165,6 @@
                 <ul></ul>
 
               </div>
-          <div class="col-lg-1"></div>
         
           </div>
 
@@ -178,6 +173,8 @@
   
       </div>
   </section>
+-->
+
   <script src="../javascript/navbar.js"></script>
 </body>
 
