@@ -24,6 +24,11 @@
   <nav class="side-navigation">
    <ul>
     <li>
+      <a href="#top">
+       Back to Top
+      </a>
+     </li>
+    <li>
      <a href="#-general-security-considerations-">
       General Security Considerations
      </a>
@@ -48,11 +53,13 @@
       Securing SSH
      </a>
     </li>
+    <!--
     <li>
      <a href="#-filesystem-security-">
       Filesystem Security
      </a>
     </li>
+    -->
     <li>
      <a href="#-other-security-resources-">
       Other Security Resources
@@ -63,7 +70,7 @@
   <section class="top-section" id="title">
    <div class="alert alert-primary" role="alert">
     Donate to
-    <a class="alert-link" href="https://kramden.org/donate/">
+    <a class="alert-link" href="https://kramden.org/donate/" id="top">
      The Kramden Institute
     </a>
    </div>
@@ -875,11 +882,11 @@
        </li>
       </ul>
       <li>
-       When you run ssh-keygen, two files are created in that users home directory (~/.ssh/). Those files are id_rsa &amp; id_rsa.pub
+       When you run ssh-keygen, two files are created in that users  <code>~/.ssh/</code> directory. Those files are id_rsa &amp; id_rsa.pub
       </li>
       <ul class="hidden">
        <li>
-        id_rsa is your private SSH key. Its permissions should be set so that only the user that generated it can access it.
+        id_rsa is your <mark>private</mark> SSH key. Its permissions should be set so that only the user that generated it can access it.
        </li>
        <li>
         id_rsa.pub is your public SSH key. This will be placed in the remote hosts ~/.ssh/authorized-keys file to grant SSH access to that user.
@@ -893,11 +900,11 @@
        <li>
         For example
         <code>
-         ssh-copy-id root@1.1.1.1
+         ssh-copy-id username@1.1.1.1
         </code>
         or
         <code>
-         ssh-copy-id root@mydomain.com
+         ssh-copy-id username@mydomain.com
         </code>
        </li>
       </ul>
@@ -1010,7 +1017,6 @@
 
   <!--
   <section class="colored-section" >
-   <div class="col-lg-1">
     <h1 id="-filesystem-security-">
      <mark>
       Filesystem Security
@@ -1019,9 +1025,9 @@
    </div>
    <div class="sub-section-box col-lg-12">
     <ul class="hidden">
+      <li>In production environments, you may want to consider having 2 user accounts, one that is read only, and another that has access to edit or delete files. This way, you are less likely to accidentally delete something important.</li>
     </ul>
    </div>
-   <div class="col-lg-1">
    </div>
   </section>
   -->
