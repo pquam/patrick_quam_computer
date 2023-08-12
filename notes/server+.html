@@ -1724,6 +1724,22 @@
                <li>Application Load Balancers (Layer 7) operate at the application layer and make routing decisions based on content type, URL, or other HTTP header information.</li>
                <li>Network Load Balancers (Layer 4) operate at the transport layer and make routing decisions based on IP address and port. They are typically faster and less resource-intensive than application load balancers.</li>
             </ul>
+
+            <li>Load Balancing in Software Defined Networking</li>
+            <ul>
+               <li>SDN (Software Defined Networking) is an approach to networking that uses software-based controllers or application programming interfaces (APIs) to direct traffic on the network and communicate with the underlying hardware infrastructure.</li>
+               <li>A load balancing adaptive algorithm is designed to analyze various factors and adjust itself to make optimal load balancing decisions. These factors might include server load, network congestion, application status, etc.</li>
+               <li>These algorithms take data from various layers of the OSI model to make their loag balancing decisions:</li>
+               <ol>
+                  <li>Presentation Layer: Deals with translation, compression, and encryption of data.</li>
+                  <li>Transport Layer: Ensures that data is delivered error-free, in the correct sequence, and without losses or duplications.</li>
+                  <li>Data Link Layer: Provides a link between two directly connected nodes and handles error detection and correction.</li>
+                  <li>Network Layer: Determines the best path to route the data from the source to the destination.</li>
+               </ol>
+               <li>From the Presentation and Transport Layers: The load balancer learns about the type of data, its format, error-handling requirements, and the sequence. This can help in understanding the application requirements.</li>
+               <li>From the Data Link & Network Layers: The load balancer gains insights into the network's structure, link status, routing paths, and overall network health.</li>
+               <li>By utilizing information from these various layers, the adaptive algorithm can make more informed and dynamic decisions in real-time. This means better distribution of load across servers, reduced latency, and the ability to adapt to failures and changes in the network.</li>
+            </ul>
          </ul>
       </ul>
      </ul>
