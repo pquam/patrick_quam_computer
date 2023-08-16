@@ -1534,7 +1534,7 @@
      </ul>
    </ul>
 
-     <h3 id="high-availability">High Availability</h3>
+     <h3 id="high-availability-servers">High Availability Servers</h3>
      <ul class="spaced-list">
       <li>Clustering:</li>
       <ul>
@@ -1661,8 +1661,8 @@
    </ul>
 
 
-      <li>High Availability Networking</li>
-      <ul>
+      <h3 class="high-availability-networking">High Availability Networking</h3>
+      <ul class="hidden spaced-list">
          <li>Load Balancing</li>
          <ul>
             <li>Load balancing is a technique used to distribute incoming network traffic across multiple servers or resources to ensure optimal resource utilization, maximize throughput, minimize response time, and prevent overload on any single server.</li>
@@ -1749,13 +1749,170 @@
                <li>By utilizing information from these various layers, the adaptive algorithm can make more informed and dynamic decisions in real-time. This means better distribution of load across servers, reduced latency, and the ability to adapt to failures and changes in the network.</li>
             </ul>
          </ul>
-         <!--
+
          <li>Network Interfaces</li>
+         <ul>
+            <li>NIC (Network Interface Card) Teaming</li>
+            <ul>
+               <li>NIC teaming is managed by LACP (Link Aggregation Control Protocol)</li>
+               <ul>
+                  <li>LACP is a protocol used to bundle several physical network links into a single logical link, known as a Link Aggregation Group (LAG). It's part of the IEEE 802.1AX standard.</li>
+                  <li>When LACP is enabled on a port, it starts sending LACP Data Units (LACPDUs) to discover LACP-capable peers.</li>
+                  <li>LACP negotiates with the peer devices to determine which links can be bundled together, based on parameters like speed, duplex setting, etc.</li>
+                  <li>The selected links are bundled into a single logical link (LAG), and traffic is distributed across them.</li>
+                  <li>LACP continually monitors the links, and if a change is detected (like a link failure), it dynamically reconfigures the LAG.</li>
+                  <li>LACP devices have 2 operating modes:</li>
+                  <ol>
+                     <li>Active Mode: Actively sends LACPDUs, initiating negotiations with peers.</li>
+                     <li>Passive Mode: Waits for LACPDUs from peers and responds but doesn't initiate negotiations.</li>
+                  </ol>
+               </ul>
+               <li>NIC teaming is used to group multiple NICs together in a similar way to a raid array.</li>
+               <li>NIC teaming can be used to aggragate the bandwidth of multiple ncs together, and if one nic fails, the other can maintain a connection to the netwrok.</li>
+               <li>NIC teaming is also referred to as link aggregation or link bonding.</li>
+            </ul>
+         </ul>
+
+         <li>Virtual Networking</li>
+         <ul>
+            <li>Virtual networking allows multiple VMs to communicate with each other and with the physical network, just as if they were physical devices.</li>
+            <li>Bridged connections:</li>
+            <ul>
+               <li>A virtual bridge connects a virtual network interface card (vNIC) inside a VM to a physical network interface card (pNIC) on the host machine.</li>
+               <li>The VM appears as a separate physical device on the network, with its own MAC and IP address. It communicates directly with the physical network, bypassing the host's network stack.</li>
+               <li>Bridged connections are ideal when VMs need to be part of the same physical network as the host, such as in web servers or database servers.</li>
+            </ul>
+            <li>NAT (Netwrok Address Translation)</li>
+            <ul>
+               <li>NAT is a method of remapping one IP address space into another by modifying network address information in the IP header of packets while they are in transit. In virtual networking, NAT allows VMs to share the host's IP address.</li>
+               <li>VMs are assigned private IP addresses. When a VM sends a packet to the external network, the source address is translated to the host's public IP address.</li>
+               <li>NAT keeps a translation table to map the VM's private IP and port to the host's public IP and a unique port. This ensures that return traffic is correctly directed to the originating VM.</li>
+               <li>VMs are isolated from the external network, as they do not have direct access. They communicate with the outside world through the NAT service on the host. This provides a layer of isolation between VMs and the external network, acting as a basic firewall.</li>
+               <li>Most virtualization platforms like VMware, VirtualBox, and Hyper-V provide options to configure NAT for VMs.</li>
+               <li>Types of NAT setups:</li>
+               <ul>
+                  <li>Static NAT: Predefined mapping between private and public addresses.</li>
+                  <li>Dynamic NAT: Dynamic mapping between private and public addresses, usually using a pool of public IPs.</li>
+                  <li>Port Address Translation (PAT): Multiple private IPs are mapped to a single public IP using different port numbers.</li>
+               </ul>
+            </ul>
+
+            <li>Host-Only Networking</li>
+            <ul>
+               <li>Host-Only Networking allows communication between the virtual machines (VMs) and the host system, but the VMs are isolated from the external network.</li>
+               <li>How it works:</li>
+               <ul>
+                  <li>Virtual Switch: A virtual switch is created that connects the VMs and the host.</li>
+                  <li>Isolation: VMs can communicate with each other and the host but not with the external network.</li>
+                  <li>IP Configuration: VMs are usually assigned IP addresses in a private range, either statically or via a virtual DHCP server.</li>
+               </ul>
+               <li>Host Only Networking provides isolation from the external network, enhancing security. It is often simpler to configure than other networking modes.</li>
+               <li>Ideal for creating isolated development or testing environments where VMs need to communicate with the host but not the external network.</li>
+               <li>Useful for simulating network scenarios without affecting the physical network.</li>
+            </ul>
+
+            <li>Internal Networking</li>
+            <ul>
+               <li>Internal Networking is similar to Host-Only Networking but with even more isolation. VMs can communicate with each other but not with the host or the external network.</li>
+               <li>How it works:</li>
+               <ul>
+                  <li>Virtual Switch: A virtual switch is created that connects the VMs.</li>
+                  <li>Complete Isolation: VMs can communicate only with each other, not with the host or the external network.</li>
+                  <li>IP Configuration: IP addresses can be assigned statically or via a virtual DHCP server running inside one of the VMs.</li>
+               </ul>
+               <li>Internal Networking provides a completely isolated environment, enhancing security. This allows for safe experimentation without any risk to the host or external network.</li>
+               <li>Ideal for testing potentially harmful software or network attacks in a completely isolated environment.</li>
+               <li>Useful for modeling complex network scenarios without any risk to the existing infrastructure.</li>
+            </ul>
+         </ul>
+      </ul>
+
+      <h3>Virtualization</h3>
+      <ul class="hidden">
+         <li>Virtualization is the technology that allows the creation of virtual instances of physical resources, such as servers, storage, and network devices. It enables multiple virtual machines (VMs) to run on a single physical machine, sharing its resources.</li>
+         <li>Type 1 hypervisors are generally used in virtualized network settings. A Type 1 hypervisor, also known as a "bare-metal" hypervisor, runs directly on the host's hardware to control the hardware and manage guest operating systems.</li>
+
+         <ul>
+            <li>Generally offers better performance as it has direct access to physical hardware (compared to type 2 hypervisors).</li>
+            <li>More secure as there's no underlying OS to be attacked.</li>
+            <li>Many Type 1 hypervisors support clustering, allowing multiple hosts to work together for redundancy and load balancing.</li>
+            <li>Features like VMware HA provide automated failover for VMs, restarting them on other hosts if a failure occurs.</li>
+            <li>Allows VMs to be moved between hosts without downtime, facilitating maintenance and load balancing.</li>
+         </ul>
+
+         <li>Many virtualization platforms support clustering.</li>
+         <li>Virtualization allows for efficient use of physical resources, enabling the creation of redundant VMs without the need for as many physical machines.</li>
+         <li>Virtualization platforms often include tools for monitoring VM health and automatically moving VMs to healthy hosts if a failure is detected.</li>
+         <li>Virtualization enables dynamic load balancing, distributing workloads across multiple VMs to ensure optimal performance.</li>
+         <li>Virtualized environments often allow for rapid provisioning of new VMs, enabling quick recovery from failures.</li>
+         <li>Virtualization simplifies disaster recovery by enabling easy replication and migration of VMs between sites.</li>
+
+         <li>Resource Allcation:</li>
+         <ul>
+            <li>Resource allocation in virtualization is a critical aspect, especially when considering high availability (HA). It involves the distribution and management of physical resources (such as CPU, memory, storage, and network) among virtual machines (VMs) to ensure optimal performance, scalability, and resilience. </li>
+
+            <li>CPU/Memory</li>
+            <ul>
+               <li>Shares: CPU cores are shared between VMs as needed. If a VM has more shares compared to others, it gets a larger portion of the CPU resources during contention.</li>
+               <li>Reservations: This is the guaranteed minimum amount of CPU resources allocated to a VM. It ensures that the VM will always have access to the specified amount of CPU resources.</li>
+               <li>Limits: This sets the maximum amount of CPU resources that a VM can consume. Even if more resources are available, the VM won't be able to use beyond this limit.</li>
+            </ul>
+            <li>Storage:</li>
+            <li>Virtualized servers use virtualized storage, which means that physical storage devices are abstracted and presented as logical units. This allows multiple virtual servers to share the same physical storage resources.</li>
+            <li>Physical storage devices are grouped into storage pools, which can be allocated to different virtual machines (VMs) as needed.</li>
+            <li>Virtualized storage often uses specific file systems and formats like VMFS (Virtual Machine File System) to manage data efficiently.</li>
+            <li>Direct Attached Storage (DAS): Storage devices are directly attached to the host machine. This offers high performance but lacks flexibility.</li>
+            <li>Network Attached Storage (NAS): a file-level data storage device that is connected to a computer network, providing data access to a heterogeneous group of clients.</li>
+            <ul>
+               <li>NAS operates at the file level, meaning it handles data as files and directories.</li>
+               <li>Commonly uses protocols like NFS (Network File System) or SMB/CIFS (Server Message Block/Common Internet File System).</li>
+               <li>Suitable for moderate performance needs, such as file sharing, backups, and multimedia streaming.</li>
+            </ul>
+            <li>Storage Area Network (SAN): a network that provides access to consolidated, block-level data storage, primarily used to make storage devices accessible to servers in a way that the devices appear as locally attached.</li>
+            <ul>
+               <li>SAN operates at the block level, handling raw data blocks, which allows for more efficient handling of large data sets and applications like databases.</li>
+               <li>Utilizes protocols like iSCSI (Internet Small Computer Systems Interface) or Fibre Channel.</li>
+               <li>Generally more complex to set up and requires specialized knowledge, but is suitable for large enterprises because it is highly scalable, allowing for growth and expansion as needed.</li>
+               <li>Offers high performance and is ideal for applications that require fast data retrieval and processing, such as large databases and virtualization.</li>
+            </ul>
+         </ul>
+
+         <li>VM mangement</li>
+         <ul>
+            <li>VMware vCenter Server is a centralized management platform for VMware vSphere environments.</li>
+            <ul>
+               <li>Manages multiple ESXi hosts and VMs from a single console.</li>
+               <li>Offers automation and orchestration capabilities.</li>
+               <li>Can manage thousands of VMs.</li>
+               <li>Works with other VMware products for complete virtualization management.</li>
+            </ul>
+            <li>Hyper-V Manager is a tool used to create, manage, and configure virtual machines in Microsoft's Hyper-V virtualization platform.</li>
+            <ul>
+               <li>Native to Windows Server and Windows 10 and 11.</li>
+               <li>Suitable for small to large-scale deployments.</li>
+            </ul>
+            <li>Citrix Hypervisor is an open-source virtualization platform based on the Xen Project.</li>
+            <ul>
+               <li>Can be integrated with other Citrix products for a complete virtualization solution.</li>
+            </ul>
+            <li>Red Hat Virtualization is an enterprise virtualization solution provided by Red Hat.</li>
+            <ul>
+               <li>Built on Red Hat Enterprise Linux.</li>
+               <li>Provides APIs for integration and automation.</li>
+               <li>Includes security features aligned with Red Hat's security standards.</li>
+            </ul>
+            <li>Oracle VM VirtualBox is a free and open-source hosted hypervisor for x86 virtualization.</li>
+            <ul>
+               <li>Runs on Windows, Linux, macOS, and other platforms.</li>
+               <li>Known for its ease of use and community support.</li>
+            </ul>
+         </ul>
+         <!--
+         <li>Cloud Models</li>
          <ul>
             <li></li>
          </ul>
          -->
-
       </ul>
      
    </div>
