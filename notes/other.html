@@ -73,6 +73,11 @@
       What is a "frame"?
      </a>
     </li>
+    <li>
+     <a href='#proxy-vs-vpn'>
+      What is the difference between a proxy and a VPN?
+     </a>
+    </li>
    </ul>
   </nav>
   <!-- top section -->
@@ -552,7 +557,7 @@
     </ul>
 
     <h3 id="dns-load-balancing">How does load balancing work at a DNS level?</h3>
-    <ul class="hidden">
+    <ul class="hidden spaced-list">
       <li>The most basic form of DNS load balancing is using Round Robin DNS. If you specify multiple A (or AAAA for IPv6) records for a domain, the DNS server will typically rotate through them when responding to requests. This can distribute connections among several servers. However, it's a very rudimentary form of load balancing because it doesn't take into account the health or the load of the servers. If one of the servers goes down, DNS would still distribute traffic to it unless you manually remove that record or have some other automated health check process in place.</li>
       <li>Some DNS providers offer geolocation-based DNS services. Based on the requester's geographic location, the DNS server will return the IP address of the server closest to them. This helps reduce latency and can also be used to direct traffic to region-specific servers or data centers.</li>
       <li>Services like AWS Route 53 allow you to set weights for your DNS records. This means you can have 70% of your traffic go to one server and 30% to another, for instance.</li>
@@ -570,6 +575,13 @@
         <li>Akamai, a leading CDN provider, offers a <a href="https://www.akamai.com/products/edge-dns" class="link" target="_blank">DNS product</a> that provides both speed and resilience. It offers fast DNS resolutions while also defending against DDoS attacks. It also supports geo-based routing and failover.</li>
         <li><a href="https://ns1.com/" class="link" target="_blank">NS1</a> offers a platform for DNS and application traffic management. They provide intelligent traffic routing, real-time server health checks, and geo-routing capabilities.</li>
       </ul>
+    </ul>
+
+    <h3 id="proxy-vs-vpn">What is the difference between a proxy and a VPN?</h3>
+    <ul class="hidden">
+      <li>Both VPNs (Virtual Private Networks) and proxies are used to reroute internet traffic, masking the user's actual IP address.</li>
+      <li>A VPN establishes a secure, encrypted connection between your device and a remote server, operated by the VPN service provider. All your internet traffic is routed through this connection. This encryption adds a layer of privacy and security, making it difficult for third parties to intercept or eavesdrop on your online activities. VPNs operate at the system level, redirecting all of the device's internet traffic, including every application that accesses the internet. Generally, a VPN might have a more significant impact on connection speed due to encryption and the distance to the VPN server.</li>
+      <li>A proxy server acts as an intermediary between your device and the internet. It forwards requests and responses on your behalf, hiding your real IP address.  Unlike VPNs, proxies usually don't encrypt your data, meaning the information might be exposed to third parties.  Proxies often work at the application level, meaning they are configured per application (such as a web browser), not for the entire device.</li>
     </ul>
    </div>
    <div class="col-lg-1">
