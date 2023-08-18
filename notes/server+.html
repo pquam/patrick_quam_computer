@@ -86,8 +86,18 @@
        </a>
       </li>
       <li>
-       <a href="#high-availability">
-        High Availability
+       <a href="#high-availability-servers">
+        High Availability Servers
+       </a>
+      </li>
+      <li>
+       <a href="#high-availability-networking">
+        High Availability Networking
+       </a>
+      </li>
+      <li>
+       <a href="#virtualization">
+         Virtualization
        </a>
       </li>
      </ul>
@@ -106,6 +116,8 @@
     -->
    </ul>
   </nav>
+
+
   <!-- top section -->
   <section class="top-section" id="title">
    <div class="alert alert-primary" role="alert">
@@ -865,7 +877,7 @@
        <li>
         For many applications it can be helpful to 'subnet' a network, or split into many parts. Network Chuck has a great
         <a class="link" href="https://www.youtube.com/playlist?list=PLIhvC56v63IKrRHh3gvZZBAGvsvOhwrRF" target="_blank">
-         playlist on Subnetting.
+         playlist on Subnetting. Powercert also has a <a class="link" href="https://www.youtube.com/watch?v=s_Ntt6eTn94" target="_blank">20 minute video</a> on the topic.
         </a>
        </li>
        <li id="#subnetting">
@@ -1450,29 +1462,29 @@
     <ul class="hidden spaced-list">
 
      <li>Formatting:</li>
-     <ul>
+     <ul class="hidden">
         <li>After partitioning a drive, it hasa to be formatted before it can be used.</li>
         <li>The format will be largly decided by what operating system the storage device is going to be mounted to.</li>
         <li>For example, windows drives should be formatted NTFS. Modern linux systems use EXT4.</li>
      </ul>
 
      <li>Connectivity:</li>
-     <ul>
+     <ul class="hidden">
         <li>Servers should have the ability to connect to networks. This could be either Local Area Networks, or a Wide Area Network such as the internet.</li>
         <li>Servers should be able to support netwrk connections for virtual hosts (such as VMs or containers)</li>
      </ul>
 
      <li>Provisioning:</li>
-     <ul>
+     <ul class="hidden">
         <li>When allocating storage for virtual machines, files servers, etc, you will need to know how much storage to provide to those services.</li>
         <li>"thick" provisioning: When a volume or disk is set up, all the storage space that is allocated to it is reserved immediatly</li>
-        <ul>
+        <ul class="hidden">
             <li>Thick provisioning typically results in better overall performance and is much simpler to manage compared to thin provisioning, however it may result in wasted capacity.</li>
             <li>"Eager" thick provisioning: all storage blocks are whiped clean as the provision is initialized. This can offer better performance because data does not need to be deleted before it can be ovverwritted. Often used in performance oriented applications.</li>
             <li>"Lazy" thick provisioning: storage space is allocated up front, but storage blacks are not overwritten until they are needed. This means that they are faster to create, but may take longer to read and write data.</li>
         </ul>
         <li>"Thin" provisioning: instead of allocating storage up fron, it is alocated on the fly, as data is writte.</li>
-        <ul>
+        <ul class="hidden">
             <li>Thin provisioning is a mych more efficient use of stoage, which can mean potential cost savings due to reduced hardware requirements.</li>
             <li>"Dynamic" thin provisioning: a maximum storage limit is set, but only the storage required is actually used.</li>
             <li>"Overcommitment" thin provisioning: More storage than what is physically available is provisioned across multiple systems (typically VMs) under the assumption that the total storage usage wil not exceed the physical storage limit.</li>
@@ -1480,7 +1492,7 @@
      </ul>
 
      <li>Swap</li>
-     <ul>
+     <ul class="hidden">
       <li>Swap storage, also known as swap space or paging file, is a portion of a hard disk drive (HDD) or solid-state drive (SSD) that is used as virtual memory in an operating system (OS). It is a form of memory management where the OS can "swap out" data from the system's RAM onto the hard drive when the RAM is full, and "swap in" data back to the RAM when needed.</li>
       <li>If the system needs more memory resources and the RAM is full, inactive pages in memory are moved to the swap space. While swap space can help machines with a small amount of RAM, it should not be considered a replacement for more RAM. Swap space is much slower than RAM, because it relies on the hard drive, which is inherently slower than RAM. Because of this speed differnece, relying too much on swap space can degrade system performance. This is known as "thrashing".</li>
       <li>Understanding how much swap space your server needs is a part of capacity planning. As a rule of thumb, your swap space should be approximately 1-2 times the amount of physical RAM, depending on your system's requirements.</li>
@@ -1491,14 +1503,14 @@
      </ul>
 
      <li>Storage Management</li>
-     <ul>
+     <ul class="hidden">
       <li>Disk quaotas can be used to manage the amount of physical storage a user or account can occupy. There are various tools that will automatically notify users that close to or at their disk quota.</li>
       <li>Compression can be used to limit the amount physical storage a file or directoy takes up.</li>
       <li>Deduplication is a process used to remove duplicate data blocks to reduce storage usage.</li>
      </ul>
 
      <li>Monitoring</li>
-     <ul>
+     <ul class="hidden">
       <li>Various tools can be used to monitor system resources such as RAM, disk, CPU utilization, as well as other metrics such as tempratures. Most of those tools will allow administrators to set thresholds, so if a resource is utilized beyond a certain point, they will recieve a notification. This notification can be a good indicator that the application needs to be scaled to a more powerful server, or across multiple servers. It could also be an indication of something like a failing hardware or software component, or even an indicator that malware is running on the system.</li>
       <li>Event logs can be tracked by monitoring tools, which can help narrow down problems while troubleshooting.</li>
       <li>Monitoring tools can also be used to keep track of the uptime of various services. Uptime is the amount of time a server or service has been running. </li>
@@ -1506,28 +1518,28 @@
      </ul>
 
      <li>Data Migration / Data Transfers</li>
-     <ul>
+     <ul class="hidden">
       <li>When copying data, it is important to be wary of data infiltration (malicious data being added) or exfiltration (data being "siphoned" from the transfer without permission).</li>
       <li>Robocopy:</li>
-      <ul>
+      <ul class="hidden">
          <li>Robocopy (Robust File Copy) is a command-line file replication tool included with Windows. It's designed for reliable copying or mirroring of directories.</li>
          <li> Robocopy supports copying NTFS permissions, file attributes, and can resume interrupted file transfers. It also provides options for logging and can be set to only copy files that have changed.</li>
       </ul>
       <li>FTP (File Transfer Protocol):</li>
-      <ul>
+      <ul class="hidden">
          <li>A standard network protocol used to transfer files from one host to another over TCP. It has a secure variant called FTPS which adds support for the Transport Layer Security (TLS).</li>
       </ul>
       <li>FastCopy:</li>
-      <ul>
+      <ul class="hidden">
          <li>FastCopy is a free and open-source file copying utility for Windows. It claims to be the fastest copy/delete software on Windows. It supports different transfer modes, verification of copied files, and can handle long path names (this is a problem in windows file explaorer).</li>
       </ul>
       <li>SCP (Secure Copy Protocol):</li>
-      <ul>
+      <ul class="hidden">
          <li>SCP is a means of securely transferring files between hosts using the SSH protocol.</li>
          <li>SCP encrypts both the file and any passwords, ensuring that sensitive data is kept secure during transit.</li>
       </ul>
       <li>Rsync:</li>
-      <ul>
+      <ul class="hidden">
          <li>Rsync is a utility for efficiently transferring and synchronizing files across computer systems. It's commonly used in Unix-based systems.</li>
          <li>Rsync is known for its delta-transfer algorithm, which sends only the differences between the source and destination files, reducing the amount of data transferred. It can work locally or over a network and can be secured using SSH.</li>
       </ul>
@@ -1537,11 +1549,11 @@
      <h3 id="high-availability-servers">High Availability Servers</h3>
      <ul class="spaced-list">
       <li>Clustering:</li>
-      <ul>
+      <ul class="hidden">
          <li>A server cluster is a group of independent servers that work together as a single system to ensure that applications and services remain available. The primary goal of clustering is to provide redundancy, which in turn provides high availability and fault tolerance.</li>
 
          <li>Benefits of clusters:</li>
-         <ul>
+         <ul class="hidden">
             <li>If one node fails, another can take over, ensuring continuous service.</li>
             <li>Additional nodes can be added to the cluster to handle increased load.</li>
             <li>Load balancing can be implemented to distribute the workload evenly among nodes, preventing any single node from becoming a bottleneck.</li>
@@ -1550,25 +1562,25 @@
          <li>There are 3 common implementations of clustering; Failover clusters, load balancing clusters, and high perfomance clusters.</li>
 
          <li>Failover clusters:</li>
-         <ul>
+         <ul class="hidden">
             <li>In this setup, if one server (or node) fails, its workload is transferred to another node in the cluster. This ensures continuous operation.</li>
             <li>Often used for databases, file servers, and virtual machines.</li>
          </ul>
 
          <li>Load Balancing Clusters:</li>
-         <ul>
+         <ul class="hidden">
             <li>Incoming network traffic is distributed across multiple servers to balance the load and maximize throughput and response time.</li>
             <li>Commonly used for web servers and application servers.</li>
          </ul>
 
          <li>High Performance Clusters (HPC):</li>
-         <ul>
+         <ul class="hidden">
             <li>These clusters are designed to provide high computational power by parallelizing tasks. They're not necessarily focused on high availability but rather on performance.</li>
             <li>Often used for scientific simulations, data analysis, and other compute-intensive tasks.</li>
          </ul>
 
          <li>What Systems Benefit From Clustering?</li>
-         <ul>
+         <ul class="hidden">
             <li>Some applications maintain a significant amount of state information in memory (ram). This could be session data, cached information, or real-time data that the application is processing. If such an application were to crash or be interrupted, restoring its state from disk or re-computing the data could be time-consuming or even impossible in some cases. In a clustered environment, another node can take over with minimal disruption, ensuring that the in-memory state is preserved and the application continues to function.</li>
             <li>Applications that frequently write to or update a database or file system benefit from clustering. This is because clustering can provide data redundancy. In a clustered setup, data can be mirrored or replicated across nodes. If one node fails during a write operation, another node can take over, ensuring data integrity and availability. This is especially crucial for databases where data consistency and durability are paramount.</li>
             <li>Databases often hold critical data and require high availability. Clustering ensures that if one node fails, another can take over, minimizing downtime.</li>
@@ -1580,9 +1592,9 @@
          </ul>
 
          <li>Cluster Configurations</li>
-         <ul>
+         <ul class="hidden">
             <li>Active-Active</li>
-            <ul>
+            <ul class="hidden">
                <li>All servers (or resources) in the setup are "active" and handle traffic or workload concurrently.</li>
                <li>Traffic or workload is distributed among the active servers. This can be done using load balancers or other distribution mechanisms.</li>
                <li>If one server fails, the remaining active servers continue to handle the traffic, ensuring there's no service interruption.</li>
@@ -1591,7 +1603,7 @@
             </ul>
 
             <li>Active-Passive</li>
-            <ul>
+            <ul class="hidden">
                <li>Some servers are "active" and handle all the traffic or workload.  The other servers in the cluster remain "passive" or in standby mode. They don't actively handle any traffic but are ready to take over if the active server fails.</li>
                <li>If the active server encounters a problem, the passive server takes over its role, ensuring continuous service. This process is known as "failover."</li>
                <li>Once the original active server is fixed or becomes operational again, it can be brought back online. Depending on the configuration, it might return as the active server, or it might assume the passive role until another failover event occurs.</li>
@@ -1599,7 +1611,7 @@
             </ul>
 
             <li>Differences:</li>
-            <ul>
+            <ul class="hidden">
                <li>In Active-Active, all resources are utilized concurrently, offering potentially higher performance and throughput. In Active-Passive, the passive resource remains on standby, so its capacity isn't utilized until a failover event.</li>
                <li>Active-Active configurations can be more complex due to the need to synchronize data and state across all active nodes. Active-Passive setups, while simpler, require mechanisms to ensure a smooth failover process.</li>
                <li>Active-Active configurations might have higher operational costs since all nodes are active and consuming resources. However, they can handle more traffic without additional scaling.</li>
@@ -1607,7 +1619,7 @@
 
             
             <li>Server "Heartbeats"</li>
-            <ul>
+            <ul class="hidden">
                <li>A heartbeat is a periodic signal sent between servers (or nodes) in a cluster to indicate that they are operational and "alive." It's a mechanism to detect the health and status of nodes within the cluster.</li>
                <li>Nodes in a cluster send heartbeat signals to each other at regular intervals. This is usually done over a dedicated network connection to ensure reliability.</li>
                <li>If a node fails to receive a heartbeat from a peer within a specified time frame, it assumes that the peer is unavailable or has failed.</li>
@@ -1621,39 +1633,39 @@
       </ul>
 
       <li>Clustering Alternatives:</li>
-      <ul>
+      <ul class="hidden">
          <li>Replication:</li>
-         <ul>
+         <ul class="hidden">
             <li>Data is duplicated across multiple servers. If one server fails, another with the replicated data can take over.</li>
             <li>Common in database systems where you might have a primary database and one or more replicas.</li>
          </ul>
 
          <li>Backup and Restore:</li>
-         <ul>
+         <ul class="hidden">
             <li>Regular backups are taken and stored securely. In the event of a failure, the system can be restored from the latest backup.</li>
             <li>This method might not provide immediate failover like clustering but is essential for data recovery.</li>
          </ul>
 
          <li>Virtualization and Live Migration:</li>
-         <ul>
+         <ul class="hidden">
             <li>Virtual machines (VMs) can be migrated from one physical host to another without downtime. If a host is about to fail or needs maintenance, VMs can be moved to another host.</li>
             <li>Tools like VMware vMotion or Hyper-V Live Migration support this.</li>
          </ul>
 
          <li>Geographic Redundancy:</li>
-         <ul>
+         <ul class="hidden">
             <li>Deploying infrastructure in multiple geographic locations. If one entire data center fails due to a catastrophic event, another data center in a different location can take over.</li>
             <li>This is commonly implemented in cloud environments.</li>
          </ul>
 
          <li>DNS Failover:</li>
-         <ul>
+         <ul class="hidden">
             <li>DNS is configured to point to multiple IP addresses. If one server is unreachable, DNS can redirect traffic to a secondary server.</li>
             <li>This method is often used in conjunction with other HA strategies.</li>
          </ul>
 
          <li>Content Delivery Networks (CDN):</li>
-         <ul>
+         <ul class="hidden">
             <li>CDNs distribute content across a network of servers. If one server fails, the CDN can serve content from another server.</li>
             <li>Commonly used for web content, especially for global audiences.</li>
          </ul>
@@ -1661,60 +1673,60 @@
    </ul>
 
 
-      <h3 class="high-availability-networking">High Availability Networking</h3>
+      <h3 id="high-availability-networking">High Availability Networking</h3>
       <ul class="hidden spaced-list">
          <li>Load Balancing</li>
-         <ul>
+         <ul class="hidden spaced-list">
             <li>Load balancing is a technique used to distribute incoming network traffic across multiple servers or resources to ensure optimal resource utilization, maximize throughput, minimize response time, and prevent overload on any single server.</li>
             <li>Load balancing provides fault tolerance. If one server fails, the load balancer redirects traffic to the remaining operational servers.</li>
             <li>As traffic increases, more servers can be added to the load balancer.</li>
             <li>Load balancing ensures that no single server is overwhelmed with too much traffic, leading to optimal resource utilization.</li>
 
             <li>Round Robin:</li>
-            <ul>
+            <ul class="hidden">
                <li>This method maintains a list of servers associated with the load balancer. Every time a request comes in, the load balancer forwards the request to the next server in the list. Once it reaches the end of the list, it starts over from the beginning.</li>
                <li>For example, with three servers A, B, and C, the first request goes to A, the second to B, the third to C, the fourth back to A, and so on.</li>
                <li>Doesn't account for server load or health. If one server is slower or overloaded, it can become a bottleneck.</li>
             </ul>
 
             <li>Least Connections:</li>
-            <ul>
+            <ul class="hidden">
                <li>The load balancer keeps track of the number of active connections to each server. Incoming requests are directed to the server with the fewest active connections.</li>
                <li>Useful when servers have varying levels of processing power, and some can handle more connections than others.</li>
                <li>Doesn't account for the duration or complexity of tasks on each server.</li>
             </ul>
             
             <li>Least Response Time:</li>
-            <ul>
+            <ul class="hidden">
                <li>The load balancer periodically checks the response times of servers (usually by sending a simple request). Incoming traffic is directed to the server with the lowest response time.</li>
                <li>Frequent health checks can add overhead.</li>
             </ul>
             
             <li>IP Hash:</li>
-            <ul>
+            <ul class="hidden">
                <li>A deterministic hash function processes the client's IP address to determine which server should handle the request. This ensures that a specific client will always be directed to the same server. This ensures session persistence for applications that store session data on the server.</li>
                <li>If a server goes down, the hash might direct traffic to it until the load balancer is updated.</li>
             </ul>
             
             <li>Weighted Load Balancing:</li>
-            <ul>
+            <ul class="hidden">
                <li>Each server is assigned a weight, typically based on its capacity or performance. The load balancer uses these weights to distribute incoming requests proportionally.</li>
                <li>Requires manual configuration and adjustment of weights.</li>
             </ul>
             
             <li>Layer 7 Load Balancing:</li>
-            <ul>
+            <ul class="hidden">
                <li>Distributes requests based on content type, URL, or other HTTP header information. This allows for more intelligent distribution, such as sending all requests for images to one server and all requests for database queries to another.</li>
             </ul>
             
             <li>Sticky Sessions (Session Persistence):</li>
-            <ul>
+            <ul class="hidden">
                <li>The load balancer uses a mechanism (like cookies or source IP hashing) to ensure that a client is consistently directed to the same server as long as its session is active.</li>
                <li>Can lead to uneven distribution of traffic, especially if some sessions are longer or more resource-intensive than others.</li>
             </ul>
             
             <li>Global Server Load Balancing (GSLB):</li>
-            <ul>
+            <ul class="hidden">
                <li>Uses DNS resolution to direct clients to the nearest or best-performing data center. Health checks and performance metrics are used to determine the optimal data center for each request.</li>
                <li>Provides geographic redundancy and directs users to the nearest data center for reduced latency.</li>
                <li>Relies on DNS propagation, which might not be instantaneous.</li>
@@ -1722,19 +1734,19 @@
 
 
             <li>Hardware vs. Software Load Balancers:</li>
-            <ul>
+            <ul class="hidden">
                <li>Hardware Load Balancers are dedicated appliances optimized for processing network traffic. They are typically faster and more reliable but can be more expensive.</li>
                <li>Software Load Balancers run on general-purpose operating systems and hardware. They offer more flexibility and can be more cost-effective, especially for smaller setups or cloud environments. Examples include Nginx, HAProxy, and the AWS Elastic Load Balancer.</li>
             </ul>
 
             <li>Application vs. Network Load Balancers:</li>
-            <ul>
+            <ul class="hidden">
                <li>Application Load Balancers (Layer 7) operate at the application layer and make routing decisions based on content type, URL, or other HTTP header information.</li>
                <li>Network Load Balancers (Layer 4) operate at the transport layer and make routing decisions based on IP address and port. They are typically faster and less resource-intensive than application load balancers.</li>
             </ul>
 
             <li>Load Balancing in Software Defined Networking</li>
-            <ul>
+            <ul class="hidden">
                <li>SDN (Software Defined Networking) is an approach to networking that uses software-based controllers or application programming interfaces (APIs) to direct traffic on the network and communicate with the underlying hardware infrastructure.</li>
                <li>A load balancing adaptive algorithm is designed to analyze various factors and adjust itself to make optimal load balancing decisions. These factors might include server load, network congestion, application status, etc.</li>
                <li>These algorithms take data from various layers of the OSI model to make their loag balancing decisions:</li>
@@ -1751,11 +1763,11 @@
          </ul>
 
          <li>Network Interfaces</li>
-         <ul>
+         <ul class="hidden spaced-list">
             <li>NIC (Network Interface Card) Teaming</li>
-            <ul>
+            <ul class="hidden">
                <li>NIC teaming is managed by LACP (Link Aggregation Control Protocol)</li>
-               <ul>
+               <ul class="hidden">
                   <li>LACP is a protocol used to bundle several physical network links into a single logical link, known as a Link Aggregation Group (LAG). It's part of the IEEE 802.1AX standard.</li>
                   <li>When LACP is enabled on a port, it starts sending LACP Data Units (LACPDUs) to discover LACP-capable peers.</li>
                   <li>LACP negotiates with the peer devices to determine which links can be bundled together, based on parameters like speed, duplex setting, etc.</li>
@@ -1774,23 +1786,23 @@
          </ul>
 
          <li>Virtual Networking</li>
-         <ul>
+         <ul class="hidden">
             <li>Virtual networking allows multiple VMs to communicate with each other and with the physical network, just as if they were physical devices.</li>
             <li>Bridged connections:</li>
-            <ul>
+            <ul class="hidden">
                <li>A virtual bridge connects a virtual network interface card (vNIC) inside a VM to a physical network interface card (pNIC) on the host machine.</li>
                <li>The VM appears as a separate physical device on the network, with its own MAC and IP address. It communicates directly with the physical network, bypassing the host's network stack.</li>
                <li>Bridged connections are ideal when VMs need to be part of the same physical network as the host, such as in web servers or database servers.</li>
             </ul>
             <li>NAT (Netwrok Address Translation)</li>
-            <ul>
+            <ul class="hidden">
                <li>NAT is a method of remapping one IP address space into another by modifying network address information in the IP header of packets while they are in transit. In virtual networking, NAT allows VMs to share the host's IP address.</li>
                <li>VMs are assigned private IP addresses. When a VM sends a packet to the external network, the source address is translated to the host's public IP address.</li>
                <li>NAT keeps a translation table to map the VM's private IP and port to the host's public IP and a unique port. This ensures that return traffic is correctly directed to the originating VM.</li>
                <li>VMs are isolated from the external network, as they do not have direct access. They communicate with the outside world through the NAT service on the host. This provides a layer of isolation between VMs and the external network, acting as a basic firewall.</li>
                <li>Most virtualization platforms like VMware, VirtualBox, and Hyper-V provide options to configure NAT for VMs.</li>
                <li>Types of NAT setups:</li>
-               <ul>
+               <ul class="hidden">
                   <li>Static NAT: Predefined mapping between private and public addresses.</li>
                   <li>Dynamic NAT: Dynamic mapping between private and public addresses, usually using a pool of public IPs.</li>
                   <li>Port Address Translation (PAT): Multiple private IPs are mapped to a single public IP using different port numbers.</li>
@@ -1798,10 +1810,10 @@
             </ul>
 
             <li>Host-Only Networking</li>
-            <ul>
+            <ul class="hidden">
                <li>Host-Only Networking allows communication between the virtual machines (VMs) and the host system, but the VMs are isolated from the external network.</li>
                <li>How it works:</li>
-               <ul>
+               <ul class="hidden">
                   <li>Virtual Switch: A virtual switch is created that connects the VMs and the host.</li>
                   <li>Isolation: VMs can communicate with each other and the host but not with the external network.</li>
                   <li>IP Configuration: VMs are usually assigned IP addresses in a private range, either statically or via a virtual DHCP server.</li>
@@ -1812,10 +1824,10 @@
             </ul>
 
             <li>Internal Networking</li>
-            <ul>
+            <ul class="hidden">
                <li>Internal Networking is similar to Host-Only Networking but with even more isolation. VMs can communicate with each other but not with the host or the external network.</li>
                <li>How it works:</li>
-               <ul>
+               <ul class="hidden">
                   <li>Virtual Switch: A virtual switch is created that connects the VMs.</li>
                   <li>Complete Isolation: VMs can communicate only with each other, not with the host or the external network.</li>
                   <li>IP Configuration: IP addresses can be assigned statically or via a virtual DHCP server running inside one of the VMs.</li>
@@ -1827,12 +1839,12 @@
          </ul>
       </ul>
 
-      <h3>Virtualization</h3>
-      <ul class="hidden">
+      <h3 id="virtualization">Virtualization</h3>
+      <ul class="hidden spaced-list">
          <li>Virtualization is the technology that allows the creation of virtual instances of physical resources, such as servers, storage, and network devices. It enables multiple virtual machines (VMs) to run on a single physical machine, sharing its resources.</li>
          <li>Type 1 hypervisors are generally used in virtualized network settings. A Type 1 hypervisor, also known as a "bare-metal" hypervisor, runs directly on the host's hardware to control the hardware and manage guest operating systems.</li>
 
-         <ul>
+         <ul class="hidden">
             <li>Generally offers better performance as it has direct access to physical hardware (compared to type 2 hypervisors).</li>
             <li>More secure as there's no underlying OS to be attacked.</li>
             <li>Many Type 1 hypervisors support clustering, allowing multiple hosts to work together for redundancy and load balancing.</li>
@@ -1846,73 +1858,111 @@
          <li>Virtualization enables dynamic load balancing, distributing workloads across multiple VMs to ensure optimal performance.</li>
          <li>Virtualized environments often allow for rapid provisioning of new VMs, enabling quick recovery from failures.</li>
          <li>Virtualization simplifies disaster recovery by enabling easy replication and migration of VMs between sites.</li>
+      </ul>
 
+      <ul class="hidden spaced-list">
          <li>Resource Allcation:</li>
-         <ul>
+         <ul class="hidden spaced-list">
             <li>Resource allocation in virtualization is a critical aspect, especially when considering high availability (HA). It involves the distribution and management of physical resources (such as CPU, memory, storage, and network) among virtual machines (VMs) to ensure optimal performance, scalability, and resilience. </li>
 
             <li>CPU/Memory</li>
-            <ul>
-               <li>Shares: CPU cores are shared between VMs as needed. If a VM has more shares compared to others, it gets a larger portion of the CPU resources during contention.</li>
-               <li>Reservations: This is the guaranteed minimum amount of CPU resources allocated to a VM. It ensures that the VM will always have access to the specified amount of CPU resources.</li>
-               <li>Limits: This sets the maximum amount of CPU resources that a VM can consume. Even if more resources are available, the VM won't be able to use beyond this limit.</li>
+            <ul class="hidden">
+               <li>Shares: CPU cores/RAM is shared between VMs as needed. If a VM has more shares compared to others, it gets a larger portion of the CPU/memory resources during contention.</li>
+               <li>Reservations: This is the guaranteed minimum amount of CPU/memory resources allocated to a VM. It ensures that the VM will always have access to the specified amount of resources.</li>
+               <li>Limits: This sets the maximum amount of resources that a VM can consume. Even if more resources are available, the VM won't be able to use beyond this limit.</li>
             </ul>
             <li>Storage:</li>
-            <li>Virtualized servers use virtualized storage, which means that physical storage devices are abstracted and presented as logical units. This allows multiple virtual servers to share the same physical storage resources.</li>
-            <li>Physical storage devices are grouped into storage pools, which can be allocated to different virtual machines (VMs) as needed.</li>
-            <li>Virtualized storage often uses specific file systems and formats like VMFS (Virtual Machine File System) to manage data efficiently.</li>
-            <li>Direct Attached Storage (DAS): Storage devices are directly attached to the host machine. This offers high performance but lacks flexibility.</li>
-            <li>Network Attached Storage (NAS): a file-level data storage device that is connected to a computer network, providing data access to a heterogeneous group of clients.</li>
             <ul>
-               <li>NAS operates at the file level, meaning it handles data as files and directories.</li>
-               <li>Commonly uses protocols like NFS (Network File System) or SMB/CIFS (Server Message Block/Common Internet File System).</li>
-               <li>Suitable for moderate performance needs, such as file sharing, backups, and multimedia streaming.</li>
-            </ul>
-            <li>Storage Area Network (SAN): a network that provides access to consolidated, block-level data storage, primarily used to make storage devices accessible to servers in a way that the devices appear as locally attached.</li>
-            <ul>
-               <li>SAN operates at the block level, handling raw data blocks, which allows for more efficient handling of large data sets and applications like databases.</li>
-               <li>Utilizes protocols like iSCSI (Internet Small Computer Systems Interface) or Fibre Channel.</li>
-               <li>Generally more complex to set up and requires specialized knowledge, but is suitable for large enterprises because it is highly scalable, allowing for growth and expansion as needed.</li>
-               <li>Offers high performance and is ideal for applications that require fast data retrieval and processing, such as large databases and virtualization.</li>
+               <li>Virtualized servers use virtualized storage, which means that physical storage devices are abstracted and presented as logical units. This allows multiple virtual servers to share the same physical storage resources.</li>
+               <li>Physical storage devices are grouped into storage pools, which can be allocated to different virtual machines (VMs) as needed.</li>
+               <li>Virtualized storage often uses specific file systems and formats like VMFS (Virtual Machine File System) to manage data efficiently.</li>
+               <li>Direct Attached Storage (DAS): Storage devices are directly attached to the host machine. This offers high performance but lacks flexibility.</li>
+               <li>Network Attached Storage (NAS): a file-level data storage device that is connected to a computer network, providing data access to a heterogeneous group of clients.</li>
+               <ul class="hidden">
+                  <li>NAS operates at the file level, meaning it handles data as files and directories.</li>
+                  <li>Commonly uses protocols like NFS (Network File System) or SMB/CIFS (Server Message Block/Common Internet File System).</li>
+                  <li>Suitable for moderate performance needs, such as file sharing, backups, and multimedia streaming.</li>
+               </ul>
+               <li>Storage Area Network (SAN): a network that provides access to consolidated, block-level data storage, primarily used to make storage devices accessible to servers in a way that the devices appear as locally attached.</li>
+               <ul class="hidden">
+                  <li>SAN operates at the block level, handling raw data blocks, which allows for more efficient handling of large data sets and applications like databases.</li>
+                  <li>Utilizes protocols like iSCSI (Internet Small Computer Systems Interface) or Fibre Channel.</li>
+                  <li>Generally more complex to set up and requires specialized knowledge, but is suitable for large enterprises because it is highly scalable, allowing for growth and expansion as needed.</li>
+                  <li>Offers high performance and is ideal for applications that require fast data retrieval and processing, such as large databases and virtualization.</li>
+               </ul>
             </ul>
          </ul>
 
          <li>VM mangement</li>
-         <ul>
+         <ul class="hidden">
             <li>VMware vCenter Server is a centralized management platform for VMware vSphere environments.</li>
-            <ul>
+            <ul class="hidden">
                <li>Manages multiple ESXi hosts and VMs from a single console.</li>
                <li>Offers automation and orchestration capabilities.</li>
                <li>Can manage thousands of VMs.</li>
                <li>Works with other VMware products for complete virtualization management.</li>
             </ul>
             <li>Hyper-V Manager is a tool used to create, manage, and configure virtual machines in Microsoft's Hyper-V virtualization platform.</li>
-            <ul>
+            <ul class="hidden">
                <li>Native to Windows Server and Windows 10 and 11.</li>
                <li>Suitable for small to large-scale deployments.</li>
             </ul>
             <li>Citrix Hypervisor is an open-source virtualization platform based on the Xen Project.</li>
-            <ul>
+            <ul class="hidden">
                <li>Can be integrated with other Citrix products for a complete virtualization solution.</li>
             </ul>
             <li>Red Hat Virtualization is an enterprise virtualization solution provided by Red Hat.</li>
-            <ul>
+            <ul class="hidden">
                <li>Built on Red Hat Enterprise Linux.</li>
                <li>Provides APIs for integration and automation.</li>
                <li>Includes security features aligned with Red Hat's security standards.</li>
             </ul>
             <li>Oracle VM VirtualBox is a free and open-source hosted hypervisor for x86 virtualization.</li>
-            <ul>
+            <ul class="hidden">
                <li>Runs on Windows, Linux, macOS, and other platforms.</li>
                <li>Known for its ease of use and community support.</li>
             </ul>
          </ul>
-         <!--
+
          <li>Cloud Models</li>
-         <ul>
-            <li></li>
+         <ul class="hidden">
+            <li>Public Cloud</li>
+            <ul class="hidden">
+               <li>Public cloud refers to a computing service model where a service provider makes resources, such as virtual machines (VMs), applications, or storage, available to the general public over the internet. Public cloud services may be free or sold on-demand.</li>
+               <li>Easily scalable to accommodate varying demands.</li>
+               <li>In most cases, resources are shared among multiple users.</li>
+               <li>Environment is managed and maintained by the cloud provider.</li>
+               <li>The most common coud providers are Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP).</li>
+            </ul>
+
+            <li>Private Cloud</li>
+            <ul class="hidden">
+               <li>Private cloud is a cloud computing model that offers a proprietary environment dedicated to a single business entity. Unlike the public cloud, it is not shared with other organizations.</li>
+               <li>Can be tailored to meet specific business needs.</li>
+               <li>Greater control over the environment, including security and compliance.</li>
+               <li>Can be hosted on-premises or by a third-party provider.</li>
+               <li><a href="https://docs.vmware.com/en/VMware-Cloud-Director/index.html" class="link" target="_blank">VMware's vCloud</a></li>
+               <ul class="hidden">
+                  <li>VMware's vCloud is a cloud computing initiative that provides a suite of cloud computing services, including infrastructure as a service (IaaS), delivered by VMware's vCloud partners.</li>
+                  <li>Can be integrated with public clouds to create a hybrid cloud environment.</li>
+               </ul>
+
+               <li><a href="https://docs.openstack.org/2023.1/" class="link" target="_blank">OpenStack</a></li>
+               <ul class="hidden">
+                  <li>OpenStack is an open-source cloud computing platform that enables organizations to control large pools of compute, storage, and networking resources throughout a data center.</li>
+                  <li>Supports various hypervisors, including KVM, VMware, and Xen.</li>
+                  <li>Can be tailored to meet specific organizational needs.</li>
+               </ul>
+            </ul>
+
+            <li>Hybrid Cloud</li>
+            <ul class="hidden">
+               <li>Hybrid cloud is a computing environment that combines a mix of on-premises, private cloud, and third-party public cloud services. It allows data and applications to be shared between them.</li>
+               <li>Allows for greater flexibility in moving workloads between cloud solutions.</li>
+               <li>Can optimize costs, performance, and efficiency.</li>
+            </ul>
          </ul>
-         -->
+         
       </ul>
      
    </div>
