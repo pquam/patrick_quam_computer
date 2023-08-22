@@ -24,6 +24,11 @@
   <nav class="side-navigation">
    <ul>
     <li>
+      <a href="#top">
+       Back to Top
+      </a>
+     </li>
+    <li>
      <a href="#are-both-single-mode-and-multi-mode-cables-generally-terminated-in-pairs?">
       Are both single mode and multi mode cables generally terminated in pairs?
      </a>
@@ -69,28 +74,8 @@
      </a>
     </li>
     <li>
-     <a href="#other:">
-      Other:
-     </a>
-    </li>
-    <li>
-     <a href="#learning-resources">
-      Learning Resources
-     </a>
-    </li>
-    <li>
-     <a href="#websites">
-      Websites
-     </a>
-    </li>
-    <li>
-     <a href="#youtube-creators">
-      YouTube Creators
-     </a>
-    </li>
-    <li>
-     <a href="#youtube-playlists">
-      YouTube Playlists
+     <a href='#proxy-vs-vpn'>
+      What is the difference between a proxy and a VPN?
      </a>
     </li>
    </ul>
@@ -99,7 +84,7 @@
   <section class="top-section" id="title">
    <div class="alert alert-primary" role="alert">
     Donate to
-    <a class="alert-link" href="https://kramden.org/donate/">
+    <a class="alert-link" href="https://kramden.org/donate/" id="top">
      The Kramden Institute
     </a>
    </div>
@@ -117,7 +102,7 @@
        Leftovers
       </h1>
       <h2 class="section-heading">
-       Whenever I have to look something up, or find a good learning resource, I will put it here.
+       Whenever I have to look something up, I'll put what I learned here.
       </h2>
       <h4>
        My poor-mans obsidian
@@ -158,27 +143,22 @@
     </h3>
     <ul class="spaced-list hidden">
      <li>
-      <mark>
-       Internet Explanation:
-      </mark>
-      FQDN stands for Fully Qualified Domain Name. It's a complete and unambiguous domain name that specifies an exact location in the Domain Name System (DNS) hierarchy. This means it includes all higher levels of the DNS structure, not just the host and domain name.
-
-                An FQDN consists of several parts:
-                
-                Hostname: The name assigned to a device connected to a computer network.
-                Domain name: The name that represents an organization or entity on the internet.
-                Top-level domain (TLD): The highest level of the domain structure (like .com, .org, .net, .gov, etc.)
-                For example, in the FQDN "www.example.com":
-                
-                "www" is the hostname
-                "example" is the domain name
-                "com" is the top-level domain
+      <mark>Internet Explanation:</mark> FQDN stands for Fully Qualified Domain Name. It's a complete and unambiguous domain name that specifies an exact location in the Domain Name System (DNS) hierarchy. This means it includes all higher levels of the DNS structure, not just the host and domain name. An FQDN consists of several parts:
      </li>
-     <li>
-      <mark>
-       Internet Explanation:
-      </mark>
-      Both FQDN (Fully Qualified Domain Name) and URL (Uniform Resource Locator) are used to find resources on the internet, but they serve different purposes and contain different types of information.
+     <ul>
+      <li>Hostname: The name assigned to a device connected to a computer network.</li>
+      <li>Domain name: The name that represents an organization or entity on the internet.</li>
+      <li>Top-level domain (TLD): The highest level of the domain structure (like .com, .org, .net, .gov, etc.)</li>
+     </ul>
+     <li><mark>For example,</mark> in the FQDN "www.example.com":
+                
+      "www" is the hostname
+      "example" is the domain name
+      "com" is the top-level domain
+    </li>
+
+     <li>  
+      <mark>Internet Explanation Continued:</mark> Both FQDN (Fully Qualified Domain Name) and URL (Uniform Resource Locator) are used to find resources on the internet, but they serve different purposes and contain different types of information.
 
                 FQDN is like the full name of a specific computer or server on the internet. It's used to identify a specific machine in a network. For example, "www.example.com" is an FQDN where "www" is the hostname, "example" is the domain name, and "com" is the top-level domain.
                 
@@ -191,10 +171,7 @@
                 "/homepage.html" is the specific file or page on that server.
      </li>
      <li>
-      <mark>
-       My Explanation:
-      </mark>
-      FQDN is the full term for what is commonly referred too simply as a domain name. FQDN is specifically a domain name that includes a hostname (or subdomain), the domain itself, and its top level domain (or TLD). It is designed to point to a specific machine on the network, or more commonly, the internet. For example,
+      <mark>My Explanation:</mark> FQDN is the full term for what is commonly referred too simply as a domain name. FQDN is specifically a domain name that includes a hostname (or subdomain), the domain itself, and its top level domain (or TLD). It is designed to point to a specific machine on the network, or more commonly, the internet. For example,
       <a class="link" href="https://patrick.quam.computer" target="_blank">
        patrick.quam.computer
       </a>
@@ -306,6 +283,7 @@
        here
       </a>
      </li>
+     <li><a class="link" href="https://youtu.be/6_giEv20En0" target="_blank">Powercert video on Subnets vs VLANs</a></li>
      <li>
       Both subnets and VLANs are used to segment and organize networks, but they operate at different layers of the OSI model and serve different purposes.
      </li>
@@ -559,7 +537,7 @@
     <h3 id='what-is-a-"frame"?'>
      What is a "frame"?
     </h3>
-    <ul class="hidden">
+    <ul class="hidden spaced-list">
      <li>
       In the context of computer networking, data is transmitted across networks in chunks or packets. When we talk about the Data Link layer (Layer 2) of the OSI model, which is where MAC addresses operate, these packets are often referred to as "frames." A frame is essentially a package of information that includes not just the data being sent, but also source and destination MAC addresses, error-checking information, and other control data.
      </li>
@@ -578,109 +556,43 @@
       </li>
      </ul>
     </ul>
+
+    <h3 id="dns-load-balancing">How does load balancing work at a DNS level?</h3>
+    <ul class="hidden spaced-list">
+      <li>The most basic form of DNS load balancing is using Round Robin DNS. If you specify multiple A (or AAAA for IPv6) records for a domain, the DNS server will typically rotate through them when responding to requests. This can distribute connections among several servers. However, it's a very rudimentary form of load balancing because it doesn't take into account the health or the load of the servers. If one of the servers goes down, DNS would still distribute traffic to it unless you manually remove that record or have some other automated health check process in place.</li>
+      <li>Some DNS providers offer geolocation-based DNS services. Based on the requester's geographic location, the DNS server will return the IP address of the server closest to them. This helps reduce latency and can also be used to direct traffic to region-specific servers or data centers.</li>
+      <li>Services like AWS Route 53 allow you to set weights for your DNS records. This means you can have 70% of your traffic go to one server and 30% to another, for instance.</li>
+      <li>Some advanced DNS services can automatically remove an A record from the rotation if the server it points to fails a health check. This provides a basic level of failover in case one of your servers becomes unreachable.</li>
+      <li>Some third-party services specialize in DNS-based load balancing and offer more advanced features, such as real-time traffic analysis, intelligent routing based on server load or performance, etc.</li>
+      <li>For most DNS providers, setting up these features involves logging into their web interface and configuring your domain's DNS settings. Some might offer APIs to automate or programmatically control these configurations.</li>
+      <li>Exaples of DNS services that offer DNS level load balancing and DNS failover:</li>
+      <ul>
+        <li>Amazon's <a href="https://aws.amazon.com/route53/" class="link" target="_blank">Route 53</a> DNS service provides a variety of advanced traffic routing policies, including simple, weighted, latency-based, failover, and geolocation routing.</li>
+        <li>Known primarily for its content delivery network (CDN) and security services, <a href="https://www.cloudflare.com/application-services/products/dns/" class="link" target="_blank">Cloudflare also offers DNS load balancing and health checks.</a> They provide geo-routing, failover, and even session affinity.</li>
+        <li>Before its acquisition by Oracle, Dyn was one of the premier independent DNS providers. <a href="https://www.oracle.com/cloud/networking/dns/" class="link" target="_blank">Oracle's version of the service</a> offers advanced traffic management, including internet performance optimization, load balancing, and failover solutions.</li>
+        <li>Part of Google Cloud Platform, their <a href="https://cloud.google.com/dns" class="link" target="_blank">DNS solution</a> supports various types of load balancing and traffic routing, including global load balancing across worldwide locations.</li>
+        <li>While it's more than just a DNS service, <a href="https://learn.microsoft.com/en-us/azure/traffic-manager/traffic-manager-overview" class="link" target="_blank">Microsoft Azure's Traffic Manager</a> uses DNS to direct client requests to the most appropriate service endpoint based on a variety of traffic-routing methods and the health of the endpoints.</li>
+        <li><a href="https://dnsmadeeasy.com/" class="link" target="_blank">DNS Made Easy</a> offers a feature called Global Traffic Director, which allows for regional-based DNS queries. They also provide DNS failover to redirect traffic in case your primary server fails.</li>
+        <li>Akamai, a leading CDN provider, offers a <a href="https://www.akamai.com/products/edge-dns" class="link" target="_blank">DNS product</a> that provides both speed and resilience. It offers fast DNS resolutions while also defending against DDoS attacks. It also supports geo-based routing and failover.</li>
+        <li><a href="https://ns1.com/" class="link" target="_blank">NS1</a> offers a platform for DNS and application traffic management. They provide intelligent traffic routing, real-time server health checks, and geo-routing capabilities.</li>
+      </ul>
+    </ul>
+
+    <h3 id="proxy-vs-vpn">What is the difference between a proxy and a VPN?</h3>
+    <ul class="hidden">
+      <li>Both VPNs (Virtual Private Networks) and proxies are used to reroute internet traffic, masking the user's actual IP address.</li>
+      <li>A VPN establishes a secure, encrypted connection between your device and a remote server, operated by the VPN service provider. All your internet traffic is routed through this connection. This encryption adds a layer of privacy and security, making it difficult for third parties to intercept or eavesdrop on your online activities. VPNs operate at the system level, redirecting all of the device's internet traffic, including every application that accesses the internet. Generally, a VPN might have a more significant impact on connection speed due to encryption and the distance to the VPN server.</li>
+      <li>A proxy server acts as an intermediary between your device and the internet. It forwards requests and responses on your behalf, hiding your real IP address.  Unlike VPNs, proxies usually don't encrypt your data, meaning the information might be exposed to third parties.  Proxies often work at the application level, meaning they are configured per application (such as a web browser), not for the entire device.</li>
+    </ul>
    </div>
    <div class="col-lg-1">
    </div>
   </section>
-  <section class="grey-section" >
-   <div class="container-fluid">
-    <div class="column">
-     <div class="col-lg-12">
-      <h1 class="sub-section-header" id="other:">
-       <mark>
-        Other:
-       </mark>
-      </h1>
-     </div>
-     <div class="col-lg-1">
-     </div>
-     <div class="sub-section-box col-lg-12">
-      <ul class="hidden">
-       <li id="removing-html-extension">
-        Removing .html extension from NGINX webpages
-       </li>
-       <ul class="hidden">
-        <li>
-         First, you will want to open
-         <code>
-          /etc/nginx/nginx.conf
-         </code>
-         in your editor or choice. In nginx.conf, you are looking for your
-         <code>
-          location /
-         </code>
-         block. If you do not see it, check to see if nginx.conf included other files by default, as it may be in another included file such as
-         <code>
-          /etc/nginx/sites-available/default
-         </code>
-        </li>
-        <li>
-         In the location / block, by default there will be the line:
-         <code>
-          try_files $uri $uri/ =404;
-         </code>
-         and if there is not you should add it to be the first line in the block.
-        </li>
-        <li>
-         If it is not there already, add to that line
-         <code>
-          $uri.html
-         </code>
-         so the whole line will be
-         <code>
-          try_files $uri $uri/ $uri.html =404;
-         </code>
-        </li>
-        <li>
-         Create a new location block below the location \ block with the name
-         <code>
-          ~ \.html$
-         </code>
-        </li>
-        <li>
-         In the new block, add
-         <code>
-          rewrite ^(.*)\.html$ $1 permanent;
-         </code>
-        </li>
-        <li>
-         The two location blocks should now look something like this:
-         <br/>
-         <code>
-          <pre>
-    location / {
-      try_files $uri $uri/ $uri.html =404;
-    }
-  
-    location ~ \.html$ {
-      rewrite ^(.*)\.html$ $1 permanent;
-    }</pre>
-         </code>
-        </li>
-        <li>
-         After reloading nginx via
-         <code>
-          sudo systemctl reload nginx
-         </code>
-         the webpage should no longer show .html extensions.
-        </li>
-        <li>
-         More information on nginx
-         <a class="link" href="https://patrick.quam.computer/notes/nginx">
-          here
-         </a>
-        </li>
-       </ul>
-      </ul>
-     </div>
-     <div class="col-lg-1">
-     </div>
-    </div>
-   </div>
-  </section>
+
   <script src="../javascript/navbar.js">
   </script>
   <script src="../javascript/sidebar.js">
   </script>
+
  </body>
 </html>

@@ -1,9 +1,23 @@
   
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h5, h6 {
     font-family:'Courier New', Courier, monospace;
     color: #fff;
   }
+
+  h3, h4{
+    font-family:'Courier New', Courier, monospace;
+    color: #fff;
+    text-shadow: 3px 3px 5px #000000;
+  }
   
+a {
+  text-shadow: none;
+}
+
+mark {
+  text-shadow: none !important;
+}
+
   p {
     color: #fff;
   }
@@ -45,6 +59,7 @@
     font-family: monospace;
     border-radius: 4px;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.8);
+    text-shadow: none !important;
   }
 
   .grey-section mark {
@@ -193,6 +208,7 @@
 .side-navigation a {
     color: #fff;
     text-decoration: none;
+    text-shadow: 3px 3px 7px #000000;
     font-size: small;
     display: block;
     padding: 5px 7px;
@@ -217,7 +233,7 @@
   color: white;
   border: none;
   cursor: pointer;
-  z-index: 1001;
+  z-index: 999;
   
   white-space: nowrap;
   transform: translateY(-50%) rotate(90deg);
