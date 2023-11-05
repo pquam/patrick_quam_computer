@@ -41,7 +41,7 @@
 
             <div class="col-lg-6">
               <h1 class="big-heading">Home Lab</h1>
-              <h2 class="section-heading">My personal Devices and Server Equipment</h2>
+              <p class="section-heading">My Personal Lab for Messing Around and Finding Out</p>
               
             </div>
         
@@ -57,11 +57,53 @@
 
 
 
-    <section class="colored-section" id="projects">
+    <section class="colored-section">
         <div class="sub-section-box col-lg-12">
+          <h2>Personal Devices</h2>
+            <h4>Desktop</h4>
+            <p>While it might be needly expensive, I wanted components that would support my workload for an extended period of time to reduce e-waste. Also, as a technology enthusiast, I wanted the coolest stuff.</p>
+            <p>Specifications:</p>
+          <ul class="spaced-list">
+            <li>OS: WINDOWS 11 W/ WSL 2.0 (UBUNTU 22.04)</li>
+            <li>CPU: <a href="https://www.amd.com/en/products/cpu/amd-ryzen-9-5950x" target="_blank" class="link">Ryzen 9 - 5950x</a></li>
+            <li>MOBO: ASUS ROG STRIX X570-F GAMING</li>
+            <li>GPU: ASUS ROG STRIX / NVIDIA 3090</li>
+            <li>RAM: 4x8GB Trident Z DDR4</li>
+            <li>STORAGE: 1TB SAMSUNG 980 PRO / 500GB SAMSUNG 970 EVO</li>
+          </ul>
+
+          <h4>Laptop</h4>
+          <p>When I heard about the framework laptop, I knew it was a project I wanted to support. The durability and repairability of the system is impressive, and swappable ports is one of the most useful "gimmik" features I have seen on a device from any manufacturer.</p>
+          <p>Specifications:</p>
+          <ul>
+            <li>OS: UBUNTU 22.04 W/ GNOME EXTENSIONS</li>
+            <li>CPU: <a href="https://ark.intel.com/content/www/us/en/ark/products/208921/intel-core-i71165g7-processor-12m-cache-up-to-4-70-ghz-with-ipu.html" target="_blank" class="link">INTEL CORE I7-1165G7</a></li>
+            <li>GPU: INTEL IRIS XE INTEGRATED GRAPHICS</li>
+            <li>RAM: 2x16GB SAMSUNG DDR4 SODIMM</li>
+            <li>STORAGE: 500GB SAMSUNG 970 EVO</li>
+          </ul>
         </div>
-    <script src="javascript/navbar.js"></script>
     </section>
+
+    <section class="grey-section">
+      <h2>Website</h2>
+      <p>This website is hosted on a Akami/Linode VM running Debian.</p>
+      <p>Specifications:</p>
+      <ul>
+        <li>CPU: Shared, 1 Core Reserved</li>
+        <li>RAM: 2GB</li>
+      </ul>
+      <p>Software:</p>
+        <ul>
+          <li>NGINX - Hosts web pages, directs HTTP & HTTPS traffic.</li>
+          <li>fail2ban - Blocks connections from unwanted IPs, particularly from botnets.</li>
+          <li>Wazuh Agent - Intrusion prevention / detection & malware scans.</li>
+          <li>CertBot - Generates SSL certificates for HTTPS.</li>
+          <li>git - Manage beta and production versions of the website.</li>
+        </ul>
+    </section>
+
+    <script src="javascript/navbar.js"></script>
 </body>
 
 </html>

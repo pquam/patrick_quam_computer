@@ -20,7 +20,7 @@
 </head>
 
 <body>
-  
+
     <!-- top section -->
     <section class="top-section" id="title">
       <div class="alert alert-primary" role="alert">
@@ -137,7 +137,9 @@
       <div class="sub-section-box col-lg-12">
         <ul>
           <li><mark>Changes to nginx configuration will not apply until the application has been reloaded.</mark> This can generally be done by running <code>systemctl reload nginx</code></li>
-          <li>The default configuration file is stored in <code>/etc/nginx/nginx.conf</code>. I've additional comments (indicated with #/) to explain the contents, but this is what the file should look like after adding the nginx user:</li>
+          <li>The default configuration file is stored in <code>/etc/nginx/nginx.conf</code>. This file usually makes refreences to the <code>/etc/nginx/sites-available</code> directory to look for additional configuration files. These configuration files are the ones that will be more relevant to most users using nginx as a web server.</li>
+          <!--
+          I've additional comments (indicated with #/) to explain the contents, but this is what the file should look like after adding the nginx user:</li>
 <code><pre>
   #/Specifies the user as nginx under which the Nginx worker processes run. This is for security, ensuring that Nginx doesn't run with root privileges.
   user nginx;
@@ -230,6 +232,7 @@
           include /etc/nginx/sites-enabled/*;
   }
 </pre></code>
+-->
         </ul>
       </div>
   
