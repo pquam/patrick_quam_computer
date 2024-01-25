@@ -8,24 +8,25 @@
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anek+Devanagari">
 
+    <!-- CSS only -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/navbar.css">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-    <!-- Bootstrap Scripts -->
+
+    <!--Bootstrap Scripts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     
+
+    <!--HTMX import-->
+    <script src="/javascript/htmx.min.js"></script>
 </head>
 
 <body>
     <!-- top section -->
     <section class="top-section" id="title">
-      <div class="alert alert-primary" role="alert">
-        Donate to 
-        <a href="https://kramden.org/donate/" class="alert-link">The Kramden Institute</a>
-      </div>
+      <div hx-get="/templates/donate.html" hx-swap="outerHTML" hx-trigger="load"></div>
 
           
 
@@ -33,7 +34,7 @@
 
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
               <div class="container-fluid">
-                <div id="navbar-placeholder"></div>
+                <div hx-get="/templates/navbar.html" hx-swap="outerHTML" hx-trigger="load"></div>
               </div>
             </nav>
 
@@ -51,68 +52,11 @@
             </div>
         
           </div>
-
-          <div class="col-lg-12">
-            <h1 class="contact">Contact:</h1>
-            
-          </div>
         </div>
 
     </section>
 
-    <section class="card-holder">
-
-      <div id="cards">
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <a href="https://www.linkedin.com/in/patrick-quam/" target="_blank" style="text-decoration: none;">
-                <img class="card-image" src="images/linkedinlogo.png" alt="LinkedIn Icon">
-              </a>
-            </div>
-            <div class="flip-card-back">
-              <a href="https://www.linkedin.com/in/patrick-quam/" target="_blank" style="text-decoration: none;">
-                <img class="card-image" src="images/linkedinlogo.png" alt="LinkedIn Icon">
-              </a>
-              <p class="flip-p">linkedin.com/in/patrick-quam</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <a href="https://github.com/pquam" target="_blank" style="text-decoration: none;">
-                <img class="card-image" src="images/githublogo.png" alt="LinkedIn Icon">
-              </a>
-            </div>
-            <div class="flip-card-back">
-              <a href="https://github.com/pquam" target="_blank" style="text-decoration: none;">
-                <img class="card-image" src="images/githublogo.png" alt="LinkedIn Icon">
-              </a>
-              <p class="flip-p">github.com/pquam</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <a href="mailto:patrick@quam.computer" style="text-decoration: none;">
-                <img class="card-image" src="images/email.png" alt="LinkedIn Icon">
-              </a>
-            </div>
-            <div class="flip-card-back">
-              <a href="mailto:patrick@quam.computer" style="text-decoration: none;">
-                <img class="card-image" src="images/email.png" alt="LinkedIn Icon">
-              </a>
-              <p class="flip-p">patrick@quam.computer</p>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </section>
+      <div hx-get="/templates/cards.html" hx-trigger="load"></div>
 
   <section class="grey-section" id="sub-section1">
 
@@ -150,9 +94,11 @@
       <div class="sub-section-box col-lg-12">
         <h3>More detail can be found on the <a href="https://github.com/pquam/patrick_quam_computer/commits" class="link" target="_blank">GitHub commits page</a></h3>
         <ul>
-          <li>Dec 18, 2023: Update file structure to align with website design. Configured Azure static webpages for beta and production versions of the server, with CI/CD using github actions to update the websites after every push"</li>
+          <li>Jan 23, 2024: MAJOR UPDATE: Rebuilt major sections of the webpage (notes, blog, all sections with contacts, navbar) to rely on HTMX. Made significant changes to help readability, particularly on mobile devices.</li>
+          <li>Dec 20, 2023: Added blog page.</li>
+          <li>Dec 18, 2023: Update file structure to align with website design. Configured Azure static webpages for beta and production versions of the server, with CI/CD using github actions to update the websites after every push.</li>
           <li>Nov 3-5, 2023: Updates to homelab and resume pages.</li>
-          <li>Oct 3, 2023: Spent september completing Network+ and Linux+ studies. Update certifications page to have links to the course completion certificates.</li>
+          <li>Oct 3, 2023: Spent September completing Network+ and Linux+ studies. Update certifications page to have links to the course completion certificates.</li>
           <li>Aug 22, 2023: Add content to various pages.</li>
           <li>Aug 18, 2023: Add content to various pages.</li>
           <li>Aug 16, 2023: Add content to various pages.</li>
@@ -190,7 +136,7 @@
         </ul>
       </div>
   </section>
-    <script src="javascript/navbar.js"></script>
+
 </body>
 
 </html>

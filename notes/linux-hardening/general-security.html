@@ -1,0 +1,72 @@
+  <!-- sub-section1, general security -->
+  <section class="grey-section" >
+    <div class="col-lg-12">
+     <h1 class="sub-section-header" id="-general-security-considerations-">
+      <mark>
+       General Security Considerations
+      </mark>
+     </h1>
+    </div>
+    <div class="col-lg-1">
+    </div>
+    <div class="sub-section-box col-lg-12">
+     <ul >
+      <li>
+       <mark>
+        Root user is all powerful.
+       </mark>
+      </li>
+      <li>
+       Follow a process for removing user accounts.
+      </li>
+      <li>
+       root has full control over all system processes.
+      </li>
+      <li>
+       Use a firewall (ufw, iptables, dedicated firewall).
+      </li>
+      <li>
+       Use Multi-Factor Authentication wherever possible.
+      </li>
+      <li>
+       NEVER give root access to a user that does not absolutely require it.
+      </li>
+      <li>
+       File permissions make it easy to manage what each user has access too.
+      </li>
+      <li>
+       Linux is less popular than windows 🙂, and it is open source, so less malware is developed for it.
+      </li>
+      <li>
+       Root is required to install system-wide software, configure networking, &amp; manage users, along with other administrative tasks.
+      </li>
+      <li>
+       Only allow network connections from required sources (for example, only allow incoming traffic from SSH if no other applications require network connectivity).
+      </li>
+      <li>
+       Centralized package managers can certify applications are malware free before they are installed.Package managers also allow users to update all of their software at once.
+      </li>
+      <li>
+       Encrypt all data transmissions over a network. Ensure you are are using the latest versions of protocols to make sure data is encrypted properly. for example, sftp instead of ftp.
+      </li>
+      <li>
+       linux allows you to create dedicated accounts for services &amp; applications.This way, if a service or process becomes compromised, it is less likely to affect the rest of the system.
+      </li>
+      <li>
+       Individuals should always have their own system accounts. Users sharing accounts can make it difficult to find the source of a breach. Users have a bad habit of being less responsible with shared user accounts.
+      </li>
+      <li>
+       Monitor system activity. This means regularly reviewing system logs. Sending logs to a dedicated server can help managing the review process easier, and also means you have a duplicate of logs in case an attacker changes logs on a system.
+      </li>
+      <li>
+       Avoid direct logins to root and service accounts unless absolutely neccessary. Users should log in to their personal accounts then use 'sudo -u' to run commands as other users. This creates a log trail that does not exist if users sign in the application, service, or root accounts.
+      </li>
+      <li>
+       Wherever possible, run applications and services in their own system (container, VM, dedicated physcial hardware).Otherwise, ensure applications and services have their own dedicated user. This way, if an application or service becomes compromised, it is less likely that it will be able to effect the rest of the system.
+      </li>
+     </ul>
+    </div>
+    <div class="col-lg-1">
+    </div>
+
+   </section>

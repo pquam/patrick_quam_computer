@@ -17,22 +17,23 @@
     <!-- Bootstrap Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     
+        <!--HTMX import-->
+        <script src="/javascript/htmx.min.js"></script>
 </head>
 
 <body>
   
     <!-- top section -->
     <section class="top-section" id="title">
-      <div class="alert alert-primary" role="alert">
-        Donate to 
-        <a href="https://kramden.org/donate/" class="alert-link">The Kramden Institute</a>
-      </div>          
+      <div hx-get="/templates/donate.html" hx-swap="outerHTML" hx-trigger="load"></div>
+
+          
 
             <!-- Nav bar -->
 
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
               <div class="container-fluid">
-                <div id="navbar-placeholder"></div>
+                <div hx-get="/templates/navbar.html" hx-swap="outerHTML" hx-trigger="load"></div>
               </div>
             </nav>
 
@@ -119,8 +120,8 @@
 
         <h4>2022 - PRESENT</h4>
         <ul>
-          <li>Utilized Visual Studio Code and VIM to develop my personal website with HTML, CSS (Bootstrap), and JavaScript. Managed production and beta versions of
-            the website using git and GitHub.</li>
+          <li>Utilized Visual Studio Code and VIM to develop my personal website with HTML, CSS (Bootstrap), JavaScript, and HTMX. Managed production and beta versions of
+            the website using git and GitHub. Deployed website using Azure Static Webpages, with CI/CD via GitHub Actions.</li>
           <li>Personally deployed, configured, maintained, and secured a virtual private server (Debian) to host my website. Configured NGINX to serve HTML,
               CSS, and JavaScript files via HTTPS and redirect HTTP traffic to HTTPS. Configured Certbot to generate SSL certificates to enable HTTPS. Configured
               fail2ban, UFW, and Wazuh to detect, block and report malicious traffic. Updated default file permissions and configuration files to prevent common attacks.</li>
@@ -167,71 +168,8 @@
 
   </section>
 
-  <section class="card-holder">
+  <div hx-get="/templates/cards.html" hx-trigger="load"></div>
 
-    <ul style="list-style-type: none; margin-top: 30px;">
-
-    <li>
-    <div class="text-center">
-      <h2>Contact:</h2>
-    </div>
-  </li>
-    
-    <div id="cards" style="margin-top: 30px;">
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <a href="https://www.linkedin.com/in/patrick-quam/" target="_blank" style="text-decoration: none;">
-              <img class="card-image" src="images/linkedinlogo.png" alt="LinkedIn Icon">
-            </a>
-          </div>
-          <div class="flip-card-back">
-            <a href="https://www.linkedin.com/in/patrick-quam/" target="_blank" style="text-decoration: none;">
-              <img class="card-image" src="images/linkedinlogo.png" alt="LinkedIn Icon">
-            </a>
-            <p class="flip-p">linkedin.com/in/patrick-quam</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <a href="https://github.com/pquam" target="_blank" style="text-decoration: none;">
-              <img class="card-image" src="images/githublogo.png" alt="LinkedIn Icon">
-            </a>
-          </div>
-          <div class="flip-card-back">
-            <a href="https://github.com/pquam" target="_blank" style="text-decoration: none;">
-              <img class="card-image" src="images/githublogo.png" alt="LinkedIn Icon">
-            </a>
-            <p class="flip-p">github.com/pquam</p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <a href="mailto:patrick@quam.computer" style="text-decoration: none;">
-              <img class="card-image" src="images/email.png" alt="LinkedIn Icon">
-            </a>
-          </div>
-          <div class="flip-card-back">
-            <a href="mailto:patrick@quam.computer" style="text-decoration: none;">
-              <img class="card-image" src="images/email.png" alt="LinkedIn Icon">
-            </a>
-            <p class="flip-p">patrick@quam.computer</p>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-  </ul>
-  </section>
-  
-
-    <script src="javascript/navbar.js"></script>
 </body>
 
 </html>

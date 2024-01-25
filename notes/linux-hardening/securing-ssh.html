@@ -1,0 +1,202 @@
+  <!-- sub-section5, Securing SSH -->
+  <section class="grey-section" >
+    <div class="col-lg-12">
+     <h1 class="sub-section-header" id="-securing-ssh-">
+      <mark>
+       Securing SSH
+      </mark>
+     </h1>
+    </div>
+    <div class="sub-section-box col-lg-12">
+     <ul >
+      <li>
+       Key based authentication is generally the safest way to use SSH
+      </li>
+      <li>
+       Key based authentication can be enabled by adding
+       <code>
+        PubKeyAuthentication yes
+       </code>
+       to the
+       <code>
+        /etc/ssh/sshd_config
+       </code>
+       file.
+      </li>
+      <li>
+       To generate an SSH key, run
+       <code>
+        ssh-keygen
+       </code>
+      </li>
+      <ul >
+       <li>
+        When generating a key, it is common to use
+        <code>
+         ssh-keygen -t
+        </code>
+        to specify what algorithm to use when generating the key.
+       </li>
+       <ul >
+        <li>
+         Common algorithm options are rsa and ed25519
+        </li>
+       </ul>
+       <li>
+        Another common option when generating a key is
+        <code>
+         ssh-keygen -b
+        </code>
+        which is used to specify the number of bits in the key.
+       </li>
+       <ul >
+        <li>
+         A longer key means it is better protected against brute force attacks, but it also means it is more compute heavy to generate and validate.
+        </li>
+        <li>
+         The typical length is 4096
+        </li>
+       </ul>
+       <li>The command should look something like <code>ssh-keygen -t ed25519 -b 4096</code></li>
+       <li>
+        When you generate an ssh key, it will ask you to input a password that will be required when that key is used.
+       </li>
+       <ul >
+        <li>
+         In some usecases, you may not want to have a password protected key. For example, if you need to automate an SSH connection, it may be unnecessarily complicated to automate password entry.
+        </li>
+       </ul>
+       <li>
+        When you run ssh-keygen, two files are created in that users  <code>~/.ssh/</code> directory. Those files are id_rsa &amp; id_rsa.pub
+       </li>
+       <ul >
+        <li>
+         id_rsa is your <mark>private</mark> SSH key. Its permissions should be set so that only the user that generated it can access it.
+        </li>
+        <li>
+         id_rsa.pub is your public SSH key. This will be placed in the remote hosts ~/.ssh/authorized-keys file to grant SSH access to that user.
+        </li>
+        <li>
+         you can add a key to a remote host by running
+         <code>
+          ssh-copy-id user@host
+         </code>
+        </li>
+        <li>
+         For example
+         <code>
+          ssh-copy-id username@1.1.1.1
+         </code>
+         or
+         <code>
+          ssh-copy-id username@mydomain.com
+         </code>
+        </li>
+       </ul>
+      </ul>
+      <li>
+       SSH key authentication can be enforced by disabling password authentication by adding
+       <code>
+        PasswordAuthentication no
+       </code>
+       to the
+       <code>
+        /etc/ssh/sshd_config
+       </code>
+       file.
+      </li>
+      <ul >
+       <li>
+        Disabling password authentication to SSH is generally good practice as SSH keys are effectively impossible to brute force.
+       </li>
+      </ul>
+      <li>
+       <mark>
+        You should never log in directly to the root user.
+       </mark>
+      </li>
+      <ul >
+       <li>
+        When setting up a remote host initially it is OK to log in as the root user to get other accounts set up, but then SSH access should quickly be disabled.
+       </li>
+       <li>
+        To prevent root logins via ssh, add
+        <code>
+         PermitRootLogin no
+        </code>
+        to the
+        <code>
+         /etc/ssh/sshd_config
+        </code>
+        file.
+       </li>
+       <li>
+        If you need acccess the root user, you should do so by SSHing into your personal user, and then switching to the root user using
+        <code>
+         sudo su -
+        </code>
+       </li>
+      </ul>
+      <li>
+       sshd_config
+      </li>
+      <ul >
+       <li>
+        Specific users can be granted SSH access by adding
+        <code>
+         AllowUsers username0 username1 username 2
+        </code>
+       </li>
+       <li>
+        The same can be done for groups
+        <code>
+         AllowGroups group0 group1 group2
+        </code>
+       </li>
+       <li>
+        Groups &amp; users can be denied SSH access by adding
+        <code>
+         DenyUsers
+        </code>
+        or
+        <code>
+         DenyGroups
+        </code>
+       </li>
+       <li>
+        <mark>
+         The SSH banner should be disabled
+        </mark>
+        by adding
+        <code>
+         Banner none
+        </code>
+        as the information it provides may be used by attackers.
+       </li>
+       <li>
+        <mark>
+         Changes to sshd_config will not apply until the application has been reloaded.
+        </mark>
+       </li>
+       <ul >
+        <li>
+         This can generally be done by running
+         <code>
+          systemctl reload sshd
+         </code>
+        </li>
+       </ul>
+      </ul>
+      <ul >
+      </ul>
+     </ul>
+    </div>
+    <!---- Commented out while me learning 
+                 <br>
+                 <h1 class="sub-section-header"><mark>Port Forwarding via SSH</mark></h1>
+                 <div class="sub-section-box col-lg-12">
+ 
+                 </div>
+               -->
+
+</section>

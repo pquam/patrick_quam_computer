@@ -1,0 +1,97 @@
+<section class="colored-section">
+
+    <div class="col-lg-12">
+      <h1 class="sub-section-header"><mark>Securing NGNINX</mark></h1>
+    </div>
+
+    <div class="sub-section-box col-lg-12">
+      <ul>
+        <li><mark>Changes to nginx configuration will not apply until the application has been reloaded.</mark> This can generally be done by running <code>systemctl reload nginx</code></li>
+        <li>Remove the comment on the line <code>server_tokens off;</code> in the nginx.conf configuration file.</li>
+        <li>When configuring Nginx (or any web server), it's essential to apply the principle of least privilege, meaning you only expose what's absolutely necessary for your application to function.</li>
+        <li>Best practice is to block everything, and then whitelist the filetypes that you intend to provide to the webserver. That being said, you should not include any data that you do not wish to be served anywhere in the root directory of the website, or any of its sub directories, even if those file types are excluded from being served. For example, if you are using git in your workflow, you should ensure the .git directory is removed from the root directory of the website so that it cannot be accessed.</li>
+        <li>Be sure to run <code>sudo nginx -t</code> and <code>sudo nginx -s reload</code> after making changes to configuration files.</li>
+        <li><mark>For Example:</mark> This website only uses static webpages (I do not need to interact with the user, such as responding to inputs, or storing usernames, passwords, etc), so I have NGINX configured to serve HTML, CSS, and Javascript files, and deny requests for all other file types:</li>
+        <ul>
+<code><pre>
+# Whitelist the allowed file extensions
+location ~* \.(html|css|js)$ {
+    try_files $uri $uri/ =404;
+}
+
+# Deny access to all other file types
+location / {
+    deny all;
+}
+</pre></code>
+        </ul>
+        <li>Here are some common paths and file types you might consider blocking or restricting access to if denying everything is problematic:</li>
+        <ul>
+          <li>Hidden Files and Directories</li>
+          <ul>
+<code><pre>
+location ~ /\. {
+  deny all;
+}  
+</pre></code>
+          </ul>
+
+          <li>Configuration Files</li>
+          <ul>
+<code><pre>
+location ~* (wp-config\.php|\.ht) {
+  deny all;
+}  
+</pre></code>  
+          </ul>
+
+          <li>Development, and Backup Files</li>
+          <ul>
+<code><pre>
+location ~* \.(bak|swp|swo|tmp)$ {
+  deny all;
+}  
+</pre></code> 
+          </ul>
+
+          <li>Git Repository Information</li>
+          <ul>
+<code><pre>
+location ~ /\.git {
+  deny all;
+}   
+</pre></code> 
+          </ul>
+
+          <li>Specific Application Directories</li>
+          <ul>
+<code><pre>
+location ~ ^/(vendor|node_modules|storage)/ {
+  deny all;
+}
+</pre></code> 
+          </ul>
+
+          <li>Environment Variables</li>
+          <ul>
+<code><pre>
+location ~ /\.env$ {
+  deny all;
+}  
+</pre></code> 
+          </ul>
+          
+          <li>Server Status Pages</li>
+          <ul>
+<code><pre>
+location /nginx_status {
+  allow 192.168.1.1; # Replace with your trusted IP
+  deny all;
+}
+</pre></code> 
+          </ul>
+
+        </ul>
+      </ul>
+    </div>
+  </section>

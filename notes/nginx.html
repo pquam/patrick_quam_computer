@@ -8,31 +8,32 @@
     <!-- Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anek+Devanagari">
 
-    <link rel="stylesheet" href="../css/notes.css">
-    <link rel="stylesheet" href="../css/navbar.css">
-    <script defer src="../javascript/slide.js"></script>
+    <link rel="stylesheet" href="/css/notes.css">
+    <link rel="stylesheet" href="/css/navbar.css">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <!-- Bootstrap Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     
+    <!--HTMX import-->
+    <script src="/javascript/htmx.min.js"></script>
 </head>
 
 <body>
+  <div hx-get="/notes/nginx/side-nav.html" hx-trigger="load"></div>
 
     <!-- top section -->
     <section class="top-section" id="title">
-      <div class="alert alert-primary" role="alert">
-        Donate to 
-        <a href="https://kramden.org/donate/" class="alert-link" id="top">The Kramden Institute</a>
-      </div>          
+      <div hx-get="/templates/donate.html" hx-swap="outerHTML" hx-trigger="load"></div>
+
+          
 
             <!-- Nav bar -->
 
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
               <div class="container-fluid">
-                <div id="navbar-placeholder"></div>
+                <div hx-get="/templates/navbar.html" hx-swap="outerHTML" hx-trigger="load"></div>
               </div>
             </nav>
 
@@ -47,7 +48,7 @@
             </div>
         
             <div class="col-lg-6">
-              <img class="title-image" src="../images/nginx.png">
+              <img class="title-image" src="/images/nginx.png">
             </div>
         
           </div>
@@ -61,182 +62,11 @@
 
     </section>
 
+    <div id="setting-up-nginx" hx-get="/notes/nginx/setting-up-nginx.html" hx-trigger="load"></div>
+    <div id="nginx-configuration" hx-get="/notes/nginx/nginx-configuration.html" hx-trigger="load"></div>
+    <div id="removing-extensions" hx-get="/notes/nginx/removing-extensions.html" hx-trigger="load"></div>
+    <div id="securing-nginx" hx-get="/notes/nginx/securing-nginx.html" hx-trigger="load"></div>
 
-
-    <section class="colored-section" >
-      <h1 class="sub-section-header"><mark>Setting Up User Accounts and Running NGINX from a clean linux install</mark></h1>
-        <div class="sub-section-box col-lg-12">
-
-            <h3> <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-16-04" class="link">Setting up a website in nginx</a></h3>
-       
-          <h3>User Account Setup</h3>
-
-          <ol class="spaced-list">
-            <li>Log in to the root user if you didn't set up a personal user account during the OS installation / configuration proccess.</li>
-            <li>If you dont already have one, Create a personal user account <code>sudo adduser username</code> with a secure password. Then, give it sudo permsission by running <code>sudo visudo</code> and adding <code>username ALL=(ALL:ALL) ALL</code> where username is the username for your personal account. This account can be accessed via SSH, and can use <code>sudo</code> to perform administrative tasks.</li>
-            <li>Create a <code>nginx</code> user account with minimal permissions. This account should also be set to <code>nologin</code> and should not be accessible via SSH. This is can be done by running a command such as <code>sudo useradd -r -u 999 -s /sbin/nologin nginx
-            </code> and then adding <code>DenyUsers nginx</code> to the <code>/etc/shh/sshd_config</code> file.</li>
-            <li><mark>Changes to sshd_config will not apply until the application has been reloaded.</mark> This can generally be done by running <code>systemctl reload sshd</code></li>
-            <li>If you are running NGINX on a remote server, and want to manage it via SSH:</li>
-            <ul>
-              <li>
-                Key based authentication can be enabled by adding
-                <code>
-                 PubKeyAuthentication yes
-                </code>
-                to the
-                <code>
-                 /etc/ssh/sshd_config
-                </code>
-                file. Then run <code>systemctl reload sshd</code>
-               </li>
-               <li>Disconnect from the remote server.</li>
-               <li>Generate an ssh key on your local machine if you dont already have one by running <code>ssh-keygen -t ed25519 -b 4096</code>. You should include a password when prompted.</li>
-              <li>Use <code>ssh-copy-id personal_account_username@remote-host-ip-or-domain</code> to copy your public ssh key to the server.</li>
-              <li>You can now SSH into your personal account on the remote server.</li>
-              <li>
-                SSH key authentication should be enforced by disabling password authentication by adding
-                <code>
-                 PasswordAuthentication no
-                </code>
-                to the
-                <code>
-                 /etc/ssh/sshd_config
-                </code>
-                file.
-               </li>
-               <li><mark>IMPORTANT:</mark> Update the <code>/etc/passwd</code> file to set the root user's shell to nologin if it is not already. Add <code>PermitRootLogin no</code> to the <code>/etc/shh/sshd_config</code> file to prevent future root logins.</li>
-               <li>Run <code>systemctl reload sshd</code></li>
-            </ul>
-            <li>Be sure to review the information on the <a href="/notes/linux-hardening.html" class="link">Linux Hardening page</a></li>
-          </ol>
-
-          <h3>Running NGINX</h3>
-
-          <ol>
-            <li>Install NGINX using your personal account with <code>sudo</code> permissions. For example, <code>sudo apt-get install nginx</code></li>
-            <li>Specify the user that nginx should run under (this should be the nginx account created preiously) by adding <code>user nginx;</code> to the <code>/etc/nginx/nginx.conf</code> file. (More on this in the next section)</li>
-            <li>Start the NGINX service (usually with a command like <code>sudo systemctl start nginx</code>). NGINX will start with root privileges automatically, but then drop its privileges and run as the user specified.</li>
-          </ol>
-
-          <p>In this setup, there's no need to use <code>setuid</code> to specify a user to run as or <code>sudo -u</code> to switch to the nginx user. NGINX runs as the user specified, and handles the privilege dropping itself.</p>
-          <p style="font-size: 120%;"><mark>You should now be able to see a placeholder webpage by navigating to the ip of your server in a web browser.</mark> If you don't know the IP of your system, you can find it by running <code>curl ifconfig.me</code>.</p>
-        </div>
-
-    </section>
-
-
-
-    <section class="grey-section">
-  
-
-      <div class="col-lg-12">
-          <h1 class="sub-section-header"><mark>NGINX Configuration</mark></h1>
-      </div>
-
-      <div class="sub-section-box col-lg-12">
-        <ul>
-          <li><mark>Changes to nginx configuration will not apply until the application has been reloaded.</mark> This can generally be done by running <code>systemctl reload nginx</code></li>
-          <li>The default configuration file is stored in <code>/etc/nginx/nginx.conf</code>. This file usually makes refreences to the <code>/etc/nginx/sites-available</code> directory to look for additional configuration files. These configuration files are the ones that will be more relevant to most users using nginx as a web server.</li>
-          <!--
-          I've additional comments (indicated with #/) to explain the contents, but this is what the file should look like after adding the nginx user:</li>
-<code><pre>
-  #/Specifies the user as nginx under which the Nginx worker processes run. This is for security, ensuring that Nginx doesn't run with root privileges.
-  user nginx;
-  #/Specifies the number of worker processes. auto means Nginx will try to detect the number of available CPU cores and use that number.
-  worker_processes auto;
-  #/Specifies the file where the process ID (PID) of the master process will be written.
-  pid /run/nginx.pid;
-  #/Specifies the location of the error log.
-  error_log /var/log/nginx/error.log;
-  #/ Includes any configuration files related to modules from the specified directory.
-  include /etc/nginx/modules-enabled/*.conf;
-  
-
-  #/The events block handles the low-level, foundational settings related to network connections. 
-  #/This is about how Nginx deals with client connections on the operating system level.
-  events {
-          #/Each worker process can handle up to 768 client connections simultaneously.
-          worker_connections 768;
-          #/If uncommented, this would allow a worker process to accept all new connections at once, instead of accepting one new connection at a time.
-          # multi_accept on;
-  }
-  
-  #/The http block is where the bulk of Nginx's configuration for web serving and proxying takes place.
-  #/ This block governs how Nginx handles HTTP and HTTPS traffic, including processing requests, sending responses, dealing with MIME types, setting up logging, applying compression, etc.
-  http {
-  
-          ##
-          # Basic Settings
-          ##
-
-          #/Allows Nginx to use the sendfile system call to serve files, which is more efficient.
-          sendfile on;
-          #/Allows optimized sending of files by setting the TCP_CORK socket option.
-          tcp_nopush on;
-          #/Adjusts the hash table size for storing MIME types.
-          types_hash_max_size 2048;
-          #/When enabled (by removing the comment), this directive instructs Nginx to not display its version number in error messages and in the “Server” response header field.
-          # server_tokens off;
-  
-          #/This directive sets the size of the bucket for the server names hash tables. The default size is 32 or 64, depending on the CPU's cache line size.
-          # server_names_hash_bucket_size 64;
-          #/ Determines whether or not the server name specified in the server_name directive should be used in automatic redirects. By default, it's set to on.
-          # server_name_in_redirect off;
-  
-          #/Includes a file that maps file extensions to MIME types.
-          include /etc/nginx/mime.types;
-          #/Default MIME type for files.
-          default_type application/octet-stream;
-  
-          ##
-          # SSL Settings
-          ##
-
-          #/Specifies the SSL protocols to be used by the server. SSLv3 is omitted due to vulnerabilities like POODLE.
-          ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
-          #/Specifies that server ciphers should be preferred over client ciphers during the SSL handshake.
-          ssl_prefer_server_ciphers on;
-  
-          ##
-          # Logging Settings
-          ##
-
-          #/Specifies the location of the access log.
-          access_log /var/log/nginx/access.log;
-  
-          ##
-          # Gzip Settings
-          ##
-  
-          #/Enables gzip compression for responses.
-          gzip on;
-  
-          #/The commented-out directives (# gzip_...) are additional settings related to gzip compression, such as specifying which types of files should be compressed, the compression level, and more.
-
-          # gzip_vary on;
-          # gzip_proxied any;
-          # gzip_comp_level 6;
-          # gzip_buffers 16 8k;
-          # gzip_http_version 1.1;
-          # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
-  
-          ##
-          # Virtual Host Configs
-          ##
-  
-          #/Includes any additional configuration files from the specified directory.
-          include /etc/nginx/conf.d/*.conf;
-          #/ Includes any site-specific configuration files.
-          #/ This is a common pattern in Debian/Ubuntu-based distributions, where each site has its own configuration file symlinked from sites-available to sites-enabled.
-          include /etc/nginx/sites-enabled/*;
-  }
-</pre></code>
--->
-        </ul>
-      </div>
-  
-  </section>
 
           <!--
     <section class="grey-section">
@@ -263,103 +93,6 @@
   </section>
 -->
 
-    <section class="grey-section">
-
-      <div class="col-lg-12">
-        <h1 class="sub-section-header"><mark>Securing NGNINX</mark></h1>
-      </div>
-
-      <div class="sub-section-box col-lg-12">
-        <ul>
-          <li><mark>Changes to nginx configuration will not apply until the application has been reloaded.</mark> This can generally be done by running <code>systemctl reload nginx</code></li>
-          <li>Remove the comment on the line <code>server_tokens off;</code> in the nginx.conf configuration file.</li>
-          <li>When configuring Nginx (or any web server), it's essential to apply the principle of least privilege, meaning you only expose what's absolutely necessary for your application to function.</li>
-          <li>Best practice is to block everything, and then whitelist the filetypes that you intend to provide to the webserver. That being said, you should not include any data that you do not wish to be served anywhere in the root directory of the website, or any of its sub directories, even if those file types are excluded from being served. For example, if you are using git in your workflow, you should ensure the .git directory is removed from the root directory of the website so that it cannot be accessed.</li>
-          <li>Be sure to run <code>sudo nginx -t</code> and <code>sudo nginx -s reload</code> after making changes to configuration files.</li>
-          <li><mark>For Example:</mark> This website only uses static webpages (I do not need to interact with the user, such as responding to inputs, or storing usernames, passwords, etc), so I have NGINX configured to serve HTML, CSS, and Javascript files, and deny requests for all other file types:</li>
-          <ul>
-<code><pre>
-  # Whitelist the allowed file extensions
-  location ~* \.(html|css|js)$ {
-      try_files $uri $uri/ =404;
-  }
-
-  # Deny access to all other file types
-  location / {
-      deny all;
-  }
-</pre></code>
-          </ul>
-          <li>Here are some common paths and file types you might consider blocking or restricting access to if denying everything is problematic:</li>
-          <ul>
-            <li>Hidden Files and Directories</li>
-            <ul>
-<code><pre>
-  location ~ /\. {
-    deny all;
-  }  
-</pre></code>
-            </ul>
-
-            <li>Configuration Files</li>
-            <ul>
-<code><pre>
-  location ~* (wp-config\.php|\.ht) {
-    deny all;
-  }  
-</pre></code>  
-            </ul>
-
-            <li>Development, and Backup Files</li>
-            <ul>
-<code><pre>
-  location ~* \.(bak|swp|swo|tmp)$ {
-    deny all;
-  }  
-</pre></code> 
-            </ul>
-
-            <li>Git Repository Information</li>
-            <ul>
-<code><pre>
-  location ~ /\.git {
-    deny all;
-  }   
-</pre></code> 
-            </ul>
- 
-            <li>Specific Application Directories</li>
-            <ul>
-<code><pre>
-  location ~ ^/(vendor|node_modules|storage)/ {
-    deny all;
-  }
-</pre></code> 
-            </ul>
-
-            <li>Environment Variables</li>
-            <ul>
-<code><pre>
-  location ~ /\.env$ {
-    deny all;
-  }  
-</pre></code> 
-            </ul>
-            
-            <li>Server Status Pages</li>
-            <ul>
-<code><pre>
-  location /nginx_status {
-    allow 192.168.1.1; # Replace with your trusted IP
-    deny all;
-  }
-</pre></code> 
-            </ul>
-
-          </ul>
-        </ul>
-      </div>
-    </section>
 
     <!--
     <section class="grey-section">
@@ -389,38 +122,6 @@
     </section>
     -->
 
-    <section class="colored-section">
-
-      <div class="col-lg-12">
-        <h1 class="sub-section-header"><mark>Removing .html extension from NGINX webpages</mark></h1>
-      </div>
-
-                    <div class="sub-section-box col-lg-12">
-                      <ul>
-                        <li>When building a website, ideally you dont want to have every page show .html at the end. Here are a few steps to stop that from happening.</li>
-                        <ol>
-                          <li>First, you will want to open <code>/etc/nginx/nginx.conf</code> in your editor or choice. In nginx.conf, you are looking for your <code>location /</code> block. If you do not see it, check to see if nginx.conf included other files by default, as it may be in another included file such as <code>/etc/nginx/sites-available/default</code></li>
-                          <li>In the location / block, by default there will be the line: <code>try_files $uri $uri/ =404;</code> and if there is not you should add it to be the first line in the block.</li>
-                          <li>If it is not there already, add to that line <code>$uri.html</code> so the whole line will be <code>try_files $uri $uri/ $uri.html =404;</code></li>
-                          <li>Create a new location block below the location \ block with the name <code>~ \.html$</code></li>
-                          <li>In the new block, add <code>rewrite ^(.*)\.html$ $1 permanent;</code></li>
-                          <li>The two location blocks should now look something like this:<br>
-<code><pre>
-  location / {
-    try_files $uri $uri/ $uri.html =404;
-  }
-
-  location ~ \.html$ {
-    rewrite ^(.*)\.html$ $1 permanent;
-  }</pre></code>
-                          </li>
-                          <li>After reloading nginx via <code>sudo systemctl reload nginx</code> the webpage should no longer show .html extensions.</li>
-                        </ul>
-                      </ol>
-
-
-                    </div>
-    </section>
 
     <section class="grey-section">
 
@@ -445,15 +146,12 @@
                 </ul>
               </div>
         
-          </div>
-
-          
-      </div>
-  
+          </div>          
+      </div>  
       </div>
   </section>
 
-  <script src="../javascript/navbar.js"></script>
+  <script src="/javascript/sidebar.js"></script>
 </body>
 
 </html>

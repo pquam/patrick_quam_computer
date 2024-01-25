@@ -1,0 +1,109 @@
+<section class="colored-section">
+  
+
+    <div class="col-lg-12">
+        <h1 class="sub-section-header"><mark>NGINX Configuration</mark></h1>
+    </div>
+
+    <div class="sub-section-box col-lg-12">
+      <ul>
+        <li><mark>Changes to nginx configuration will not apply until the application has been reloaded.</mark> This can generally be done by running <code>systemctl reload nginx</code></li>
+        <li>The default configuration file is stored in <code>/etc/nginx/nginx.conf</code>. This file usually makes refrences to the <code>/etc/nginx/sites-available</code> directory to look for additional configuration files. These configuration files are the ones that will be more relevant to most users using nginx as a web server.</li>
+        
+        <li>I've additional comments (indicated with #/) to explain the contents, but this is what the file should look like after adding the nginx user:</li>
+<code style="max-width: 100%;"><pre style="overflow-x: auto;">
+#/Specifies the user as nginx under which the Nginx worker processes run. This is for security, ensuring that Nginx doesn't run with root privileges.
+user nginx;
+#/Specifies the number of worker processes. auto means Nginx will try to detect the number of available CPU cores and use that number.
+worker_processes auto;
+#/Specifies the file where the process ID (PID) of the master process will be written.
+pid /run/nginx.pid;
+#/Specifies the location of the error log.
+error_log /var/log/nginx/error.log;
+#/ Includes any configuration files related to modules from the specified directory.
+include /etc/nginx/modules-enabled/*.conf;
+
+
+#/The events block handles the low-level, foundational settings related to network connections. 
+#/This is about how Nginx deals with client connections on the operating system level.
+events {
+        #/Each worker process can handle up to 768 client connections simultaneously.
+        worker_connections 768;
+        #/If uncommented, this would allow a worker process to accept all new connections at once, instead of accepting one new connection at a time.
+        # multi_accept on;
+}
+
+#/The http block is where the bulk of Nginx's configuration for web serving and proxying takes place.
+#/ This block governs how Nginx handles HTTP and HTTPS traffic, including processing requests, sending responses, dealing with MIME types, setting up logging, applying compression, etc.
+http {
+
+        ##
+        # Basic Settings
+        ##
+
+        #/Allows Nginx to use the sendfile system call to serve files, which is more efficient.
+        sendfile on;
+        #/Allows optimized sending of files by setting the TCP_CORK socket option.
+        tcp_nopush on;
+        #/Adjusts the hash table size for storing MIME types.
+        types_hash_max_size 2048;
+        #/When enabled (by removing the comment), this directive instructs Nginx to not display its version number in error messages and in the “Server” response header field.
+        # server_tokens off;
+
+        #/This directive sets the size of the bucket for the server names hash tables. The default size is 32 or 64, depending on the CPU's cache line size.
+        # server_names_hash_bucket_size 64;
+        #/ Determines whether or not the server name specified in the server_name directive should be used in automatic redirects. By default, it's set to on.
+        # server_name_in_redirect off;
+
+        #/Includes a file that maps file extensions to MIME types.
+        include /etc/nginx/mime.types;
+        #/Default MIME type for files.
+        default_type application/octet-stream;
+
+        ##
+        # SSL Settings
+        ##
+
+        #/Specifies the SSL protocols to be used by the server. SSLv3 is omitted due to vulnerabilities like POODLE.
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
+        #/Specifies that server ciphers should be preferred over client ciphers during the SSL handshake.
+        ssl_prefer_server_ciphers on;
+
+        ##
+        # Logging Settings
+        ##
+
+        #/Specifies the location of the access log.
+        access_log /var/log/nginx/access.log;
+
+        ##
+        # Gzip Settings
+        ##
+
+        #/Enables gzip compression for responses.
+        gzip on;
+
+        #/The commented-out directives (# gzip_...) are additional settings related to gzip compression, such as specifying which types of files should be compressed, the compression level, and more.
+
+        # gzip_vary on;
+        # gzip_proxied any;
+        # gzip_comp_level 6;
+        # gzip_buffers 16 8k;
+        # gzip_http_version 1.1;
+        # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
+        ##
+        # Virtual Host Configs
+        ##
+
+        #/Includes any additional configuration files from the specified directory.
+        include /etc/nginx/conf.d/*.conf;
+        #/ Includes any site-specific configuration files.
+        #/ This is a common pattern in Debian/Ubuntu-based distributions, where each site has its own configuration file symlinked from sites-available to sites-enabled.
+        include /etc/nginx/sites-enabled/*;
+}
+</pre></code>
+      </ul>
+    </div>
+
+</section>
