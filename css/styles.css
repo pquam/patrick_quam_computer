@@ -1,19 +1,29 @@
   
-  h1, h2, h3, h4, h5, h6 {
-    font-family:'Courier New', Courier, monospace;
-    color: #fff;
-  }
-
-  h4 {
-    padding: 15px;
-    border-radius: 10px;
-  }
+     li, p {
+      color: #fff;
+      font-size: 26px;
+    }
   
-  p {
-    color: #fff;
-  }
-
-  li {
+    h1{
+      font-size: 44px;
+    }
+  
+    h2 {
+      font-size: 38px;
+    }
+  
+    h3 {
+      font-size: 34px;
+    }
+  
+    h4 {
+      font-size: 30px !important;
+      padding: 15px;
+      border-radius: 10px;
+    }
+ 
+ h1, h2, h3, h4, h5, h6 {
+    font-family:'Courier New', Courier, monospace;
     color: #fff;
   }
 

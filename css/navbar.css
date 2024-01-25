@@ -30,6 +30,8 @@
 
   .collapse {
     width: 100%;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
   }
   
@@ -39,6 +41,8 @@
   }
 
   .navbar-nav {
+    display: flex;
+    align-items: center;
     justify-content: right !important;
   }
   
@@ -54,10 +58,10 @@
   }
 
   @media only screen and (max-width: 1500px){
-      /*
-.navbar-toggler {
-  padding: 10%;
-  display: inline-block;
-}
-*/
+    
+    .collapse {
+      justify-content: left;
+      flex-wrap: wrap;
+    }
+
   }

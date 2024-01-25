@@ -1,0 +1,61 @@
+<section class="grey-section" >
+    <h1 class="sub-section-header"><mark>Setting Up User Accounts and Running NGINX from a clean linux install</mark></h1>
+      <div class="sub-section-box col-lg-12">
+
+          <h3> <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-16-04" class="link">Setting up a website in nginx</a></h3>
+     
+        <h3>User Account Setup</h3>
+
+        <ol class="spaced-list">
+          <li>Log in to the root user if you didn't set up a personal user account during the OS installation / configuration proccess.</li>
+          <li>If you dont already have one, Create a personal user account <code>sudo adduser username</code> with a secure password. Then, give it sudo permsission by running <code>sudo visudo</code> and adding <code>username ALL=(ALL:ALL) ALL</code> where username is the username for your personal account. This account can be accessed via SSH, and can use <code>sudo</code> to perform administrative tasks.</li>
+          <li>Create a <code>nginx</code> user account with minimal permissions. This account should also be set to <code>nologin</code> and should not be accessible via SSH. This is can be done by running a command such as <code>sudo useradd -r -u 999 -s /sbin/nologin nginx
+          </code> and then adding <code>DenyUsers nginx</code> to the <code>/etc/shh/sshd_config</code> file.</li>
+          <li><mark>Changes to sshd_config will not apply until the application has been reloaded.</mark> This can generally be done by running <code>systemctl reload sshd</code></li>
+          <li>If you are running NGINX on a remote server, and want to manage it via SSH:</li>
+          <ul>
+            <li>
+              Key based authentication can be enabled by adding
+              <code>
+               PubKeyAuthentication yes
+              </code>
+              to the
+              <code>
+               /etc/ssh/sshd_config
+              </code>
+              file. Then run <code>systemctl reload sshd</code>
+             </li>
+             <li>Disconnect from the remote server.</li>
+             <li>Generate an ssh key on your local machine if you dont already have one by running <code>ssh-keygen -t ed25519 -b 4096</code>. You should include a password when prompted.</li>
+            <li>Use <code>ssh-copy-id personal_account_username@remote-host-ip-or-domain</code> to copy your public ssh key to the server.</li>
+            <li>You can now SSH into your personal account on the remote server.</li>
+            <li>
+              SSH key authentication should be enforced by disabling password authentication by adding
+              <code>
+               PasswordAuthentication no
+              </code>
+              to the
+              <code>
+               /etc/ssh/sshd_config
+              </code>
+              file.
+             </li>
+             <li><mark>IMPORTANT:</mark> Update the <code>/etc/passwd</code> file to set the root user's shell to nologin if it is not already. Add <code>PermitRootLogin no</code> to the <code>/etc/shh/sshd_config</code> file to prevent future root logins.</li>
+             <li>Run <code>systemctl reload sshd</code></li>
+          </ul>
+          <li>Be sure to review the information on the <a href="/notes/linux-hardening.html" class="link">Linux Hardening page</a></li>
+        </ol>
+
+        <h3>Running NGINX</h3>
+
+        <ol>
+          <li>Install NGINX using your personal account with <code>sudo</code> permissions. For example, <code>sudo apt-get install nginx</code></li>
+          <li>Specify the user that nginx should run under (this should be the nginx account created preiously) by adding <code>user nginx;</code> to the <code>/etc/nginx/nginx.conf</code> file. (More on this in the next section)</li>
+          <li>Start the NGINX service (usually with a command like <code>sudo systemctl start nginx</code>). NGINX will start with root privileges automatically, but then drop its privileges and run as the user specified.</li>
+        </ol>
+
+        <p>In this setup, there's no need to use <code>setuid</code> to specify a user to run as or <code>sudo -u</code> to switch to the nginx user. NGINX runs as the user specified, and handles the privilege dropping itself.</p>
+        <p style="font-size: 120%;"><mark>You should now be able to see a placeholder webpage by navigating to the ip of your server in a web browser.</mark> If you don't know the IP of your system, you can find it by running <code>curl ifconfig.me</code>.</p>
+      </div>
+
+  </section>
