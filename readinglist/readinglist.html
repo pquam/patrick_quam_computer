@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Patrick Quam
+  </title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Anek+Devanagari" rel="stylesheet"/>
+  <link href="../css/notes.css" rel="stylesheet"/>
+  <link href="../css/navbar.css" rel="stylesheet"/>
+  </script>
+  <!-- CSS only -->
+  <link crossorigin="anonymous" href="../css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" rel="stylesheet"/>
+  <!-- Bootstrap Scripts -->
+  <script crossorigin="anonymous" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" src="../javascript/bootstrap.bundle.min.js">
+
+  </script>
+
+  <!--HTMX import-->
+  <script src="../javascript/htmx.min.js"></script>
+ </head>
+ <body>
+
+  <section class="top-section" id="title">
+
+    <div hx-get="../templates/donate.html" hx-swap="outerHTML" hx-trigger="load"></div>
+
+    <!-- Nav bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <div class="container-fluid">
+        <div hx-get="../templates/navbar.html" hx-trigger="load" hx-swap="outerHTML"></div>
+      </div>
+    </nav>
+
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-lg-6">
+      <h1 class="big-heading" id="reading-list">
+       Reading List
+      </h1>
+      <h2 class="section-heading">
+       Short reviews and favorite quotes from books I read.
+      </h2>
+     </div>
+     <div class="col-lg-6">
+      <img class="title-image" src="../images/Tux.png"/>
+     </div>
+    </div>
+
+   </div>
+  </section>
+  <section class="colored-section" >
+   <div class="col-lg-1">
+   </div>
+   <div class="sub-section-box col-lg-12">
+    <ul>
+     <h3>
+      When I was in highschool, I learned to hate reading. Now, I am looking back and regretting the huge amounts of time I wasted that could have been spent reading.
+     </h3>
+    </ul>
+   </div>
+   <div class="col-lg-1">
+   </div>
+  </section>
+
+<div id="DRTG-RFA" hx-get="DRTG.html" hx-trigger="load"></div>
+<div id="sevenhabits" hx-get="sevenhabits.html" hx-trigger="load"></div>
+<div id="askiwata" hx-get="askiwata.html" hx-trigger="load"></div>
+<div id="hitchhikersguide" hx-get="hitchhikersguide.html" hx-trigger="load"></div>
