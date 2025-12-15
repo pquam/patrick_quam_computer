@@ -43,7 +43,8 @@
           <div class="row">
 
             <div class="col-lg-6">
-              <h2 class="section-heading">My personal website to keep track of notes and gain experience working with the the full stack, from hardware to the web browser.</h2>
+              <h2 class="section-heading">Experienced Lab Tech and Aspiring Systems Administrator. Seeking an opportunity to build upon my current skills while making impactful improvements to sustainability and the environment. Linux daily driver since 2018.</h2>
+              <h3 class="section-heading">Currently, I am solidifying my real-world skills by deploying various services through my homelab, developing my a simple web browser called Quamium, and restoring vintage electronics.</h3>
               
             </div>
         
@@ -58,84 +59,188 @@
 
       <div hx-get="/templates/cards.html" hx-trigger="load"></div>
 
+
   <section class="grey-section" id="sub-section1">
 
-      <div class="container-fluid">
+      <div class="sub-section-box col-lg-12">
   
-          <div class="column">
+          <h2>Experience</h2>
 
-                  <div class="sub-section-box col-lg-12">
-                    <h4 style="text-align: center;">
-                      Welcome to my personal website, which primarily serves as my digital notebook and a playground for exploring a wide range of intriguing topics in computing, such as
-                      low level Computer Hardware Repair, Computer Networking, Software and Web Development, Cyber Security, DevOps, Cloud/Systems Administration, and various roles in the Data Center landscape.
-                      While I had the assistance of ChatGPT in some areas, I did a majority of the development myself.
-                      The website you're viewing is hosted on a Virtual Private Server, which I personally set up and manage alone.
-                      This involves hardening and configuring both the VPS and the web server, automating common tasks using bash scripts, and ensuring timely SSL certificate renewals with Certbot via cron jobs. 
-                         I also run a local beta version of the website on a custom server I designed and built. The production and beta versions of the webside are managed using git and GitHub.
-                          Through the development of the website, I've deepened my understanding of Linux, automation, server operations, DNS, and honed my skills in HTML, CSS, and JavaScript. 
-                          As the site evolves, I aim to delve deeper into the details of how modern software is deployed. This includes tools like Azure CI/CD pipelines, current web frameworks such as HTMX, and various aspects of present day cyber security.
-                           I also hope that the resources and notes on the website may be useful for other people trying to learn about technology. 🙂
-                    </h4>
-                  </div>
-        
-          </div>
+          <h4>LAB DEVICE COORDINATOR • MICROSOFT / INSIGHT GLOBAL • NOV 2023 - PRESENT</h4>
+          <ul class="spaced-list">
+            <li>Prepared and maintained a wide range of consumer hardware for beta testing of the office 365 mobile app.</li>
+            <li>Utilized my experience with retail inventory systems by working directly with developers and management to design and implement an inventory management system for the lab.</li>
+            <li>Performed operating system installation / re-imaging of Samsung, Google, and Apple mobile devices, as well as Apple, Microsoft, Dell, and HP Destop and Laptop devices.</li>
+            
+          </ul>
 
-          
+          <h4>COMPUTER REPAIR TECHNICIAN • GEEK SQUAD • OCT 2021 - NOVEMBER 2023</h4>
+          <ul class="spaced-list">
+            <li>Used DISM, SFC, Sysinternals, and other industry tools to diagnose and resolve hardware and software issues in Windows devices. Used proprietary Apple tools to diagnose and resolve hardware and software issues in Mac and iOS devices. </li>
+              <li>Repaired and installed operating system images, chipset drivers, firmware, and a variety of client applications. </li>
+              <li>Provided data backup/transfer and configuration services to client devices.</li>
+              <li>Tracked client devices, service orders, documented notes, and common issues through NOVA (ServiceNow) ticketing system.</li>
+              <li>Installed hardware and drivers for desktop computer motherboards, CPUs, RAM, GPUs, power supply units, hard drives, batteries, cooling systems,
+                and more. Replaced displays, batteries, cameras, speakers and other main components for apple iOS devices.</li>
+                <li>Performed virus removals, creation of recovery media, and installation/configuration of common consumer software.</li>
+
+          </ul>
+
+          <h4>COMPUTER SALES / MOBILE SALES LEAD (NON-COMMISION) • BEST BUY • JULY 2018 – OCT 2021</h4>
+          <ul>
+            <li>Utilized a deep understanding of consumer electronics’ features, benefits, pricing, and availability to provide technical information in a clear and
+              concise manner to non-technical customers.</li>
+              <li>Promoted to Mobile Sales Lead (2019) in recognition of exceptional accessory and membership attach rates, revenue, and customer satisfaction performance. Led a team of 6 to rank 5th in the company for mobile sales based on those metrics.</li>
+                <li>Engaged customers using active listening skills to build complex, connected solutions in a fast-paced, dynamic environment. Ensured customers’
+                  end-to-end needs are met by leveraging all channels including hardware, accessories, connections, content and services.</li>
+                  <li> Partnered with the Store Manager to train and coach mobile sales associates to ensure customer satisfaction and technical proficiency in carrier
+                    account management and mobile device activations.</li>
+                    <li>Worked directly with major US carriers to resolve complex issues with customer accounts.</li>
+          </ul>
+
       </div>
   
     </div>
+
   </section>
 
-  <section class="colored-section" id="sub-section2">
 
-    <div class="col-lg-12">
-      <h1 class="sub-section-header"><mark>Patch Notes:</mark></h1>
-    </div>
-      <div class="sub-section-box col-lg-12">
-        <h3>More detail can be found on the <a href="https://github.com/pquam/patrick_quam_computer/commits" class="link" target="_blank">GitHub commits page</a></h3>
+  <section class="colored-section">
+
+    <div class="sub-section-box col-lg-12">
+
+      <h2>Projects</h2>
+      <h4>2022 - PRESENT</h4>
+
+      <br>
+      <h3>Website</h3>
+      <ul>
+
+        <li>Utilized Visual Studio Code and VIM to develop this website with HTML, CSS (Bootstrap), JavaScript, and HTMX. Managed production and beta versions of
+          the website using git and GitHub. Deployed website using Azure Static Webpages, with CI/CD via GitHub Actions.</li>
+        <li>Personally deployed, configured, maintained, and secured a virtual private server (Debian) to host my website. Configured NGINX to serve HTML,
+            CSS, and JavaScript files via HTTPS and redirect HTTP traffic to HTTPS. Configured Certbot to generate SSL certificates to enable HTTPS. Configured
+            fail2ban, UFW, and Wazuh to detect, block and report malicious traffic. Updated default file permissions and configuration files to prevent common attacks.</li>
+        <li>Configured A-Name and C-Name DNS records for a custom domain. Configured domain settings to support email through Zoho.</li>
+        <li>Automated common tasks such as SSL Certification renewal using cron jobs and updating the production site from GitHub using bash scripts.</li>
+      </ul>
+
+      <br>
+      <h3>Home Lab</h3>
+      <ul>
+
+        <li>Deployed various services on custom designed and built devices.</li>
         <ul>
-          <li>Feb 25, 2024: Added second blog post.</li>
-          <li>Jan 23, 2024: MAJOR UPDATE: Rebuilt major sections of the webpage (notes, blog, all sections with contacts, navbar) to rely on HTMX. Made significant changes to help readability, particularly on mobile devices.</li>
-          <li>Dec 20, 2023: Added blog page.</li>
-          <li>Dec 18, 2023: Update file structure to align with website design. Configured Azure static webpages for beta and production versions of the server, with CI/CD using github actions to update the websites after every push.</li>
-          <li>Nov 3-5, 2023: Updates to homelab and resume pages.</li>
-          <li>Oct 3, 2023: Spent September completing Network+ and Linux+ studies. Update certifications page to have links to the course completion certificates.</li>
-          <li>Aug 22, 2023: Add content to various pages.</li>
-          <li>Aug 18, 2023: Add content to various pages.</li>
-          <li>Aug 16, 2023: Add content to various pages.</li>
-          <li>Aug 12, 2023: Add content to various pages, remove boilerplate and bloat. Fixed some graphical issues.</li>
-          <li>Aug 11, 2023: Add content to various pages, add coming soon section to notes pages, removed bloat, added back to top button on note pages sidebar.</li>
-          <li>Aug 9, 2023: Add content to various pages.</li>
-          <li>Aug 8, 2023: Add content to various pages.</li>
-          <li>Aug 7, 2023: Removed unused sidebar items on a few notes pages. Removed Emoji from navbar, as they were causing scaling issues on displays with unusual resolutions.</li>
-          <li>Aug 5, 2023: Hotfix to resolve some spaving issues.</li>
-          <li>Aug 4, 2023: Updates to notes pages side bar. Removed navbar links to about and contacts pages in favor of consolidating to the home page. Massive refactor to remove unused CSS and fix formatting on various pages.</li>
-          <li>Aug 3, 2023: Updates to notes pages side bar to support better scaling on desktop during window resizing.</li>
-          <li>Jul 31, 2023: Created a basic navigation bar for notes pages.</li>
-          <li>Jul 30, 2023: Added content to various pages.</li>
-          <li>Jul 29, 2023: Updated contacts page to display contacts in cards that flip to reveal urls when hovered.</li>
-          <li>Jul 28, 2023: Added slide animations to notes pages using javascript, updated navbar to load using javascript.</li>
-          <li>Jul 27, 2023: Fix layout and links on several pages, added content to contact page, fixed various issues with other notes pages.</li>
-          <li>Jul 26, 2023: Add content to various pages.</li>
-          <li>Jul 25, 2023: Add content to various pages.</li>
-          <li>Jul 21, 2023: Add content to various pages.</li>
-          <li>Jul 16, 2023: Updated links on various pages.</li>
-          <li>Jul 15, 2023: Add content to various pages, fixed numerous typos.</li>
-          <li>Jul 14, 2023: Add content and removed bloat on several pages.</li>
-          <li>Jul 10, 2023: Add content and removed bloat on several pages.</li>
-          <li>Jul 9, 2023: Add content to various pages.</li>
-          <li>Jul 8, 2023: Add content to various pages, fixed numerous typos.</li>
-          <li>Jul 4, 2023: Add certifications and tools pages, added content to various pages, updated CSS to make inline links more readable.</li>
-          <li>Jul 2, 2023: Update CSS to make inline images and code tags look better.</li>
-          <li>Jul 1, 2023: Updated all pages and links to support https, added information to NGINX page.</li>
-          <li>Jun 30, 2023: Added content to various pages, finalized navbar design.</li>
-          <li>Jun 26, 2023: Updated nav bar links.</li>
-          <li>Jun 23, 2023: fixed various typos and grammar issues.</li>
-          <li>Jun 21, 2023: Several fixes for webpage layout.</li>
-          <li>Jun 20, 2023: Added notes pages, update donation alert.</li>
-          <li>Jun 15, 2023: Initial Commit. Built template page and home page.</li>
+
+          <li>General Purpose Server</li>
+          <ul>
+
+            <li>Dell PowerEdge R730 rack mount server</li>
+            <ul>
+
+              <li>Debian Linux</li>
+              <li>2x Intel E5-2690 V4</li>
+              <li>128GB of ECC DDR3</li>
+              <li>2x 1TB WD SAS drives in RAID 1</li>
+            </ul>
+
+            <li>Monitoring software such as Wazuh, Portainer, and other applications using Docker.</li>
+            <li>Hosts a beta version of this website with the same setup as the VPS mentioned above.</li>
+          </ul>
+          
         </ul>
-      </div>
+
+        <li>Custom Router / Firewall</li>
+        <ul>
+
+          <li>OPENsense Operating System</li>
+          <li>Built on a barebones minisforum miniPC</li>
+          <li>Configured DNS, DHCP, NAT, and privacy plugins</li>
+        </ul>
+
+        <li>24TB storage cluster</li>
+        <ul>
+
+          <li>Assembled from consumer hardware and NAS rated drives</li>
+          <ul>
+
+            <li>TRUEnas SCALE Operating System</li>
+            <li>i5-9600k</li>
+            <li>16GB DDR4 @ 2800MT/s</li>
+            <li>250GB Samsung 970 NVMe (boot drive)</li>
+            <li>2x 500GB Samsung 970 EVO NVMe (read and write cache)</li>
+            <li>4x 8TB WD Red NAS drives</li>
+          </ul>
+
+          <li>Configured NVMe cache to improve performance and ZFS RAID Z1 to support redundancy</li>
+          <li>Configured filesharing to support Windows and Linux devices per device with ACLs</li>
+          <li>Automated backups to the NAS via rsync</li>
+        </ul>
+
+      </ul>
+
+      <br>
+      <h3><a href="https://github.com/pquam/Quamium">Quamium Browser</a></h3>
+      <ul>
+        <li>Written in C++ with Qt graphics library</li>
+        <ul>Implemented:
+
+          <li>HTTPS request handling with Boost and OpenSSL</li>
+          <li>HTML parser</li>
+          <li>Layout and rendering pipeline</li>
+        </ul>
+
+        <li>Managed versioning and feature development with Git and GitHub</li>
+        
+      </ul>
+
+      <br>
+      <h3>Electronics Projects</h3>
+      <ul>
+
+        <li>Replaced capacitors on 2 Nintendo Super Famicom game consoles</li>
+        <li>Assembled a simple oscilloscope from a kit (surface mount and through-hole soldering)</li>
+      </ul>
+
+    </div>
+
+  </section>
+
+
+  <section class="colored-section">
+
+    <div class="sub-section-box col-lg-12">
+
+      <h2>Education</h2>
+
+      <h4>Bellevue College:</h4>
+      <ul>
+        <li>Math</li>
+        <ul>
+          <li>Calculus 3</li>
+          <li>Linear Algebra</li>
+        </ul>
+        <li>Computer Science</li>
+        <ul>
+          <li>Searching & Sorting</li>
+          <li>Data Structures</li>
+          <li>Database Architecture</li>
+        </ul>
+      </ul>
+
+      <h4>CompTIA (Tests Pending):</h4>
+      <ul>
+        <li>Server+</li>
+        <li>Linux+</li>
+      </ul>
+
+      <h4>Udemy:</h4>
+      <ul>
+        <li>Linux Security / Linux Hardening</li>
+      </ul>
+
+    </div>
+
   </section>
 
 </body>
