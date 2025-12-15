@@ -66,7 +66,8 @@
             <p>While it might be needlessly expensive, I wanted components that would support my workload for an extended period of time to reduce e-waste. Also, as a technology enthusiast, I wanted the coolest stuff.</p>
             <p>Specifications:</p>
           <ul class="spaced-list">
-            <li>OS: WINDOWS 11 W/ WSL 2.0 (UBUNTU 22.04) and PowerToys</li>
+            <li>NixOS with i3wm for gaming</li>
+            <li>Ubuntu mint for development</li>
             <li>CPU: <a href="https://www.amd.com/en/products/cpu/amd-ryzen-9-5950x" target="_blank" class="link">Ryzen 9 5950x</a> - 16 cores, 3.9 - 4.9GHz, slight undervolt</li>
             <li>MOBO: ASUS ROG STRIX X570-F GAMING</li>
             <li>GPU: ASUS ROG STRIX / NVIDIA 3090</li>
@@ -86,7 +87,17 @@
           </ul>
 
           <h4>Software</h4>
-          <p>I use Visual Studio Code for development on both my desktop and my laptop. I use Windows on the desktop because I often find myself needing the compatibility with NVIDIA Graphics drivers, and various applications such as Adobe Photoshop and new Steam games. Windows Subsystem for Linux and Windows PowerToys add a ton of functionality to Windows 11 that makes it exceptional for power users, while retaining a clean interface. I use the ARC web browser.</p>
+          <p>
+            I use Visual Studio Code for development on both my desktop and my laptop. 
+            For a while I was using Windows to play games on desktop, but after proton 9
+            released I have had no issues getting basically any game to run on linux.
+            Despite being it's intended usecase, I prefer not to use NixOS for development
+            because the initial work to install software and libraries is significantly
+            greater than it is for a more common distrobution like Ubuntu or Debian.
+            If I was deploying or testing software via VM's I could see situations where 
+            Nix would be preferrable to Docker, but for me I just like the sturdiness
+            of the OS.
+          </p>
         </div>
     </section>
 
@@ -108,28 +119,27 @@
           <li>git - Manage beta and production versions of the website.</li>
         </ul>
 
-        <p>I also host a local beta version of the website, along with some other applications on a server I built.</p>
-        <p>Specifications:</p>
-        <ul>
-          <li>OS: Ubuntu Server</li>
-          <li>CPU: <a href="https://www.intel.com/content/www/us/en/products/sku/81909/intel-xeon-processor-e52687w-v3-25m-cache-3-10-ghz/specifications.html" class="link" target="_blank">INTEL XEON E5-2687W v3</a> - 10 cores, 3.1 - 3.5GHz</li>
-          <li>MOBO: ASUS X99-A</li>
-          <li>RAM: 4x32GB SAMSUNG ECC DDR4 @ 2400MT/s</li>
-          <li>GPU: ASUS ROG STRIX 2060 OC</li>
-          <li>STORAGE: 500GB SAMSUNG 970 EVO PLUS</li>
-        </ul>
-        <p>Software:</p>
-        <ul>
-          <li>NGINX - Hosts web pages, directs HTTP & HTTPS traffic.</li>
-          <li>Wazuh Agent - Intrusion prevention / detection & malware scans.</li>
-          <li>CertBot - Generates SSL certificates for HTTPS.</li>
-          <li>git - Manage beta and production versions of the website.</li>
-          <li>Docker - I use docker to quickly try out new applications that I may decide not to use long term.</li>
-        </ul>
     </section>
 
     <section class="colored-section">
         <h2>Other</h2>
+
+        <h4>General Purpose Server</h4>
+        <ul>
+
+          <li>Dell PowerEdge R730 rack mount server</li>
+          <ul>
+
+            <li>Debian Linux</li>
+            <li>2x Intel E5-2690 V4</li>
+            <li>128GB of ECC DDR3</li>
+            <li>2x 1TB WD SAS drives in RAID 1</li>
+          </ul>
+
+          <li>Monitoring software such as Wazuh, Portainer, and other applications using Docker.</li>
+          <li>Hosts a beta version of this website with the same setup as the VPS mentioned above.</li>
+          <li>Team Fortress 2, Minecraft, and Valheim game servers.</li>
+        </ul>
 
         <h4>NAS</h4>
         <p>I built a 24TB NAS using some components I bought from a friend, along with some new drives. I use it for automatic backups for all my families devices. The case is from a computer that was assembled in 1996.</p>
@@ -163,14 +173,7 @@
           <li>WireGuard VPN</li>
         </ul>
 
-        <h4>Dell PowerEdge</h4>
-        <p>In 2021, I decided I wanted to get some hands-on experience with real enterprise hardware, so I bought a Dell PowerEdge R720 off of ebay for $350. I don't use it much any more as it is very loud, and my other equipment is more capable for single threaded workloads.</p>
-        <p>Specifications:</p>
-        <ul>
-          <li>CPU: <a href="https://www.intel.com/content/www/us/en/products/sku/64596/intel-xeon-processor-e52690-20m-cache-2-90-ghz-8-00-gts-intel-qpi/specifications.html" class="link" target="_blank">2X INTEL XEON E5-2690</a> - 8 cores each, 2.9 - 3.8GHz</li>
-          <li>RAM: 12x8GB SAMSUNG ECC DDR3 @ 1333MT/s</li>
-          <li>STORAGE: 2x900GB SEAGATE SAS Drives in RAID 1</li>
-        </ul>
+
 
     </section>
 
