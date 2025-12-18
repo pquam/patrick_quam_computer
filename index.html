@@ -28,8 +28,6 @@
     <section class="top-section" id="title">
       <div hx-get="/templates/donate.html" hx-swap="outerHTML" hx-trigger="load"></div>
 
-          
-
             <!-- Nav bar -->
 
             <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
@@ -43,9 +41,9 @@
           <div class="row">
 
             <div class="col-lg-6">
-              <h2 class="section-heading">Experienced Lab Tech and Aspiring Systems Administrator. Seeking an opportunity to build upon my current skills while making impactful improvements to sustainability and the environment. Linux daily driver since 2018.</h2>
+              <h2 class="section-heading">Experienced Lab Tech seeking an opportunity to build upon my current skills while making impactful improvements to sustainability and the environment.</h2>
               <br>
-              <h3 class="section-heading">Currently, I am solidifying my real-world skills by deploying various services through my homelab, developing my a simple web browser called Quamium, and restoring vintage electronics.</h3>
+              <p>Greater Seattle Area, WA</p>>
               
             </div>
         
@@ -67,23 +65,33 @@
   
           <h2>Experience</h2>
 
-          <h4>LAB DEVICE COORDINATOR • MICROSOFT / INSIGHT GLOBAL • NOV 2023 - PRESENT</h4>
+          <h4>LAB DEVICE COORDINATOR / INTERNAL TOOLS DEVELOPER • MICROSOFT / INSIGHT GLOBAL • NOV 2023 - PRESENT</h4>
           <ul class="spaced-list">
-            <li>Prepared and maintained a wide range of consumer hardware for beta testing of the office 365 mobile app.</li>
-            <li>Utilized my experience with retail inventory systems by working directly with developers and management to design and implement an inventory management system for the lab.</li>
-            <li>Performed operating system installation / re-imaging of Samsung, Google, and Apple mobile devices, as well as Apple, Microsoft, Dell, and HP Destop and Laptop devices.</li>
+            <li>Lab Work:</li>
+            <ul>
+              <li>Maintained a Device Lab at Microsoft with 400+ active devices, ensuring availability and reliability for developers.</li>
+              <li>Installed and configured operating systems, software, and drivers for Windows and MacOS development workstations.</li>
+              <li>Coordinated with engineers and administration to purchase new / replacement hardware.</li>
+              <li>Performed quarterly inventory audits and reports; included inventory changes, system configurations, utilization, and developer preferences.</li>
+            </ul>
+            <li>Development Work:</li>
+            <ul>
+              <li>Utilized my experience with retail inventory systems by working directly with developers and management to design and implement an inventory management system for the lab (C# / ASP.NET / REACT / TypeScript).</li>
+              <li>Implemented automatic reporting as a core feature. This prevented lab technicians from manually generating weekly reports, as well as prevented system administrators from manually pulling data required for quarterly audits.</li>
+              <li>Implemented vital lab administration features such as enabling modifications to existing checkouts and a notification system for lab closures.</li>
+            </ul>
             
           </ul>
 
           <h4>COMPUTER REPAIR TECHNICIAN • GEEK SQUAD • OCT 2021 - NOVEMBER 2023</h4>
           <ul class="spaced-list">
             <li>Used DISM, SFC, Sysinternals, and other industry tools to diagnose and resolve hardware and software issues in Windows devices. Used proprietary Apple tools to diagnose and resolve hardware and software issues in Mac and iOS devices. </li>
-              <li>Repaired and installed operating system images, chipset drivers, firmware, and a variety of client applications. </li>
-              <li>Provided data backup/transfer and configuration services to client devices.</li>
-              <li>Tracked client devices, service orders, documented notes, and common issues through NOVA (ServiceNow) ticketing system.</li>
-              <li>Installed hardware and drivers for desktop computer motherboards, CPUs, RAM, GPUs, power supply units, hard drives, batteries, cooling systems,
+            <li>Repaired and installed operating system images, chipset drivers, firmware, and a variety of client applications. </li>
+            <li>Provided data backup/transfer and configuration services to client devices.</li>
+            <li>Tracked client devices, service orders, documented notes, and common issues through NOVA (ServiceNow) ticketing system.</li>
+            <li>Installed hardware and drivers for desktop computer motherboards, CPUs, RAM, GPUs, power supply units, hard drives, batteries, cooling systems,
                 and more. Replaced displays, batteries, cameras, speakers and other main components for apple iOS devices.</li>
-                <li>Performed virus removals, creation of recovery media, and installation/configuration of common consumer software.</li>
+            <li>Performed virus removals, creation of recovery media, and installation/configuration of common consumer software.</li>
 
           </ul>
 
@@ -91,12 +99,12 @@
           <ul>
             <li>Utilized a deep understanding of consumer electronics’ features, benefits, pricing, and availability to provide technical information in a clear and
               concise manner to non-technical customers.</li>
-              <li>Promoted to Mobile Sales Lead (2019) in recognition of exceptional accessory and membership attach rates, revenue, and customer satisfaction performance. Led a team of 6 to rank 5th in the company for mobile sales based on those metrics.</li>
-                <li>Engaged customers using active listening skills to build complex, connected solutions in a fast-paced, dynamic environment. Ensured customers’
+            <li>Promoted to Mobile Sales Lead (2019) in recognition of exceptional accessory and membership attach rates, revenue, and customer satisfaction performance. Led a team of 6 to rank 5th in the company for mobile sales based on those metrics.</li>
+            <li>Engaged customers using active listening skills to build complex, connected solutions in a fast-paced, dynamic environment. Ensured customers’
                   end-to-end needs are met by leveraging all channels including hardware, accessories, connections, content and services.</li>
-                  <li> Partnered with the Store Manager to train and coach mobile sales associates to ensure customer satisfaction and technical proficiency in carrier
+            <li> Partnered with the Store Manager to train and coach mobile sales associates to ensure customer satisfaction and technical proficiency in carrier
                     account management and mobile device activations.</li>
-                    <li>Worked directly with major US carriers to resolve complex issues with customer accounts.</li>
+            <li>Worked directly with major US carriers to resolve complex issues with customer accounts.</li>
           </ul>
 
       </div>
@@ -114,73 +122,39 @@
       <h4>2022 - PRESENT</h4>
 
       <br>
-      <h3>Website</h3>
+      <h3>Server & Systems Administration</h3>
       <ul>
-
-        <li>Utilized Visual Studio Code and VIM to develop this website with HTML, CSS (Bootstrap), JavaScript, and HTMX. Managed production and beta versions of
-          the website using git and GitHub. Deployed website using Azure Static Webpages, with CI/CD via GitHub Actions.</li>
-        <li>Personally deployed, configured, maintained, and secured a virtual private server (Debian) to host my website. Configured NGINX to serve HTML,
-            CSS, and JavaScript files via HTTPS and redirect HTTP traffic to HTTPS. Configured Certbot to generate SSL certificates to enable HTTPS. Configured
-            fail2ban, UFW, and Wazuh to detect, block and report malicious traffic. Updated default file permissions and configuration files to prevent common attacks.</li>
-        <li>Configured A-Name and C-Name DNS records for a custom domain. Configured domain settings to support email through Zoho.</li>
-        <li>Automated common tasks such as SSL Certification renewal using cron jobs and updating the production site from GitHub using bash scripts.</li>
+        <li>Deployed and maintained Linux servers (Debian) on both physical rack-mount
+hardware (Dell PowerEdge) and virtual private servers.</li>
+        <li>Installed and configured operating systems, services, and drivers to support
+hosted applications and internal testing.</li>
+        <li>Configured NGINX for secure web hosting, including TLS certificates, firewall
+rules, and intrusion detection.</li>
+        <li>Automated routine system maintenance such as certificate renewal using
+Bash scripts.</li>
       </ul>
 
       <br>
-      <h3>Home Lab</h3>
+      <h3>Network & Infrastructure</h3>
       <ul>
+        <li>Built and configured a dedicated OPNsense firewall/router, including DNS,
+DHCP, NAT, and security plugins.</li>
+          <li>Managed DNS A / CNAME records for custom domains.</li>
+          <li>Deployed Wazuh and Portainer to monitor and log system health and
+performance of several servers.</li>
+      </ul>
 
-        <li>Deployed various services on custom designed and built devices.</li>
-        <br>
-        <ul>
-
-          <li>General Purpose Server</li>
-          <ul>
-
-            <li>Dell PowerEdge R730 rack mount server</li>
-            <ul>
-
-              <li>Debian Linux</li>
-              <li>2x Intel E5-2690 V4</li>
-              <li>128GB of ECC DDR3</li>
-              <li>2x 1TB WD SAS drives in RAID 1</li>
-            </ul>
-
-            <li>Monitoring software such as Wazuh, Portainer, and other applications using Docker.</li>
-            <li>Hosts a beta version of this website with the same setup as the VPS mentioned above.</li>
-          </ul>
-          
-          <br>
-          <li>Custom Router / Firewall</li>
-          <ul>
-
-            <li>OPENsense Operating System</li>
-            <li>Built on a barebones minisforum miniPC</li>
-            <li>Configured DNS, DHCP, NAT, and privacy plugins</li>
-          </ul>
-
-          <br>
-          <li>24TB storage cluster</li>
-          <ul>
-
-            <li>Assembled from consumer hardware and NAS rated drives</li>
-            <ul>
-
-              <li>TRUEnas SCALE Operating System</li>
-              <li>i5-9600k</li>
-              <li>16GB DDR4 @ 2800MT/s</li>
-              <li>250GB Samsung 970 NVMe (boot drive)</li>
-              <li>2x 500GB Samsung 970 EVO NVMe (read and write cache)</li>
-              <li>4x 8TB WD Red NAS drives</li>
-            </ul>
-
-            <li>Configured NVMe cache to improve performance and ZFS RAID Z1 to support redundancy</li>
-            <li>Configured filesharing to support Windows and Linux devices per device with ACLs</li>
-            <li>Automated backups to the NAS via rsync</li>
-          </ul>
-
-        </ul>
-
+      <br>
+      <h3>Home Lab & Hardware</h3>
+      <ul>
+        <li>Built multiple custom systems using enterprise server hardware to host lab
+services.</li>
+        <li>Built and configured a 24TB TRUEnas SCALE storage cluster (configured RAID
+and ZFS to support NVMe cache and local redundancy).</li>
+        <li>Performed hardware upgrades, component replacements, and
+troubleshooting across servers and lab machines.</li>
+        <li>Replaced capacitors on 2 Nintendo Super Famicom game consoles</li>
+        <li>Assembled a simple oscilloscope from a kit (surface mount and through-hole soldering)</li>
       </ul>
 
       <br>
@@ -189,10 +163,11 @@
         <li>Written in C++ with Qt graphics library</li>
         <li>implemented: </li>
         <ul>
-
+          <li>URL Lexer</li>
           <li>HTTPS request handling with Boost and OpenSSL</li>
           <li>HTML parser</li>
           <li>Layout and rendering pipeline</li>
+          <li>Font Caching</li>
         </ul>
 
         <li>Managed versioning and feature development with Git and GitHub</li>
@@ -203,8 +178,7 @@
       <h3>Electronics Projects</h3>
       <ul>
 
-        <li>Replaced capacitors on 2 Nintendo Super Famicom game consoles</li>
-        <li>Assembled a simple oscilloscope from a kit (surface mount and through-hole soldering)</li>
+        
       </ul>
 
     </div>
