@@ -1,0 +1,407 @@
+<!DOCTYPE html> <html lang="en"><head>
+<title>Linux Hardening</title>
+<base href=".">
+<meta name="pathname" content="linux-hardening.html">
+<meta name="description" content="Patrick Quam - Linux Hardening">
+<meta property="og:title" content="Linux Hardening">
+<meta property="og:description" content="Patrick Quam - Linux Hardening">
+<meta property="og:type" content="website">
+<meta property="og:url" content="linux-hardening.html">
+<meta property="og:image" content="https://patrick.quam.computer/images/etc%20shadow.jpg">
+<meta charset="UTF-8"><meta property="og:site_name" content="Patrick Quam"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0"><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="site-lib/rss.xml"><script async="" id="webpage-script" src="site-lib/scripts/webpage.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><link rel="icon" href="site-lib/media/favicon.png"><link rel="stylesheet" href="site-lib/styles/obsidian.css"><link rel="preload" href="site-lib/styles/global-variable-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/global-variable-styles.css"></noscript><link rel="preload" href="site-lib/styles/main-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/main-styles.css"></noscript><style>body{--line-width:40em;--line-width-adaptive:40em;--file-line-width:40em;--sidebar-width:min(20em, 80vw);--collapse-arrow-size:11px;--tree-vertical-spacing:1.3em;--sidebar-margin:12px}:root{background-color:#202124}.sidebar{height:100%;font-size:14px;z-index:10;min-width:calc(var(--sidebar-width) + var(--divider-width-hover));max-width:calc(var(--sidebar-width) + var(--divider-width-hover));position:relative;overflow:hidden;overflow:clip;transition:min-width ease-in-out,max-width ease-in-out;transition-duration:.2s;contain:size}#left-sidebar{left:0}#right-sidebar{right:0}.sidebar.is-collapsed{min-width:0;max-width:0}.sidebar.floating{position:absolute}.sidebar .leaf-content{height:100%;min-width:calc(var(--sidebar-width) - var(--divider-width-hover));top:0;padding:var(--sidebar-margin);padding-top:4em;line-height:var(--line-height-tight);background-color:var(--background-secondary);transition:background-color,border-right,border-left,box-shadow;transition-duration:var(--color-fade-speed);transition-timing-function:ease-in-out;position:absolute;display:flex;flex-direction:column}.sidebar:not(.is-collapsed) .leaf-content{min-width:calc(max(100%,var(--sidebar-width)) - 3px);max-width:calc(max(100%,var(--sidebar-width)) - 3px)}#left-sidebar-content{left:0;border-top-right-radius:var(--radius-l);border-bottom-right-radius:var(--radius-l)}#right-sidebar-content{right:0;border-top-left-radius:var(--radius-l);border-bottom-left-radius:var(--radius-l)}.sidebar #left-sidebar-content,.sidebar #right-sidebar-content{contain:none!important;container-type:normal!important;animation:none!important}.sidebar:has(.leaf-content:empty):has(.topbar-content:empty){display:none}.sidebar-topbar{height:calc(2.3em + 2 * var(--sidebar-margin));width:var(--sidebar-width);padding:var(--sidebar-margin);z-index:1;position:fixed;display:flex;align-items:center;transition:width ease-in-out;transition-duration:inherit}.sidebar.is-collapsed .sidebar-topbar{width:calc(2.3em + var(--sidebar-margin) * 2)}.sidebar .sidebar-topbar.is-collapsed{width:0}#left-sidebar .sidebar-topbar{left:0;flex-direction:row;border-top-right-radius:var(--radius-l)}#right-sidebar .sidebar-topbar{right:0;flex-direction:row-reverse;border-top-left-radius:var(--radius-l)}#left-sidebar .topbar-content{margin-right:calc(2.3em + var(--sidebar-margin));flex-direction:row}#right-sidebar .topbar-content{margin-left:calc(2.3em + var(--sidebar-margin));flex-direction:row-reverse}.topbar-content{overflow:hidden visible;overflow:clip visible;width:100%;height:100%;display:flex;align-items:center;transition:inherit}.sidebar.is-collapsed .topbar-content{width:0;transition:inherit}.clickable-icon.sidebar-collapse-icon{background-color:transparent;color:var(--icon-color-focused);padding:2px!important;margin:0!important;height:100%!important;width:2.3em!important;margin-inline:0.14em!important;position:absolute}#left-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);right:var(--sidebar-margin)}#right-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);left:var(--sidebar-margin)}.clickable-icon.sidebar-collapse-icon svg.svg-icon{width:100%;height:100%}.feature-title{margin-left:1px;text-transform:uppercase;letter-spacing:.06em;margin-top:.75em;margin-bottom:.75em}.feature-header{display:flex;align-items:center;padding-top:0;font-size:1em;padding-left:0}body.floating-sidebars .sidebar{position:absolute}body{transition:background-color var(--color-fade-speed) ease-in-out}#navbar:not(:empty){display:flex;align-items:center;justify-content:space-between;padding:.5em 1em;width:100%}#main{display:flex;flex-direction:column;height:100%;width:100%;align-items:stretch;justify-content:center}#main-horizontal{display:flex;flex-direction:row;flex-grow:1;width:100%;align-items:stretch;justify-content:center}#center-content{flex-basis:100%;max-width:100%;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;transition:opacity .2s ease-in-out;contain:inline-size}.hide{opacity:0!important;transition:opacity .2s ease-in-out;pointer-events:none}#center-content>.obsidian-document{padding-left:2em;padding-right:1em;margin-bottom:0;width:100%;width:-webkit-fill-available;width:-moz-available;width:fill-available;transition:background-color var(--color-fade-speed) ease-in-out;border-top-right-radius:var(--window-radius,var(--radius-m));border-top-left-radius:var(--window-radius,var(--radius-m));overflow-x:hidden!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;contain:inline-size}body #center-content>.obsidian-document>.markdown-preview-sizer{padding-bottom:80vh;width:100%;max-width:var(--line-width);flex-basis:var(--line-width);transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document>div{width:100%!important;transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document:not([data-type=markdown]).embed{display:flex;padding:1em;height:100%;width:100%;align-items:center;justify-content:center}#center-content>.obsidian-document:not([data-type=markdown]).embed>*{max-width:100%;max-height:100%;object-fit:contain}:not(h1,h2,h3,h4,h5,h6,li):has(> :is(.math,table)){overflow-x:auto!important}#center-content>.obsidian-document:not([data-type=markdown]){overflow-x:auto;contain:content;padding:0;margin:0;height:100%}.obsidian-document[data-type=attachment]{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;width:100%}.obsidian-document[data-type=attachment]>*{outline:0;border:none;box-shadow:none}.obsidian-document[data-type=attachment] :is(img){max-width:90%;max-height:90%;object-fit:contain}.obsidian-document[data-type=attachment]>:is(audio){width:100%;max-width:min(90%,var(--line-width))}.obsidian-document[data-type=attachment]>:is(embed,iframe,video){width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}.canvas-wrapper>:is(.header,.footer){z-index:100;position:absolute;display:flex;justify-content:center;flex-direction:column;width:100%;align-items:center}.scroll-highlight{position:absolute;width:100%;height:100%;pointer-events:none;z-index:1000;background-color:hsla(var(--color-accent-hsl),.25);opacity:0;padding:1em;inset:50%;translate:-50% -50%;border-radius:var(--radius-s)}</style><script defer="">async function loadIncludes(){let e=document.querySelectorAll("link[itemprop='include']");for(const t of e){let e=t.getAttribute("href");try{let o="";if(e.startsWith("https:")||e.startsWith("http:")||"file:"!=window.location.protocol){const n=await fetch(e);if(!n.ok){console.log("Could not include file: "+e),t?.remove();continue}o=await n.text()}else{const t=document.getElementById(btoa(encodeURI(e)));if(t){const e=JSON.parse(decodeURI(atob(t.getAttribute("value")??"")));o=e?.data??""}}let n=document.createRange().createContextualFragment(o);t.before(n),t.remove(),console.log("Included text: "+o),console.log("Included file: "+e)}catch(o){t?.remove(),console.log("Could not include file: "+e,o);continue}}}document.addEventListener("DOMContentLoaded",(()=>{loadIncludes()}));let isFileProtocol="file:"==location.protocol;function waitLoadScripts(e,t){let o=e.map((e=>document.getElementById(e+"-script")));!function e(n){let l=o[n],c=n+1;l?(l&&"true"!=l.getAttribute("loaded")||n<o.length&&e(c),n<o.length&&l.addEventListener("load",(()=>e(c)))):n<o.length?e(c):t()}(0)}</script></head><body class="publish css-settings-manager styled-scrollbars show-inline-title show-ribbon is-focused"><script defer="">let theme=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");"dark"==theme?(document.body.classList.add("theme-dark"),document.body.classList.remove("theme-light")):(document.body.classList.add("theme-light"),document.body.classList.remove("theme-dark")),window.innerWidth<480?document.body.classList.add("is-phone"):window.innerWidth<768?document.body.classList.add("is-tablet"):window.innerWidth<1024?document.body.classList.add("is-small-screen"):document.body.classList.add("is-large-screen")</script><div class="parsed-feature-container" style="display: contents;"><link itemprop="include" href="site-lib/html/custom-head-content-content.html"></div><div id="main"><div id="navbar"></div><div id="main-horizontal"><div id="left-content" class="leaf" style="--sidebar-width: var(--sidebar-width-left);"></div><div id="center-content" class="leaf"><div class="view-content obsidian-document" data-type="canvas"><style id="MJX-CHTML-styles"></style><div class="canvas-wrapper node-insert-event" tabindex="-1" data-ignore-swipe="true" style="--zoom-multiplier: 2.7460008095586304;"><svg class="canvas-background"><pattern id="a54287dc361ed1da" patternUnits="userSpaceOnUse" x="539.2831788601853" y="663.2168211398147" width="10.609347268783278" height="10.609347268783278"><circle cx="0.7" cy="0.7" r="0.7"></circle></pattern><rect x="0" y="0" width="100%" height="100%" fill="url(#a54287dc361ed1da)"></rect></svg><div class="canvas-card-menu" style="z-index: 10;"><div class="canvas-card-menu-button mod-draggable" aria-label="Drag to add card" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-sticky-note"><path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"></path><path d="M15 3v4a2 2 0 0 0 2 2h4"></path></svg></div><div class="canvas-card-menu-button mod-draggable" aria-label="Drag to add note from vault" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg></div><div class="canvas-card-menu-button mod-draggable" aria-label="Drag to add media from vault" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-file-image"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><circle cx="10" cy="12" r="2"></circle><path d="m20 17-1.296-1.296a2.41 2.41 0 0 0-3.408 0L9 22"></path></svg></div></div><div class="canvas-controls" style="z-index: 10;"><div class="canvas-control-group"><div class="canvas-control-item" aria-label="Canvas settings" data-tooltip-position="left"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-settings"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg></div></div><div class="canvas-control-group"><div class="canvas-control-item" aria-label="Zoom in" data-tooltip-position="left"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-plus"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg></div><div class="canvas-control-item" aria-label="Reset zoom" data-tooltip-position="left"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-rotate-cw"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path></svg></div><div class="canvas-control-item" aria-label="Zoom to fit
+(Shift + 1)" data-tooltip-position="left"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M21 8V5a2 2 0 0 0-2-2h-3"></path><path d="M3 16v3a2 2 0 0 0 2 2h3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path></svg></div><div class="canvas-control-item" aria-label="Zoom out" data-tooltip-position="left"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-minus"><path d="M5 12h14"></path></svg></div></div><div class="canvas-control-group"><div class="canvas-control-item is-disabled" aria-label="Undo" data-tooltip-position="left"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-undo-2"><path d="M9 14 4 9l5-5"></path><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"></path></svg></div><div class="canvas-control-item is-disabled" aria-label="Redo" data-tooltip-position="left"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-redo-2"><path d="m15 14 5-5-5-5"></path><path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5A5.5 5.5 0 0 0 9.5 20H13"></path></svg></div></div><div class="canvas-control-group"><div class="canvas-control-item" aria-label="Canvas help" data-tooltip-position="left"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path></svg></div></div></div><div class="canvas" style="transform: translate(530px, 672.5px) scale(0.132617) translate(1350px, -3910px);"><svg class="canvas-edges"></svg><svg class="canvas-edges"></svg><svg class="canvas-edges"><g><path class="canvas-interaction-path" d="M-1120 8160 L-1120 8167 M-1120,8167 C-1120,8237 -1120,8223 -1120,8293"></path><path class="canvas-display-path" d="M-1120 8160 L-1120 8167 M-1120,8167 C-1120,8237 -1120,8223 -1120,8293"></path></g><g><path class="canvas-interaction-path" d="M-1120 6680 L-1120 6687 M-1120,6687 C-1120,6757 -1120,6743 -1120,6813"></path><path class="canvas-display-path" d="M-1120 6680 L-1120 6687 M-1120,6687 C-1120,6757 -1120,6743 -1120,6813"></path></g><g><path class="canvas-interaction-path" d="M-1120 5920 L-1120 5927 M-1120,5927 C-1120,5997 -1120,5963 -1120,6033"></path><path class="canvas-display-path" d="M-1120 5920 L-1120 5927 M-1120,5927 C-1120,5997 -1120,5963 -1120,6033"></path></g><g><path class="canvas-interaction-path" d="M-1120 1920 L-1120 1927 M-1120,1927 C-1120,1997 -1120,1963 -1120,2033"></path><path class="canvas-display-path" d="M-1120 1920 L-1120 1927 M-1120,1927 C-1120,1997 -1120,1963 -1120,2033"></path></g><g><path class="canvas-interaction-path" d="M-1120 640 L-1120 647 M-1120,647 C-1120,740 -1120,740 -1120,833"></path><path class="canvas-display-path" d="M-1120 640 L-1120 647 M-1120,647 C-1120,740 -1120,740 -1120,833"></path></g><g><path class="canvas-interaction-path" d="M-1120 -520 L-1120 -513 M-1120,-513 C-1120,-443 -1120,-497 -1120,-427"></path><path class="canvas-display-path" d="M-1120 -520 L-1120 -513 M-1120,-513 C-1120,-443 -1120,-497 -1120,-427"></path></g></svg><svg class="canvas-edges"><g><g style="transform: translate(-1120px, 8300px) rotate(180deg);"><polygon class="canvas-path-end" points="0,0 6.5,10.4 -6.5,10.4"></polygon></g></g><g><g style="transform: translate(-1120px, 6820px) rotate(180deg);"><polygon class="canvas-path-end" points="0,0 6.5,10.4 -6.5,10.4"></polygon></g></g><g><g style="transform: translate(-1120px, 6040px) rotate(180deg);"><polygon class="canvas-path-end" points="0,0 6.5,10.4 -6.5,10.4"></polygon></g></g><g><g style="transform: translate(-1120px, 2040px) rotate(180deg);"><polygon class="canvas-path-end" points="0,0 6.5,10.4 -6.5,10.4"></polygon></g></g><g><g style="transform: translate(-1120px, 840px) rotate(180deg);"><polygon class="canvas-path-end" points="0,0 6.5,10.4 -6.5,10.4"></polygon></g></g><g><g style="transform: translate(-1120px, -420px) rotate(180deg);"><polygon class="canvas-path-end" points="0,0 6.5,10.4 -6.5,10.4"></polygon></g></g></svg><div class="canvas-node" style="z-index: 2; transform: translate(-1440px, -700px); width: 640px; height: 180px; --canvas-node-width: 640px; --canvas-node-height: 180px;"><div class="canvas-node-container"><div class="canvas-node-content markdown-embed"><div class="markdown-embed-content node-insert-event"><div class="markdown-preview-view markdown-rendered node-insert-event show-indentation-guide allow-fold-headings allow-fold-lists"><pre class="frontmatter language-yaml" style="display: none;"><code class="language-yaml is-loaded"><span class="token key atrule">tags</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> linux</code><button class="copy-code-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-copy"><rect x="8" y="8" width="14" height="14" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg></button></pre><div class="markdown-preview-sizer markdown-preview-section" style="padding-bottom: 0px; min-height: 109px;"><div class="markdown-preview-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-h3"><h3 data-heading="Please note this is by no means an exhaustive list. Security principles and processes are different for various distributions &amp; environments. Be sure the check the [[Other Security Resources]] linked at the bottom of this page." dir="auto" class="heading" id="Please_note_this_is_by_no_means_an_exhaustive_list._Security_principles_and_processes_are_different_for_various_distributions_&amp;_environments._Be_sure_the_check_the_[[Other_Security_Resources]]_linked_at_the_bottom_of_this_page._0"><span class="heading-collapse-indicator collapse-indicator collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon right-triangle"><path d="M3 8L12 17L21 8"></path></svg></span>Please note this is by no means an exhaustive list. Security principles and processes are different for various distributions &amp; environments. Be sure the check the <a data-href="Other Security Resources" href="other-security-resources.html" class="internal-link" target="_self" rel="noopener nofollow">Other Security Resources</a> linked at the bottom of this page.</h3></div></div></div></div><div class="markdown-embed-content node-insert-event" style="display: none;"></div></div></div></div><div class="canvas-node" style="z-index: 3; transform: translate(-1440px, -420px); width: 640px; height: 1060px; --canvas-node-width: 640px; --canvas-node-height: 1060px;"><div class="canvas-node-container"><div class="canvas-node-content markdown-embed is-loaded"><div class="markdown-embed-content node-insert-event"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event show-indentation-guide allow-fold-headings allow-fold-lists show-properties"><div class="markdown-preview-sizer"><div class="header"><h1 class="page-title heading inline-title" id="General_Security_Considerations_0">General Security Considerations</h1><div class="data-bar"></div></div><div class="markdown-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-ul"><ul>
+<li data-line="0" dir="auto"><mark>Root user is all powerful.</mark></li>
+<li data-line="1" dir="auto">Follow a process for removing user accounts.</li>
+<li data-line="2" dir="auto">root has full control over all system processes.</li>
+<li data-line="3" dir="auto">Use a firewall (ufw, iptables, dedicated firewall).</li>
+<li data-line="4" dir="auto">Use Multi-Factor Authentication wherever possible.</li>
+<li data-line="5" dir="auto">NEVER give root access to a user that does not absolutely require it.</li>
+<li data-line="6" dir="auto">File permissions make it easy to manage what each user has access too.</li>
+<li data-line="7" dir="auto">Linux is less popular than windows 🙂, and it is open source, so less malware is developed for it.</li>
+<li data-line="8" dir="auto">Root is required to install system-wide software, configure networking, &amp; manage users, along with other administrative tasks.</li>
+<li data-line="9" dir="auto">Only allow network connections from required sources (for example, only allow incoming traffic from SSH if no other applications require network connectivity).</li>
+<li data-line="10" dir="auto">Centralized package managers can certify applications are malware free before they are installed.Package managers also allow users to update all of their software at once.</li>
+<li data-line="11" dir="auto">Encrypt all data transmissions over a network. Ensure you are are using the latest versions of protocols to make sure data is encrypted properly. for example, sftp instead of ftp.</li>
+<li data-line="12" dir="auto">linux allows you to create dedicated accounts for services &amp; applications.This way, if a service or process becomes compromised, it is less likely to affect the rest of the system.</li>
+<li data-line="13" dir="auto">Individuals should always have their own system accounts. Users sharing accounts can make it difficult to find the source of a breach. Users have a bad habit of being less responsible with shared user accounts.</li>
+<li data-line="14" dir="auto">Monitor system activity. This means regularly reviewing system logs. Sending logs to a dedicated server can help managing the review process easier, and also means you have a duplicate of logs in case an attacker changes logs on a system.</li>
+<li data-line="15" dir="auto">Avoid direct logins to root and service accounts unless absolutely neccessary. Users should log in to their personal accounts then use 'sudo -u' to run commands as other users. This creates a log trail that does not exist if users sign in the application, service, or root accounts.</li>
+<li data-line="16" dir="auto">Wherever possible, run applications and services in their own system (container, VM, dedicated physcial hardware).Otherwise, ensure applications and services have their own dedicated user. This way, if an application or service becomes compromised, it is less likely that it will be able to effect the rest of the system.</li>
+</ul></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div class="markdown-embed-content node-insert-event" style="display: none;"></div><div class="markdown-embed-link" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-maximize-2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></div></div></div><div class="canvas-node-label">General Security Considerations</div></div><div class="canvas-node" style="z-index: 4; transform: translate(-1440px, 840px); width: 640px; height: 1080px; --canvas-node-width: 640px; --canvas-node-height: 1080px;"><div class="canvas-node-container"><div class="canvas-node-content markdown-embed is-loaded"><div class="markdown-embed-content node-insert-event"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event show-indentation-guide allow-fold-headings allow-fold-lists show-properties"><div class="markdown-preview-sizer"><div class="header"><h1 class="page-title heading inline-title" id="Physical_Security_0">Physical Security</h1><div class="data-bar"></div></div><div class="markdown-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-ul"><ul>
+<li data-line="0" dir="auto">Ensure that single user mode is either disabled or password protected. Single user mode can be accessed by restarting the system, and provides root access to the system.</li>
+<li data-line="1" dir="auto">Require a boot menu password. Without a boot menu password, attacks can force the bootloader to boot a root shell instead of another aprt of the operating system, providing them with root access. To do so, follow these steps:</li>
+</ul></div><div class="el-ol"><ol>
+<li data-line="0" dir="auto">Open a terminal.</li>
+<li data-line="1" dir="auto">Run the command&nbsp;<code>grub-mkpasswd-pbkdf2</code>&nbsp;. You'll be asked to enter the password and then to confirm it. This will create an encrypted password for the bootloader.</li>
+<li data-line="2" dir="auto">The command will output a hashed version of the provided password. Copy this.</li>
+<li data-line="3" dir="auto">Open the GRUB configuration file with root permissions using a text editor. For example, if you're using vim, you would enter:&nbsp;<code>sudo vim /etc/default/grub</code></li>
+<li data-line="4" dir="auto">Find the line that starts with&nbsp;<code>GRUB_PASSWORD</code>&nbsp;. If it doesn't exist, you'll need to add it. You can edit the file by entering insert mode in vim simply by inputting&nbsp;<code>i</code>&nbsp;. To exit vim without making changes, hit escape, then enter&nbsp;<code>:q!</code>&nbsp;and press enter. Set GRUB_PASSWORD to the hashed password you copied. It should look like this:&nbsp;<code>GRUB_PASSWORD=grub.pbkdf2.sha512. 10000.long_string_of_characters</code></li>
+<li data-line="5" dir="auto">Save the file and exit the text editor. If you're using vim, you can do this by pressing&nbsp;<code>escape</code>&nbsp;, then entering&nbsp;<code>:wq</code>&nbsp;to confirm that you want to save the changes, and then&nbsp;<code>Enter</code>&nbsp;to confirm the file name.</li>
+<li data-line="6" dir="auto">Update GRUB with the new configuration by running:&nbsp;<code>sudo update-grub</code></li>
+</ol></div><div class="el-ul"><ul>
+<li data-line="0" dir="auto">
+<p>Ensure device encryption is enabled. Requiring a boot password can be circumvented by an attack installing their own boot media and mounting the system. LUKS is a common encryption tool.</p>
+</li>
+<li data-line="2" dir="auto">
+<p>For example, if you are hosting a web server in a cloud instance, ensure the cloud instance is encrypted. additionally, you can run the server in a VM, and make sure the virtual drive for the VM is encrypted.</p>
+</li>
+<li data-line="4" dir="auto">
+<p><a data-tooltip-position="top" aria-label="https://www.ibm.com/docs/en/order-management-sw/10.0?topic=considerations-encrypting-data-partitions-using-luks" rel="noopener nofollow" class="external-link is-unresolved" href="https://www.ibm.com/docs/en/order-management-sw/10.0?topic=considerations-encrypting-data-partitions-using-luks" target="_self">LUKS</a>&nbsp;is a common encryption tool. It can be used to encrypt any block device.</p>
+</li>
+<li data-line="5" dir="auto">
+<p>Disable CTRL+ALT+DEL. CTRL+ALT+DEL initiates a system reboot. if an attacker is able to gain access to the system they may use the restart to gain access to the bootloader.</p>
+</li>
+<li data-line="7" dir="auto">
+<p>CTRL+ALT+DEL can be disabled by running&nbsp;<code>sudo systemctl mask ctrl-alt-del.target   sudo systemctl stop ctrl-alt-del.target</code></p>
+</li>
+</ul></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div class="markdown-embed-content node-insert-event" style="display: none;"></div><div class="markdown-embed-link" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-maximize-2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></div></div></div><div class="canvas-node-label">Physical Security</div></div><div class="canvas-node" style="z-index: 5; transform: translate(-1440px, 2040px); width: 640px; height: 3880px; --canvas-node-width: 640px; --canvas-node-height: 3880px;"><div class="canvas-node-container"><div class="canvas-node-content markdown-embed is-loaded"><div class="markdown-embed-content node-insert-event"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event show-indentation-guide allow-fold-headings allow-fold-lists show-properties"><div class="markdown-preview-sizer"><div class="header"><h1 class="page-title heading inline-title" id="Account_Security_0">Account Security</h1><div class="data-bar"></div></div><div class="markdown-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-ul"><ul>
+<li data-line="0" dir="auto">
+<p>Root user always has a user ID of 0.</p>
+</li>
+<li data-line="1" dir="auto">
+<p>Assigning a User an ID of 0 will grant them root privileges.</p>
+</li>
+<li data-line="2" dir="auto">
+<p>Accounts for system services should have UID's of less than 1,000.</p>
+</li>
+<li data-line="3" dir="auto">
+<p>New users in the standard user range can be created using&nbsp;<code>useradd</code></p>
+</li>
+<li data-line="4" dir="auto">
+<p>New users can be created in the system services account range using&nbsp;<code>useradd -r</code></p>
+</li>
+<li data-line="5" dir="auto">
+<p>authentication logs can be viewed by running the&nbsp;<code>last</code>&nbsp;command.&nbsp;<code>lastb</code>&nbsp;will show failed login attempts.</p>
+</li>
+<li data-line="7" dir="auto">
+<p>The&nbsp;<code>last</code>&nbsp;command logs are found in&nbsp;<code>/var/log/wtemp</code></p>
+</li>
+<li data-line="8" dir="auto">
+<p>logs for&nbsp;<code>lastb</code>&nbsp;are stored in&nbsp;<code>/var/log/btemp</code></p>
+</li>
+<li data-line="9" dir="auto">
+<p>Other authentication logs can be found in the messages, syslog, secure, and auth.log files in the&nbsp;<code>/var/log/</code>&nbsp;directory.</p>
+</li>
+<li data-line="11" dir="auto">
+<p>Sometimes you may want to lock a user account. Maybe the account is compromised, a user no longer needs access, or it is a dedicated account for a service or application. Here are a few ways you can disable logins:</p>
+</li>
+<li data-line="13" dir="auto">
+<p>Changing the final entry in a users line of the&nbsp;<code>/etc/passwd</code>&nbsp;file to nologin (default is /bin/bash)</p>
+</li>
+<li data-line="15" dir="auto">
+<p>This can also be done by using the change shell command like this:&nbsp;<code>chsh -s shell account</code></p>
+</li>
+<li data-line="16" dir="auto">
+<p>For example,&nbsp;<code>chsh -s /sbin/nologin foo</code>&nbsp;would disable logins for the user foo.</p>
+</li>
+<li data-line="17" dir="auto">
+<p>to re-enable logins, you would run&nbsp;<code>chsh -s /bin/bash foo</code></p>
+</li>
+<li data-line="19" dir="auto">
+<p>Another way to lock an account is with the passwd command, although this only prevents the user from logging in using a password. For example, a user would still be able to log in using an SSH key.</p>
+</li>
+<li data-line="21" dir="auto">
+<p>To lock an account:&nbsp;<code>passwd -l foo</code></p>
+</li>
+<li data-line="22" dir="auto">
+<p>To un-lock that account:&nbsp;<code>passwd -u foo</code></p>
+</li>
+<li data-line="24" dir="auto">
+<p>PAM, or pluggable Authentication Module</p>
+</li>
+<li data-line="26" dir="auto">
+<p>PAM allows applications to use any authentication method (ie, fingerprint, yubikey, etc).</p>
+</li>
+<li data-line="27" dir="auto">
+<p>PAM modules exist for&nbsp;<a data-tooltip-position="top" aria-label="https://github.com/google/google-authenticator-libpam#google-authenticator-pam-module" rel="noopener nofollow" class="external-link is-unresolved" href="https://github.com/google/google-authenticator-libpam#google-authenticator-pam-module" target="_self">google authenticator</a>&nbsp;and other Multi-Factor Authentication services.</p>
+</li>
+<li data-line="28" dir="auto">
+<p>PAM can be used for authentication for any application that supports it.</p>
+</li>
+<li data-line="29" dir="auto">
+<p>PAM files are stored in /etc/pam.d</p>
+</li>
+<li data-line="30" dir="auto">
+<p>Account password requirements can be set in&nbsp;<code>/etc/pam.d/common-password</code>&nbsp;on Ubuntu/Debian systems or&nbsp;<code>/etc/pam.d/system-auth</code>&nbsp;on Red Hat systems.</p>
+</li>
+<li data-line="31" dir="auto">
+<p>PAM can also be used to prevent non-root users from logging in.</p>
+</li>
+<li data-line="33" dir="auto">
+<p>By adding&nbsp;<code>auth required pam_nologin.so</code>&nbsp;to the top of&nbsp;<code>/etc/pam.d/login</code>&nbsp;or&nbsp;<code>/etc/pam.d/SSHd</code>&nbsp;file you can easily prevent system wide logins via those methods.</p>
+</li>
+<li data-line="34" dir="auto">
+<p>After adding&nbsp;<code>auth required pam_nologin</code>&nbsp;to either file, a file named&nbsp;<code>nologin</code>&nbsp;must be created in the&nbsp;<code>/etc/</code>&nbsp;directory. If a user attempts to log in, the contents of that file will be displayed to them.</p>
+</li>
+<li data-line="35" dir="auto">
+<p>To re-enable logins, simply delete the&nbsp;<code>/etc/nologin</code>&nbsp;file.</p>
+</li>
+<li data-line="36" dir="auto">
+<p>Users will still be able to SSH into accounts by using SSH keys if the UsePAM setting in the SSH server's configuration file (&nbsp;<code>/etc/ssh/sshd_config</code>&nbsp;) is set to 'no'.</p>
+</li>
+<li data-line="38" dir="auto">
+<p>Account &amp; password expiration dates can be configured in&nbsp;<code>/etc/login.defs</code></p>
+</li>
+<li data-line="40" dir="auto">
+<p><code>pass_MIN_LEN</code>&nbsp;sets minimum password length</p>
+</li>
+<li data-line="41" dir="auto">
+<p><code>pass_WARN_AGE</code>&nbsp;number of days warning before a password expires</p>
+</li>
+<li data-line="43" dir="auto">
+<p>Use Shadow passwords.</p>
+</li>
+<li data-line="45" dir="auto">
+<p>Encrypted Passwords are typically stored in&nbsp;<code>/etc/passwd</code>&nbsp;, but can be viewed by all users. This means that attackers can simply copy the encrypted passwords and take their time cracking them.</p>
+</li>
+<li data-line="46" dir="auto">
+<p>With shadow passwords,&nbsp;<code>/etc/passwd</code>&nbsp;only shows an 'x' as the users password. Instead, encrypted user passwords are stored in&nbsp;<code>/etc/shadow</code>&nbsp;, which can only be accessed by root.</p>
+</li>
+<li data-line="47" dir="auto">
+<p>shadow passwords can be enabled using&nbsp;<code>pwconv</code>&nbsp;as root.</p>
+</li>
+<li data-line="48" dir="auto">
+<p>Shadow password format:</p>
+</li>
+<li data-line="50" dir="auto">
+<p><code>username:hashed password: days since epoch of last password change: days until user is allowed to change password: days before a password change is required: days warning before password expiry: days before account becomes inactive: days since epoch when account expires: reserved</code></p>
+</li>
+<li data-line="51" dir="auto">
+<p>Screenshot of the /etc/shadow file from a debian VM:<br>
+<img alt="Screenshot of the /etc/shadow file from a debian VM" src="https://patrick.quam.computer/images/etc%20shadow.jpg" referrerpolicy="no-referrer" target="_self" class="is-unresolved"></p>
+</li>
+<li data-line="54" dir="auto">
+<p><code>chage</code>&nbsp;: change user password expiry information.</p>
+</li>
+<li data-line="56" dir="auto">
+<p><code>chage -l account</code>&nbsp;:list account aging information.</p>
+</li>
+<li data-line="57" dir="auto">
+<p><code>chage -M Max_Days</code>&nbsp;: Set the max number of days during which a password is valid.</p>
+</li>
+<li data-line="58" dir="auto">
+<p><code>chage -E Epire_Date</code>&nbsp;: date on which the account will no longer be accessible in yyy/mm/dd format. Use -1 to 'un-expire' an account.</p>
+</li>
+<li data-line="59" dir="auto">
+<p><code>chage -d 0</code>&nbsp;: will force a user to change their password the next time they try to sign in.</p>
+</li>
+<li data-line="61" dir="auto">
+<p>Centralized Authentication</p>
+</li>
+<li data-line="63" dir="auto">
+<p>Centralized authentication systems allow administrators to prevent accounts from performing any actions, including logging in if they become compromised.</p>
+</li>
+<li data-line="64" dir="auto">
+<p>If an attack gains control of your centralized authentication system, they control the device.</p>
+</li>
+<li data-line="65" dir="auto">
+<p>Common centralized authentication systems are freeIPA and LDAP.</p>
+</li>
+<li data-line="67" dir="auto">
+<p>Intrusion prevention</p>
+</li>
+<li data-line="69" dir="auto">
+<p>Intrusion prevention systems, such as&nbsp;<a data-tooltip-position="top" aria-label="https://www.fail2ban.org/wiki/index.php/Main_Page" rel="noopener nofollow" class="external-link is-unresolved" href="https://www.fail2ban.org/wiki/index.php/Main_Page" target="_self">fail2ban</a>&nbsp;, monitor system log files. If too many failed login attempts are detected, their IP will be blocked.</p>
+</li>
+<li data-line="70" dir="auto">
+<p>fail2ban can be configured to unblock IP addresses after a set period of time, so if the "attacker" turns out to be a normal user that forgot their password, they will be able to regain access to the system.</p>
+</li>
+<li data-line="71" dir="auto">
+<p>fail2ban can be used for any application that writes login attempts to a log file. This includes SSH and many other common applications.</p>
+</li>
+<li data-line="73" dir="auto">
+<p>Disabling root logins</p>
+</li>
+<li data-line="75" dir="auto">
+<p>To display all accounts with UID of 0 (root access), run&nbsp;<code>awk -F: '$3 == 0 {print $1}' /etc/passwd</code></p>
+</li>
+<li data-line="77" dir="auto">
+<p>This command works by using awk, which is a text processing command. The -F: option tells awk to use a colon as the field separator, as fields in the /etc/passwd file are separated by colons. The $3 == 0 part is a condition that checks if the third field (which is the UID) is 0. If this condition is true, awk executes the action in the curly braces, which is to print the first field (the username).</p>
+</li>
+<li data-line="78" dir="auto">
+<p>Any accounts with a UID of 0 should either be assigned a different UID or be removed.</p>
+</li>
+<li data-line="80" dir="auto">
+<p><code>/etc/securetty</code></p>
+</li>
+<li data-line="82" dir="auto">
+<p>This is a config file that contains a list of TTY devices where root is allowed to login. Leaving it blank will prevent root logins.</p>
+</li>
+<li data-line="83" dir="auto">
+<p>TTY devices are 'local' terminal/console devices. Leaving a blank securetty file will not prevent remote console sessions, such as SSH.</p>
+</li>
+<li data-line="85" dir="auto">
+<p>Set the root account shell to nologin. This can be done by modifying the /etc/passwd file, or ideally with the chsh command.</p>
+</li>
+<li data-line="86" dir="auto">
+<p>Use&nbsp;<code>passwd /l root</code>&nbsp;to lock the root account password.</p>
+</li>
+<li data-line="87" dir="auto">
+<p>To prevent root logins via ssh, add&nbsp;<code>PermitRootLogin no</code>&nbsp;to the&nbsp;<code>/etc/ssh/sshd_config</code>&nbsp;file.</p>
+</li>
+<li data-line="89" dir="auto">
+<p>you can prevent other users from accessing the system via SSH by adding&nbsp;<code>DenyUsers account_names</code>&nbsp;to the same file.</p>
+</li>
+<li data-line="90" dir="auto">
+<p>Run&nbsp;<code>systemctl reload sshd</code></p>
+</li>
+<li data-line="92" dir="auto">
+<p>Securing System / Application Accounts</p>
+</li>
+<li data-line="94" dir="auto">
+<p>Use 1 account per service. For example, if you are running an nginx web server, run that server as its own nginx user.</p>
+</li>
+<li data-line="95" dir="auto">
+<p>Do not allow direct logins to system or application accounts.</p>
+</li>
+<li data-line="96" dir="auto">
+<p>Use&nbsp;<code>sudo -u</code>&nbsp;to run commands as an application account.</p>
+</li>
+<li data-line="98" dir="auto">
+<p>Deleting Accounts</p>
+</li>
+<li data-line="100" dir="auto">
+<p>When an account is no longer needed, use&nbsp;<code>userdel -r UID</code>&nbsp;to delete the account. -r specifies to delete that users home directory.</p>
+</li>
+<li data-line="101" dir="auto">
+<p>Use&nbsp;<code>id account_name</code>&nbsp;to find an accounts UID.</p>
+</li>
+<li data-line="102" dir="auto">
+<p>After deleting a user account, you can find leftover files that belonged to that user by running&nbsp;<code>find / -UID</code>&nbsp;and&nbsp;<code>find / -nouser</code></p>
+</li>
+</ul></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div class="markdown-embed-content node-insert-event" style="display: none;"></div><div class="markdown-embed-link" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-maximize-2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></div></div></div><div class="canvas-node-label">Account Security</div></div><div class="canvas-node" style="z-index: 6; transform: translate(-1440px, 6040px); width: 640px; height: 640px; --canvas-node-width: 640px; --canvas-node-height: 640px;"><div class="canvas-node-container"><div class="canvas-node-content markdown-embed is-loaded"><div class="markdown-embed-content node-insert-event"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event show-indentation-guide allow-fold-headings allow-fold-lists show-properties"><div class="markdown-preview-sizer"><div class="header"><h1 class="page-title heading inline-title" id="Network_Security_0">Network Security</h1><div class="data-bar"></div></div><div class="markdown-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-ul"><ul>
+<li data-line="0" dir="auto">
+<p>Network Services (typically referred to as servers, or daemons)</p>
+</li>
+<li data-line="2" dir="auto">
+<p>Servers &amp; daemons constantly run and the background &amp; listen on network ports.</p>
+</li>
+<li data-line="3" dir="auto">
+<p>Because their output is continuous, it is typically stored in log files. Most applications will store their logs in the /var/logs directory.</p>
+</li>
+<li data-line="4" dir="auto">
+<p>Daemons and servers are typically designed with a single task in mind (hosting a website, handling SSH, etc)</p>
+</li>
+<li data-line="6" dir="auto">
+<p>Use a dedicated user for each application.</p>
+</li>
+<li data-line="8" dir="auto">
+<p>This way, if an attacker gains control over a system, they should not be able to access the rest of the system.</p>
+</li>
+<li data-line="9" dir="auto">
+<p>ports below 1024 require root privileges to open. If an application must use one of these ports, use root privileges to open the port, then drop the privileges.</p>
+</li>
+<li data-line="10" dir="auto">
+<p>if a server is running on a low port, check the application configuration to see if you can specify a non-root user to perform the work.</p>
+</li>
+<li data-line="12" dir="auto">
+<p>Stop &amp; uninstall all unused services.</p>
+</li>
+<li data-line="13" dir="auto">
+<p>Ensure all applications are up to date with the latest security patches.</p>
+</li>
+<li data-line="14" dir="auto">
+<p>Configure each service to only listen to required interfaces and addresses.</p>
+</li>
+<li data-line="16" dir="auto">
+<p>For example, configure SSH to only listen to private IP addresses on the local network so that SSH is not accessable via the internet.</p>
+</li>
+<li data-line="17" dir="auto">
+<p>some services, such as databases, may not need any access by network devices. In this case, configure the service to listen to the "loopback" adress: 127.0.0.1</p>
+</li>
+</ul></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div class="markdown-embed-content node-insert-event" style="display: none;"></div><div class="markdown-embed-link" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-maximize-2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></div></div></div><div class="canvas-node-label">Network Security</div></div><div class="canvas-node" style="z-index: 7; transform: translate(-1440px, 6820px); width: 640px; height: 1340px; --canvas-node-width: 640px; --canvas-node-height: 1340px;"><div class="canvas-node-container"><div class="canvas-node-content markdown-embed is-loaded"><div class="markdown-embed-content node-insert-event"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event show-indentation-guide allow-fold-headings allow-fold-lists show-properties"><div class="markdown-preview-sizer"><div class="header"><h1 class="page-title heading inline-title" id="Securing_SSH_0">Securing SSH</h1><div class="data-bar"></div></div><div class="markdown-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-ul"><ul>
+<li data-line="0" dir="auto">
+<p>Key based authentication is generally the safest way to use SSH</p>
+</li>
+<li data-line="1" dir="auto">
+<p>Key based authentication can be enabled by adding&nbsp;<code>PubKeyAuthentication yes</code>&nbsp;to the&nbsp;<code>/etc/ssh/sshd_config</code>&nbsp;file.</p>
+</li>
+<li data-line="2" dir="auto">
+<p>To generate an SSH key, run&nbsp;<code>ssh-keygen</code></p>
+</li>
+<li data-line="4" dir="auto">
+<p>When generating a key, it is common to use&nbsp;<code>ssh-keygen -t</code>&nbsp;to specify what algorithm to use when generating the key.</p>
+</li>
+<li data-line="6" dir="auto">
+<p>Common algorithm options are rsa and ed25519</p>
+</li>
+<li data-line="8" dir="auto">
+<p>Another common option when generating a key is&nbsp;<code>ssh-keygen -b</code>&nbsp;which is used to specify the number of bits in the key.</p>
+</li>
+<li data-line="10" dir="auto">
+<p>A longer key means it is better protected against brute force attacks, but it also means it is more compute heavy to generate and validate.</p>
+</li>
+<li data-line="11" dir="auto">
+<p>The typical length is 4096</p>
+</li>
+<li data-line="13" dir="auto">
+<p>The command should look something like&nbsp;<code>ssh-keygen -t ed25519 -b 4096</code></p>
+</li>
+<li data-line="14" dir="auto">
+<p>When you generate an ssh key, it will ask you to input a password that will be required when that key is used.</p>
+</li>
+<li data-line="16" dir="auto">
+<p>In some usecases, you may not want to have a password protected key. For example, if you need to automate an SSH connection, it may be unnecessarily complicated to automate password entry.</p>
+</li>
+<li data-line="18" dir="auto">
+<p>When you run ssh-keygen, two files are created in that users&nbsp;<code>~/.ssh/</code>&nbsp;directory. Those files are id_rsa &amp; id_rsa.pub</p>
+</li>
+<li data-line="20" dir="auto">
+<p>id_rsa is your&nbsp;<mark>private</mark>&nbsp;SSH key. Its permissions should be set so that only the user that generated it can access it.</p>
+</li>
+<li data-line="21" dir="auto">
+<p>id_rsa.pub is your public SSH key. This will be placed in the remote hosts ~/.ssh/authorized-keys file to grant SSH access to that user.</p>
+</li>
+<li data-line="22" dir="auto">
+<p>you can add a key to a remote host by running&nbsp;<code>ssh-copy-id user@host</code></p>
+</li>
+<li data-line="23" dir="auto">
+<p>For example&nbsp;<code>ssh-copy-id username@1.1.1.1</code>&nbsp;or&nbsp;<code>ssh-copy-id username@mydomain.com</code></p>
+</li>
+<li data-line="25" dir="auto">
+<p>SSH key authentication can be enforced by disabling password authentication by adding&nbsp;<code>PasswordAuthentication no</code>&nbsp;to the&nbsp;<code>/etc/ssh/sshd_config</code>&nbsp;file.</p>
+</li>
+<li data-line="27" dir="auto">
+<p>Disabling password authentication to SSH is generally good practice as SSH keys are effectively impossible to brute force.</p>
+</li>
+<li data-line="29" dir="auto">
+<p><mark>You should never log in directly to the root user.</mark></p>
+</li>
+<li data-line="31" dir="auto">
+<p>When setting up a remote host initially it is OK to log in as the root user to get other accounts set up, but then SSH access should quickly be disabled.</p>
+</li>
+<li data-line="32" dir="auto">
+<p>To prevent root logins via ssh, add&nbsp;<code>PermitRootLogin no</code>&nbsp;to the&nbsp;<code>/etc/ssh/sshd_config</code>&nbsp;file.</p>
+</li>
+<li data-line="33" dir="auto">
+<p>If you need acccess the root user, you should do so by SSHing into your personal user, and then switching to the root user using&nbsp;<code>sudo su -</code></p>
+</li>
+<li data-line="35" dir="auto">
+<p>sshd_config</p>
+</li>
+<li data-line="37" dir="auto">
+<p>Specific users can be granted SSH access by adding&nbsp;<code>AllowUsers username0 username1 username 2</code></p>
+</li>
+<li data-line="38" dir="auto">
+<p>The same can be done for groups&nbsp;<code>AllowGroups group0 group1 group2</code></p>
+</li>
+<li data-line="39" dir="auto">
+<p>Groups &amp; users can be denied SSH access by adding&nbsp;<code>DenyUsers</code>&nbsp;or&nbsp;<code>DenyGroups</code></p>
+</li>
+<li data-line="40" dir="auto">
+<p><mark>The SSH banner should be disabled</mark>&nbsp;by adding&nbsp;<code>Banner none</code>&nbsp;as the information it provides may be used by attackers.</p>
+</li>
+<li data-line="41" dir="auto">
+<p><mark>Changes to sshd_config will not apply until the application has been reloaded.</mark></p>
+</li>
+<li data-line="43" dir="auto">
+<p>This can generally be done by running&nbsp;<code>systemctl reload sshd</code></p>
+</li>
+</ul></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div class="markdown-embed-content node-insert-event" style="display: none;"></div><div class="markdown-embed-link" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-maximize-2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></div></div></div><div class="canvas-node-label">Securing SSH</div></div><div class="canvas-node" style="z-index: 8; transform: translate(-1440px, 8300px); width: 640px; height: 220px; --canvas-node-width: 640px; --canvas-node-height: 220px;"><div class="canvas-node-container"><div class="canvas-node-content markdown-embed is-loaded"><div class="markdown-embed-content node-insert-event"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event show-indentation-guide allow-fold-headings allow-fold-lists show-properties"><div class="markdown-preview-sizer"><div class="header"><h1 class="page-title heading inline-title" id="Other_Security_Resources_0">Other Security Resources</h1><div class="data-bar"></div></div><div class="markdown-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-p"><p dir="auto"><a data-tooltip-position="top" aria-label="https://www.linode.com/docs/guides/security/basics/" data-href="https://www.linode.com/docs/guides/security/basics/" href="https://www.linode.com/docs/guides/security/basics/" class="internal-link is-unresolved" target="_self" rel="noopener nofollow">Linode Security Basics</a><br>
+<a data-tooltip-position="top" aria-label="https://www.cyberciti.biz/tips/linux-security.html" data-href="https://www.cyberciti.biz/tips/linux-security.html" href="https://www.cyberciti.biz/tips/linux-security.html" class="internal-link is-unresolved" target="_self" rel="noopener nofollow">Cyberciti Linux Hardening</a><br>
+<a data-tooltip-position="top" aria-label="https://portswigger.net/web-security/all-materials" data-href="https://portswigger.net/web-security/all-materials" href="https://portswigger.net/web-security/all-materials" class="internal-link is-unresolved" target="_self" rel="noopener nofollow">PortSwigger Security Materials</a></p></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div class="markdown-embed-content node-insert-event" style="display: none;"></div><div class="markdown-embed-link" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-maximize-2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></div></div></div><div class="canvas-node-label">Other Security Resources</div></div><div class="canvas-node" style="z-index: 9; transform: translate(-1900px, -700px); width: 400px; height: 480px; --canvas-node-width: 400px; --canvas-node-height: 480px;"><div class="canvas-node-container"><div class="canvas-node-content markdown-embed is-loaded"><div class="markdown-embed-content node-insert-event"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event show-indentation-guide allow-fold-headings allow-fold-lists show-properties"><div class="markdown-preview-sizer"><div class="header"><h1 class="page-title heading inline-title" id="Linux_Hardening_0">Linux Hardening</h1><div class="data-bar"></div></div><div class="markdown-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-p"><p dir="auto"><a data-tooltip-position="top" aria-label="Linux Hardening.canvas" data-href="Linux Hardening.canvas" href="linux-hardening.html" class="internal-link" target="_self" rel="noopener nofollow">Linux Hardening</a></p></div><div class="el-p"><p dir="auto"><a data-href="General Security Considerations" href="general-security-considerations.html" class="internal-link" target="_self" rel="noopener nofollow">General Security Considerations</a><br>
+<a data-href="Physical Security" href="physical-security.html" class="internal-link" target="_self" rel="noopener nofollow">Physical Security</a><br>
+<a data-href="Account Security" href="account-security.html" class="internal-link" target="_self" rel="noopener nofollow">Account Security</a><br>
+<a data-href="Network Security" href="network-security.html" class="internal-link" target="_self" rel="noopener nofollow">Network Security</a><br>
+<a data-href="Securing SSH" href="securing-ssh.html" class="internal-link" target="_self" rel="noopener nofollow">Securing SSH</a></p></div><div class="el-p"><p dir="auto"><a data-href="Other Security Resources" href="other-security-resources.html" class="internal-link" target="_self" rel="noopener nofollow">Other Security Resources</a></p></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div class="markdown-embed-content node-insert-event" style="display: none;"></div><div class="markdown-embed-link" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-maximize-2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg></div></div></div><div class="canvas-node-label">Linux Hardening</div></div></div></div></div></div><div id="right-content" class="leaf" style="--sidebar-width: var(--sidebar-width-right);"></div></div></div></body></html>

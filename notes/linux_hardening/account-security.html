@@ -1,464 +1,232 @@
-  <!-- sub-section3, account security -->
-  <section class="grey-section" >
-    <div class="row">
-     <div class="col-lg-12">
-      <h1 class="sub-section-header" id="-account-security-">
-       <mark>
-        Account Security
-       </mark>
-      </h1>
-     </div>
-     <div class="sub-section-box col-lg-12">
-      <ul >
-       <li>
-        Root user always has a user ID of 0.
-       </li>
-       <li>
-        Assigning a User an ID of 0 will grant them root privileges.
-       </li>
-       <li>
-        Accounts for system services should have UID's of less than 1,000.
-       </li>
-       <li>
-        New users in the standard user range can be created using
-        <code>
-         useradd
-        </code>
-       </li>
-       <li>
-        New users can be created in the system services account range using
-        <code>
-         useradd -r
-        </code>
-       </li>
-       <li class="sub-list-padding">
-        authentication logs can be viewed by running the
-        <code>
-         last
-        </code>
-        command.
-        <code>
-         lastb
-        </code>
-        will show failed login attempts.
-       </li>
-       <ul >
-        <li>
-         The
-         <code>
-          last
-         </code>
-         command logs are found in
-         <code>
-          /var/log/wtemp
-         </code>
-        </li>
-        <li>
-         logs for
-         <code>
-          lastb
-         </code>
-         are stored in
-         <code>
-          /var/log/btemp
-         </code>
-        </li>
-        <li>
-         Other authentication logs can be found in the messages, syslog, secure, and auth.log files in the
-         <code>
-          /var/log/
-         </code>
-         directory.
-        </li>
-       </ul>
-       <li class="sub-list-padding">
-        Sometimes you may want to lock a user account. Maybe the account is compromised, a user no longer needs access, or it is a dedicated account for a service or application. Here are a few ways you can disable logins:
-       </li>
-       <ul >
-        <li>
-         Changing the final entry in a users line of the
-         <code>
-          /etc/passwd
-         </code>
-         file to nologin (default is /bin/bash)
-        </li>
-        <ul >
-         <li>
-          This can also be done by using the change shell command like this:
-          <code>
-           chsh -s shell account
-          </code>
-         </li>
-         <li>
-          For example,
-          <code>
-           chsh -s /sbin/nologin foo
-          </code>
-          would disable logins for the user foo.
-         </li>
-         <li>
-          to re-enable logins, you would run
-          <code>
-           chsh -s /bin/bash foo
-          </code>
-         </li>
-        </ul>
-        <li>
-         Another way to lock an account is with the passwd command, although this only prevents the user from logging in using a password. For example, a user would still be able to log in using an SSH key.
-        </li>
-        <ul >
-         <li>
-          To lock an account:
-          <code>
-           passwd -l foo
-          </code>
-         </li>
-         <li>
-          To un-lock that account:
-          <code>
-           passwd -u foo
-          </code>
-         </li>
-        </ul>
-       </ul>
-       <li class="sub-list-padding">
-        PAM, or pluggable Authentication Module
-       </li>
-       <ul >
-        <li>
-         PAM allows applications to use any authentication method (ie, fingerprint, yubikey, etc).
-        </li>
-        <li>
-         PAM modules exist for
-         <a class="link" href="https://github.com/google/google-authenticator-libpam#google-authenticator-pam-module" target="_blank">
-          google authenticator
-         </a>
-         and other Multi-Factor Authentication services.
-        </li>
-        <li>
-         PAM can be used for authentication for any application that supports it.
-        </li>
-        <li>
-         PAM files are stored in /etc/pam.d
-        </li>
-        <li>
-         Account password requirements can be set in
-         <code>
-          /etc/pam.d/common-password
-         </code>
-         on Ubuntu/Debian systems or
-         <code>
-          /etc/pam.d/system-auth
-         </code>
-         on Red Hat systems.
-        </li>
-        <li>
-         PAM can also be used to prevent non-root users from logging in.
-        </li>
-        <ul >
-         <li>
-          By adding
-          <code>
-           auth required pam_nologin.so
-          </code>
-          to the top of
-          <code>
-           /etc/pam.d/login
-          </code>
-          or
-          <code>
-           /etc/pam.d/SSHd
-          </code>
-          file you can easily prevent system wide logins via those methods.
-         </li>
-         <li>
-          After adding
-          <code>
-           auth required pam_nologin
-          </code>
-          to either file, a file named
-          <code>
-           nologin
-          </code>
-          must be created in the
-          <code>
-           /etc/
-          </code>
-          directory. If a user attempts to log in, the contents of that file will be displayed to them.
-         </li>
-         <li>
-          To re-enable logins, simply delete the
-          <code>
-           /etc/nologin
-          </code>
-          file.
-         </li>
-         <li>
-          Users will still be able to SSH into accounts by using SSH keys if the UsePAM setting in the SSH server's configuration file (
-          <code>
-           /etc/ssh/sshd_config
-          </code>
-          ) is set to 'no'.
-         </li>
-        </ul>
-       </ul>
-       <li class="sub-list-padding">
-        Account &amp; password expiration dates can be configured in
-        <code>
-         /etc/login.defs
-        </code>
-       </li>
-       <ul >
-        <li>
-         <code>
-          pass_MIN_LEN
-         </code>
-         sets minimum password length
-        </li>
-        <li>
-         <code>
-          pass_WARN_AGE
-         </code>
-         number of days warning before a password expires
-        </li>
-       </ul>
-       <li class="sub-list-padding">
-        Use Shadow passwords.
-       </li>
-       <ul >
-        <li>
-         Encrypted Passwords are typically stored in
-         <code>
-          /etc/passwd
-         </code>
-         , but can be viewed by all users. This means that attackers can simply copy the encrypted passwords and take their time cracking them.
-        </li>
-        <li>
-         With shadow passwords,
-         <code>
-          /etc/passwd
-         </code>
-         only shows an 'x' as the users password. Instead, encrypted user passwords are stored in
-         <code>
-          /etc/shadow
-         </code>
-         , which can only be accessed by root.
-        </li>
-        <li>
-         shadow passwords can be enabled using
-         <code>
-          pwconv
-         </code>
-         as root.
-        </li>
-        <li>
-         Shadow password format:
-        </li>
-        <ul >
-         <li>
-          <code>
-           username:hashed password: days since epoch of last password change: days until user is allowed to change password: days before a password change is required: days warning before password expiry: days before account becomes inactive: days since epoch when account expires: reserved
-          </code>
-         </li>
-         <li>
-          Screenshot of the /etc/shadow file from a debian VM:
-          <br/>
-          <img alt="Screenshot of the /etc/shadow file from a debian VM" class="sub-section-image" src="/images/etc shadow.jpg"/>
-         </li>
-        </ul>
-       </ul>
-       <li class="sub-list-padding">
-        <code>
-         chage
-        </code>
-        : change user password expiry information.
-       </li>
-       <ul >
-        <li>
-         <code>
-          chage -l account
-         </code>
-         :list account aging information.
-        </li>
-        <li>
-         <code>
-          chage -M Max_Days
-         </code>
-         : Set the max number of days during which a password is valid.
-        </li>
-        <li>
-         <code>
-          chage -E Epire_Date
-         </code>
-         : date on which the account will no longer be accessible in yyy/mm/dd format. Use -1 to 'un-expire' an account.
-        </li>
-        <li>
-         <code>
-          chage -d 0
-         </code>
-         : will force a user to change their password the next time they try to sign in.
-        </li>
-       </ul>
-       <li class="sub-list-padding">
-        Centralized Authentication
-       </li>
-       <ul >
-        <li>
-         Centralized authentication systems allow administrators to prevent accounts from performing any actions, including logging in if they become compromised.
-        </li>
-        <li>
-         If an attack gains control of your centralized authentication system, they control the device.
-        </li>
-        <li>
-         Common centralized authentication systems are freeIPA and LDAP.
-        </li>
-       </ul>
-       <li class="sub-list-padding">
-        Intrusion prevention
-       </li>
-       <ul >
-        <li>
-         Intrusion prevention systems, such as
-         <a class="link" href="https://www.fail2ban.org/wiki/index.php/Main_Page" target="_blank">
-          fail2ban
-         </a>
-         , monitor system log files. If too many failed login attempts are detected, their IP will be blocked.
-        </li>
-        <li>
-         fail2ban can be configured to unblock IP addresses after a set period of time, so if the "attacker" turns out to be a normal user that forgot their password, they will be able to regain access to the system.
-        </li>
-        <li>
-         fail2ban can be used for any application that writes login attempts to a log file. This includes SSH and many other common applications.
-        </li>
-       </ul>
-       <li class="sub-list-padding">
-        Disabling root logins
-       </li>
-       <ul >
-        <li>
-         To display all accounts with UID of 0 (root access), run
-         <code>
-          awk -F: '$3 == 0 {print $1}' /etc/passwd
-         </code>
-        </li>
-        <ul >
-         <li>
-          This command works by using awk, which is a text processing command. The -F: option tells awk to use a colon as the field separator, as fields in the /etc/passwd file are separated by colons. The $3 == 0 part is a condition that checks if the third field (which is the UID) is 0. If this condition is true, awk executes the action in the curly braces, which is to print the first field (the username).
-         </li>
-         <li>
-          Any accounts with a UID of 0 should either be assigned a different UID or be removed.
-         </li>
-        </ul>
-        <li>
-         <code>
-          /etc/securetty
-         </code>
-        </li>
-        <ul >
-         <li>
-          This is a config file that contains a list of TTY devices where root is allowed to login. Leaving it blank will prevent root logins.
-         </li>
-         <li>
-          TTY devices are 'local' terminal/console devices. Leaving a blank securetty file will not prevent remote console sessions, such as SSH.
-         </li>
-        </ul>
-        <li>
-         Set the root account shell to nologin. This can be done by modifying the /etc/passwd file, or ideally with the chsh command.
-        </li>
-        <li>
-         Use
-         <code>
-          passwd /l root
-         </code>
-         to lock the root account password.
-        </li>
-        <li>
-         To prevent root logins via ssh, add
-         <code>
-          PermitRootLogin no
-         </code>
-         to the
-         <code>
-          /etc/ssh/sshd_config
-         </code>
-         file.
-        </li>
-        <ul >
-         <li>
-          you can prevent other users from accessing the system via SSH by adding
-          <code>
-           DenyUsers account_names
-          </code>
-          to the same file.
-         </li>
-         <li>
-          Run
-          <code>
-           systemctl reload sshd
-          </code>
-         </li>
-        </ul>
-        <li class="sub-list-padding">
-         Securing System / Application Accounts
-        </li>
-        <ul >
-         <li>
-          Use 1 account per service. For example, if you are running an nginx web server, run that server as its own nginx user.
-         </li>
-         <li>
-          Do not allow direct logins to system or application accounts.
-         </li>
-         <li>
-          Use
-          <code>
-           sudo -u
-          </code>
-          to run commands as an application account.
-         </li>
-        </ul>
-        <li class="sub-list-padding">
-         Deleting Accounts
-        </li>
-        <ul >
-         <li>
-          When an account is no longer needed, use
-          <code>
-           userdel -r UID
-          </code>
-          to delete the account. -r specifies to delete that users home directory.
-         </li>
-         <li>
-          Use
-          <code>
-           id account_name
-          </code>
-          to find an accounts UID.
-         </li>
-         <li>
-          After deleting a user account, you can find leftover files that belonged to that user by running
-          <code>
-           find / -UID
-          </code>
-          and
-          <code>
-           find / -nouser
-          </code>
-         </li>
-        </ul>
-       </ul>
-      </ul>
-     </div>
-     <div class="col-lg-1">
-     </div>
-    </div>
-
-    <div class="col-lg-12 bottom-nav">
-
-      <div>
-        <a href="#content" class="link">
-          <button hx-get="physical-security.html" hx-trigger="click" hx-target="#content">
-            < Physical Security
-          </button>
-        </a>
-      </div>
-  </section>
+<!DOCTYPE html> <html lang="en"><head>
+<title>Account Security</title>
+<base href=".">
+<meta name="pathname" content="account-security.html">
+<meta name="description" content="Patrick Quam - Account Security">
+<meta property="og:title" content="Account Security">
+<meta property="og:description" content="Patrick Quam - Account Security">
+<meta property="og:type" content="website">
+<meta property="og:url" content="account-security.html">
+<meta property="og:image" content="https://patrick.quam.computer/images/etc%20shadow.jpg">
+<meta charset="UTF-8"><meta property="og:site_name" content="Patrick Quam"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0"><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="site-lib/rss.xml"><script async="" id="webpage-script" src="site-lib/scripts/webpage.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><script async="" id="graph-wasm-script" src="site-lib/scripts/graph-wasm.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><script async="" id="graph-render-worker-script" src="site-lib/scripts/graph-render-worker.js" onload="this.onload=null;this.setAttribute(&quot;loaded&quot;, &quot;true&quot;)"></script><link rel="icon" href="site-lib/media/favicon.png"><link rel="stylesheet" href="site-lib/styles/obsidian.css"><link rel="preload" href="site-lib/styles/global-variable-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/global-variable-styles.css"></noscript><link rel="preload" href="site-lib/styles/main-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="site-lib/styles/main-styles.css"></noscript><style>body{--line-width:40em;--line-width-adaptive:40em;--file-line-width:40em;--sidebar-width:min(20em, 80vw);--collapse-arrow-size:11px;--tree-vertical-spacing:1.3em;--sidebar-margin:12px}:root{background-color:#202124}.sidebar{height:100%;font-size:14px;z-index:10;min-width:calc(var(--sidebar-width) + var(--divider-width-hover));max-width:calc(var(--sidebar-width) + var(--divider-width-hover));position:relative;overflow:hidden;overflow:clip;transition:min-width ease-in-out,max-width ease-in-out;transition-duration:.2s;contain:size}#left-sidebar{left:0}#right-sidebar{right:0}.sidebar.is-collapsed{min-width:0;max-width:0}.sidebar.floating{position:absolute}.sidebar .leaf-content{height:100%;min-width:calc(var(--sidebar-width) - var(--divider-width-hover));top:0;padding:var(--sidebar-margin);padding-top:4em;line-height:var(--line-height-tight);background-color:var(--background-secondary);transition:background-color,border-right,border-left,box-shadow;transition-duration:var(--color-fade-speed);transition-timing-function:ease-in-out;position:absolute;display:flex;flex-direction:column}.sidebar:not(.is-collapsed) .leaf-content{min-width:calc(max(100%,var(--sidebar-width)) - 3px);max-width:calc(max(100%,var(--sidebar-width)) - 3px)}#left-sidebar-content{left:0;border-top-right-radius:var(--radius-l);border-bottom-right-radius:var(--radius-l)}#right-sidebar-content{right:0;border-top-left-radius:var(--radius-l);border-bottom-left-radius:var(--radius-l)}.sidebar #left-sidebar-content,.sidebar #right-sidebar-content{contain:none!important;container-type:normal!important;animation:none!important}.sidebar:has(.leaf-content:empty):has(.topbar-content:empty){display:none}.sidebar-topbar{height:calc(2.3em + 2 * var(--sidebar-margin));width:var(--sidebar-width);padding:var(--sidebar-margin);z-index:1;position:fixed;display:flex;align-items:center;transition:width ease-in-out;transition-duration:inherit}.sidebar.is-collapsed .sidebar-topbar{width:calc(2.3em + var(--sidebar-margin) * 2)}.sidebar .sidebar-topbar.is-collapsed{width:0}#left-sidebar .sidebar-topbar{left:0;flex-direction:row;border-top-right-radius:var(--radius-l)}#right-sidebar .sidebar-topbar{right:0;flex-direction:row-reverse;border-top-left-radius:var(--radius-l)}#left-sidebar .topbar-content{margin-right:calc(2.3em + var(--sidebar-margin));flex-direction:row}#right-sidebar .topbar-content{margin-left:calc(2.3em + var(--sidebar-margin));flex-direction:row-reverse}.topbar-content{overflow:hidden visible;overflow:clip visible;width:100%;height:100%;display:flex;align-items:center;transition:inherit}.sidebar.is-collapsed .topbar-content{width:0;transition:inherit}.clickable-icon.sidebar-collapse-icon{background-color:transparent;color:var(--icon-color-focused);padding:2px!important;margin:0!important;height:100%!important;width:2.3em!important;margin-inline:0.14em!important;position:absolute}#left-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);right:var(--sidebar-margin)}#right-sidebar .clickable-icon.sidebar-collapse-icon{transform:rotateY(180deg);left:var(--sidebar-margin)}.clickable-icon.sidebar-collapse-icon svg.svg-icon{width:100%;height:100%}.feature-title{margin-left:1px;text-transform:uppercase;letter-spacing:.06em;margin-top:.75em;margin-bottom:.75em}.feature-header{display:flex;align-items:center;padding-top:0;font-size:1em;padding-left:0}body.floating-sidebars .sidebar{position:absolute}body{transition:background-color var(--color-fade-speed) ease-in-out}#navbar:not(:empty){display:flex;align-items:center;justify-content:space-between;padding:.5em 1em;width:100%}#main{display:flex;flex-direction:column;height:100%;width:100%;align-items:stretch;justify-content:center}#main-horizontal{display:flex;flex-direction:row;flex-grow:1;width:100%;align-items:stretch;justify-content:center}#center-content{flex-basis:100%;max-width:100%;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;transition:opacity .2s ease-in-out;contain:inline-size}.hide{opacity:0!important;transition:opacity .2s ease-in-out;pointer-events:none}#center-content>.obsidian-document{padding-left:2em;padding-right:1em;margin-bottom:0;width:100%;width:-webkit-fill-available;width:-moz-available;width:fill-available;transition:background-color var(--color-fade-speed) ease-in-out;border-top-right-radius:var(--window-radius,var(--radius-m));border-top-left-radius:var(--window-radius,var(--radius-m));overflow-x:hidden!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;contain:inline-size}body #center-content>.obsidian-document>.markdown-preview-sizer{padding-bottom:80vh;width:100%;max-width:var(--line-width);flex-basis:var(--line-width);transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document>div{width:100%!important;transition:background-color var(--color-fade-speed) ease-in-out;contain:inline-size}#center-content>.obsidian-document:not([data-type=markdown]).embed{display:flex;padding:1em;height:100%;width:100%;align-items:center;justify-content:center}#center-content>.obsidian-document:not([data-type=markdown]).embed>*{max-width:100%;max-height:100%;object-fit:contain}:not(h1,h2,h3,h4,h5,h6,li):has(> :is(.math,table)){overflow-x:auto!important}#center-content>.obsidian-document:not([data-type=markdown]){overflow-x:auto;contain:content;padding:0;margin:0;height:100%}.obsidian-document[data-type=attachment]{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;width:100%}.obsidian-document[data-type=attachment]>*{outline:0;border:none;box-shadow:none}.obsidian-document[data-type=attachment] :is(img){max-width:90%;max-height:90%;object-fit:contain}.obsidian-document[data-type=attachment]>:is(audio){width:100%;max-width:min(90%,var(--line-width))}.obsidian-document[data-type=attachment]>:is(embed,iframe,video){width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}.canvas-wrapper>:is(.header,.footer){z-index:100;position:absolute;display:flex;justify-content:center;flex-direction:column;width:100%;align-items:center}.scroll-highlight{position:absolute;width:100%;height:100%;pointer-events:none;z-index:1000;background-color:hsla(var(--color-accent-hsl),.25);opacity:0;padding:1em;inset:50%;translate:-50% -50%;border-radius:var(--radius-s)}</style><script defer="">async function loadIncludes(){let e=document.querySelectorAll("link[itemprop='include']");for(const t of e){let e=t.getAttribute("href");try{let o="";if(e.startsWith("https:")||e.startsWith("http:")||"file:"!=window.location.protocol){const n=await fetch(e);if(!n.ok){console.log("Could not include file: "+e),t?.remove();continue}o=await n.text()}else{const t=document.getElementById(btoa(encodeURI(e)));if(t){const e=JSON.parse(decodeURI(atob(t.getAttribute("value")??"")));o=e?.data??""}}let n=document.createRange().createContextualFragment(o);t.before(n),t.remove(),console.log("Included text: "+o),console.log("Included file: "+e)}catch(o){t?.remove(),console.log("Could not include file: "+e,o);continue}}}document.addEventListener("DOMContentLoaded",(()=>{loadIncludes()}));let isFileProtocol="file:"==location.protocol;function waitLoadScripts(e,t){let o=e.map((e=>document.getElementById(e+"-script")));!function e(n){let l=o[n],c=n+1;l?(l&&"true"!=l.getAttribute("loaded")||n<o.length&&e(c),n<o.length&&l.addEventListener("load",(()=>e(c)))):n<o.length?e(c):t()}(0)}</script></head><body class="publish css-settings-manager styled-scrollbars show-inline-title show-ribbon is-focused"><script defer="">let theme=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");"dark"==theme?(document.body.classList.add("theme-dark"),document.body.classList.remove("theme-light")):(document.body.classList.add("theme-light"),document.body.classList.remove("theme-dark")),window.innerWidth<480?document.body.classList.add("is-phone"):window.innerWidth<768?document.body.classList.add("is-tablet"):window.innerWidth<1024?document.body.classList.add("is-small-screen"):document.body.classList.add("is-large-screen")</script><div class="parsed-feature-container" style="display: contents;"><link itemprop="include" href="site-lib/html/custom-head-content-content.html"></div><div id="main"><div id="navbar"></div><div id="main-horizontal"><div id="left-content" class="leaf" style="--sidebar-width: var(--sidebar-width-left);"><div id="left-sidebar" class="sidebar"><div class="sidebar-handle"></div><div class="sidebar-topbar"><div class="topbar-content"><div id="search-container"><div id="search-wrapper"><input enterkeyhint="search" type="search" spellcheck="false" placeholder="Search..."><div aria-label="Clear search" id="search-clear-button"></div></div></div></div><div class="clickable-icon sidebar-collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><path d="M21 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H21C22.1046 21 23 20.1046 23 19V5C23 3.89543 22.1046 3 21 3Z"></path><path d="M10 4V20"></path><path d="M4 7H7"></path><path d="M4 10H7"></path><path d="M4 13H7"></path></svg></div></div><div class="sidebar-content-wrapper"><div id="left-sidebar-content" class="leaf-content"><link itemprop="include" href="site-lib/html/file-tree-content.html"></div></div><script defer="">let ls = document.querySelector("#left-sidebar"); ls.classList.toggle("is-collapsed", window.innerWidth < 768); ls.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-left-width"));</script></div></div><div id="center-content" class="leaf"><div class="obsidian-document markdown-preview-view markdown-rendered node-insert-event is-readable-line-width allow-fold-headings allow-fold-lists show-indentation-guide show-properties" data-type="markdown"><style id="MJX-CHTML-styles"></style><div class="markdown-preview-sizer markdown-preview-section"><div class="header"><h1 class="page-title heading inline-title" id="Account_Security_0">Account Security</h1><div class="data-bar"></div></div><div class="markdown-preview-pusher" style="width: 1px; height: 0.1px; margin-bottom: 0px;"></div><div class="el-ul"><ul class="has-list-bullet">
+<li data-line="0" dir="auto"><span class="list-bullet"></span>
+<p>Root user always has a user ID of 0.</p>
+</li>
+<li data-line="1" dir="auto"><span class="list-bullet"></span>
+<p>Assigning a User an ID of 0 will grant them root privileges.</p>
+</li>
+<li data-line="2" dir="auto"><span class="list-bullet"></span>
+<p>Accounts for system services should have UID's of less than 1,000.</p>
+</li>
+<li data-line="3" dir="auto"><span class="list-bullet"></span>
+<p>New users in the standard user range can be created using&nbsp;<code>useradd</code></p>
+</li>
+<li data-line="4" dir="auto"><span class="list-bullet"></span>
+<p>New users can be created in the system services account range using&nbsp;<code>useradd -r</code></p>
+</li>
+<li data-line="5" dir="auto"><span class="list-bullet"></span>
+<p>authentication logs can be viewed by running the&nbsp;<code>last</code>&nbsp;command.&nbsp;<code>lastb</code>&nbsp;will show failed login attempts.</p>
+</li>
+<li data-line="7" dir="auto"><span class="list-bullet"></span>
+<p>The&nbsp;<code>last</code>&nbsp;command logs are found in&nbsp;<code>/var/log/wtemp</code></p>
+</li>
+<li data-line="8" dir="auto"><span class="list-bullet"></span>
+<p>logs for&nbsp;<code>lastb</code>&nbsp;are stored in&nbsp;<code>/var/log/btemp</code></p>
+</li>
+<li data-line="9" dir="auto"><span class="list-bullet"></span>
+<p>Other authentication logs can be found in the messages, syslog, secure, and auth.log files in the&nbsp;<code>/var/log/</code>&nbsp;directory.</p>
+</li>
+<li data-line="11" dir="auto"><span class="list-bullet"></span>
+<p>Sometimes you may want to lock a user account. Maybe the account is compromised, a user no longer needs access, or it is a dedicated account for a service or application. Here are a few ways you can disable logins:</p>
+</li>
+<li data-line="13" dir="auto"><span class="list-bullet"></span>
+<p>Changing the final entry in a users line of the&nbsp;<code>/etc/passwd</code>&nbsp;file to nologin (default is /bin/bash)</p>
+</li>
+<li data-line="15" dir="auto"><span class="list-bullet"></span>
+<p>This can also be done by using the change shell command like this:&nbsp;<code>chsh -s shell account</code></p>
+</li>
+<li data-line="16" dir="auto"><span class="list-bullet"></span>
+<p>For example,&nbsp;<code>chsh -s /sbin/nologin foo</code>&nbsp;would disable logins for the user foo.</p>
+</li>
+<li data-line="17" dir="auto"><span class="list-bullet"></span>
+<p>to re-enable logins, you would run&nbsp;<code>chsh -s /bin/bash foo</code></p>
+</li>
+<li data-line="19" dir="auto"><span class="list-bullet"></span>
+<p>Another way to lock an account is with the passwd command, although this only prevents the user from logging in using a password. For example, a user would still be able to log in using an SSH key.</p>
+</li>
+<li data-line="21" dir="auto"><span class="list-bullet"></span>
+<p>To lock an account:&nbsp;<code>passwd -l foo</code></p>
+</li>
+<li data-line="22" dir="auto"><span class="list-bullet"></span>
+<p>To un-lock that account:&nbsp;<code>passwd -u foo</code></p>
+</li>
+<li data-line="24" dir="auto"><span class="list-bullet"></span>
+<p>PAM, or pluggable Authentication Module</p>
+</li>
+<li data-line="26" dir="auto"><span class="list-bullet"></span>
+<p>PAM allows applications to use any authentication method (ie, fingerprint, yubikey, etc).</p>
+</li>
+<li data-line="27" dir="auto"><span class="list-bullet"></span>
+<p>PAM modules exist for&nbsp;<a data-tooltip-position="top" aria-label="https://github.com/google/google-authenticator-libpam#google-authenticator-pam-module" rel="noopener nofollow" class="external-link is-unresolved" href="https://github.com/google/google-authenticator-libpam#google-authenticator-pam-module" target="_self">google authenticator</a>&nbsp;and other Multi-Factor Authentication services.</p>
+</li>
+<li data-line="28" dir="auto"><span class="list-bullet"></span>
+<p>PAM can be used for authentication for any application that supports it.</p>
+</li>
+<li data-line="29" dir="auto"><span class="list-bullet"></span>
+<p>PAM files are stored in /etc/pam.d</p>
+</li>
+<li data-line="30" dir="auto"><span class="list-bullet"></span>
+<p>Account password requirements can be set in&nbsp;<code>/etc/pam.d/common-password</code>&nbsp;on Ubuntu/Debian systems or&nbsp;<code>/etc/pam.d/system-auth</code>&nbsp;on Red Hat systems.</p>
+</li>
+<li data-line="31" dir="auto"><span class="list-bullet"></span>
+<p>PAM can also be used to prevent non-root users from logging in.</p>
+</li>
+<li data-line="33" dir="auto"><span class="list-bullet"></span>
+<p>By adding&nbsp;<code>auth required pam_nologin.so</code>&nbsp;to the top of&nbsp;<code>/etc/pam.d/login</code>&nbsp;or&nbsp;<code>/etc/pam.d/SSHd</code>&nbsp;file you can easily prevent system wide logins via those methods.</p>
+</li>
+<li data-line="34" dir="auto"><span class="list-bullet"></span>
+<p>After adding&nbsp;<code>auth required pam_nologin</code>&nbsp;to either file, a file named&nbsp;<code>nologin</code>&nbsp;must be created in the&nbsp;<code>/etc/</code>&nbsp;directory. If a user attempts to log in, the contents of that file will be displayed to them.</p>
+</li>
+<li data-line="35" dir="auto"><span class="list-bullet"></span>
+<p>To re-enable logins, simply delete the&nbsp;<code>/etc/nologin</code>&nbsp;file.</p>
+</li>
+<li data-line="36" dir="auto"><span class="list-bullet"></span>
+<p>Users will still be able to SSH into accounts by using SSH keys if the UsePAM setting in the SSH server's configuration file (&nbsp;<code>/etc/ssh/sshd_config</code>&nbsp;) is set to 'no'.</p>
+</li>
+<li data-line="38" dir="auto"><span class="list-bullet"></span>
+<p>Account &amp; password expiration dates can be configured in&nbsp;<code>/etc/login.defs</code></p>
+</li>
+<li data-line="40" dir="auto"><span class="list-bullet"></span>
+<p><code>pass_MIN_LEN</code>&nbsp;sets minimum password length</p>
+</li>
+<li data-line="41" dir="auto"><span class="list-bullet"></span>
+<p><code>pass_WARN_AGE</code>&nbsp;number of days warning before a password expires</p>
+</li>
+<li data-line="43" dir="auto"><span class="list-bullet"></span>
+<p>Use Shadow passwords.</p>
+</li>
+<li data-line="45" dir="auto"><span class="list-bullet"></span>
+<p>Encrypted Passwords are typically stored in&nbsp;<code>/etc/passwd</code>&nbsp;, but can be viewed by all users. This means that attackers can simply copy the encrypted passwords and take their time cracking them.</p>
+</li>
+<li data-line="46" dir="auto"><span class="list-bullet"></span>
+<p>With shadow passwords,&nbsp;<code>/etc/passwd</code>&nbsp;only shows an 'x' as the users password. Instead, encrypted user passwords are stored in&nbsp;<code>/etc/shadow</code>&nbsp;, which can only be accessed by root.</p>
+</li>
+<li data-line="47" dir="auto"><span class="list-bullet"></span>
+<p>shadow passwords can be enabled using&nbsp;<code>pwconv</code>&nbsp;as root.</p>
+</li>
+<li data-line="48" dir="auto"><span class="list-bullet"></span>
+<p>Shadow password format:</p>
+</li>
+<li data-line="50" dir="auto"><span class="list-bullet"></span>
+<p><code>username:hashed password: days since epoch of last password change: days until user is allowed to change password: days before a password change is required: days warning before password expiry: days before account becomes inactive: days since epoch when account expires: reserved</code></p>
+</li>
+<li data-line="51" dir="auto"><span class="list-bullet"></span>
+<p>Screenshot of the /etc/shadow file from a debian VM:<br>
+<img alt="Screenshot of the /etc/shadow file from a debian VM" src="https://patrick.quam.computer/images/etc%20shadow.jpg" referrerpolicy="no-referrer" target="_self" class="is-unresolved"></p>
+</li>
+<li data-line="54" dir="auto"><span class="list-bullet"></span>
+<p><code>chage</code>&nbsp;: change user password expiry information.</p>
+</li>
+<li data-line="56" dir="auto"><span class="list-bullet"></span>
+<p><code>chage -l account</code>&nbsp;:list account aging information.</p>
+</li>
+<li data-line="57" dir="auto"><span class="list-bullet"></span>
+<p><code>chage -M Max_Days</code>&nbsp;: Set the max number of days during which a password is valid.</p>
+</li>
+<li data-line="58" dir="auto"><span class="list-bullet"></span>
+<p><code>chage -E Epire_Date</code>&nbsp;: date on which the account will no longer be accessible in yyy/mm/dd format. Use -1 to 'un-expire' an account.</p>
+</li>
+<li data-line="59" dir="auto"><span class="list-bullet"></span>
+<p><code>chage -d 0</code>&nbsp;: will force a user to change their password the next time they try to sign in.</p>
+</li>
+<li data-line="61" dir="auto"><span class="list-bullet"></span>
+<p>Centralized Authentication</p>
+</li>
+<li data-line="63" dir="auto"><span class="list-bullet"></span>
+<p>Centralized authentication systems allow administrators to prevent accounts from performing any actions, including logging in if they become compromised.</p>
+</li>
+<li data-line="64" dir="auto"><span class="list-bullet"></span>
+<p>If an attack gains control of your centralized authentication system, they control the device.</p>
+</li>
+<li data-line="65" dir="auto"><span class="list-bullet"></span>
+<p>Common centralized authentication systems are freeIPA and LDAP.</p>
+</li>
+<li data-line="67" dir="auto"><span class="list-bullet"></span>
+<p>Intrusion prevention</p>
+</li>
+<li data-line="69" dir="auto"><span class="list-bullet"></span>
+<p>Intrusion prevention systems, such as&nbsp;<a data-tooltip-position="top" aria-label="https://www.fail2ban.org/wiki/index.php/Main_Page" rel="noopener nofollow" class="external-link is-unresolved" href="https://www.fail2ban.org/wiki/index.php/Main_Page" target="_self">fail2ban</a>&nbsp;, monitor system log files. If too many failed login attempts are detected, their IP will be blocked.</p>
+</li>
+<li data-line="70" dir="auto"><span class="list-bullet"></span>
+<p>fail2ban can be configured to unblock IP addresses after a set period of time, so if the "attacker" turns out to be a normal user that forgot their password, they will be able to regain access to the system.</p>
+</li>
+<li data-line="71" dir="auto"><span class="list-bullet"></span>
+<p>fail2ban can be used for any application that writes login attempts to a log file. This includes SSH and many other common applications.</p>
+</li>
+<li data-line="73" dir="auto"><span class="list-bullet"></span>
+<p>Disabling root logins</p>
+</li>
+<li data-line="75" dir="auto"><span class="list-bullet"></span>
+<p>To display all accounts with UID of 0 (root access), run&nbsp;<code>awk -F: '$3 == 0 {print $1}' /etc/passwd</code></p>
+</li>
+<li data-line="77" dir="auto"><span class="list-bullet"></span>
+<p>This command works by using awk, which is a text processing command. The -F: option tells awk to use a colon as the field separator, as fields in the /etc/passwd file are separated by colons. The $3 == 0 part is a condition that checks if the third field (which is the UID) is 0. If this condition is true, awk executes the action in the curly braces, which is to print the first field (the username).</p>
+</li>
+<li data-line="78" dir="auto"><span class="list-bullet"></span>
+<p>Any accounts with a UID of 0 should either be assigned a different UID or be removed.</p>
+</li>
+<li data-line="80" dir="auto"><span class="list-bullet"></span>
+<p><code>/etc/securetty</code></p>
+</li>
+<li data-line="82" dir="auto"><span class="list-bullet"></span>
+<p>This is a config file that contains a list of TTY devices where root is allowed to login. Leaving it blank will prevent root logins.</p>
+</li>
+<li data-line="83" dir="auto"><span class="list-bullet"></span>
+<p>TTY devices are 'local' terminal/console devices. Leaving a blank securetty file will not prevent remote console sessions, such as SSH.</p>
+</li>
+<li data-line="85" dir="auto"><span class="list-bullet"></span>
+<p>Set the root account shell to nologin. This can be done by modifying the /etc/passwd file, or ideally with the chsh command.</p>
+</li>
+<li data-line="86" dir="auto"><span class="list-bullet"></span>
+<p>Use&nbsp;<code>passwd /l root</code>&nbsp;to lock the root account password.</p>
+</li>
+<li data-line="87" dir="auto"><span class="list-bullet"></span>
+<p>To prevent root logins via ssh, add&nbsp;<code>PermitRootLogin no</code>&nbsp;to the&nbsp;<code>/etc/ssh/sshd_config</code>&nbsp;file.</p>
+</li>
+<li data-line="89" dir="auto"><span class="list-bullet"></span>
+<p>you can prevent other users from accessing the system via SSH by adding&nbsp;<code>DenyUsers account_names</code>&nbsp;to the same file.</p>
+</li>
+<li data-line="90" dir="auto"><span class="list-bullet"></span>
+<p>Run&nbsp;<code>systemctl reload sshd</code></p>
+</li>
+<li data-line="92" dir="auto"><span class="list-bullet"></span>
+<p>Securing System / Application Accounts</p>
+</li>
+<li data-line="94" dir="auto"><span class="list-bullet"></span>
+<p>Use 1 account per service. For example, if you are running an nginx web server, run that server as its own nginx user.</p>
+</li>
+<li data-line="95" dir="auto"><span class="list-bullet"></span>
+<p>Do not allow direct logins to system or application accounts.</p>
+</li>
+<li data-line="96" dir="auto"><span class="list-bullet"></span>
+<p>Use&nbsp;<code>sudo -u</code>&nbsp;to run commands as an application account.</p>
+</li>
+<li data-line="98" dir="auto"><span class="list-bullet"></span>
+<p>Deleting Accounts</p>
+</li>
+<li data-line="100" dir="auto"><span class="list-bullet"></span>
+<p>When an account is no longer needed, use&nbsp;<code>userdel -r UID</code>&nbsp;to delete the account. -r specifies to delete that users home directory.</p>
+</li>
+<li data-line="101" dir="auto"><span class="list-bullet"></span>
+<p>Use&nbsp;<code>id account_name</code>&nbsp;to find an accounts UID.</p>
+</li>
+<li data-line="102" dir="auto"><span class="list-bullet"></span>
+<p>After deleting a user account, you can find leftover files that belonged to that user by running&nbsp;<code>find / -UID</code>&nbsp;and&nbsp;<code>find / -nouser</code></p>
+</li>
+</ul></div><div class="footer"><div class="data-bar"></div></div></div></div></div><div id="right-content" class="leaf" style="--sidebar-width: var(--sidebar-width-right);"><div id="right-sidebar" class="sidebar"><div class="sidebar-handle"></div><div class="sidebar-topbar"><div class="topbar-content"><label class="theme-toggle-container" for="theme-toggle-input" id=""><input class="theme-toggle-input" type="checkbox" id="theme-toggle-input"><div class="toggle-background"></div></label></div><div class="clickable-icon sidebar-collapse-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><path d="M21 3H3C1.89543 3 1 3.89543 1 5V19C1 20.1046 1.89543 21 3 21H21C22.1046 21 23 20.1046 23 19V5C23 3.89543 22.1046 3 21 3Z"></path><path d="M10 4V20"></path><path d="M4 7H7"></path><path d="M4 10H7"></path><path d="M4 13H7"></path></svg></div></div><div class="sidebar-content-wrapper"><div id="right-sidebar-content" class="leaf-content"><div class="graph-view-wrapper"><div class="feature-header"><div class="feature-title">Interactive Graph</div></div><div class="graph-view-placeholder">
+		<div class="graph-view-container">
+			<div class="graph-icon graph-expand" role="button" aria-label="Expand" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+			<div class="graph-icon graph-global" role="button" aria-label="Global Graph" data-tooltip-position="top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-git-fork"><circle cx="12" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"></path><path d="M12 12v3"></path></svg></div>
+			<canvas id="graph-canvas" class="hide" width="512px" height="512px"></canvas>
+		</div>
+		</div></div><div id="outline" class=" tree-container"><div class="feature-header"><div class="feature-title">Table Of Contents</div><button class="clickable-icon nav-action-button tree-collapse-all" aria-label="Collapse All"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg></button></div><div class="tree-item" data-depth="1"><a class="tree-item-self is-clickable" href="#Account_Security_0" data-path="#Account_Security_0"><div class="tree-item-inner heading-link" heading-name="Account Security">Account Security</div></a><div class="tree-item-children"></div></div></div></div></div><script defer="">let rs = document.querySelector("#right-sidebar"); rs.classList.toggle("is-collapsed", window.innerWidth < 768); rs.style.setProperty("--sidebar-width", localStorage.getItem("sidebar-right-width"));</script></div></div></div></div></body></html>
