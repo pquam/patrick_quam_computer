@@ -1,14 +1,14 @@
 
 .body {
-  background-color: #2a78cb;
+  background-color: #374f2f;
 }
 
 /* Card Styles */
 .flip-card {
   background-color: transparent;
   perspective: 1000px; /* Provides a 3D-space for the card */
-  width: 300px !important; /* Adjust as needed */
-  height: 300px !important; /* Adjust as needed */
+  width: 200px !important; /* Adjust as needed */
+  height: 200px !important; /* Adjust as needed */
   float: left;
   padding: 8px;
   margin-bottom: 55px;
@@ -65,7 +65,7 @@
 
 
 .card-holder{
-  background-color: #2a78cb;
+  background-color: #304529;
   align-items: center;
   justify-content: center;
   height: 100%;
@@ -124,7 +124,7 @@
   
   /* Sections */
   .top-section {
-    background-color: #2a78cb;
+    background-color: #374f2f;
   }
   
 

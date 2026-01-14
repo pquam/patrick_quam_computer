@@ -40,7 +40,7 @@ mark {
 
   li {
     color: #fff;
-    font-size: 25px;
+    font-size: 15px;
   }
 
   em {
@@ -82,7 +82,7 @@ mark {
 
   .grey-section mark:hover {
     color: #fff;
-    background-color: #2057b7;
+    background-color: #304529;
   }
 
   .colored-section mark {
@@ -113,12 +113,12 @@ mark {
   
   .big-heading {
     font-family:'Courier New', Courier, monospace;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     line-height: 1.5;
   }
   
   .section-heading {
-    font-size: 250%;
+    font-size: 150%;
     line-height: 1.5;
   }
   
@@ -130,11 +130,11 @@ mark {
   
   /* Sections */
   .top-section {
-    background-color: #2a78cb;
+    background-color: #374f2f;
   }
   
   .colored-section {
-    background-color: #2057b7;
+    background-color: #304529;
     padding: 7% 15%;
     text-align: left;
     width: 100%;
@@ -176,11 +176,11 @@ mark {
   
   .sub-section-header {
     text-align: left;
-    font-size: 250%;
+    font-size: 150%;
   }
 
   .sub-section-title {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
   
   .sub-section-box {
@@ -280,7 +280,7 @@ mark {
 @media only screen and (max-width: 1100px) {
 
   .colored-section {
-    background-color: #2057b7;
+    background-color: #304529;
     padding: 7% 10%;
     text-align: left;
     width: 100%;
@@ -295,23 +295,23 @@ mark {
 
   li {
     color: #fff;
-    font-size: 36px;
+    font-size: 26px;
   }
 
   h1{
-    font-size: 54px;
-  }
-
-  h2 {
-    font-size: 48px;
-  }
-
-  h3 {
     font-size: 44px;
   }
 
+  h2 {
+    font-size: 38px;
+  }
+
+  h3 {
+    font-size: 34px;
+  }
+
   h4 {
-    font-size: 42px;
+    font-size: 32px;
   }
 
   .side-navigation {
@@ -330,7 +330,7 @@ mark {
     color: white;
     padding: 10px;
     text-decoration: none;
-    font-size: 45px;
+    font-size: 35px;
   }
 
   .nav-toggle-btn {
