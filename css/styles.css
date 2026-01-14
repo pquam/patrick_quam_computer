@@ -86,14 +86,14 @@
   
   .colored-section {
     background-color: #304529;
-    padding: 15%;
+    padding: 0%;
     text-align: left;
     width: 100%;
   }
   
   .grey-section {
     background-color: #252526;
-    padding: 15%;
+    padding: 0%;
     text-align: left;
     width: 100%;
   }
@@ -162,7 +162,7 @@
   }
   
   .sub-section-box {
-    padding: 4.5%;
+    padding: 3%;
   }
   
   .sub-section-image {
@@ -174,7 +174,7 @@
   }
 
   .spaced-list {
-    padding-bottom: 5%;
+    padding-bottom: 1rem;
   }
   
   
