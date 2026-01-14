@@ -7,8 +7,8 @@
 .flip-card {
   background-color: transparent;
   perspective: 1000px; /* Provides a 3D-space for the card */
-  width: 200px !important; /* Adjust as needed */
-  height: 200px !important; /* Adjust as needed */
+  width: 250px !important; /* Adjust as needed */
+  height: 250px !important; /* Adjust as needed */
   float: left;
   padding: 8px;
   margin-bottom: 55px;
@@ -46,7 +46,7 @@
 
 .flip-p{
   color: black !important;
-  font-size: 100% !important;
+  font-size: 90% !important;
 }
 
 .card-image {

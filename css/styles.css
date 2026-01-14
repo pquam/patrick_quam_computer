@@ -86,14 +86,14 @@
   
   .colored-section {
     background-color: #304529;
-    padding: 7% 15%;
+    padding: 15%;
     text-align: left;
     width: 100%;
   }
   
   .grey-section {
     background-color: #252526;
-    padding: 7% 15%;
+    padding: 15%;
     text-align: left;
     width: 100%;
   }
@@ -174,7 +174,7 @@
   }
 
   .spaced-list {
-    padding-bottom: 10%;
+    padding-bottom: 5%;
   }
   
   
@@ -197,14 +197,14 @@
 
     .colored-section {
       background-color: #304529;
-      padding: 7% 10%;
+      padding: 2% 10%;
       text-align: left;
       width: 100%;
     }
     
     .grey-section {
       background-color: #252526;
-      padding: 7% 10%;
+      padding: 2% 10%;
       text-align: left;
       width: 100%;
     }
