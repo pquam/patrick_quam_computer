@@ -135,14 +135,14 @@ mark {
   
   .colored-section {
     background-color: #304529;
-    padding: 15%;
+    padding: 0%;
     text-align: left;
     width: 100%;
   }
   
   .grey-section {
     background-color: #252526;
-    padding: 15%;
+    padding: 0%;
     text-align: left;
     width: 100%;
   }
@@ -197,7 +197,7 @@ mark {
   }
 
   .spaced-list {
-    padding-bottom: 10%;
+    padding-bottom: 1.5rem;
   }
 
   
